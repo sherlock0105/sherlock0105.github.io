@@ -35,6 +35,7 @@
 | 04 | 환율 API 연동 프로그램 (ZRE3FI0002) | HTTP Client, JSON, FI |
 | 05 | Fiori BP 마스터 프로그램 (ZCDS_E3_FI_0013) | CDS View, Fiori, SAPUI5, OData |
 | 06 | 완제품 검수 프로그램 (SAPMZE3QM0001) | Module Pool, MM, QM |
+| 07 | 전표 조회 Fiori 앱 (ZE3_FI_POST_SEARCH) | CDS View, OData, Fiori, SAPUI5 |
 
 ---
 

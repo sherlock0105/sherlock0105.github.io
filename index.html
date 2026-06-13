@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="박도현 SAP ABAP 개발자 포트폴리오">
+<title>박도현 · ABAP Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --bg:#f8f9fc;
+  --surface:#ffffff;
+  --border:#e8eaf0;
+  --border2:#d1d5e0;
+  --text:#1a1d27;
+  --text2:#4a5068;
+  --text3:#8890a8;
+  --blue:#3b6ef8;
+  --blue-light:#eef1ff;
+  --blue-mid:#c7d2ff;
+  --green:#16a34a;
+  --green-light:#f0fdf4;
+  --red:#dc2626;
+  --red-light:#fef2f2;
+  --amber:#d97706;
+  --amber-light:#fffbeb;
+  --purple:#7c3aed;
+  --purple-light:#f5f3ff;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Pretendard',-apple-system,sans-serif;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:56px;
+}
+.nav-left{display:flex;align-items:center;gap:.6rem}
+.nav-dot{width:8px;height:8px;background:var(--blue);border-radius:50%}
+.nav-name{font-size:14px;font-weight:600;color:var(--text)}
+.nav-role{font-size:12px;color:var(--text3);font-family:var(--mono)}
+.nav-links{display:flex;gap:.2rem}
+.nav-links a{
+  font-size:13px;color:var(--text2);text-decoration:none;
+  padding:.4rem .8rem;border-radius:6px;font-weight:500;
+  transition:all .15s;
+}
+.nav-links a:hover{background:var(--blue-light);color:var(--blue)}
+.nav-cta{
+  font-size:13px;font-weight:600;color:var(--white);
+  background:var(--blue);padding:.4rem 1rem;border-radius:6px;
+  text-decoration:none;transition:opacity .15s;
+}
+.nav-cta:hover{opacity:.88}
+
+/* ── LAYOUT ── */
+.container{max-width:900px;margin:0 auto;padding:0 2rem}
+section{padding:5rem 0}
+
+/* ── HERO ── */
+#home{
+  padding-top:96px;padding-bottom:4rem;
+  background:linear-gradient(160deg,#f0f4ff 0%,var(--bg) 60%);
+  border-bottom:1px solid var(--border);
+}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--blue-light);color:var(--blue);
+  border:1px solid var(--blue-mid);
+  font-size:12px;font-weight:600;font-family:var(--mono);
+  padding:.3rem .9rem;border-radius:999px;margin-bottom:1.4rem;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-name{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:.5rem}
+.hero-name span{color:var(--blue)}
+.hero-title{font-size:1.05rem;color:var(--text2);margin-bottom:1.2rem;font-weight:400}
+.hero-desc{color:var(--text2);font-size:14px;line-height:1.85;max-width:520px;margin-bottom:1.8rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.chip{
+  font-size:12px;font-family:var(--mono);font-weight:500;
+  color:var(--text2);background:var(--white);
+  border:1px solid var(--border2);padding:.25rem .7rem;border-radius:6px;
+}
+.chip.hi{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.4rem;font-weight:600;
+  font-size:13px;padding:.6rem 1.2rem;border-radius:8px;
+  text-decoration:none;transition:all .15s;cursor:pointer;border:none;
+}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#2d5ee8}
+.btn-outline{background:var(--white);color:var(--text2);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.hero-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.6rem 1.8rem;
+  box-shadow:var(--shadow-md);min-width:200px;
+}
+.hero-card-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.hero-card-row:last-child{border-bottom:none}
+.hero-card-label{color:var(--text3);font-size:12px}
+.hero-card-val{font-weight:600;color:var(--text);font-size:12px;font-family:var(--mono)}
+.hero-card-val.blue{color:var(--blue)}
+.hero-card-val.green{color:var(--green)}
+
+/* ── SECTION HEADER ── */
+.sec-head{margin-bottom:2.4rem}
+.sec-eyebrow{
+  font-size:11px;font-family:var(--mono);font-weight:500;
+  color:var(--blue);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;
+}
+.sec-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px}
+.sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+
+/* ── SKILL ── */
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.skill-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);
+}
+.skill-card-head{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+.skill-icon{
+  width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+}
+.skill-icon.blue{background:var(--blue-light)}
+.skill-icon.purple{background:var(--purple-light)}
+.skill-icon.green{background:var(--green-light)}
+.skill-label{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text2)}
+.skill-items{display:flex;flex-direction:column;gap:.5rem}
+.skill-row{display:flex;justify-content:space-between;align-items:center}
+.skill-name{font-size:13px;color:var(--text);font-weight:500}
+.skill-stars{display:flex;gap:2px}
+.star{width:8px;height:8px;border-radius:50%}
+.star.on{background:var(--blue)}
+.star.off{background:var(--border2)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.about-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem 1.6rem;box-shadow:var(--shadow);
+}
+.about-card-label{
+  font-size:11px;font-family:var(--mono);font-weight:600;
+  color:var(--blue);letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);
+}
+.about-list{list-style:none}
+.about-list li{
+  font-size:13px;color:var(--text2);padding:.4rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+}
+.about-list li:last-child{border-bottom:none}
+.about-item-name{color:var(--text);font-weight:500}
+.about-item-meta{font-size:11px;color:var(--text3);white-space:nowrap;font-family:var(--mono)}
+.about-item-badge{
+  font-size:10px;font-weight:600;padding:.15rem .5rem;border-radius:4px;
+  background:var(--amber-light);color:var(--amber);white-space:nowrap;
+}
+.about-item-badge.done{background:var(--green-light);color:var(--green)}
+
+/* ── EXPERIENCE ── */
+.exp-timeline{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;grid-template-columns:160px 1fr;gap:0;
+  position:relative;
+}
+.exp-item::before{
+  content:'';position:absolute;left:160px;top:0;bottom:0;
+  width:1px;background:var(--border);z-index:0;
+}
+.exp-left{padding:1.6rem 2rem 1.6rem 0;text-align:right}
+.exp-date{font-size:11px;font-family:var(--mono);color:var(--text3);line-height:1.5}
+.exp-right{padding:1.6rem 0 1.6rem 2rem;position:relative}
+.exp-dot{
+  position:absolute;left:-6px;top:22px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--white);border:2px solid var(--border2);z-index:1;
+}
+.exp-dot.active{background:var(--blue);border-color:var(--blue)}
+.exp-org{font-size:11px;font-family:var(--mono);color:var(--blue);font-weight:500;margin-bottom:.25rem}
+.exp-title{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.exp-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:.8rem}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.exp-tag{
+  font-size:11px;font-family:var(--mono);
+  color:var(--text3);background:var(--bg);
+  border:1px solid var(--border);padding:.15rem .55rem;border-radius:4px;
+}
+.exp-pm-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:11px;font-weight:700;font-family:var(--mono);
+  color:var(--purple);background:var(--purple-light);
+  border:1px solid #ddd6fe;padding:.2rem .6rem;border-radius:4px;margin-bottom:.5rem;
+}
+
+/* ── PROJECTS ── */
+.proj-list{display:flex;flex-direction:column;gap:.8rem}
+.proj-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;transition:box-shadow .15s,border-color .15s;
+  cursor:pointer;
+}
+.proj-card:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
+.proj-card.open{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,110,248,.08),var(--shadow-md)}
+.proj-head{
+  display:grid;grid-template-columns:44px 1fr auto;gap:1rem;
+  align-items:center;padding:1.2rem 1.6rem;
+}
+.proj-num{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--blue-light);display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);flex-shrink:0;
+}
+.proj-info-title{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.proj-info-sub{font-size:12px;color:var(--text3);font-family:var(--mono)}
+.proj-info-badges{display:flex;gap:.4rem;margin-top:.35rem;flex-wrap:wrap}
+.pbadge{
+  font-size:10px;font-weight:600;padding:.15rem .55rem;border-radius:4px;
+}
+.pbadge.fi{background:var(--blue-light);color:var(--blue)}
+.pbadge.mm{background:var(--green-light);color:var(--green)}
+.pbadge.qm{background:var(--amber-light);color:var(--amber)}
+.pbadge.pm{background:var(--purple-light);color:var(--purple)}
+.pbadge.solo{background:#f3f4f6;color:#6b7280}
+.pbadge.team{background:#fef3c7;color:#92400e}
+.proj-chevron{
+  width:28px;height:28px;border-radius:6px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:var(--text3);transition:transform .2s,background .15s;flex-shrink:0;
+}
+.proj-card.open .proj-chevron{transform:rotate(90deg);background:var(--blue-light);color:var(--blue)}
+.proj-body{
+  display:none;padding:0 1.6rem 1.6rem;
+  border-top:1px solid var(--border);margin-top:0;padding-top:1.4rem;
+}
+.proj-card.open .proj-body{display:block}
+.proj-summary{
+  font-size:13px;color:var(--text2);line-height:1.85;
+  margin-bottom:1.2rem;padding:1rem 1.2rem;
+  background:var(--bg);border-radius:8px;border-left:3px solid var(--blue);
+}
+.proj-2col{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem}
+.proj-box{border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.proj-box.asis{border-color:#fca5a5;background:#fff8f8}
+.proj-box.tobe{border-color:#86efac;background:#f8fff9}
+.proj-box-head{
+  font-size:11px;font-weight:700;font-family:var(--mono);
+  letter-spacing:.06em;margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;
+}
+.proj-box-head.red{color:var(--red)}
+.proj-box-head.gn{color:var(--green)}
+.proj-box ul{list-style:none}
+.proj-box ul li{font-size:12px;color:var(--text2);padding:.2rem 0;display:flex;gap:.5rem;line-height:1.5}
+.proj-box ul li::before{content:'→';color:var(--text3);font-size:11px;flex-shrink:0;margin-top:2px}
+.proj-code{
+  background:#1e1e2e;border-radius:8px;
+  padding:1rem 1.2rem;margin-bottom:1rem;
+  font-family:var(--mono);font-size:11.5px;color:#cdd6f4;
+  overflow-x:auto;white-space:pre;line-height:1.75;
+}
+.proj-code .cm{color:#6c7086}
+.proj-code .kw{color:#cba6f7}
+.proj-code .str{color:#a6e3a1}
+.proj-code .fn{color:#89b4fa}
+.proj-code .num{color:#fab387}
+.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.proj-tech span{
+  font-size:11px;font-family:var(--mono);font-weight:500;
+  color:var(--blue);background:var(--blue-light);
+  border:1px solid var(--blue-mid);padding:.2rem .6rem;border-radius:4px;
+}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.contact-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.2rem 1.4rem;
+  box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem;
+}
+.contact-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--blue-light);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.contact-label{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:.2rem}
+.contact-val{font-size:13px;font-weight:600;color:var(--text)}
+.contact-val a{color:var(--blue);text-decoration:none}
+.contact-val a:hover{text-decoration:underline}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:2rem;
+  text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono);
+}
+
+/* ── DIVIDER ── */
+.sec-div{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ── MOBILE ── */
+@media(max-width:680px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .container{padding:0 1rem}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .skill-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;padding-left:1.5rem}
+  .exp-item::before{left:0}
+  .exp-left{display:none}
+  .proj-2col{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-dot"></div>
+    <span class="nav-name">박도현</span>
+    <span class="nav-role">ABAP Dev</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank">GitHub ↗</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">✦ Available for opportunities</div>
+        <h1 class="hero-name">박도현<br><span>ABAP Developer</span></h1>
+        <p class="hero-title">SAP FI · PM · Master Pack ERP 프로젝트</p>
+        <p class="hero-desc">
+          요구사항의 본질을 고민하고, 데이터의 흐름을 명확하게 잇는 SAP ABAP 개발자입니다.
+          안전관리자 3년 경험을 바탕으로 현장 프로세스를 깊이 이해하며,
+          FI 모듈 커스텀 개발 6종을 직접 설계·구현했습니다.
+        </p>
+        <div class="hero-chips">
+          <span class="chip hi">ABAP</span>
+          <span class="chip hi">ALV Grid/Tree</span>
+          <span class="chip hi">Module Pool</span>
+          <span class="chip">CDS View</span>
+          <span class="chip">Fiori/SAPUI5</span>
+          <span class="chip">OData(SEGW)</span>
+          <span class="chip">FI Module</span>
+          <span class="chip">PM 경험</span>
+        </div>
+        <div class="hero-btns">
+          <a class="btn btn-blue" href="#projects">프로젝트 보기 →</a>
+          <a class="btn btn-outline" href="#contact">연락하기</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-row">
+          <span class="hero-card-label">Role</span>
+          <span class="hero-card-val blue">ABAP Dev · PM</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hero-card-label">Projects</span>
+          <span class="hero-card-val">6 CBO Programs</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hero-card-label">Course</span>
+          <span class="hero-card-val">SyncRoad SAP CODE</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hero-card-label">Prior</span>
+          <span class="hero-card-val">Safety Mgr 3yr</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hero-card-label">GitHub</span>
+          <span class="hero-card-val blue">sherlock0105</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hero-card-label">SQLD</span>
+          <span class="hero-card-val green">취득 ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">About</div>
+      <h2 class="sec-title">학력 · 자격증 · 기술</h2>
+    </div>
+
+    <!-- Skill -->
+    <div class="skill-grid" style="margin-bottom:1rem">
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon blue">⚡</div>
+          <div class="skill-label">Core · 상</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">ABAP (Report / Module Pool)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
+          <div class="skill-row"><span class="skill-name">ALV (Grid / Tree / Splitter)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
+          <div class="skill-row"><span class="skill-name">SAP FI Module</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon purple">🌐</div>
+          <div class="skill-label">Active · 중</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">SAPUI5 / Fiori</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
+          <div class="skill-row"><span class="skill-name">CDS View / Annotation</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
+          <div class="skill-row"><span class="skill-name">SEGW OData (DPC_EXT)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
+          <div class="skill-row"><span class="skill-name">Eclipse ADT / BAS</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon green">🗄</div>
+          <div class="skill-label">Base · 하</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-row"><span class="skill-name">MySQL</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
+          <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></div>
+          <div class="skill-row"><span class="skill-name">Python</span><div class="skill-stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume grid -->
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">🎓 학력</div>
+        <ul class="about-list">
+          <li>
+            <span class="about-item-name">한국폴리텍1대학 스마트시스템제어과</span>
+            <span class="about-item-meta">2017 ~ 2020 · 3.85/4.5</span>
+          </li>
+          <li>
+            <span class="about-item-name">인창고등학교</span>
+            <span class="about-item-meta">2014 ~ 2017</span>
+          </li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">📜 자격증</div>
+        <ul class="about-list">
+          <li>
+            <span class="about-item-name">SQL 개발자 (SQLD)</span>
+            <span class="about-item-badge done">취득 2026.03</span>
+          </li>
+          <li>
+            <span class="about-item-name">산업안전기사</span>
+            <span class="about-item-badge done">취득</span>
+          </li>
+          <li>
+            <span class="about-item-name">한국사능력검정 1급 · HSK 4급</span>
+            <span class="about-item-badge done">취득</span>
+          </li>
+          <li>
+            <span class="about-item-name">정보처리기사</span>
+            <span class="about-item-badge">진행 중 (필기 합격)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Experience</div>
+      <h2 class="sec-title">경력 및 교육</h2>
+    </div>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <div class="exp-date">2024.12 ~ 2025.05</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-dot active"></div>
+          <div class="exp-pm-badge">👑 PM</div>
+          <div class="exp-org">SyncRoad SAP CODE FI 과정 — Master Pack (화장품 기업)</div>
+          <div class="exp-title">ERP 구축 프로젝트 PM 겸 FI·QM 개발자</div>
+          <div class="exp-desc">
+            화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트를 PM으로 이끌며 FI·QM 모듈 커스텀 개발 총괄.
+            전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
+            6종의 CBO 프로그램을 직접 설계·구현. 개근 이수.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">ABAP</span>
+            <span class="exp-tag">Module Pool</span>
+            <span class="exp-tag">ALV</span>
+            <span class="exp-tag">CDS View</span>
+            <span class="exp-tag">Fiori</span>
+            <span class="exp-tag">OData</span>
+            <span class="exp-tag">FI</span>
+            <span class="exp-tag">QM</span>
+            <span class="exp-tag">PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <div class="exp-date">2022.09 ~ 2024.11</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-dot"></div>
+          <div class="exp-org">아마노코리아(주)</div>
+          <div class="exp-title">중대재해전담팀 안전관리자</div>
+          <div class="exp-desc">
+            중대재해처벌법 시행에 따른 전담팀 소속. 현장 안전 프로세스 전반 관리 및 데이터 기반 리스크 분석.
+            현장 업무 흐름과 데이터 구조에 대한 깊은 이해를 쌓아 SAP ABAP 전환의 토대가 됨.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">안전관리</span>
+            <span class="exp-tag">프로세스 분석</span>
+            <span class="exp-tag">중대재해처벌법</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <div class="exp-date">2021.09 ~ 2022.06</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-dot"></div>
+          <div class="exp-org">(주)코스트코코리아</div>
+          <div class="exp-title">안전관리자</div>
+          <div class="exp-desc">
+            대형 유통업체 안전관리 담당. 현장 운영 프로세스 이해 및 다수 이해관계자 조율 경험.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">안전관리</span>
+            <span class="exp-tag">유통물류</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Projects</div>
+      <h2 class="sec-title">CBO 개발 프로그램 · 6종</h2>
+    </div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
+      SyncRoad SAP CODE FI 과정 Master Pack ERP 프로젝트에서 PM 겸 FI·QM 모듈 개발자로 직접 설계·구현한 프로그램입니다.<br>
+      카드를 클릭하면 AS-IS/TO-BE 분석과 핵심 코드를 확인할 수 있습니다.
+    </p>
+    <div class="proj-list">
+
+      <!-- 01 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">01</div>
+          <div>
+            <div class="proj-info-title">전표 조회 및 역분개 프로그램</div>
+            <div class="proj-info-sub">ZRE3FI0003 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">ABAP Report</span>
+              <span class="pbadge fi">ALV</span>
+              <span class="pbadge solo">개인</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            💡 FI 전표 종합 조회 및 역분개 처리. 4-Tab 선택화면 + Split ALV + 동적 TOP-OF-PAGE + PDF 출력.<br>
+            하나의 화면에서 전체/AR/AP/GL 전표를 분기 조회하고, 마이너스 역분개를 한 클릭으로 처리합니다.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>SE16N·FB03 등 분산 처리</li>
+                <li>수기 SHKZG 반전 입력</li>
+                <li>상태 구분 불명확</li>
+                <li>외부 도구 PDF 의존</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>4-Tab 단일 화면 처리</li>
+                <li>마이너스 역분개 자동화</li>
+                <li>상태별 분리 조회</li>
+                <li>ABAP Spool → PDF 직접 출력</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-code"><span class="cm">* 역분개 로직 — SHKZG 자동 반전 + 양방향 STBLG 연결</span>
+<span class="kw">LOOP AT</span> lt_items_orig <span class="kw">INTO</span> ls_item.
+  ls_item-shkzg = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'H'</span> <span class="kw">ELSE</span> <span class="str">'S'</span> ).
+  <span class="kw">APPEND</span> ls_item <span class="kw">TO</span> lt_items_rev.
+<span class="kw">ENDLOOP</span>.
+<span class="cm">* 전표유형 BLART='AB' 신규 생성, 원본 STBLG에 역전표 번호 연결</span></div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>ALV</span><span>FI</span><span>ABAP Report</span><span>PDF Spool</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">02</div>
+          <div>
+            <div class="proj-info-title">월말 외화평가 프로그램</div>
+            <div class="proj-info-sub">SAPMZE3FI0002 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">Module Pool</span>
+              <span class="pbadge fi">ALV Tree</span>
+              <span class="pbadge solo">개인</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            💱 USD·EUR·JPY 외화 미결 전표에 대해 월말 환율로 평가손익 산출.<br>
+            ALV Tree 5단 계층 + 통화별 변동률(%) 시뮬레이션 + 배치잡 자동 전표 생성.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>Excel 수기 집계</li>
+                <li>환율 시나리오 수계산</li>
+                <li>평가전표 수기 생성</li>
+                <li>AR/AP 통화별 시각화 불가</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>ALV Tree 5단 계층 조회</li>
+                <li>통화별 변동률(%) 시뮬레이션</li>
+                <li>배치잡 자동 전표 생성</li>
+                <li>평가손익 컬러 시각화</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-code"><span class="cm">* 평가전표 생성 — ZCL_E3_FI_DOCUMENT 재사용</span>
+<span class="kw">CALL METHOD</span> ZCL_E3_FI_DOCUMENT=><span class="fn">POST_DOCUMENT</span>
+  <span class="kw">EXPORTING</span> iv_bukrs = <span class="str">'1000'</span>
+            iv_blart = <span class="str">'SA'</span>
+            iv_bldat = lv_eom_date
+            iv_bltxt = <span class="str">'월말 외화평가'</span>
+            it_items = lt_items
+  <span class="kw">IMPORTING</span> ev_belnr = lv_belnr.</div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>Module Pool</span><span>ALV Tree</span><span>FI</span><span>Batch Job</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">03</div>
+          <div>
+            <div class="proj-info-title">자산관리 및 감가상각 프로그램</div>
+            <div class="proj-info-sub">ZRE3FI0008 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">CDS View</span>
+              <span class="pbadge fi">Batch Job</span>
+              <span class="pbadge solo">개인</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            🏷 고정자산의 생애주기(취득→상각→처분) 통합 관리.<br>
+            처분 유형 3가지(매각/폐기/기타)를 회계 계정 매핑까지 자동화. CDS View로 12개월 일괄 조회.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>수기 분개</li>
+                <li>계정코드 매번 룩업</li>
+                <li>감가상각 손으로 계산</li>
+                <li>처분 자동 분개 없음</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>분류 선택으로 계정 자동 매핑</li>
+                <li>처분 유형별 전표 자동 생성</li>
+                <li>매월 31일 배치잡 자동 실행</li>
+                <li>CDS View로 12개월 일괄 조회</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-code"><span class="cm">* 정액법 / 정률법 분기 + 잔존가치 초과 방지</span>
+<span class="kw">IF</span> lv_accum + lv_depr > lv_aprice.
+  lv_depr = lv_aprice - lv_accum.  <span class="cm">"잔존가치 초과 방지</span>
+<span class="kw">ENDIF</span>.
+
+<span class="cm">* CDS View로 12개월 분 일괄 조회</span>
+<span class="kw">SELECT</span> anlkl, anln1, m01, m02 ... m12
+  <span class="kw">FROM</span> <span class="fn">zcds_e3_fi_0015</span>( p_gjahr = @pa_gjahr )
+ <span class="kw">WHERE</span> bukrs = @pa_bukrs <span class="kw">AND</span> abflg <span class="kw">NE</span> <span class="str">'X'</span>
+  <span class="kw">INTO</span> <span class="kw">TABLE</span> @gt_item.</div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>ALV Tree</span><span>CDS View</span><span>GOS</span><span>Batch Job</span><span>FI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">04</div>
+          <div>
+            <div class="proj-info-title">환율 API 연동 프로그램</div>
+            <div class="proj-info-sub">ZRE3FI0002 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">HTTP Client</span>
+              <span class="pbadge team">협업</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            🔄 외화 평가·환산의 기준이 되는 환율 데이터를 외부 API에서 실시간 가져와 SAP 내부 마스터로 적재.<br>
+            USD·EUR·JPY 3통화 동시 적재. GDATU 역순 저장으로 최신 환율 단건 SELECT 지원.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>한국은행/네이버 수기 입력</li>
+                <li>누락 시 외화 로직 중단</li>
+                <li>통화별 이력 관리 부재</li>
+                <li>JPY FFACT 누락 오류</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>외부 API 실시간 자동 적재</li>
+                <li>3통화 동시 처리</li>
+                <li>GDATU 역순으로 이력 관리</li>
+                <li>FFACT/TFACT 자동 세팅 (JPY=100)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-code"><span class="cm">* GDATU 역순 변환 후 적재 — ASC 정렬 시 최신이 맨 위</span>
+ls_tcurr-gdatu = |{ <span class="num">99999999</span> - sy-datum }|.  <span class="cm">"역순 저장</span>
+ls_tcurr-ffact = <span class="kw">COND</span> #(
+  <span class="kw">WHEN</span> ls_rate-currency = <span class="str">'JPY'</span> <span class="kw">THEN</span> <span class="num">100</span> <span class="kw">ELSE</span> <span class="num">1</span> ).
+<span class="kw">MODIFY</span> ZTE3FI0008 <span class="kw">FROM</span> ls_tcurr.
+<span class="kw">COMMIT WORK AND WAIT</span>.</div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>HTTP Client</span><span>JSON</span><span>/ui2/cl_json</span><span>FI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">05</div>
+          <div>
+            <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
+            <div class="proj-info-sub">ZCDS_E3_FI_0013 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">Fiori</span>
+              <span class="pbadge fi">CDS View</span>
+              <span class="pbadge fi">OData</span>
+              <span class="pbadge solo">개인</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            🌐 고객·공급업체 마스터를 통합 Business Partner 뷰로 묶어 Fiori 웹 UI에서 CRUD.<br>
+            CDS UNION ALL의 정석을 실전에서 다룬 프로그램. SEGW OData CRUD 풀세트 구현.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>고객·공급업체 분리 관리</li>
+                <li>SAP GUI에서만 접근 가능</li>
+                <li>통합 BP 뷰 없음</li>
+                <li>SE16N으로 매번 검색</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>CDS UNION ALL 통합 뷰</li>
+                <li>Fiori 웹/모바일 접근</li>
+                <li>BPType 단일 필드로 구분</li>
+                <li>OData CRUD 풀세트</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-code"><span class="kw">@OData</span>.publish: <span class="kw">true</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0013</span> <span class="kw">as</span>
+<span class="kw">select from</span> ZTE3SD0001 <span class="kw">as</span> customer {
+  customer.kunnr <span class="kw">as</span> BPNumber,
+  <span class="kw">cast</span>(<span class="str">'C'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> BPType
+}
+<span class="kw">union all</span>
+<span class="kw">select from</span> ZTE3MM0002 <span class="kw">as</span> supplier {
+  supplier.lifnr <span class="kw">as</span> BPNumber,
+  <span class="kw">cast</span>(<span class="str">'S'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> BPType
+}</div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>CDS View</span><span>Fiori</span><span>SAPUI5</span><span>OData</span><span>SEGW</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-head">
+          <div class="proj-num">06</div>
+          <div>
+            <div class="proj-info-title">완제품 검수 프로그램</div>
+            <div class="proj-info-sub">SAPMZE3QM0001 · 2024.12 ~ 2025.05</div>
+            <div class="proj-info-badges">
+              <span class="pbadge mm">MM</span>
+              <span class="pbadge qm">QM</span>
+              <span class="pbadge fi">Module Pool</span>
+              <span class="pbadge pm">PM 관리</span>
+              <span class="pbadge solo">개인</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            📦 제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수.<br>
+            합격 품목에 한해 입고·재고 마스터 자동 연동. 검수 이력 영구 보존 및 추적 지원.
+          </div>
+          <div class="proj-2col">
+            <div class="proj-box asis">
+              <div class="proj-box-head red">❌ AS-IS</div>
+              <ul>
+                <li>종이/엑셀 검수 기록</li>
+                <li>판정과 재고 입고 분리</li>
+                <li>사후 집계 수기 작업</li>
+                <li>검수 이력 추적 불가</li>
+              </ul>
+            </div>
+            <div class="proj-box tobe">
+              <div class="proj-box-head gn">✅ TO-BE</div>
+              <ul>
+                <li>시스템 내 검수 결과 입력</li>
+                <li>합격 시 자동 입고 연동</li>
+                <li>불합격 사유 입력 후 별도 관리</li>
+                <li>검수 이력 영구 추적</li>
+              </ul>
+            </div>
+          </div>
+          <div class="proj-tech">
+            <span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Contact</div>
+      <h2 class="sec-title">연락처</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val"><a href="mailto:didi5943@naver.com">didi5943@naver.com</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🐙</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val"><a href="https://github.com/sherlock0105" target="_blank">github.com/sherlock0105</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">010-2800-5943</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-val">Seoul, South Korea</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 박도현 · SAP ABAP Developer Portfolio · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>
+</footer>
+
+<script>
+function toggleProj(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.proj-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+// Nav highlight
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(a => {
+    const isActive = a.getAttribute('href') === '#' + cur;
+    a.style.background = isActive ? 'var(--blue-light)' : '';
+    a.style.color = isActive ? 'var(--blue)' : '';
+  });
+}, {passive:true});
+</script>
+</body>
+</html>

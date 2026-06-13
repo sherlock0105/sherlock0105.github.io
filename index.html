@@ -1,992 +1,2482 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="박도현 SAP ABAP 개발자 포트폴리오">
-<title>박도현 · ABAP Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f8f9fc;
-  --white:#ffffff;
-  --border:#e8eaf0;
-  --border2:#d1d5e0;
-  --text:#1a1d27;
-  --text2:#4a5068;
-  --text3:#8890a8;
-  --blue:#3b6ef8;
-  --blue-light:#eef1ff;
-  --blue-mid:#c7d2ff;
-  --green:#16a34a;
-  --green-light:#f0fdf4;
-  --red:#dc2626;
-  --red-light:#fef2f2;
-  --amber:#d97706;
-  --amber-light:#fffbeb;
-  --purple:#7c3aed;
-  --purple-light:#f5f3ff;
-  --mono:'JetBrains Mono',monospace;
-  --sans:'Pretendard',-apple-system,sans-serif;
-  --radius:12px;
-  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="박도현 SAP ABAP 개발자 포트폴리오" />
+    <title>박도현 · ABAP Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #f8f9fc;
+        --white: #ffffff;
+        --border: #e8eaf0;
+        --border2: #d1d5e0;
+        --text: #1a1d27;
+        --text2: #4a5068;
+        --text3: #8890a8;
+        --blue: #3b6ef8;
+        --blue-light: #eef1ff;
+        --blue-mid: #c7d2ff;
+        --green: #16a34a;
+        --green-light: #f0fdf4;
+        --red: #dc2626;
+        --red-light: #fef2f2;
+        --amber: #d97706;
+        --amber-light: #fffbeb;
+        --purple: #7c3aed;
+        --purple-light: #f5f3ff;
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Pretendard", -apple-system, sans-serif;
+        --radius: 12px;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow-md:
+          0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 15px;
+        line-height: 1.7;
+      }
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:56px;
-}
-.nav-left{display:flex;align-items:center;gap:.6rem}
-.nav-dot{width:8px;height:8px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.nav-name{font-size:14px;font-weight:600}
-.nav-role{font-size:12px;color:var(--text3);font-family:var(--mono)}
-.nav-links{display:flex;gap:.2rem}
-.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:.4rem .8rem;border-radius:6px;font-weight:500;transition:all .15s}
-.nav-links a:hover{background:var(--blue-light);color:var(--blue)}
-.nav-cta{font-size:13px;font-weight:600;color:#fff;background:var(--blue);padding:.4rem 1rem;border-radius:6px;text-decoration:none;transition:opacity .15s}
-.nav-cta:hover{opacity:.88}
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        height: 56px;
+      }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--blue);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+      .nav-name {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .nav-role {
+        font-size: 12px;
+        color: var(--text3);
+        font-family: var(--mono);
+      }
+      .nav-links {
+        display: flex;
+        gap: 0.2rem;
+      }
+      .nav-links a {
+        font-size: 13px;
+        color: var(--text2);
+        text-decoration: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.15s;
+      }
+      .nav-links a:hover {
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+      .nav-cta {
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        background: var(--blue);
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+      .nav-cta:hover {
+        opacity: 0.88;
+      }
 
-/* LAYOUT */
-.container{max-width:900px;margin:0 auto;padding:0 2rem}
-section{padding:5rem 0}
-.sec-div{border:none;border-top:1px solid var(--border);margin:0}
+      /* LAYOUT */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      section {
+        padding: 5rem 0;
+      }
+      .sec-div {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0;
+      }
 
-/* HERO */
-#home{padding-top:96px;padding-bottom:4rem;background:linear-gradient(160deg,#f0f4ff 0%,var(--bg) 60%);border-bottom:1px solid var(--border)}
-.hero-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-mid);font-size:12px;font-weight:600;font-family:var(--mono);padding:.3rem .9rem;border-radius:999px;margin-bottom:1.4rem}
-.hero-badge::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%}
-.hero-name{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:.5rem}
-.hero-name span{color:var(--blue)}
-.hero-title{font-size:1.05rem;color:var(--text2);margin-bottom:1.2rem}
-.hero-desc{color:var(--text2);font-size:14px;line-height:1.85;max-width:520px;margin-bottom:1.8rem}
-.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
-.chip{font-size:12px;font-family:var(--mono);font-weight:500;color:var(--text2);background:var(--white);border:1px solid var(--border2);padding:.25rem .7rem;border-radius:6px}
-.chip.hi{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
-.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:13px;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;transition:all .15s;cursor:pointer;border:none}
-.btn-blue{background:var(--blue);color:#fff}
-.btn-blue:hover{background:#2d5ee8}
-.btn-outline{background:var(--white);color:var(--text2);border:1px solid var(--border2)}
-.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
-.hero-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;box-shadow:var(--shadow-md);min-width:200px}
-.hero-card-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px}
-.hero-card-row:last-child{border-bottom:none}
-.hero-card-label{color:var(--text3);font-size:12px}
-.hero-card-val{font-weight:600;font-size:12px;font-family:var(--mono)}
-.hero-card-val.blue{color:var(--blue)}
-.hero-card-val.green{color:var(--green)}
+      /* HERO */
+      #home {
+        padding-top: 96px;
+        padding-bottom: 4rem;
+        background: linear-gradient(160deg, #f0f4ff 0%, var(--bg) 60%);
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 3rem;
+        align-items: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--blue-light);
+        color: var(--blue);
+        border: 1px solid var(--blue-mid);
+        font-size: 12px;
+        font-weight: 600;
+        font-family: var(--mono);
+        padding: 0.3rem 0.9rem;
+        border-radius: 999px;
+        margin-bottom: 1.4rem;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--blue);
+        border-radius: 50%;
+      }
+      .hero-name {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 0.5rem;
+      }
+      .hero-name span {
+        color: var(--blue);
+      }
+      .hero-title {
+        font-size: 1.05rem;
+        color: var(--text2);
+        margin-bottom: 1.2rem;
+      }
+      .hero-desc {
+        color: var(--text2);
+        font-size: 14px;
+        line-height: 1.85;
+        max-width: 520px;
+        margin-bottom: 1.8rem;
+      }
+      .hero-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .chip {
+        font-size: 12px;
+        font-family: var(--mono);
+        font-weight: 500;
+        color: var(--text2);
+        background: var(--white);
+        border: 1px solid var(--border2);
+        padding: 0.25rem 0.7rem;
+        border-radius: 6px;
+      }
+      .chip.hi {
+        color: var(--blue);
+        background: var(--blue-light);
+        border-color: var(--blue-mid);
+      }
+      .hero-btns {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.15s;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-blue {
+        background: var(--blue);
+        color: #fff;
+      }
+      .btn-blue:hover {
+        background: #2d5ee8;
+      }
+      .btn-outline {
+        background: var(--white);
+        color: var(--text2);
+        border: 1px solid var(--border2);
+      }
+      .btn-outline:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+      .hero-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem 1.8rem;
+        box-shadow: var(--shadow-md);
+        min-width: 200px;
+      }
+      .hero-card-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+      }
+      .hero-card-row:last-child {
+        border-bottom: none;
+      }
+      .hero-card-label {
+        color: var(--text3);
+        font-size: 12px;
+      }
+      .hero-card-val {
+        font-weight: 600;
+        font-size: 12px;
+        font-family: var(--mono);
+      }
+      .hero-card-val.blue {
+        color: var(--blue);
+      }
+      .hero-card-val.green {
+        color: var(--green);
+      }
 
-/* SECTION HEADER */
-.sec-head{margin-bottom:2.4rem}
-.sec-eyebrow{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
-.sec-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px}
-.sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+      /* SECTION HEADER */
+      .sec-head {
+        margin-bottom: 2.4rem;
+      }
+      .sec-eyebrow {
+        font-size: 11px;
+        font-family: var(--mono);
+        font-weight: 500;
+        color: var(--blue);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .sec-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 2px;
+        background: var(--blue);
+        border-radius: 2px;
+      }
+      .sec-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
 
-/* SKILL */
-.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
-.skill-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow)}
-.skill-card-head{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
-.skill-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.skill-icon.blue{background:var(--blue-light)}
-.skill-icon.purple{background:var(--purple-light)}
-.skill-icon.green{background:var(--green-light)}
-.skill-label{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text2)}
-.skill-items{display:flex;flex-direction:column;gap:.5rem}
-.skill-row{display:flex;justify-content:space-between;align-items:center}
-.skill-name{font-size:13px;color:var(--text);font-weight:500}
-.skill-stars{display:flex;gap:2px}
-.star{width:8px;height:8px;border-radius:50%}
-.star.on{background:var(--blue)}
-.star.off{background:var(--border2)}
+      /* SKILL */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .skill-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+      .skill-card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1.2rem;
+      }
+      .skill-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .skill-icon.blue {
+        background: var(--blue-light);
+      }
+      .skill-icon.purple {
+        background: var(--purple-light);
+      }
+      .skill-icon.green {
+        background: var(--green-light);
+      }
+      .skill-label {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: var(--mono);
+        color: var(--text2);
+      }
+      .skill-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .skill-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .skill-name {
+        font-size: 13px;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .skill-stars {
+        display: flex;
+        gap: 2px;
+      }
+      .star {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .star.on {
+        background: var(--blue);
+      }
+      .star.off {
+        background: var(--border2);
+      }
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.about-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;box-shadow:var(--shadow)}
-.about-card-label{font-size:11px;font-family:var(--mono);font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
-.about-list{list-style:none}
-.about-list li{font-size:13px;color:var(--text2);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:.8rem}
-.about-list li:last-child{border-bottom:none}
-.about-item-name{color:var(--text);font-weight:500}
-.about-item-meta{font-size:11px;color:var(--text3);white-space:nowrap;font-family:var(--mono)}
-.about-item-badge{font-size:10px;font-weight:600;padding:.15rem .5rem;border-radius:4px;background:var(--amber-light);color:var(--amber);white-space:nowrap}
-.about-item-badge.done{background:var(--green-light);color:var(--green)}
+      /* ABOUT */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .about-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem 1.6rem;
+        box-shadow: var(--shadow);
+      }
+      .about-card-label {
+        font-size: 11px;
+        font-family: var(--mono);
+        font-weight: 600;
+        color: var(--blue);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .about-list {
+        list-style: none;
+      }
+      .about-list li {
+        font-size: 13px;
+        color: var(--text2);
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.8rem;
+      }
+      .about-list li:last-child {
+        border-bottom: none;
+      }
+      .about-item-name {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .about-item-meta {
+        font-size: 11px;
+        color: var(--text3);
+        white-space: nowrap;
+        font-family: var(--mono);
+      }
+      .about-item-badge {
+        font-size: 10px;
+        font-weight: 600;
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+        background: var(--amber-light);
+        color: var(--amber);
+        white-space: nowrap;
+      }
+      .about-item-badge.done {
+        background: var(--green-light);
+        color: var(--green);
+      }
 
-/* STORY */
-.story-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.story-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);border-radius:2px 0 0 2px}
-.story-text{font-size:14px;color:var(--text2);line-height:1.9}
-.story-text p{margin-bottom:1rem}
-.story-text p:last-child{margin-bottom:0}
+      /* STORY */
+      .story-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .story-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--blue);
+        border-radius: 2px 0 0 2px;
+      }
+      .story-text {
+        font-size: 14px;
+        color: var(--text2);
+        line-height: 1.9;
+      }
+      .story-text p {
+        margin-bottom: 1rem;
+      }
+      .story-text p:last-child {
+        margin-bottom: 0;
+      }
 
-/* EXPERIENCE TIMELINE */
-.exp-timeline{display:flex;flex-direction:column}
-.exp-item{display:grid;grid-template-columns:160px 1fr;position:relative}
-.exp-item::before{content:'';position:absolute;left:160px;top:0;bottom:0;width:1px;background:var(--border);z-index:0}
-.exp-left{padding:1.6rem 2rem 1.6rem 0;text-align:right}
-.exp-date{font-size:11px;font-family:var(--mono);color:var(--text3);line-height:1.5}
-.exp-right{padding:1.6rem 0 1.6rem 2rem;position:relative}
-.exp-dot{position:absolute;left:-6px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--white);border:2px solid var(--border2);z-index:1}
-.exp-dot.active{background:var(--blue);border-color:var(--blue)}
-.exp-org{font-size:11px;font-family:var(--mono);color:var(--blue);font-weight:500;margin-bottom:.25rem}
-.exp-title{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
-.exp-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:.8rem}
-.exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.exp-tag{font-size:11px;font-family:var(--mono);color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.15rem .55rem;border-radius:4px}
-.exp-pm-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--purple);background:var(--purple-light);border:1px solid #ddd6fe;padding:.2rem .6rem;border-radius:4px;margin-bottom:.5rem}
+      /* EXPERIENCE TIMELINE */
+      .exp-timeline {
+        display: flex;
+        flex-direction: column;
+      }
+      .exp-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        position: relative;
+      }
+      .exp-item::before {
+        content: "";
+        position: absolute;
+        left: 160px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+        z-index: 0;
+      }
+      .exp-left {
+        padding: 1.6rem 2rem 1.6rem 0;
+        text-align: right;
+      }
+      .exp-date {
+        font-size: 11px;
+        font-family: var(--mono);
+        color: var(--text3);
+        line-height: 1.5;
+      }
+      .exp-right {
+        padding: 1.6rem 0 1.6rem 2rem;
+        position: relative;
+      }
+      .exp-dot {
+        position: absolute;
+        left: -6px;
+        top: 22px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 2px solid var(--border2);
+        z-index: 1;
+      }
+      .exp-dot.active {
+        background: var(--blue);
+        border-color: var(--blue);
+      }
+      .exp-org {
+        font-size: 11px;
+        font-family: var(--mono);
+        color: var(--blue);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+      .exp-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .exp-desc {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.75;
+        margin-bottom: 0.8rem;
+      }
+      .exp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .exp-tag {
+        font-size: 11px;
+        font-family: var(--mono);
+        color: var(--text3);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 0.15rem 0.55rem;
+        border-radius: 4px;
+      }
+      .exp-pm-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 11px;
+        font-weight: 700;
+        font-family: var(--mono);
+        color: var(--purple);
+        background: var(--purple-light);
+        border: 1px solid #ddd6fe;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
 
-/* PROJECTS */
-.proj-list{display:flex;flex-direction:column;gap:.8rem}
-.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s;cursor:pointer}
-.proj-card:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
-.proj-card.open{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,110,248,.08),var(--shadow-md)}
-.proj-head{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.6rem}
-.proj-num{width:36px;height:36px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);flex-shrink:0}
-.proj-info-title{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
-.proj-info-sub{font-size:12px;color:var(--text3);font-family:var(--mono)}
-.proj-info-badges{display:flex;gap:.4rem;margin-top:.35rem;flex-wrap:wrap}
-.pbadge{font-size:10px;font-weight:600;padding:.15rem .55rem;border-radius:4px}
-.pbadge.fi{background:var(--blue-light);color:var(--blue)}
-.pbadge.mm{background:var(--green-light);color:var(--green)}
-.pbadge.qm{background:var(--amber-light);color:var(--amber)}
-.pbadge.pm{background:var(--purple-light);color:var(--purple)}
-.proj-chevron{width:28px;height:28px;border-radius:6px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text3);transition:transform .2s,background .15s;flex-shrink:0}
-.proj-card.open .proj-chevron{transform:rotate(90deg);background:var(--blue-light);color:var(--blue)}
-.proj-body{display:none;padding:0 1.6rem 1.6rem;border-top:1px solid var(--border);padding-top:1.4rem}
-.proj-card.open .proj-body{display:block}
-.proj-summary{font-size:13px;color:var(--text2);line-height:1.85;margin-bottom:1.2rem;padding:1rem 1.2rem;background:var(--bg);border-radius:8px;border-left:3px solid var(--blue)}
-.proj-screenshot{width:100%;border-radius:8px;border:1px solid var(--border);margin-bottom:1.2rem;display:block}
-.proj-features{margin-bottom:1.2rem}
-.proj-features-title{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
-.proj-features ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
-.proj-features ul li{font-size:13px;color:var(--text2);display:flex;gap:.6rem;line-height:1.55}
-.proj-features ul li::before{content:'→';color:var(--blue);font-size:11px;flex-shrink:0;margin-top:3px}
-.proj-code{background:#1e1e2e;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;font-family:var(--mono);font-size:11.5px;color:#cdd6f4;overflow-x:auto;white-space:pre;line-height:1.75}
-.proj-code .cm{color:#6c7086}
-.proj-code .kw{color:#cba6f7}
-.proj-code .str{color:#a6e3a1}
-.proj-code .fn{color:#89b4fa}
-.proj-code .num{color:#fab387}
-.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
-.proj-tech span{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.2rem .6rem;border-radius:4px}
+      /* PROJECTS */
+      .proj-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .proj-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition:
+          box-shadow 0.15s,
+          border-color 0.15s;
+        cursor: pointer;
+      }
+      .proj-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--blue-mid);
+      }
+      .proj-card.open {
+        border-color: var(--blue);
+        box-shadow:
+          0 0 0 3px rgba(59, 110, 248, 0.08),
+          var(--shadow-md);
+      }
+      .proj-head {
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: 1rem;
+        align-items: center;
+        padding: 1.2rem 1.6rem;
+      }
+      .proj-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--blue-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: var(--mono);
+        color: var(--blue);
+        flex-shrink: 0;
+      }
+      .proj-info-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+      }
+      .proj-info-sub {
+        font-size: 12px;
+        color: var(--text3);
+        font-family: var(--mono);
+      }
+      .proj-info-badges {
+        display: flex;
+        gap: 0.4rem;
+        margin-top: 0.35rem;
+        flex-wrap: wrap;
+      }
+      .pbadge {
+        font-size: 10px;
+        font-weight: 600;
+        padding: 0.15rem 0.55rem;
+        border-radius: 4px;
+      }
+      .pbadge.fi {
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+      .pbadge.mm {
+        background: var(--green-light);
+        color: var(--green);
+      }
+      .pbadge.qm {
+        background: var(--amber-light);
+        color: var(--amber);
+      }
+      .pbadge.pm {
+        background: var(--purple-light);
+        color: var(--purple);
+      }
+      .proj-chevron {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--text3);
+        transition:
+          transform 0.2s,
+          background 0.15s;
+        flex-shrink: 0;
+      }
+      .proj-card.open .proj-chevron {
+        transform: rotate(90deg);
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+      .proj-body {
+        display: none;
+        padding: 0 1.6rem 1.6rem;
+        border-top: 1px solid var(--border);
+        padding-top: 1.4rem;
+      }
+      .proj-card.open .proj-body {
+        display: block;
+      }
+      .proj-summary {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.85;
+        margin-bottom: 1.2rem;
+        padding: 1rem 1.2rem;
+        background: var(--bg);
+        border-radius: 8px;
+        border-left: 3px solid var(--blue);
+      }
+      .proj-screenshot {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        margin-bottom: 1.2rem;
+        display: block;
+      }
+      .proj-features {
+        margin-bottom: 1.2rem;
+      }
+      .proj-features-title {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: var(--mono);
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.6rem;
+      }
+      .proj-features ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .proj-features ul li {
+        font-size: 13px;
+        color: var(--text2);
+        display: flex;
+        gap: 0.6rem;
+        line-height: 1.55;
+      }
+      .proj-features ul li::before {
+        content: "→";
+        color: var(--blue);
+        font-size: 11px;
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+      .proj-code {
+        background: #1e1e2e;
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1rem;
+        font-family: var(--mono);
+        font-size: 11.5px;
+        color: #cdd6f4;
+        overflow-x: auto;
+        white-space: pre;
+        line-height: 1.75;
+      }
+      .proj-code .cm {
+        color: #6c7086;
+      }
+      .proj-code .kw {
+        color: #cba6f7;
+      }
+      .proj-code .str {
+        color: #a6e3a1;
+      }
+      .proj-code .fn {
+        color: #89b4fa;
+      }
+      .proj-code .num {
+        color: #fab387;
+      }
+      .proj-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.8rem;
+      }
+      .proj-tech span {
+        font-size: 11px;
+        font-family: var(--mono);
+        font-weight: 500;
+        color: var(--blue);
+        background: var(--blue-light);
+        border: 1px solid var(--blue-mid);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+      }
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
-.contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem}
-.contact-icon{width:36px;height:36px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.contact-label{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:.2rem}
-.contact-val{font-size:13px;font-weight:600;color:var(--text)}
-.contact-val a{color:var(--blue);text-decoration:none}
-.contact-val a:hover{text-decoration:underline}
+      /* CONTACT */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+      .contact-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.4rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .contact-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--blue-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .contact-label {
+        font-size: 11px;
+        color: var(--text3);
+        font-family: var(--mono);
+        margin-bottom: 0.2rem;
+      }
+      .contact-val {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .contact-val a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      .contact-val a:hover {
+        text-decoration: underline;
+      }
 
-/* IMAGE GALLERY */
-.img-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
-.img-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s}
-.img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
-.img-item img{width:100%;height:140px;object-fit:cover;display:block}
-.img-caption{font-size:11px;color:var(--text3);padding:.5rem .7rem;background:var(--bg);font-family:var(--mono);line-height:1.4}
+      /* IMAGE GALLERY */
+      .img-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        margin-bottom: 1.4rem;
+      }
+      .img-item {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: zoom-in;
+        transition:
+          box-shadow 0.15s,
+          border-color 0.15s;
+      }
+      .img-item:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--blue-mid);
+      }
+      .img-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        display: block;
+      }
+      .img-caption {
+        font-size: 11px;
+        color: var(--text3);
+        padding: 0.5rem 0.7rem;
+        background: var(--bg);
+        font-family: var(--mono);
+        line-height: 1.4;
+      }
 
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
-.lightbox.active{display:flex}
-.lightbox-inner{max-width:90vw;max-height:90vh;text-align:center}
-.lightbox-inner img{max-width:100%;max-height:80vh;border-radius:8px;display:block;margin:0 auto}
-#lightbox-cap{color:#fff;font-size:13px;margin-top:.8rem;opacity:.8}
+      /* LIGHTBOX */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        cursor: zoom-out;
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox-inner {
+        max-width: 90vw;
+        max-height: 90vh;
+        text-align: center;
+      }
+      .lightbox-inner img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+      }
+      #lightbox-cap {
+        color: #fff;
+        font-size: 13px;
+        margin-top: 0.8rem;
+        opacity: 0.8;
+      }
 
-/* CODE TABS */
-.code-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:0;border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:.6rem}
-.code-tab{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.3rem .8rem;border-radius:6px;cursor:pointer;transition:all .15s}
-.code-tab:hover{color:var(--blue);border-color:var(--blue-mid)}
-.code-tab.active{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+      /* CODE TABS */
+      .code-tabs {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .code-tab {
+        font-size: 11px;
+        font-family: var(--mono);
+        font-weight: 500;
+        color: var(--text3);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .code-tab:hover {
+        color: var(--blue);
+        border-color: var(--blue-mid);
+      }
+      .code-tab.active {
+        color: var(--blue);
+        background: var(--blue-light);
+        border-color: var(--blue-mid);
+      }
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono)}
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem;
+        text-align: center;
+        font-size: 12px;
+        color: var(--text3);
+        font-family: var(--mono);
+      }
 
-/* MOBILE */
-@media(max-width:680px){
-  nav{padding:0 1rem}
-  .nav-links{display:none}
-  .container{padding:0 1rem}
-  .hero-inner{grid-template-columns:1fr}
-  .hero-card{display:none}
-  .skill-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
-  .exp-item{grid-template-columns:1fr;padding-left:1.5rem}
-  .exp-item::before{left:0}
-  .exp-left{display:none}
-  .contact-grid{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
+      /* MOBILE */
+      @media (max-width: 680px) {
+        nav {
+          padding: 0 1rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .container {
+          padding: 0 1rem;
+        }
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .hero-card {
+          display: none;
+        }
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .exp-item {
+          grid-template-columns: 1fr;
+          padding-left: 1.5rem;
+        }
+        .exp-item::before {
+          left: 0;
+        }
+        .exp-left {
+          display: none;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <div class="nav-dot"></div>
+        <span class="nav-name">박도현</span>
+        <span class="nav-role">ABAP Dev</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#story">Story</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank"
+        >GitHub ↗</a
+      >
+    </nav>
 
-<nav>
-  <div class="nav-left">
-    <div class="nav-dot"></div>
-    <span class="nav-name">박도현</span>
-    <span class="nav-role">ABAP Dev</span>
-  </div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#story">Story</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank">GitHub ↗</a>
-</nav>
+    <!-- HERO -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-badge">✦ SAP ABAP Developer</div>
+            <h1 class="hero-name">박도현<br /><span>ABAP Developer</span></h1>
+            <p class="hero-title">SAP FI · PM · Master Pack ERP 프로젝트</p>
+            <p class="hero-desc">
+              요구사항의 본질을 고민하고, 데이터의 흐름을 명확하게 잇는 SAP ABAP
+              개발자입니다.<br />
+              FI 모듈 커스텀 개발 6종을 PM으로 직접 설계·구현했습니다.
+            </p>
+            <div class="hero-chips">
+              <span class="chip hi">ABAP</span>
+              <span class="chip hi">ALV Grid/Tree</span>
+              <span class="chip hi">Module Pool</span>
+              <span class="chip">CDS View</span>
+              <span class="chip">Fiori/SAPUI5</span>
+              <span class="chip">OData(SEGW)</span>
+              <span class="chip">FI Module</span>
+              <span class="chip">PM 경험</span>
+            </div>
+            <div class="hero-btns">
+              <a class="btn btn-blue" href="#projects">프로젝트 보기 →</a>
+              <a class="btn btn-outline" href="#contact">연락하기</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-row">
+              <span class="hero-card-label">Role</span>
+              <span class="hero-card-val blue">ABAP Dev · PM</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-label">Projects</span>
+              <span class="hero-card-val">7 CBO Programs</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-label">Course</span>
+              <span class="hero-card-val">SAP CODE 아카데미</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-label">GitHub</span>
+              <span class="hero-card-val blue">sherlock0105</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-label">SQLD</span>
+              <span class="hero-card-val green">취득 ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- HERO -->
-<section id="home">
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge">✦ SAP ABAP Developer</div>
-        <h1 class="hero-name">박도현<br><span>ABAP Developer</span></h1>
-        <p class="hero-title">SAP FI · PM · Master Pack ERP 프로젝트</p>
-        <p class="hero-desc">
-          요구사항의 본질을 고민하고, 데이터의 흐름을 명확하게 잇는 SAP ABAP 개발자입니다.<br>
-          FI 모듈 커스텀 개발 6종을 PM으로 직접 설계·구현했습니다.
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-eyebrow">About</div>
+          <h2 class="sec-title">학력 · 자격증 · 기술</h2>
+        </div>
+        <div class="skill-grid">
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon blue">⚡</div>
+              <div class="skill-label">Core · 상</div>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row">
+                <span class="skill-name">ABAP (Report / Module Pool)</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">ALV (Grid / Tree / Splitter)</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">SAP FI Module</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon purple">🌐</div>
+              <div class="skill-label">Active · 중</div>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row">
+                <span class="skill-name">SAPUI5 / Fiori</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">CDS View / Annotation</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">SEGW OData (DPC_EXT)</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Eclipse ADT / BAS</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon green">🗄</div>
+              <div class="skill-label">Base · 하</div>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row">
+                <span class="skill-name">MySQL</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Python</span>
+                <div class="skill-stars">
+                  <div class="star on"></div>
+                  <div class="star off"></div>
+                  <div class="star off"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-card-label">🎓 학력</div>
+            <ul class="about-list">
+              <li>
+                <span class="about-item-name"
+                  >한국폴리텍1대학 스마트시스템제어과</span
+                >
+                <span class="about-item-meta">2019 ~ 2021 · 3.85/4.5</span>
+              </li>
+              <li>
+                <span class="about-item-name">인창고등학교</span>
+                <span class="about-item-meta">2015 ~ 2018</span>
+              </li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <div class="about-card-label">📜 자격증</div>
+            <ul class="about-list">
+              <li>
+                <span class="about-item-name">SQL 개발자 (SQLD)</span>
+                <span class="about-item-badge done">취득 2026.03</span>
+              </li>
+              <li>
+                <span class="about-item-name"
+                  >한국사능력검정 1급 · HSK 4급</span
+                >
+                <span class="about-item-badge done">취득</span>
+              </li>
+              <li>
+                <span class="about-item-name">정보처리기사</span>
+                <span class="about-item-badge">진행 중 (필기 합격)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sec-div" />
+
+    <!-- STORY -->
+    <section id="story">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-eyebrow">Story</div>
+          <h2 class="sec-title">ABAP 개발자가 된 이유</h2>
+        </div>
+        <div class="story-card">
+          <div class="story-text">
+            <p>
+              안전관리자로 재직하던 중, ERP 개발 설명회에 참석한 적이 있습니다.
+              그 자리에서 기업의 자원 관리와 업무 과정이 전산 시스템으로
+              운영되는 모습을 보며 ERP와 같은 통합 관리 시스템에 관심을 가지게
+              되었습니다. 특히 재고가 자동으로 관리되고, 수요 예측에서 판매까지
+              이어지는 구조를 접하며
+              <strong
+                >"이런 시스템을 직접 개발해 기업의 효율을 높이고 싶다"</strong
+              >는 목표가 생겼습니다.
+            </p>
+            <p>
+              이후 정보처리기사 필기시험에 합격하고 현재 실기를 준비하며
+              JavaScript, SQL(SQLite·MySQL·PostgreSQL) 등을 학습했습니다. SAP
+              CODE 아카데미는 단순히 코딩을 배우는 과정이 아니라, SAP와 ABAP을
+              기반으로 ERP 시스템을 설계·구현하는 실무 역량을 체계적으로 쌓을 수
+              있다는 점에서 선택했습니다.
+            </p>
+            <p>
+              학습 과정에서는 단순한 기능 구현보다 구조적인 이해를
+              우선시했습니다. ALV 구현 방식, 도메인 텍스트 매핑, 프로그램 구조
+              설계 등 다양한 기술을 비교·분석하며 동작 원리와 구조를 끝까지
+              추적했고, 반복적으로 발생하는 로직은 공통 함수로 정리해 팀 전체의
+              시행착오를 줄이는 방식으로 협업했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sec-div" />
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-eyebrow">Experience</div>
+          <h2 class="sec-title">교육 이력</h2>
+        </div>
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-left">
+              <div class="exp-date">2025.10 ~ 2026.07</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-dot active"></div>
+              <div class="exp-pm-badge">👑 PM</div>
+              <div class="exp-org">
+                SAP 코리아 — SAP CODE 아카데미 1기 (개근 이수)
+              </div>
+              <div class="exp-title">ERP 구축 프로젝트 PM 겸 FI·QM 개발자</div>
+              <div class="exp-desc">
+                화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트를 PM으로
+                이끌며 FI·QM 모듈 커스텀 개발 총괄. 전표 조회·역분개, 외화평가,
+                자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램
+                등 7종의 CBO 프로그램을 직접 설계·구현. 개근 이수.
+              </div>
+              <div class="exp-tags">
+                <span class="exp-tag">ABAP</span>
+                <span class="exp-tag">Module Pool</span>
+                <span class="exp-tag">ALV</span>
+                <span class="exp-tag">CDS View</span>
+                <span class="exp-tag">Fiori</span>
+                <span class="exp-tag">OData</span>
+                <span class="exp-tag">FI</span>
+                <span class="exp-tag">QM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sec-div" />
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-eyebrow">Projects</div>
+          <h2 class="sec-title">CBO 개발 프로그램 · 7종</h2>
+        </div>
+        <p
+          style="
+            font-size: 13px;
+            color: var(--text2);
+            margin-bottom: 1.6rem;
+            line-height: 1.7;
+          "
+        >
+          SAP CODE 아카데미 Master Pack ERP 프로젝트에서 PM 겸 FI·QM 모듈
+          개발자로 직접 설계·구현한 프로그램입니다.<br />
+          카드를 클릭하면 상세 내용을 확인할 수 있습니다.
         </p>
-        <div class="hero-chips">
-          <span class="chip hi">ABAP</span>
-          <span class="chip hi">ALV Grid/Tree</span>
-          <span class="chip hi">Module Pool</span>
-          <span class="chip">CDS View</span>
-          <span class="chip">Fiori/SAPUI5</span>
-          <span class="chip">OData(SEGW)</span>
-          <span class="chip">FI Module</span>
-          <span class="chip">PM 경험</span>
-        </div>
-        <div class="hero-btns">
-          <a class="btn btn-blue" href="#projects">프로젝트 보기 →</a>
-          <a class="btn btn-outline" href="#contact">연락하기</a>
+        <div class="proj-list">
+          <!-- 01 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">01</div>
+              <div>
+                <div class="proj-info-title">전표 조회 및 역분개 프로그램</div>
+                <div class="proj-info-sub">ZRE3FI0003 · ABAP Report</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">FI</span>
+                  <span class="pbadge fi">ALV</span>
+                  <span class="pbadge fi">Report</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                FI 전표 종합 조회 및 역분개 처리 프로그램. 4-Tab 선택화면 +
+                Split ALV + 동적 TOP-OF-PAGE + PDF 출력.<br />
+                하나의 화면에서 전체/AR/AP/GL 전표를 분기 조회하고, 마이너스
+                역분개를 한 클릭으로 처리합니다.
+              </div>
+
+              <!-- 이미지 갤러리 -->
+              <div class="proj-features-title" style="margin-bottom: 0.8rem">
+                화면 구성
+              </div>
+              <div class="img-gallery">
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img src="images/doc01_main.png" alt="전표 조회 메인 화면" />
+                  <div class="img-caption">
+                    전표 조회 메인 — Split ALV (목록 + 상세)
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_selection.png"
+                    alt="선택 화면 — 전표 통합 조회 Tab"
+                  />
+                  <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_ar_tab.png"
+                    alt="선택 화면 — AR Tab (매출채권)"
+                  />
+                  <div class="img-caption">
+                    선택 화면 — AR Tab (고객번호 + 조회 조건)
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_reverse_popup.png"
+                    alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력"
+                  />
+                  <div class="img-caption">
+                    역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_reverse_result.png"
+                    alt="역분개 후 — 차대변 반전된 아이템"
+                  />
+                  <div class="img-caption">
+                    역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬
+                    표시)
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_pdf.png"
+                    alt="PDF 출력 — MASTERPACK 회계전표"
+                  />
+                  <div class="img-caption">
+                    PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc01_general.png"
+                    alt="일반전표 탭 조회 결과"
+                  />
+                  <div class="img-caption">
+                    전표 통합 조회 — 일반전표 탭 결과 화면
+                  </div>
+                </div>
+              </div>
+
+              <!-- 라이트박스 -->
+              <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+                <div class="lightbox-inner">
+                  <img id="lightbox-img" src="" alt="" />
+                  <div id="lightbox-cap"></div>
+                </div>
+              </div>
+
+              <div class="proj-features" style="margin-top: 1.4rem">
+                <div class="proj-features-title">핵심 기능 상세</div>
+                <ul>
+                  <li>
+                    <strong>4-Tab 선택화면</strong> — 전체/AR/AP/GL 탭 전환 시
+                    해당 탭 조건만 검증 후 RETURN, 타 탭 필수값 오류 방지
+                  </li>
+                  <li>
+                    <strong>Split ALV</strong> — 상단 전표 목록 클릭 시 하단
+                    전표 상세 동적 갱신. 차변/대변 컬럼 분리로 가독성 확보
+                  </li>
+                  <li>
+                    <strong>역분개 전표 하단 병렬 표시</strong> —
+                    <code>set_rev_item</code> FORM으로 STBLG 연결된 역분개
+                    전표를 원본 바로 아래 자동 배치
+                  </li>
+                  <li>
+                    <strong>마이너스 역분개</strong> — SHKZG 유지 +
+                    dmbtr/wrbtr에 ×(-1) 적용. 전표유형 AB로 신규 채번 후 원본
+                    STBLG 양방향 업데이트
+                  </li>
+                  <li>
+                    <strong>반제 전표 역분개</strong> — DZ/KZ 유형 시
+                    <code>set_clear</code> FORM으로 상대방 전표 augbl 초기화 후
+                    역분개 진행
+                  </li>
+                  <li>
+                    <strong>ABAP Spool → PDF 직접 다운로드</strong> — 개별 전표
+                    / 전체 전표 PDF 지원
+                  </li>
+                  <li>
+                    <strong>동적 TOP-OF-PAGE</strong> — CL_DD_DOCUMENT로 총
+                    전표수·금액·미결·반제·역분개·조회기간 3×3 카드 자동 생성
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 코드 탭 -->
+              <div class="code-tabs">
+                <button
+                  class="code-tab active"
+                  onclick="switchTab(this, 'ct1')"
+                >
+                  역분개 마이너스 생성
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'ct2')">
+                  역분개 전표 병렬 배치
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'ct3')">
+                  차대변 분리 표시
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'ct4')">
+                  반제 전표 처리
+                </button>
+              </div>
+
+              <div class="proj-code code-panel" id="ct1">
+                <span class="cm"
+                  >* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span
+                >
+                <span class="kw">FORM</span>
+                <span class="fn">reverse_items</span>
+                <span class="kw">USING</span> pv_belnr
+                <span class="kw">TYPE</span> zte3fi0002-belnr.
+                <span class="kw">LOOP AT</span> gt_item
+                <span class="kw">INTO DATA</span>(ls_orig).
+                <span class="kw">APPEND VALUE</span> #(
+                <span class="kw">BASE CORRESPONDING</span> #( ls_orig ) belnr =
+                pv_belnr blart = <span class="str">'AB'</span> shkzg =
+                ls_orig-shkzg <span class="cm">"SHKZG 유지</span> dmbtr =
+                ls_orig-dmbtr * <span class="num">-1</span>
+                <span class="cm">"금액만 반전</span> wrbtr = ls_orig-wrbtr *
+                <span class="num">-1</span> dmbtr_s =
+                <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> ls_orig-shkzg =
+                <span class="str">'S'</span> <span class="kw">THEN</span> abs(
+                ls_orig-dmbtr ) <span class="kw">ELSE</span>
+                <span class="num">0</span> ) dmbtr_h =
+                <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> ls_orig-shkzg =
+                <span class="str">'H'</span> <span class="kw">THEN</span> abs(
+                ls_orig-dmbtr ) <span class="kw">ELSE</span>
+                <span class="num">0</span> ) )
+                <span class="kw">TO</span> gt_rev_item.
+                <span class="kw">ENDLOOP</span>.
+                <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-code code-panel" id="ct2" style="display: none">
+                <span class="cm"
+                  >* 역분개 전표를 원본 전표 바로 아래 배치 (중복 방지)</span
+                >
+                <span class="kw">FORM</span>
+                <span class="fn">set_rev_item</span>.
+                <span class="kw">DATA</span>: lt_temp_header
+                <span class="kw">LIKE</span> gt_header.
+                <span class="kw">LOOP AT</span> gt_header
+                <span class="kw">INTO DATA</span>(ls_hdr).
+                <span class="kw">IF</span> line_exists( lt_temp_header[ belnr =
+                ls_hdr-belnr ] ). <span class="kw">CONTINUE</span>.
+                <span class="kw">ENDIF</span>.
+                <span class="kw">APPEND</span> ls_hdr
+                <span class="kw">TO</span> lt_temp_header.
+                <span class="cm"
+                  >"STBLG가 있으면 역분개 전표를 바로 다음 행에 추가</span
+                >
+                <span class="kw">IF</span> ls_hdr-stblg
+                <span class="kw">IS NOT INITIAL</span>.
+                <span class="kw">READ TABLE</span> gt_header
+                <span class="kw">INTO DATA</span>(ls_rev)
+                <span class="kw">WITH KEY</span> belnr = ls_hdr-stblg.
+                <span class="kw">IF</span> sy-subrc =
+                <span class="num">0</span>.
+                <span class="kw">IF NOT</span> line_exists( lt_temp_header[
+                belnr = ls_rev-belnr ] ). <span class="kw">APPEND</span> ls_rev
+                <span class="kw">TO</span> lt_temp_header.
+                <span class="kw">ENDIF</span>. <span class="kw">ENDIF</span>.
+                <span class="kw">ENDIF</span>. <span class="kw">ENDLOOP</span>.
+                gt_header = lt_temp_header. <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-code code-panel" id="ct3" style="display: none">
+                <span class="cm"
+                  >* 차변/대변 컬럼 분리 + 아이콘(정상=녹색 / 역분개=빨강)</span
+                >
+                <span class="kw">FORM</span>
+                <span class="fn">sum_dmbtr_sh</span>.
+                <span class="kw">LOOP AT</span> gt_item_data
+                <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
+                <span class="kw">CASE</span> &lt;fs_item&gt;-shkzg.
+                <span class="kw">WHEN</span> <span class="str">'S'</span>.
+                &lt;fs_item&gt;-dmbtr_s = &lt;fs_item&gt;-dmbtr.
+                &lt;fs_item&gt;-shkzg_txt = <span class="str">'차변'</span>.
+                <span class="kw">WHEN</span> <span class="str">'H'</span>.
+                &lt;fs_item&gt;-dmbtr_h = &lt;fs_item&gt;-dmbtr.
+                &lt;fs_item&gt;-shkzg_txt = <span class="str">'대변'</span>.
+                <span class="kw">ENDCASE</span>.
+                <span class="cm"
+                  >"역분개 전표 아이템 → 빨간 LED, 정상 → 초록 LED</span
+                >
+                <span class="kw">IF</span> &lt;fs_item&gt;-belnr
+                <span class="kw">EQ</span> gs_header-stblg.
+                &lt;fs_item&gt;-status = icon_led_red.
+                <span class="kw">ELSE</span>. &lt;fs_item&gt;-status =
+                icon_led_green. <span class="kw">ENDIF</span>.
+                <span class="kw">ENDLOOP</span>.
+                <span class="kw">CHECK</span> gv_dmbtr_s
+                <span class="kw">EQ</span> gv_dmbtr_h.
+                <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-code code-panel" id="ct4" style="display: none">
+                <span class="cm"
+                  >* DZ/KZ 전표 역분개 시 — 반제 정보 초기화 후 원전표 미결
+                  복원</span
+                >
+                <span class="kw">FORM</span> <span class="fn">set_clear</span>.
+                <span class="kw">LOOP AT</span> gt_item
+                <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
+                <span class="kw">IF</span> &lt;fs_item&gt;-augbl
+                <span class="kw">IS NOT INITIAL</span>.
+                <span class="cm"
+                  >"상대방 전표 augbl 초기화 → 미결 상태로 복원</span
+                >
+                <span class="kw">UPDATE</span> zte3fi0003
+                <span class="kw">SET</span> augbl =
+                <span class="str">' '</span> augdt =
+                <span class="str">'00000000'</span>
+                <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
+                <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
+                <span class="kw">UPDATE</span> zte3fi0002
+                <span class="kw">SET</span> bstat = <span class="str">' '</span>
+                <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
+                <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
+                <span class="kw">ENDIF</span>. <span class="kw">CLEAR</span>:
+                &lt;fs_item&gt;-augbl, &lt;fs_item&gt;-augdt.
+                <span class="kw">ENDLOOP</span>.
+                <span class="kw">UPDATE</span> zte3fi0003
+                <span class="kw">FROM TABLE</span> gt_item.
+                <span class="kw">COMMIT WORK AND WAIT</span>.
+                <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-tech">
+                <span>ABAP</span><span>ALV Splitter</span><span>FI</span
+                ><span>PDF Spool</span><span>CL_DD_DOCUMENT</span
+                ><span>NUMBER_GET_NEXT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">02</div>
+              <div>
+                <div class="proj-info-title">월말 외화평가 프로그램</div>
+                <div class="proj-info-sub">SAPMZE3FI0002 · Module Pool</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">FI</span>
+                  <span class="pbadge fi">Module Pool</span>
+                  <span class="pbadge fi">ALV Tree</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                USD·EUR·JPY 외화 미결 전표에 대해 월말 환율로 평가손익 산출.<br />
+                ALV Tree 5단 계층 + 통화별 변동률(%) 시뮬레이션 + 배치잡 자동
+                전표 생성.
+              </div>
+
+              <div class="proj-features-title" style="margin-bottom: 0.8rem">
+                화면 구성
+              </div>
+              <div class="img-gallery">
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_main.png"
+                    alt="외화평가 메인 — 시뮬레이션 화면"
+                  />
+                  <div class="img-caption">
+                    메인 화면 — ALV Tree + 시뮬레이션 패널 + AR/AP 요약 카드
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_sim_result.png"
+                    alt="시뮬레이션 실행 결과 — 변동률 입력 후"
+                  />
+                  <div class="img-caption">
+                    시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동
+                    반영
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_tree_detail.png"
+                    alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운"
+                  />
+                  <div class="img-caption">
+                    ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_tree_list.png"
+                    alt="전체 거래처 평가손익 목록"
+                  />
+                  <div class="img-caption">
+                    전체 보기 — 거래처별 전기금액 vs 평가금액 비교
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_eval_popup.png"
+                    alt="외화평가 예정전표 팝업"
+                  />
+                  <div class="img-caption">
+                    평가/환입전표 팝업 — 생성 전 예정 내역 미리보기
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_chart.png"
+                    alt="AR/AP 미결잔액 TOP5 차트"
+                  />
+                  <div class="img-caption">
+                    미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_forex_tab.png"
+                    alt="외화보유현황 탭 — 은행 보유 외화 + 차트"
+                  />
+                  <div class="img-caption">
+                    외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업" />
+                  <div class="img-caption">
+                    전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc02_vendor_popup.png"
+                    alt="공급업체 정보 팝업"
+                  />
+                  <div class="img-caption">
+                    공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회
+                  </div>
+                </div>
+              </div>
+
+              <div class="proj-features" style="margin-top: 1.4rem">
+                <div class="proj-features-title">핵심 기능 상세</div>
+                <ul>
+                  <li>
+                    <strong>ALV Tree 5단 계층</strong> — 전체 → AR/AP →
+                    통화(EUR/JPY/USD) → 거래처 → 전표 드릴다운. 노드 클릭 시
+                    우측 Grid 자동 필터링
+                  </li>
+                  <li>
+                    <strong>통화별 변동률(%) 시뮬레이션</strong> — EUR/JPY/USD
+                    개별 % 입력 → 환율 동적 계산 → 실행 시 Tree·Grid 동시 반영.
+                    최근 1주일 평균 환율 자동 세팅
+                  </li>
+                  <li>
+                    <strong>평가손익 컬러 표시</strong> — 이익=녹색 / 손실=빨강
+                    셀 컬러. AR·AP 요약 카드로 전체 손익 한눈에 파악
+                  </li>
+                  <li>
+                    <strong>미결잔액 TOP5 차트</strong> — ALV Chart 버튼 클릭 시
+                    거래처별 미결잔액 막대 차트 팝업
+                  </li>
+                  <li>
+                    <strong>외화보유현황 탭</strong> — 은행 보유 외화 + AR/AP
+                    미결 외화 집계. 통화별 시계열 차트 내장
+                  </li>
+                  <li>
+                    <strong>평가/환입전표 팝업</strong> — 생성 전 예정 내역
+                    미리보기. 공용 Function Module로 팝업 재사용
+                  </li>
+                  <li>
+                    <strong>배치잡 자동 전표 생성</strong> — 말일 평가전표 +
+                    익월 1일 환입전표 쌍으로 자동 생성. zcl_e3_fi_document 공용
+                    클래스 재사용
+                  </li>
+                </ul>
+              </div>
+
+              <div class="code-tabs">
+                <button
+                  class="code-tab active"
+                  onclick="switchTab(this, 'c2t1')"
+                >
+                  평가손익 합계 계산
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'c2t2')">
+                  평가 + 환입전표 생성
+                </button>
+              </div>
+
+              <div class="proj-code code-panel" id="c2t1">
+                <span class="cm"
+                  >* 평가손익 합계 사전 계산 — 0일 때 전표 생성 방지</span
+                >
+                <span class="kw">FORM</span>
+                <span class="fn">sum_eval_diff</span>.
+                <span class="kw">LOOP AT</span> gt_data
+                <span class="kw">INTO DATA</span>(ls_data).
+                <span class="kw">READ TABLE</span> gt_rate
+                <span class="kw">INTO</span> ls_rate
+                <span class="kw">WITH KEY</span> fcurr = ls_data-fwaer
+                <span class="kw">BINARY SEARCH</span>. lv_base_eval =
+                <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> sy-subrc =
+                <span class="num">0</span>
+                <span class="kw">AND</span> ls_data-ukurs >
+                <span class="num">0</span>
+                <span class="kw">THEN</span> ls_data-dmbtr * ls_rate-ukurs /
+                ls_data-ukurs <span class="kw">ELSE</span> ls_data-dmbtr ).
+                gv_before += <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> ls_data-ar_ap =
+                <span class="str">'AR'</span>
+                <span class="kw">THEN</span> lv_base_eval - ls_data-dmbtr
+                <span class="kw">WHEN</span> ls_data-ar_ap =
+                <span class="str">'AP'</span>
+                <span class="kw">THEN</span> ls_data-dmbtr - lv_base_eval
+                <span class="kw">ELSE</span> <span class="num">0</span> ).
+                <span class="kw">ENDLOOP</span>.
+
+                <span class="kw">IF</span> gv_before =
+                <span class="num">0</span>. <span class="kw">MESSAGE</span> s000
+                <span class="kw">WITH</span>
+                <span class="str">'평가손익 0 — 전표 생성 대상 없음.'</span>
+                DISPLAY LIKE <span class="str">'W'</span>.
+                <span class="kw">LEAVE PROGRAM</span>.
+                <span class="kw">ENDIF</span>. <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-code code-panel" id="c2t2" style="display: none">
+                <span class="cm"
+                  >* 말일 평가전표 생성 + 익월 1일 환입전표 자동 쌍 생성</span
+                >
+                <span class="kw">FORM</span> <span class="fn">build_eval</span>
+                <span class="kw">USING</span> pv_check.
+                <span class="cm"
+                  >"손익 계정 — 이익: 4200000003 / 손실: 5300000003</span
+                >
+                ls_item-saknr = <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> lv_base <
+                <span class="num">0</span> <span class="kw">THEN</span>
+                <span class="str">'5300000003'</span>
+                <span class="kw">ELSE</span>
+                <span class="str">'4200000003'</span> ). ls_item-shkzg =
+                <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> lv_base <
+                <span class="num">0</span> <span class="kw">THEN</span>
+                <span class="str">'S'</span> <span class="kw">ELSE</span>
+                <span class="str">'H'</span> ).
+
+                <span class="cm">"평가전표 생성</span>
+                zcl_e3_fi_document=><span class="fn">post_document</span>(
+                <span class="kw">EXPORTING</span> is_header = ls_header it_items
+                = lt_items <span class="kw">IMPORTING</span> ev_belnr = lv_belnr
+                ).
+
+                <span class="cm">"환입전표 — 익월 1일, 평가전표 분개 반전</span>
+                lv_rev_date = pa_evdat + <span class="num">1</span>.
+                <span class="kw">LOOP AT</span> lt_rev_items
+                <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_rev&gt;).
+                &lt;fs_rev&gt;-shkzg = <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> &lt;fs_rev&gt;-shkzg =
+                <span class="str">'S'</span> <span class="kw">THEN</span>
+                <span class="str">'H'</span> <span class="kw">ELSE</span>
+                <span class="str">'S'</span> ). <span class="kw">ENDLOOP</span>.
+                zcl_e3_fi_document=><span class="fn">post_document</span>(
+                <span class="kw">EXPORTING</span> is_header = ls_rev_header
+                it_items = lt_rev_items
+                <span class="kw">IMPORTING</span> ev_belnr = lv_rev_belnr ).
+                <span class="kw">ENDFORM</span>.
+              </div>
+
+              <div class="proj-tech">
+                <span>ABAP</span><span>Module Pool</span><span>ALV Tree</span
+                ><span>ALV Chart</span><span>FI</span><span>Batch Job</span
+                ><span>ZCL_E3_FI_DOCUMENT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">03</div>
+              <div>
+                <div class="proj-info-title">자산관리 및 감가상각 프로그램</div>
+                <div class="proj-info-sub">ZRE3FI0008 · ABAP Report</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">FI</span>
+                  <span class="pbadge fi">CDS View</span>
+                  <span class="pbadge fi">Batch Job</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                고정자산의 생애주기(취득→상각→처분) 통합 관리.<br />
+                처분 유형 3가지(매각/폐기/기타)를 회계 계정 매핑까지 자동화. CDS
+                View로 12개월 일괄 조회.
+              </div>
+              <div class="proj-features">
+                <div class="proj-features-title">핵심 기능</div>
+                <ul>
+                  <li>
+                    자산분류 선택만으로 계정코드 자동 매핑 (LD/BD/MC/VH/FE)
+                  </li>
+                  <li>처분 유형 3가지 (매각/폐기/기타) 별 전표 자동 생성</li>
+                  <li>
+                    정액법(건물·기계)/정률법(차량) 분기 + 잔존가치 초과 방지
+                  </li>
+                  <li>매월 31일 SM36 배치잡 자동 실행 + 중복 방지 로직</li>
+                  <li>CDS View로 12개월 감가상각 한 번에 조회</li>
+                </ul>
+              </div>
+              <div class="proj-code">
+                <span class="cm">* CDS View로 12개월 분 일괄 조회</span>
+                <span class="kw">SELECT</span> anlkl, anln1, m01, m02 ... m12
+                <span class="kw">FROM</span>
+                <span class="fn">zcds_e3_fi_0015</span>( p_gjahr = @pa_gjahr )
+                <span class="kw">WHERE</span> bukrs = @pa_bukrs
+                <span class="kw">AND</span> abflg <span class="kw">NE</span>
+                <span class="str">'X'</span> <span class="kw">INTO</span>
+                <span class="kw">TABLE</span> @gt_item.
+              </div>
+              <div class="proj-tech">
+                <span>ABAP</span><span>ALV Tree</span><span>CDS View</span
+                ><span>GOS</span><span>Batch Job</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">04</div>
+              <div>
+                <div class="proj-info-title">환율 API 연동 프로그램</div>
+                <div class="proj-info-sub">ZRE3FI0002 · ABAP Report · 협업</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">FI</span>
+                  <span class="pbadge fi">HTTP Client</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                외화 평가·환산의 기준이 되는 환율 데이터를 외부 API에서 실시간
+                가져와 SAP 내부 마스터로 적재.<br />
+                USD·EUR·JPY 3통화 동시 적재. GDATU 역순 저장으로 최신 환율 단건
+                SELECT 지원.
+              </div>
+              <div class="proj-features">
+                <div class="proj-features-title">핵심 기능</div>
+                <ul>
+                  <li>cl_http_client로 외부 환율 API 실시간 호출</li>
+                  <li>/ui2/cl_json으로 JSON → ABAP 내부 테이블 변환</li>
+                  <li>GDATU 역순 저장 — ASC 정렬 시 최신 환율이 맨 위</li>
+                  <li>JPY FFACT=100 자동 세팅 (단위 보정)</li>
+                </ul>
+              </div>
+              <div class="proj-code">
+                <span class="cm">* GDATU 역순 변환 후 적재</span> ls_tcurr-gdatu
+                = |{ <span class="num">99999999</span> - sy-datum }|.
+                ls_tcurr-ffact = <span class="kw">COND</span> #(
+                <span class="kw">WHEN</span> ls_rate-currency =
+                <span class="str">'JPY'</span> <span class="kw">THEN</span>
+                <span class="num">100</span> <span class="kw">ELSE</span>
+                <span class="num">1</span> ).
+                <span class="kw">MODIFY</span> ZTE3FI0008
+                <span class="kw">FROM</span> ls_tcurr.
+                <span class="kw">COMMIT WORK AND WAIT</span>.
+              </div>
+              <div class="proj-tech">
+                <span>ABAP</span><span>HTTP Client</span><span>JSON</span
+                ><span>/ui2/cl_json</span><span>FI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">05</div>
+              <div>
+                <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
+                <div class="proj-info-sub">ZCDS_E3_FI_0013 · Fiori / OData</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">Fiori</span>
+                  <span class="pbadge fi">CDS View</span>
+                  <span class="pbadge fi">OData</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                고객·공급업체 마스터를 통합 Business Partner 뷰로 묶어 Fiori 웹
+                UI에서 CRUD.<br />
+                CDS UNION ALL의 정석을 실전에서 다룬 프로그램. SEGW OData CRUD
+                풀세트 구현.
+              </div>
+
+              <div class="proj-features-title" style="margin-bottom: 0.8rem">
+                화면 구성
+              </div>
+              <div class="img-gallery">
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc05_main.png"
+                    alt="BP 마스터 목록 메인 화면"
+                  />
+                  <div class="img-caption">
+                    BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc05_filter.png"
+                    alt="고객 필터 + 검색 결과"
+                  />
+                  <div class="img-caption">
+                    고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업" />
+                  <div class="img-caption">
+                    BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img src="images/doc05_create.png" alt="신규 BP 생성 팝업" />
+                  <div class="img-caption">
+                    신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력
+                  </div>
+                </div>
+              </div>
+
+              <div class="proj-features" style="margin-top: 1.4rem">
+                <div class="proj-features-title">핵심 기능 상세</div>
+                <ul>
+                  <li>
+                    <strong>CDS UNION ALL 통합 BP 뷰</strong> —
+                    고객(ZTE3SD0001)과 공급업체(ZTE3MM0002)를 BpType=C/V로
+                    구분해 단일 뷰로 통합
+                  </li>
+                  <li>
+                    <strong>유형·상태 필터</strong> — 전체/고객/공급업체 탭 +
+                    전체/활성/비활성 필터 조합. BP코드·BP명 실시간 검색
+                  </li>
+                  <li>
+                    <strong>요약 카드</strong> — 총 BP·고객·공급업체 건수 상단
+                    카드로 한눈에 파악
+                  </li>
+                  <li>
+                    <strong>BP 상세 조회</strong> — 기본 정보 +
+                    연락처(전화·이메일·주소) + 재무 정보(결제조건·은행 정보)
+                    통합 팝업
+                  </li>
+                  <li>
+                    <strong>신규 BP 생성</strong> — 유형 드롭다운 선택 시 폼
+                    동적 분기. 필수값 검증 후 OData CREATE 호출
+                  </li>
+                  <li>
+                    <strong>수정 / 비활성화</strong> — OData UPDATE/DELETE.
+                    UseFlag 필드로 논리 삭제 처리
+                  </li>
+                </ul>
+              </div>
+
+              <div class="code-tabs">
+                <button
+                  class="code-tab active"
+                  onclick="switchTab(this, 'c5t1')"
+                >
+                  CDS UNION ALL 전체
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'c5t2')">
+                  OData GET_ENTITYSET
+                </button>
+              </div>
+
+              <div class="proj-code code-panel" id="c5t1">
+                <span class="cm"
+                  >@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0013'</span
+                >
+                <span class="cm">@EndUserText.label: '[FI] BP 통합 VIEW'</span>
+                <span class="kw">define view</span>
+                <span class="fn">ZCDS_E3_FI_0013</span>
+                <span class="kw">as select from</span> zte3sd0001 {
+                <span class="kw">key</span> kunnr
+                <span class="kw">as</span> BpCode,
+                <span class="kw">key cast</span>(<span class="str">'C'</span>
+                <span class="kw">as</span> abap.char(<span class="num">1</span
+                >)) <span class="kw">as</span> BpType, name1
+                <span class="kw">as</span> BpName, expkz
+                <span class="kw">as</span> CountryCode, cast(useflag
+                <span class="kw">as</span> abap.char(<span class="num">1</span
+                >)) <span class="kw">as</span> UseFlag, sdemail
+                <span class="kw">as</span> Email, sdname
+                <span class="kw">as</span> RepName }
+                <span class="kw">union all</span>
+                <span class="kw">select from</span> zte3mm0002 {
+                <span class="kw">key</span> lifnr
+                <span class="kw">as</span> BpCode,
+                <span class="kw">key cast</span>(<span class="str">'V'</span>
+                <span class="kw">as</span> abap.char(<span class="num">1</span
+                >)) <span class="kw">as</span> BpType, vennm
+                <span class="kw">as</span> BpName, land1
+                <span class="kw">as</span> CountryCode, cast(statu
+                <span class="kw">as</span> abap.char(<span class="num">1</span
+                >)) <span class="kw">as</span> UseFlag, venmail
+                <span class="kw">as</span> Email, repnm
+                <span class="kw">as</span> RepName }
+              </div>
+
+              <div class="proj-code code-panel" id="c5t2" style="display: none">
+                <span class="cm"
+                  >* OData GET_ENTITYSET — BpType / BpCode 필터 처리</span
+                >
+                <span class="kw">METHOD</span>
+                <span class="fn">bp_get_entityset</span>.
+                <span class="kw">LOOP AT</span> it_filter_select_options
+                <span class="kw">ASSIGNING FIELD-SYMBOL</span
+                >(&lt;fs_filter&gt;).
+                <span class="kw">CASE</span> &lt;fs_filter&gt;-property.
+                <span class="kw">WHEN</span> <span class="str">'BpCode'</span>.
+                <span class="kw">MOVE-CORRESPONDING</span>
+                &lt;fs_filter&gt;-select_options
+                <span class="kw">TO</span> lr_bp_code.
+                <span class="kw">WHEN</span> <span class="str">'BpType'</span>.
+                <span class="kw">MOVE-CORRESPONDING</span>
+                &lt;fs_filter&gt;-select_options
+                <span class="kw">TO</span> lr_bp_type.
+                <span class="kw">ENDCASE</span>.
+                <span class="kw">ENDLOOP</span>.
+                <span class="kw">SELECT</span> * <span class="kw">FROM</span>
+                <span class="fn">ZCDS_E3_FI_0013</span>
+                <span class="kw">WHERE</span> BpCode
+                <span class="kw">IN</span> @lr_bp_code
+                <span class="kw">AND</span> BpType
+                <span class="kw">IN</span> @lr_bp_type
+                <span class="kw">INTO TABLE</span> @et_entityset.
+                <span class="kw">ENDMETHOD</span>.
+              </div>
+
+              <div class="proj-tech">
+                <span>ABAP</span><span>CDS View</span><span>UNION ALL</span
+                ><span>Fiori</span><span>SAPUI5</span><span>OData</span
+                ><span>SEGW</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">06</div>
+              <div>
+                <div class="proj-info-title">완제품 검수 프로그램</div>
+                <div class="proj-info-sub">SAPMZE3QM0001 · Module Pool</div>
+                <div class="proj-info-badges">
+                  <span class="pbadge mm">MM</span>
+                  <span class="pbadge qm">QM</span>
+                  <span class="pbadge fi">Module Pool</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수.<br />
+                합격 품목에 한해 입고·재고 마스터 자동 연동. 검수 이력 영구 보존
+                및 추적 지원.
+              </div>
+              <div class="proj-features">
+                <div class="proj-features-title">핵심 기능</div>
+                <ul>
+                  <li>생산 완료 상태 제품 리스트 자동 조회</li>
+                  <li>항목별 합격/불합격·불량 수량 입력</li>
+                  <li>합격 처리 시 재고 마스터 자동 갱신 + 입고 처리</li>
+                  <li>불합격 처리 — 사유 입력 후 별도 관리</li>
+                  <li>기간별·제품별 검수 이력 조회</li>
+                </ul>
+              </div>
+              <div class="proj-tech">
+                <span>ABAP</span><span>Module Pool</span><span>MM</span
+                ><span>QM</span><span>ALV</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 07 -->
+          <div class="proj-card" onclick="toggleProj(this)">
+            <div class="proj-head">
+              <div class="proj-num">07</div>
+              <div>
+                <div class="proj-info-title">전표 조회 Fiori 앱</div>
+                <div class="proj-info-sub">
+                  ZE3_FI_POST_SEARCH · Fiori / OData
+                </div>
+                <div class="proj-info-badges">
+                  <span class="pbadge fi">Fiori</span>
+                  <span class="pbadge fi">CDS View</span>
+                  <span class="pbadge fi">OData</span>
+                  <span class="pbadge fi">FI</span>
+                </div>
+              </div>
+              <div class="proj-chevron">›</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-summary">
+                FI 전표 헤더·아이템을 Fiori 웹 UI에서 조회하는 앱. CDS View
+                2개(헤더/아이템)를 OData로 노출.<br />
+                전표유형별 현황 대시보드 + 통화별 현황 + 헤더 클릭 시 아이템
+                드릴다운 + Excel 저장 지원.
+              </div>
+
+              <div class="proj-features-title" style="margin-bottom: 0.8rem">
+                화면 구성
+              </div>
+              <div class="img-gallery">
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc07_main.png"
+                    alt="전표 조회 Fiori 앱 메인"
+                  />
+                  <div class="img-caption">
+                    전표 조회 탭 — 조건 검색 + 전표 헤더 목록 (총 975건)
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc07_item_detail.png"
+                    alt="헤더 클릭 시 아이템 드릴다운"
+                  />
+                  <div class="img-caption">
+                    헤더 클릭 시 하단에 전표 아이템 자동 표시 (차/대변 구분)
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc07_dashboard.png"
+                    alt="현황 탭 대시보드"
+                  />
+                  <div class="img-caption">
+                    현황 탭 — 총/정상/미결/역분개 카드 + 전표유형별·통화별 현황
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img
+                    src="images/doc07_ab_filter.png"
+                    alt="역분개 전표 필터"
+                  />
+                  <div class="img-caption">
+                    전표유형 AB 필터 — 역분개전표 173건만 필터링
+                  </div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this)">
+                  <img src="images/doc07_excel.png" alt="Excel 저장" />
+                  <div class="img-caption">
+                    Excel 저장 — 현재 검색 조건 결과를 xlsx로 직접 다운로드
+                  </div>
+                </div>
+              </div>
+
+              <div class="proj-features" style="margin-top: 1.4rem">
+                <div class="proj-features-title">핵심 기능 상세</div>
+                <ul>
+                  <li>
+                    <strong>CDS View 2개</strong> —
+                    헤더(ZCDS_E3_FI_0007)·아이템(ZCDS_E3_FI_0006) 분리 설계.
+                    @OData.publish: true로 자동 노출
+                  </li>
+                  <li>
+                    <strong>전표 조회 탭</strong> — 회계연도·전기일
+                    범위·전표유형·전표번호 복합 조건 검색. 전표 헤더 목록
+                    페이징(140페이지)
+                  </li>
+                  <li>
+                    <strong>헤더 드릴다운</strong> — 전표번호 클릭 시 하단에
+                    전표 아이템 자동 로드. 차/대변 색상 구분 표시
+                  </li>
+                  <li>
+                    <strong>현황 대시보드 탭</strong> — 총/정상/미결/역분개 건수
+                    카드 + 전표유형별(WE/AB/WA/DR/KR/SA/DZ/RE/AA) +
+                    통화별(KRW/EUR/USD/JPY) 분포
+                  </li>
+                  <li>
+                    <strong>Excel 저장</strong> — 현재 검색 조건 결과를 SAPUI5
+                    sap.ui.export로 xlsx 직접 다운로드
+                  </li>
+                </ul>
+              </div>
+
+              <div class="code-tabs">
+                <button
+                  class="code-tab active"
+                  onclick="switchTab(this, 'c7t1')"
+                >
+                  CDS 헤더 View
+                </button>
+                <button class="code-tab" onclick="switchTab(this, 'c7t2')">
+                  CDS 아이템 View
+                </button>
+              </div>
+
+              <div class="proj-code code-panel" id="c7t1">
+                <span class="cm"
+                  >@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0007'</span
+                >
+                <span class="cm"
+                  >@EndUserText.label: '[FI] 전표 조회 헤더'</span
+                >
+                <span class="cm">@OData.publish: true</span>
+                <span class="kw">define view</span>
+                <span class="fn">ZCDS_E3_FI_0007</span>
+                <span class="kw">as select from</span> zte3fi0002 {
+                <span class="kw">key</span> bukrs
+                <span class="kw">as</span> Bukrs,
+                <span class="kw">key</span> gjahr
+                <span class="kw">as</span> Gjahr,
+                <span class="kw">key</span> belnr
+                <span class="kw">as</span> Belnr, blart
+                <span class="kw">as</span> Blart, budat
+                <span class="kw">as</span> Budat, monat
+                <span class="kw">as</span> Monat, bltxt
+                <span class="kw">as</span> Bltxt, waers
+                <span class="kw">as</span> Waers, kursf
+                <span class="kw">as</span> Kursf, bstat
+                <span class="kw">as</span> Bstat, kunnr
+                <span class="kw">as</span> Kunnr, lifnr
+                <span class="kw">as</span> Lifnr, stblg
+                <span class="kw">as</span> Stblg, stgrd
+                <span class="kw">as</span> Stgrd, open_flag
+                <span class="kw">as</span> OpenFlag, erdat
+                <span class="kw">as</span> Erdat, ernam
+                <span class="kw">as</span> Ernam, rev_date
+                <span class="kw">as</span> RevDate }
+              </div>
+
+              <div class="proj-code code-panel" id="c7t2" style="display: none">
+                <span class="cm"
+                  >@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0006'</span
+                >
+                <span class="cm"
+                  >@EndUserText.label: '[FI] 전표 조회 아이템'</span
+                >
+                <span class="cm">@OData.publish: true</span>
+                <span class="kw">define view</span>
+                <span class="fn">ZCDS_E3_FI_0006</span>
+                <span class="kw">as select from</span> zte3fi0003 {
+                <span class="kw">key</span> bukrs
+                <span class="kw">as</span> Bukrs,
+                <span class="kw">key</span> gjahr
+                <span class="kw">as</span> Gjahr,
+                <span class="kw">key</span> belnr
+                <span class="kw">as</span> Belnr,
+                <span class="kw">key</span> buzei
+                <span class="kw">as</span> Buzei, saknr
+                <span class="kw">as</span> Saknr, koart
+                <span class="kw">as</span> Koart, kostl
+                <span class="kw">as</span> Kostl, shkzg
+                <span class="kw">as</span> Shkzg,
+                <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+                wrbtr <span class="kw">as</span> Wrbtr,
+                <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+                dmbtr <span class="kw">as</span> Dmbtr,
+                <span class="cm">@Semantics.currencyCode: true</span>
+                waers <span class="kw">as</span> Waers, kunnr
+                <span class="kw">as</span> Kunnr, lifnr
+                <span class="kw">as</span> Lifnr, augbl
+                <span class="kw">as</span> Augbl, augdt
+                <span class="kw">as</span> Augdt }
+              </div>
+
+              <div class="proj-tech">
+                <span>ABAP</span><span>CDS View</span><span>OData</span
+                ><span>Fiori</span><span>SAPUI5</span><span>FI</span
+                ><span>Excel Export</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-row">
-          <span class="hero-card-label">Role</span>
-          <span class="hero-card-val blue">ABAP Dev · PM</span>
-        </div>
-        <div class="hero-card-row">
-          <span class="hero-card-label">Projects</span>
-          <span class="hero-card-val">6 CBO Programs</span>
-        </div>
-        <div class="hero-card-row">
-          <span class="hero-card-label">Course</span>
-          <span class="hero-card-val">SAP CODE 아카데미</span>
-        </div>
-        <div class="hero-card-row">
-          <span class="hero-card-label">GitHub</span>
-          <span class="hero-card-val blue">sherlock0105</span>
-        </div>
-        <div class="hero-card-row">
-          <span class="hero-card-label">SQLD</span>
-          <span class="hero-card-val green">취득 ✓</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">About</div>
-      <h2 class="sec-title">학력 · 자격증 · 기술</h2>
-    </div>
-    <div class="skill-grid">
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="skill-icon blue">⚡</div>
-          <div class="skill-label">Core · 상</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-row"><span class="skill-name">ABAP (Report / Module Pool)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
-          <div class="skill-row"><span class="skill-name">ALV (Grid / Tree / Splitter)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
-          <div class="skill-row"><span class="skill-name">SAP FI Module</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="skill-icon purple">🌐</div>
-          <div class="skill-label">Active · 중</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-row"><span class="skill-name">SAPUI5 / Fiori</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
-          <div class="skill-row"><span class="skill-name">CDS View / Annotation</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
-          <div class="skill-row"><span class="skill-name">SEGW OData (DPC_EXT)</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
-          <div class="skill-row"><span class="skill-name">Eclipse ADT / BAS</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-head">
-          <div class="skill-icon green">🗄</div>
-          <div class="skill-label">Base · 하</div>
-        </div>
-        <div class="skill-items">
-          <div class="skill-row"><span class="skill-name">MySQL</span><div class="skill-stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></div>
-          <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></div>
-          <div class="skill-row"><span class="skill-name">Python</span><div class="skill-stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="about-card-label">🎓 학력</div>
-        <ul class="about-list">
-          <li>
-            <span class="about-item-name">한국폴리텍1대학 스마트시스템제어과</span>
-            <span class="about-item-meta">2019 ~ 2021 · 3.85/4.5</span>
-          </li>
-          <li>
-            <span class="about-item-name">인창고등학교</span>
-            <span class="about-item-meta">2015 ~ 2018</span>
-          </li>
-        </ul>
-      </div>
-      <div class="about-card">
-        <div class="about-card-label">📜 자격증</div>
-        <ul class="about-list">
-          <li>
-            <span class="about-item-name">SQL 개발자 (SQLD)</span>
-            <span class="about-item-badge done">취득 2026.03</span>
-          </li>
-          <li>
-            <span class="about-item-name">한국사능력검정 1급 · HSK 4급</span>
-            <span class="about-item-badge done">취득</span>
-          </li>
-          <li>
-            <span class="about-item-name">정보처리기사</span>
-            <span class="about-item-badge">진행 중 (필기 합격)</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    <hr class="sec-div" />
 
-<hr class="sec-div">
-
-<!-- STORY -->
-<section id="story">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Story</div>
-      <h2 class="sec-title">ABAP 개발자가 된 이유</h2>
-    </div>
-    <div class="story-card">
-      <div class="story-text">
-        <p>안전관리자로 재직하던 중, ERP 개발 설명회에 참석한 적이 있습니다. 그 자리에서 기업의 자원 관리와 업무 과정이 전산 시스템으로 운영되는 모습을 보며 ERP와 같은 통합 관리 시스템에 관심을 가지게 되었습니다. 특히 재고가 자동으로 관리되고, 수요 예측에서 판매까지 이어지는 구조를 접하며 <strong>"이런 시스템을 직접 개발해 기업의 효율을 높이고 싶다"</strong>는 목표가 생겼습니다.</p>
-        <p>이후 정보처리기사 필기시험에 합격하고 현재 실기를 준비하며 JavaScript, SQL(SQLite·MySQL·PostgreSQL) 등을 학습했습니다. SAP CODE 아카데미는 단순히 코딩을 배우는 과정이 아니라, SAP와 ABAP을 기반으로 ERP 시스템을 설계·구현하는 실무 역량을 체계적으로 쌓을 수 있다는 점에서 선택했습니다.</p>
-        <p>학습 과정에서는 단순한 기능 구현보다 구조적인 이해를 우선시했습니다. ALV 구현 방식, 도메인 텍스트 매핑, 프로그램 구조 설계 등 다양한 기술을 비교·분석하며 동작 원리와 구조를 끝까지 추적했고, 반복적으로 발생하는 로직은 공통 함수로 정리해 팀 전체의 시행착오를 줄이는 방식으로 협업했습니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="sec-div">
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Experience</div>
-      <h2 class="sec-title">교육 이력</h2>
-    </div>
-    <div class="exp-timeline">
-      <div class="exp-item">
-        <div class="exp-left">
-          <div class="exp-date">2025.10 ~ 2026.07</div>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-eyebrow">Contact</div>
+          <h2 class="sec-title">연락처</h2>
         </div>
-        <div class="exp-right">
-          <div class="exp-dot active"></div>
-          <div class="exp-pm-badge">👑 PM</div>
-          <div class="exp-org">SAP 코리아 — SAP CODE 아카데미 1기 (개근 이수)</div>
-          <div class="exp-title">ERP 구축 프로젝트 PM 겸 FI·QM 개발자</div>
-          <div class="exp-desc">
-            화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트를 PM으로 이끌며 FI·QM 모듈 커스텀 개발 총괄.
-            전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
-            6종의 CBO 프로그램을 직접 설계·구현. 개근 이수.
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val">
+                <a href="mailto:didi5943@naver.com">didi5943@naver.com</a>
+              </div>
+            </div>
           </div>
-          <div class="exp-tags">
-            <span class="exp-tag">ABAP</span>
-            <span class="exp-tag">Module Pool</span>
-            <span class="exp-tag">ALV</span>
-            <span class="exp-tag">CDS View</span>
-            <span class="exp-tag">Fiori</span>
-            <span class="exp-tag">OData</span>
-            <span class="exp-tag">FI</span>
-            <span class="exp-tag">QM</span>
+          <div class="contact-card">
+            <div class="contact-icon">🐙</div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-val">
+                <a href="https://github.com/sherlock0105" target="_blank"
+                  >github.com/sherlock0105</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-val">010-2800-5943</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val">경기도 구리시</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<hr class="sec-div">
+    <footer>
+      <p>
+        © 2025 박도현 · SAP ABAP Developer ·
+        <a
+          href="https://github.com/sherlock0105"
+          target="_blank"
+          style="color: var(--blue)"
+          >github.com/sherlock0105</a
+        >
+      </p>
+    </footer>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Projects</div>
-      <h2 class="sec-title">CBO 개발 프로그램 · 6종</h2>
-    </div>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
-      SAP CODE 아카데미 Master Pack ERP 프로젝트에서 PM 겸 FI·QM 모듈 개발자로 직접 설계·구현한 프로그램입니다.<br>
-      카드를 클릭하면 상세 내용을 확인할 수 있습니다.
-    </p>
-    <div class="proj-list">
-
-      <!-- 01 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">01</div>
-          <div>
-            <div class="proj-info-title">전표 조회 및 역분개 프로그램</div>
-            <div class="proj-info-sub">ZRE3FI0003 · ABAP Report</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">FI</span>
-              <span class="pbadge fi">ALV</span>
-              <span class="pbadge fi">Report</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            FI 전표 종합 조회 및 역분개 처리 프로그램. 4-Tab 선택화면 + Split ALV + 동적 TOP-OF-PAGE + PDF 출력.<br>
-            하나의 화면에서 전체/AR/AP/GL 전표를 분기 조회하고, 마이너스 역분개를 한 클릭으로 처리합니다.
-          </div>
-
-          <!-- 이미지 갤러리 -->
-          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_main.png" alt="전표 조회 메인 화면">
-              <div class="img-caption">전표 조회 메인 — Split ALV (목록 + 상세)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
-              <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
-              <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
-              <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
-              <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
-              <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
-              <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
-            </div>
-          </div>
-
-          <!-- 라이트박스 -->
-          <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-            <div class="lightbox-inner">
-              <img id="lightbox-img" src="" alt="">
-              <div id="lightbox-cap"></div>
-            </div>
-          </div>
-
-          <div class="proj-features" style="margin-top:1.4rem">
-            <div class="proj-features-title">핵심 기능 상세</div>
-            <ul>
-              <li><strong>4-Tab 선택화면</strong> — 전체/AR/AP/GL 탭 전환 시 해당 탭 조건만 검증 후 RETURN, 타 탭 필수값 오류 방지</li>
-              <li><strong>Split ALV</strong> — 상단 전표 목록 클릭 시 하단 전표 상세 동적 갱신. 차변/대변 컬럼 분리로 가독성 확보</li>
-              <li><strong>역분개 전표 하단 병렬 표시</strong> — <code>set_rev_item</code> FORM으로 STBLG 연결된 역분개 전표를 원본 바로 아래 자동 배치</li>
-              <li><strong>마이너스 역분개</strong> — SHKZG 유지 + dmbtr/wrbtr에 ×(-1) 적용. 전표유형 AB로 신규 채번 후 원본 STBLG 양방향 업데이트</li>
-              <li><strong>반제 전표 역분개</strong> — DZ/KZ 유형 시 <code>set_clear</code> FORM으로 상대방 전표 augbl 초기화 후 역분개 진행</li>
-              <li><strong>ABAP Spool → PDF 직접 다운로드</strong> — 개별 전표 / 전체 전표 PDF 지원</li>
-              <li><strong>동적 TOP-OF-PAGE</strong> — CL_DD_DOCUMENT로 총 전표수·금액·미결·반제·역분개·조회기간 3×3 카드 자동 생성</li>
-            </ul>
-          </div>
-
-          <!-- 코드 탭 -->
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'ct1')">역분개 마이너스 생성</button>
-            <button class="code-tab" onclick="switchTab(this,'ct2')">역분개 전표 병렬 배치</button>
-            <button class="code-tab" onclick="switchTab(this,'ct3')">차대변 분리 표시</button>
-            <button class="code-tab" onclick="switchTab(this,'ct4')">반제 전표 처리</button>
-          </div>
-
-          <div class="proj-code code-panel" id="ct1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
-<span class="kw">FORM</span> <span class="fn">reverse_items</span> <span class="kw">USING</span> pv_belnr <span class="kw">TYPE</span> zte3fi0002-belnr.
-  <span class="kw">LOOP AT</span> gt_item <span class="kw">INTO DATA</span>(ls_orig).
-    <span class="kw">APPEND VALUE</span> #( <span class="kw">BASE CORRESPONDING</span> #( ls_orig )
-      belnr   = pv_belnr
-      blart   = <span class="str">'AB'</span>
-      shkzg   = ls_orig-shkzg           <span class="cm">"SHKZG 유지</span>
-      dmbtr   = ls_orig-dmbtr * <span class="num">-1</span>    <span class="cm">"금액만 반전</span>
-      wrbtr   = ls_orig-wrbtr * <span class="num">-1</span>
-      dmbtr_s = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_orig-shkzg = <span class="str">'S'</span>
-                         <span class="kw">THEN</span> abs( ls_orig-dmbtr ) <span class="kw">ELSE</span> <span class="num">0</span> )
-      dmbtr_h = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_orig-shkzg = <span class="str">'H'</span>
-                         <span class="kw">THEN</span> abs( ls_orig-dmbtr ) <span class="kw">ELSE</span> <span class="num">0</span> )
-    ) <span class="kw">TO</span> gt_rev_item.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-code code-panel" id="ct2" style="display:none"><span class="cm">* 역분개 전표를 원본 전표 바로 아래 배치 (중복 방지)</span>
-<span class="kw">FORM</span> <span class="fn">set_rev_item</span>.
-  <span class="kw">DATA</span>: lt_temp_header <span class="kw">LIKE</span> gt_header.
-  <span class="kw">LOOP AT</span> gt_header <span class="kw">INTO DATA</span>(ls_hdr).
-    <span class="kw">IF</span> line_exists( lt_temp_header[ belnr = ls_hdr-belnr ] ).
-      <span class="kw">CONTINUE</span>.
-    <span class="kw">ENDIF</span>.
-    <span class="kw">APPEND</span> ls_hdr <span class="kw">TO</span> lt_temp_header.
-    <span class="cm">"STBLG가 있으면 역분개 전표를 바로 다음 행에 추가</span>
-    <span class="kw">IF</span> ls_hdr-stblg <span class="kw">IS NOT INITIAL</span>.
-      <span class="kw">READ TABLE</span> gt_header <span class="kw">INTO DATA</span>(ls_rev)
-        <span class="kw">WITH KEY</span> belnr = ls_hdr-stblg.
-      <span class="kw">IF</span> sy-subrc = <span class="num">0</span>.
-        <span class="kw">IF NOT</span> line_exists( lt_temp_header[ belnr = ls_rev-belnr ] ).
-          <span class="kw">APPEND</span> ls_rev <span class="kw">TO</span> lt_temp_header.
-        <span class="kw">ENDIF</span>.
-      <span class="kw">ENDIF</span>.
-    <span class="kw">ENDIF</span>.
-  <span class="kw">ENDLOOP</span>.
-  gt_header = lt_temp_header.
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-code code-panel" id="ct3" style="display:none"><span class="cm">* 차변/대변 컬럼 분리 + 아이콘(정상=녹색 / 역분개=빨강)</span>
-<span class="kw">FORM</span> <span class="fn">sum_dmbtr_sh</span>.
-  <span class="kw">LOOP AT</span> gt_item_data <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
-    <span class="kw">CASE</span> &lt;fs_item&gt;-shkzg.
-      <span class="kw">WHEN</span> <span class="str">'S'</span>.
-        &lt;fs_item&gt;-dmbtr_s   = &lt;fs_item&gt;-dmbtr.
-        &lt;fs_item&gt;-shkzg_txt = <span class="str">'차변'</span>.
-      <span class="kw">WHEN</span> <span class="str">'H'</span>.
-        &lt;fs_item&gt;-dmbtr_h   = &lt;fs_item&gt;-dmbtr.
-        &lt;fs_item&gt;-shkzg_txt = <span class="str">'대변'</span>.
-    <span class="kw">ENDCASE</span>.
-    <span class="cm">"역분개 전표 아이템 → 빨간 LED, 정상 → 초록 LED</span>
-    <span class="kw">IF</span> &lt;fs_item&gt;-belnr <span class="kw">EQ</span> gs_header-stblg.
-      &lt;fs_item&gt;-status = icon_led_red.
-    <span class="kw">ELSE</span>.
-      &lt;fs_item&gt;-status = icon_led_green.
-    <span class="kw">ENDIF</span>.
-  <span class="kw">ENDLOOP</span>.
-  <span class="kw">CHECK</span> gv_dmbtr_s <span class="kw">EQ</span> gv_dmbtr_h.
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-code code-panel" id="ct4" style="display:none"><span class="cm">* DZ/KZ 전표 역분개 시 — 반제 정보 초기화 후 원전표 미결 복원</span>
-<span class="kw">FORM</span> <span class="fn">set_clear</span>.
-  <span class="kw">LOOP AT</span> gt_item <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
-    <span class="kw">IF</span> &lt;fs_item&gt;-augbl <span class="kw">IS NOT INITIAL</span>.
-      <span class="cm">"상대방 전표 augbl 초기화 → 미결 상태로 복원</span>
-      <span class="kw">UPDATE</span> zte3fi0003 <span class="kw">SET</span> augbl = <span class="str">' '</span>
-             augdt = <span class="str">'00000000'</span>
-       <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
-         <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
-      <span class="kw">UPDATE</span> zte3fi0002 <span class="kw">SET</span> bstat = <span class="str">' '</span>
-       <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
-         <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
-    <span class="kw">ENDIF</span>.
-    <span class="kw">CLEAR</span>: &lt;fs_item&gt;-augbl, &lt;fs_item&gt;-augdt.
-  <span class="kw">ENDLOOP</span>.
-  <span class="kw">UPDATE</span> zte3fi0003 <span class="kw">FROM TABLE</span> gt_item.
-  <span class="kw">COMMIT WORK AND WAIT</span>.
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-tech"><span>ABAP</span><span>ALV Splitter</span><span>FI</span><span>PDF Spool</span><span>CL_DD_DOCUMENT</span><span>NUMBER_GET_NEXT</span></div>
-        </div>
-      </div>
-
-      <!-- 02 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">02</div>
-          <div>
-            <div class="proj-info-title">월말 외화평가 프로그램</div>
-            <div class="proj-info-sub">SAPMZE3FI0002 · Module Pool</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">FI</span>
-              <span class="pbadge fi">Module Pool</span>
-              <span class="pbadge fi">ALV Tree</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            USD·EUR·JPY 외화 미결 전표에 대해 월말 환율로 평가손익 산출.<br>
-            ALV Tree 5단 계층 + 통화별 변동률(%) 시뮬레이션 + 배치잡 자동 전표 생성.
-          </div>
-
-          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_main.png" alt="외화평가 메인 — 시뮬레이션 화면">
-              <div class="img-caption">메인 화면 — ALV Tree + 시뮬레이션 패널 + AR/AP 요약 카드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
-              <div class="img-caption">시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동 반영</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
-              <div class="img-caption">ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
-              <div class="img-caption">전체 보기 — 거래처별 전기금액 vs 평가금액 비교</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
-              <div class="img-caption">평가/환입전표 팝업 — 생성 전 예정 내역 미리보기</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
-              <div class="img-caption">미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
-              <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업">
-              <div class="img-caption">전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this)">
-              <img src="images/doc02_vendor_popup.png" alt="공급업체 정보 팝업">
-              <div class="img-caption">공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회</div>
-            </div>
-          </div>
-
-          <div class="proj-features" style="margin-top:1.4rem">
-            <div class="proj-features-title">핵심 기능 상세</div>
-            <ul>
-              <li><strong>ALV Tree 5단 계층</strong> — 전체 → AR/AP → 통화(EUR/JPY/USD) → 거래처 → 전표 드릴다운. 노드 클릭 시 우측 Grid 자동 필터링</li>
-              <li><strong>통화별 변동률(%) 시뮬레이션</strong> — EUR/JPY/USD 개별 % 입력 → 환율 동적 계산 → 실행 시 Tree·Grid 동시 반영. 최근 1주일 평균 환율 자동 세팅</li>
-              <li><strong>평가손익 컬러 표시</strong> — 이익=녹색 / 손실=빨강 셀 컬러. AR·AP 요약 카드로 전체 손익 한눈에 파악</li>
-              <li><strong>미결잔액 TOP5 차트</strong> — ALV Chart 버튼 클릭 시 거래처별 미결잔액 막대 차트 팝업</li>
-              <li><strong>외화보유현황 탭</strong> — 은행 보유 외화 + AR/AP 미결 외화 집계. 통화별 시계열 차트 내장</li>
-              <li><strong>평가/환입전표 팝업</strong> — 생성 전 예정 내역 미리보기. 공용 Function Module로 팝업 재사용</li>
-              <li><strong>배치잡 자동 전표 생성</strong> — 말일 평가전표 + 익월 1일 환입전표 쌍으로 자동 생성. zcl_e3_fi_document 공용 클래스 재사용</li>
-            </ul>
-          </div>
-
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c2t1')">평가손익 합계 계산</button>
-            <button class="code-tab" onclick="switchTab(this,'c2t2')">평가 + 환입전표 생성</button>
-          </div>
-
-          <div class="proj-code code-panel" id="c2t1"><span class="cm">* 평가손익 합계 사전 계산 — 0일 때 전표 생성 방지</span>
-<span class="kw">FORM</span> <span class="fn">sum_eval_diff</span>.
-  <span class="kw">LOOP AT</span> gt_data <span class="kw">INTO DATA</span>(ls_data).
-    <span class="kw">READ TABLE</span> gt_rate <span class="kw">INTO</span> ls_rate
-      <span class="kw">WITH KEY</span> fcurr = ls_data-fwaer <span class="kw">BINARY SEARCH</span>.
-
-    lv_base_eval = <span class="kw">COND</span> #(
-      <span class="kw">WHEN</span> sy-subrc = <span class="num">0</span> <span class="kw">AND</span> ls_data-ukurs > <span class="num">0</span>
-      <span class="kw">THEN</span> ls_data-dmbtr * ls_rate-ukurs / ls_data-ukurs
-      <span class="kw">ELSE</span> ls_data-dmbtr ).
-
-    gv_before += <span class="kw">COND</span> #(
-      <span class="kw">WHEN</span> ls_data-ar_ap = <span class="str">'AR'</span> <span class="kw">THEN</span> lv_base_eval - ls_data-dmbtr
-      <span class="kw">WHEN</span> ls_data-ar_ap = <span class="str">'AP'</span> <span class="kw">THEN</span> ls_data-dmbtr - lv_base_eval
-      <span class="kw">ELSE</span> <span class="num">0</span> ).
-  <span class="kw">ENDLOOP</span>.
-
-  <span class="kw">IF</span> gv_before = <span class="num">0</span>.
-    <span class="kw">MESSAGE</span> s000 <span class="kw">WITH</span> <span class="str">'평가손익 0 — 전표 생성 대상 없음.'</span> DISPLAY LIKE <span class="str">'W'</span>.
-    <span class="kw">LEAVE PROGRAM</span>.
-  <span class="kw">ENDIF</span>.
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-code code-panel" id="c2t2" style="display:none"><span class="cm">* 말일 평가전표 생성 + 익월 1일 환입전표 자동 쌍 생성</span>
-<span class="kw">FORM</span> <span class="fn">build_eval</span> <span class="kw">USING</span> pv_check.
-  <span class="cm">"손익 계정 — 이익: 4200000003 / 손실: 5300000003</span>
-  ls_item-saknr = <span class="kw">COND</span> #(
-    <span class="kw">WHEN</span> lv_base < <span class="num">0</span> <span class="kw">THEN</span> <span class="str">'5300000003'</span> <span class="kw">ELSE</span> <span class="str">'4200000003'</span> ).
-  ls_item-shkzg = <span class="kw">COND</span> #(
-    <span class="kw">WHEN</span> lv_base < <span class="num">0</span> <span class="kw">THEN</span> <span class="str">'S'</span> <span class="kw">ELSE</span> <span class="str">'H'</span> ).
-
-  <span class="cm">"평가전표 생성</span>
-  zcl_e3_fi_document=><span class="fn">post_document</span>(
-    <span class="kw">EXPORTING</span> is_header = ls_header  it_items = lt_items
-    <span class="kw">IMPORTING</span> ev_belnr  = lv_belnr ).
-
-  <span class="cm">"환입전표 — 익월 1일, 평가전표 분개 반전</span>
-  lv_rev_date = pa_evdat + <span class="num">1</span>.
-  <span class="kw">LOOP AT</span> lt_rev_items <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_rev&gt;).
-    &lt;fs_rev&gt;-shkzg = <span class="kw">COND</span> #(
-      <span class="kw">WHEN</span> &lt;fs_rev&gt;-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'H'</span> <span class="kw">ELSE</span> <span class="str">'S'</span> ).
-  <span class="kw">ENDLOOP</span>.
-
-  zcl_e3_fi_document=><span class="fn">post_document</span>(
-    <span class="kw">EXPORTING</span> is_header = ls_rev_header  it_items = lt_rev_items
-    <span class="kw">IMPORTING</span> ev_belnr  = lv_rev_belnr ).
-<span class="kw">ENDFORM</span>.</div>
-
-          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>ALV Tree</span><span>ALV Chart</span><span>FI</span><span>Batch Job</span><span>ZCL_E3_FI_DOCUMENT</span></div>
-        </div>
-      </div>
-
-      <!-- 03 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">03</div>
-          <div>
-            <div class="proj-info-title">자산관리 및 감가상각 프로그램</div>
-            <div class="proj-info-sub">ZRE3FI0008 · ABAP Report</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">FI</span>
-              <span class="pbadge fi">CDS View</span>
-              <span class="pbadge fi">Batch Job</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            고정자산의 생애주기(취득→상각→처분) 통합 관리.<br>
-            처분 유형 3가지(매각/폐기/기타)를 회계 계정 매핑까지 자동화. CDS View로 12개월 일괄 조회.
-          </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
-            <ul>
-              <li>자산분류 선택만으로 계정코드 자동 매핑 (LD/BD/MC/VH/FE)</li>
-              <li>처분 유형 3가지 (매각/폐기/기타) 별 전표 자동 생성</li>
-              <li>정액법(건물·기계)/정률법(차량) 분기 + 잔존가치 초과 방지</li>
-              <li>매월 31일 SM36 배치잡 자동 실행 + 중복 방지 로직</li>
-              <li>CDS View로 12개월 감가상각 한 번에 조회</li>
-            </ul>
-          </div>
-          <div class="proj-code"><span class="cm">* CDS View로 12개월 분 일괄 조회</span>
-<span class="kw">SELECT</span> anlkl, anln1, m01, m02 ... m12
-  <span class="kw">FROM</span> <span class="fn">zcds_e3_fi_0015</span>( p_gjahr = @pa_gjahr )
- <span class="kw">WHERE</span> bukrs = @pa_bukrs <span class="kw">AND</span> abflg <span class="kw">NE</span> <span class="str">'X'</span>
-  <span class="kw">INTO</span> <span class="kw">TABLE</span> @gt_item.</div>
-          <div class="proj-tech"><span>ABAP</span><span>ALV Tree</span><span>CDS View</span><span>GOS</span><span>Batch Job</span></div>
-        </div>
-      </div>
-
-      <!-- 04 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">04</div>
-          <div>
-            <div class="proj-info-title">환율 API 연동 프로그램</div>
-            <div class="proj-info-sub">ZRE3FI0002 · ABAP Report · 협업</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">FI</span>
-              <span class="pbadge fi">HTTP Client</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            외화 평가·환산의 기준이 되는 환율 데이터를 외부 API에서 실시간 가져와 SAP 내부 마스터로 적재.<br>
-            USD·EUR·JPY 3통화 동시 적재. GDATU 역순 저장으로 최신 환율 단건 SELECT 지원.
-          </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
-            <ul>
-              <li>cl_http_client로 외부 환율 API 실시간 호출</li>
-              <li>/ui2/cl_json으로 JSON → ABAP 내부 테이블 변환</li>
-              <li>GDATU 역순 저장 — ASC 정렬 시 최신 환율이 맨 위</li>
-              <li>JPY FFACT=100 자동 세팅 (단위 보정)</li>
-            </ul>
-          </div>
-          <div class="proj-code"><span class="cm">* GDATU 역순 변환 후 적재</span>
-ls_tcurr-gdatu = |{ <span class="num">99999999</span> - sy-datum }|.
-ls_tcurr-ffact = <span class="kw">COND</span> #(
-  <span class="kw">WHEN</span> ls_rate-currency = <span class="str">'JPY'</span> <span class="kw">THEN</span> <span class="num">100</span> <span class="kw">ELSE</span> <span class="num">1</span> ).
-<span class="kw">MODIFY</span> ZTE3FI0008 <span class="kw">FROM</span> ls_tcurr.
-<span class="kw">COMMIT WORK AND WAIT</span>.</div>
-          <div class="proj-tech"><span>ABAP</span><span>HTTP Client</span><span>JSON</span><span>/ui2/cl_json</span><span>FI</span></div>
-        </div>
-      </div>
-
-      <!-- 05 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">05</div>
-          <div>
-            <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
-            <div class="proj-info-sub">ZCDS_E3_FI_0013 · Fiori / OData</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">Fiori</span>
-              <span class="pbadge fi">CDS View</span>
-              <span class="pbadge fi">OData</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            고객·공급업체 마스터를 통합 Business Partner 뷰로 묶어 Fiori 웹 UI에서 CRUD.<br>
-            CDS UNION ALL의 정석을 실전에서 다룬 프로그램. SEGW OData CRUD 풀세트 구현.
-          </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
-            <ul>
-              <li>CDS UNION ALL로 고객+공급업체 통합 BP 뷰 1개 생성</li>
-              <li>BPType=C/S 단일 필드로 구분 → 통합 검색·필터</li>
-              <li>SEGW OData CRUD 풀세트 (READ/CREATE/UPDATE/DELETE)</li>
-              <li>Fiori 표준 디자인 가이드 적용 — 모바일/태블릿 접근 지원</li>
-            </ul>
-          </div>
-          <div class="proj-code"><span class="kw">@OData</span>.publish: <span class="kw">true</span>
-<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0013</span> <span class="kw">as</span>
-<span class="kw">select from</span> ZTE3SD0001 <span class="kw">as</span> customer {
-  customer.kunnr <span class="kw">as</span> BPNumber,
-  <span class="kw">cast</span>(<span class="str">'C'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> BPType
-}
-<span class="kw">union all</span>
-<span class="kw">select from</span> ZTE3MM0002 <span class="kw">as</span> supplier {
-  supplier.lifnr <span class="kw">as</span> BPNumber,
-  <span class="kw">cast</span>(<span class="str">'S'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> BPType
-}</div>
-          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>Fiori</span><span>SAPUI5</span><span>OData</span><span>SEGW</span></div>
-        </div>
-      </div>
-
-      <!-- 06 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
-          <div class="proj-num">06</div>
-          <div>
-            <div class="proj-info-title">완제품 검수 프로그램</div>
-            <div class="proj-info-sub">SAPMZE3QM0001 · Module Pool</div>
-            <div class="proj-info-badges">
-              <span class="pbadge mm">MM</span>
-              <span class="pbadge qm">QM</span>
-              <span class="pbadge fi">Module Pool</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수.<br>
-            합격 품목에 한해 입고·재고 마스터 자동 연동. 검수 이력 영구 보존 및 추적 지원.
-          </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
-            <ul>
-              <li>생산 완료 상태 제품 리스트 자동 조회</li>
-              <li>항목별 합격/불합격·불량 수량 입력</li>
-              <li>합격 처리 시 재고 마스터 자동 갱신 + 입고 처리</li>
-              <li>불합격 처리 — 사유 입력 후 별도 관리</li>
-              <li>기간별·제품별 검수 이력 조회</li>
-            </ul>
-          </div>
-          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<hr class="sec-div">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Contact</div>
-      <h2 class="sec-title">연락처</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-val"><a href="mailto:didi5943@naver.com">didi5943@naver.com</a></div>
-        </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">🐙</div>
-        <div>
-          <div class="contact-label">GitHub</div>
-          <div class="contact-val"><a href="https://github.com/sherlock0105" target="_blank">github.com/sherlock0105</a></div>
-        </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📱</div>
-        <div>
-          <div class="contact-label">Phone</div>
-          <div class="contact-val">010-2800-5943</div>
-        </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Location</div>
-          <div class="contact-val">경기도 구리시</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 박도현 · SAP ABAP Developer · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>
-</footer>
-
-<script>
-function toggleProj(card){
-  const isOpen=card.classList.contains('open');
-  document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
-  if(!isOpen)card.classList.add('open');
-}
-function openLightbox(el){
-  event.stopPropagation();
-  const img=el.querySelector('img');
-  const cap=el.querySelector('.img-caption');
-  document.getElementById('lightbox-img').src=img.src;
-  document.getElementById('lightbox-cap').textContent=cap?cap.textContent:'';
-  document.getElementById('lightbox').classList.add('active');
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('active');
-}
-function switchTab(btn,id){
-  btn.closest('.proj-body').querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
-  btn.closest('.proj-body').querySelectorAll('.code-panel').forEach(p=>p.style.display='none');
-  btn.classList.add('active');
-  document.getElementById(id).style.display='block';
-}
-const secs=document.querySelectorAll('section[id]');
-const links=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id;});
-  links.forEach(a=>{
-    const active=a.getAttribute('href')==='#'+cur;
-    a.style.background=active?'var(--blue-light)':'';
-    a.style.color=active?'var(--blue)':'';
-  });
-},{passive:true});
-</script>
-</body>
+    <script>
+      function toggleProj(card) {
+        const isOpen = card.classList.contains("open");
+        document
+          .querySelectorAll(".proj-card")
+          .forEach((c) => c.classList.remove("open"));
+        if (!isOpen) card.classList.add("open");
+      }
+      function openLightbox(el) {
+        event.stopPropagation();
+        const img = el.querySelector("img");
+        const cap = el.querySelector(".img-caption");
+        document.getElementById("lightbox-img").src = img.src;
+        document.getElementById("lightbox-cap").textContent = cap
+          ? cap.textContent
+          : "";
+        document.getElementById("lightbox").classList.add("active");
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+      function switchTab(btn, id) {
+        btn
+          .closest(".proj-body")
+          .querySelectorAll(".code-tab")
+          .forEach((t) => t.classList.remove("active"));
+        btn
+          .closest(".proj-body")
+          .querySelectorAll(".code-panel")
+          .forEach((p) => (p.style.display = "none"));
+        btn.classList.add("active");
+        document.getElementById(id).style.display = "block";
+      }
+      const secs = document.querySelectorAll("section[id]");
+      const links = document.querySelectorAll(".nav-links a");
+      window.addEventListener(
+        "scroll",
+        () => {
+          let cur = "";
+          secs.forEach((s) => {
+            if (window.scrollY >= s.offsetTop - 80) cur = s.id;
+          });
+          links.forEach((a) => {
+            const active = a.getAttribute("href") === "#" + cur;
+            a.style.background = active ? "var(--blue-light)" : "";
+            a.style.color = active ? "var(--blue)" : "";
+          });
+        },
+        { passive: true },
+      );
+    </script>
+  </body>
 </html>

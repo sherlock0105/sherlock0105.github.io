@@ -80,10 +80,10 @@ section{padding:5rem 0}
 .btn-outline{background:var(--white);color:var(--text2);border:1px solid var(--border2)}
 .btn-outline:hover{border-color:var(--blue);color:var(--blue)}
 .hero-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;box-shadow:var(--shadow-md);min-width:200px}
-.hero-card-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.hero-card-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:13px}
 .hero-card-row:last-child{border-bottom:none}
-.hero-card-label{color:var(--text3);font-size:12px}
-.hero-card-val{font-weight:600;font-size:12px;font-family:var(--mono)}
+.hero-card-label{color:var(--text3);font-size:12px;white-space:nowrap;flex-shrink:0}
+.hero-card-val{font-weight:600;font-size:12px;font-family:var(--mono);text-align:right;white-space:nowrap}
 .hero-card-val.blue{color:var(--blue)}
 .hero-card-val.green{color:var(--green)}
 
@@ -147,10 +147,11 @@ section{padding:5rem 0}
 
 /* PROJECTS */
 .proj-list{display:flex;flex-direction:column;gap:.8rem}
-.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s;cursor:pointer}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s}
 .proj-card:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
 .proj-card.open{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,110,248,.08),var(--shadow-md)}
-.proj-head{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.6rem}
+.proj-head{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.6rem;cursor:pointer;transition:background .15s}
+.proj-head:hover{background:var(--bg)}
 .proj-num{width:36px;height:36px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);flex-shrink:0}
 .proj-info-title{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
 .proj-info-sub{font-size:12px;color:var(--text3);font-family:var(--mono)}
@@ -191,23 +192,25 @@ section{padding:5rem 0}
 
 /* IMAGE GALLERY */
 .img-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
-.img-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s}
-.img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
-.img-item img{width:100%;height:140px;object-fit:cover;display:block}
-.img-caption{font-size:11px;color:var(--text3);padding:.5rem .7rem;background:var(--bg);font-family:var(--mono);line-height:1.4}
+.img-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s,transform .15s;background:var(--white)}
+.img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid);transform:translateY(-2px)}
+.img-item img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;background:#f0f2f7}
+.img-caption{font-size:11px;color:var(--text2);padding:.6rem .8rem;background:var(--bg);line-height:1.45;border-top:1px solid var(--border)}
 
 /* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(15,18,30,.92);z-index:9999;align-items:center;justify-content:center;padding:3rem 2rem;cursor:zoom-out}
 .lightbox.active{display:flex}
-.lightbox-inner{max-width:90vw;max-height:90vh;text-align:center}
-.lightbox-inner img{max-width:100%;max-height:80vh;border-radius:8px;display:block;margin:0 auto}
-#lightbox-cap{color:#fff;font-size:13px;margin-top:.8rem;opacity:.8}
+.lightbox-inner{max-width:92vw;max-height:90vh;text-align:center;cursor:default}
+.lightbox-inner img{max-width:100%;max-height:82vh;border-radius:10px;display:block;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#lightbox-cap{color:#fff;font-size:13px;margin-top:1rem;opacity:.85;font-family:var(--mono)}
+.lightbox-close{position:absolute;top:1.5rem;right:2rem;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;transition:opacity .15s;line-height:1;z-index:10000}
+.lightbox-close:hover{opacity:1}
 
 /* CODE TABS */
-.code-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:0;border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:.6rem}
-.code-tab{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.3rem .8rem;border-radius:6px;cursor:pointer;transition:all .15s}
-.code-tab:hover{color:var(--blue);border-color:var(--blue-mid)}
-.code-tab.active{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+.code-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.7rem}
+.code-tab{font-size:11.5px;font-family:var(--mono);font-weight:500;color:var(--text2);background:var(--white);border:1px solid var(--border2);padding:.4rem .9rem;border-radius:7px;cursor:pointer;transition:all .15s}
+.code-tab:hover{color:var(--blue);border-color:var(--blue-mid);background:var(--blue-light)}
+.code-tab.active{color:#fff;background:var(--blue);border-color:var(--blue)}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono)}
@@ -256,7 +259,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <p class="hero-title">SAP FI · PM · Master Pack ERP 프로젝트</p>
         <p class="hero-desc">
           요구사항의 본질을 고민하고, 데이터의 흐름을 명확하게 잇는 SAP ABAP 개발자입니다.<br>
-          FI 모듈 커스텀 개발 6종을 PM으로 직접 설계·구현했습니다.
+          FI 모듈 커스텀 개발 7종을 PM으로 직접 설계·구현했습니다.
         </p>
         <div class="hero-chips">
           <span class="chip hi">ABAP</span>
@@ -284,7 +287,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Course</span>
-          <span class="hero-card-val">SAP CODE 아카데미</span>
+          <span class="hero-card-val">SAP CODE 1기</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">GitHub</span>
@@ -452,8 +455,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <div class="proj-list">
 
       <!-- 01 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">01</div>
           <div>
             <div class="proj-info-title">전표 조회 및 역분개 프로그램</div>
@@ -475,41 +478,33 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <!-- 이미지 갤러리 -->
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_main.png" alt="전표 조회 메인 화면">
               <div class="img-caption">전표 조회 메인 — Split ALV (목록 + 상세)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
               <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
               <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
               <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
               <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
               <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
               <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
-            </div>
-          </div>
-
-          <!-- 라이트박스 -->
-          <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-            <div class="lightbox-inner">
-              <img id="lightbox-img" src="" alt="">
-              <div id="lightbox-cap"></div>
             </div>
           </div>
 
@@ -528,10 +523,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
           <!-- 코드 탭 -->
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'ct1')">역분개 마이너스 생성</button>
-            <button class="code-tab" onclick="switchTab(this,'ct2')">역분개 전표 병렬 배치</button>
-            <button class="code-tab" onclick="switchTab(this,'ct3')">차대변 분리 표시</button>
-            <button class="code-tab" onclick="switchTab(this,'ct4')">반제 전표 처리</button>
+            <button class="code-tab active" onclick="switchTab(this,'ct1',event)">역분개 마이너스 생성</button>
+            <button class="code-tab" onclick="switchTab(this,'ct2',event)">역분개 전표 병렬 배치</button>
+            <button class="code-tab" onclick="switchTab(this,'ct3',event)">차대변 분리 표시</button>
+            <button class="code-tab" onclick="switchTab(this,'ct4',event)">반제 전표 처리</button>
           </div>
 
           <div class="proj-code code-panel" id="ct1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
@@ -618,8 +613,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       </div>
 
       <!-- 02 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">02</div>
           <div>
             <div class="proj-info-title">월말 외화평가 프로그램</div>
@@ -640,39 +635,39 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_main.png" alt="외화평가 메인 — 시뮬레이션 화면">
               <div class="img-caption">메인 화면 — ALV Tree + 시뮬레이션 패널 + AR/AP 요약 카드</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
               <div class="img-caption">시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동 반영</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
               <div class="img-caption">ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
               <div class="img-caption">전체 보기 — 거래처별 전기금액 vs 평가금액 비교</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
               <div class="img-caption">평가/환입전표 팝업 — 생성 전 예정 내역 미리보기</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
               <div class="img-caption">미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
               <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업">
               <div class="img-caption">전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc02_vendor_popup.png" alt="공급업체 정보 팝업">
               <div class="img-caption">공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회</div>
             </div>
@@ -692,8 +687,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c2t1')">평가손익 합계 계산</button>
-            <button class="code-tab" onclick="switchTab(this,'c2t2')">평가 + 환입전표 생성</button>
+            <button class="code-tab active" onclick="switchTab(this,'c2t1',event)">평가손익 합계 계산</button>
+            <button class="code-tab" onclick="switchTab(this,'c2t2',event)">평가 + 환입전표 생성</button>
           </div>
 
           <div class="proj-code code-panel" id="c2t1"><span class="cm">* 평가손익 합계 사전 계산 — 0일 때 전표 생성 방지</span>
@@ -749,8 +744,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       </div>
 
       <!-- 03 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">03</div>
           <div>
             <div class="proj-info-title">자산관리 및 감가상각 프로그램</div>
@@ -771,31 +766,31 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_main.png" alt="자산관리 메인 화면">
               <div class="img-caption">메인 — ALV Tree(자산분류) + 12개월 감가상각 Grid + 자산현황 분석 차트</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_create.png" alt="자산 생성 팝업">
               <div class="img-caption">자산 생성 팝업 — 분류 선택 시 상각방법 자동 세팅 + 파일 업로드</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_asset_popup.png" alt="자산 정보 팝업">
               <div class="img-caption">자산 정보 팝업 — 핫스팟 클릭 시 감가누계·장부가액·전표번호 조회</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_doc_popup.png" alt="전표 정보 팝업">
               <div class="img-caption">전표 팝업 — 전표번호 클릭 시 AA 자산전표 차/대변 아이템 조회</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_gos_attach.png" alt="GOS 파일 첨부 목록">
               <div class="img-caption">GOS 첨부 목록 — 자산 취득명세서 PDF 업로드·다운로드</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_gos_pdf.png" alt="GOS 첨부 PDF 취득명세서">
               <div class="img-caption">첨부 PDF — 건물 등 감가상각자산 취득명세서 (BINARY_RELATION_CREATE 연결)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc03_disposal.png" alt="자산 처분 팝업 — 매각">
               <div class="img-caption">자산 처분 팝업 — 처분유형(매각/폐기/기타) + 고객번호·매각금액 입력</div>
             </div>
@@ -814,9 +809,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c3t1')">감가상각 계산식</button>
-            <button class="code-tab" onclick="switchTab(this,'c3t2')">처분 전표 생성</button>
-            <button class="code-tab" onclick="switchTab(this,'c3t3')">CDS View 12개월</button>
+            <button class="code-tab active" onclick="switchTab(this,'c3t1',event)">감가상각 계산식</button>
+            <button class="code-tab" onclick="switchTab(this,'c3t2',event)">처분 전표 생성</button>
+            <button class="code-tab" onclick="switchTab(this,'c3t3',event)">CDS View 12개월</button>
           </div>
 
           <div class="proj-code code-panel" id="c3t1"><span class="cm">* 정액법 (AFASL=LINR) — 건물·기계장치·비품</span>
@@ -859,8 +854,8 @@ ls_asset-abdat = sy-datum.
       </div>
 
       <!-- 04 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">04</div>
           <div>
             <div class="proj-info-title">환율 API 연동 프로그램</div>
@@ -877,28 +872,74 @@ ls_asset-abdat = sy-datum.
             외화 평가·환산의 기준이 되는 환율 데이터를 외부 API에서 실시간 가져와 SAP 내부 마스터로 적재.<br>
             USD·EUR·JPY 3통화 동시 적재. GDATU 역순 저장으로 최신 환율 단건 SELECT 지원.
           </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery" style="grid-template-columns:repeat(2,1fr)">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc04_table.png" alt="ZTE3FI0008 환율 마스터 테이블 — 218건 적재">
+              <div class="img-caption">ZTE3FI0008 적재 결과 — EUR/JPY/USD 3통화 GDATU 역순 저장 (218건)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc04_batchlog.png" alt="배치잡 실행 로그 — ZE3BATCH0001">
+              <div class="img-caption">배치잡 실행 로그 — ZE3BATCH0001 환율 3건 저장 완료 (기준일: 20260610)</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
-              <li>cl_http_client로 외부 환율 API 실시간 호출</li>
-              <li>/ui2/cl_json으로 JSON → ABAP 내부 테이블 변환</li>
-              <li>GDATU 역순 저장 — ASC 정렬 시 최신 환율이 맨 위</li>
-              <li>JPY FFACT=100 자동 세팅 (단위 보정)</li>
+              <li><strong>외부 환율 API 실시간 호출</strong> — cl_http_client로 GET 요청 → JSON 응답 수신 → /ui2/cl_json으로 ABAP 내부 테이블 변환</li>
+              <li><strong>GDATU 역순 저장</strong> — 99999999 - sy-datum 공식으로 역순 변환. ASC 정렬 시 최신 환율이 항상 맨 위 → SELECT SINGLE 한 줄로 최신 환율 조회. SAP 표준 패턴</li>
+              <li><strong>JPY FFACT=100 자동 세팅</strong> — JPY는 100단위 환산 비율 적용. COND 구문으로 통화별 자동 분기</li>
+              <li><strong>3통화 동시 적재</strong> — EUR·JPY·USD 루프 처리 후 COMMIT WORK AND WAIT 일괄 반영</li>
+              <li><strong>배치잡 연동</strong> — ZE3BATCH0001로 매일 자동 실행. 후속 외화평가·환율 계산 프로그램의 데이터 기준점</li>
             </ul>
           </div>
-          <div class="proj-code"><span class="cm">* GDATU 역순 변환 후 적재</span>
-ls_tcurr-gdatu = |{ <span class="num">99999999</span> - sy-datum }|.
-ls_tcurr-ffact = <span class="kw">COND</span> #(
-  <span class="kw">WHEN</span> ls_rate-currency = <span class="str">'JPY'</span> <span class="kw">THEN</span> <span class="num">100</span> <span class="kw">ELSE</span> <span class="num">1</span> ).
-<span class="kw">MODIFY</span> ZTE3FI0008 <span class="kw">FROM</span> ls_tcurr.
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c4t1',event)">API 호출 + 적재</button>
+            <button class="code-tab" onclick="switchTab(this,'c4t2',event)">저장 구조</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c4t1"><span class="cm">* 1) HTTP 클라이언트 생성 및 호출</span>
+<span class="kw">CALL METHOD</span> cl_http_client=><span class="fn">create_by_url</span>
+  <span class="kw">EXPORTING</span> url    = gv_api_url
+  <span class="kw">IMPORTING</span> client = lo_http_client.
+lo_http_client->request-><span class="fn">set_method</span>( <span class="str">'GET'</span> ).
+lo_http_client-><span class="fn">send</span>( ).  lo_http_client-><span class="fn">receive</span>( ).
+lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
+
+<span class="cm">* 2) JSON → ABAP 변환</span>
+/ui2/cl_json=><span class="fn">deserialize</span>(
+  <span class="kw">EXPORTING</span> json = lv_json
+  <span class="kw">CHANGING</span>  data = lt_rate ).
+
+<span class="cm">* 3) GDATU 역순 변환 후 적재</span>
+<span class="kw">LOOP AT</span> lt_rate <span class="kw">INTO</span> ls_rate.
+  ls_tcurr-gdatu = |{ <span class="num">99999999</span> - sy-datum }|.
+  ls_tcurr-ffact = <span class="kw">COND</span> #(
+    <span class="kw">WHEN</span> ls_rate-currency = <span class="str">'JPY'</span> <span class="kw">THEN</span> <span class="num">100</span> <span class="kw">ELSE</span> <span class="num">1</span> ).
+  <span class="kw">MODIFY</span> ZTE3FI0008 <span class="kw">FROM</span> ls_tcurr.
+<span class="kw">ENDLOOP</span>.
 <span class="kw">COMMIT WORK AND WAIT</span>.</div>
-          <div class="proj-tech"><span>ABAP</span><span>HTTP Client</span><span>JSON</span><span>/ui2/cl_json</span><span>FI</span></div>
+
+          <div class="proj-code code-panel" id="c4t2" style="display:none"><span class="cm">* ZTE3FI0008 저장 구조</span>
+<span class="cm">* KURST : 환율 유형 (M=중간, B=매입, G=매도)</span>
+<span class="cm">* FCURR : From 통화 (USD, EUR, JPY)</span>
+<span class="cm">* TCURR : To 통화 (KRW)</span>
+<span class="cm">* GDATU : 유효일자 — 역순 저장 (99999999 - 실제일자)</span>
+<span class="cm">*          → ASC 정렬 시 최신이 맨 위, SELECT SINGLE로 조회</span>
+<span class="cm">* UKURS : 환율 값</span>
+<span class="cm">* FFACT : 환산 비율 (JPY=100, 나머지=1)</span>
+<span class="cm">* TFACT : 목적 통화 비율 (항상 1)</span></div>
+
+          <div class="proj-tech"><span>ABAP</span><span>HTTP Client</span><span>JSON</span><span>/ui2/cl_json</span><span>FI</span><span>Batch Job</span></div>
         </div>
       </div>
 
       <!-- 05 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">05</div>
           <div>
             <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
@@ -919,19 +960,19 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
               <div class="img-caption">BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
               <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
               <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
               <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
             </div>
@@ -950,8 +991,8 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c5t1')">CDS UNION ALL 전체</button>
-            <button class="code-tab" onclick="switchTab(this,'c5t2')">OData GET_ENTITYSET</button>
+            <button class="code-tab active" onclick="switchTab(this,'c5t1',event)">CDS UNION ALL 전체</button>
+            <button class="code-tab" onclick="switchTab(this,'c5t2',event)">OData GET_ENTITYSET</button>
           </div>
 
           <div class="proj-code code-panel" id="c5t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0013'</span>
@@ -995,8 +1036,8 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
       </div>
 
       <!-- 06 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">06</div>
           <div>
             <div class="proj-info-title">완제품 검수 프로그램</div>
@@ -1011,26 +1052,56 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
         </div>
         <div class="proj-body">
           <div class="proj-summary">
-            제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수.<br>
-            합격 품목에 한해 입고·재고 마스터 자동 연동. 검수 이력 영구 보존 및 추적 지원.
+            제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수. 합격 품목에 한해 입고·재고 마스터 자동 연동.<br>
+            Excel 템플릿 업로드 방식으로 검수 결과 입력. 제조원가(직접비) 명세서 연동.
           </div>
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_main.png" alt="완제품 검수 메인 화면">
+              <div class="img-caption">메인 — 검수목록 탭 + 우측 완제품 검수 현황 (합격률·폐기율·검사항목별 불량)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
+              <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
+              <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
+              <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
+              <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
+              <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
-              <li>생산 완료 상태 제품 리스트 자동 조회</li>
-              <li>항목별 합격/불합격·불량 수량 입력</li>
-              <li>합격 처리 시 재고 마스터 자동 갱신 + 입고 처리</li>
-              <li>불합격 처리 — 사유 입력 후 별도 관리</li>
-              <li>기간별·제품별 검수 이력 조회</li>
+              <li><strong>검수목록 조회</strong> — 검수유형·자재코드·생산번호·날짜 조건 검색. 전체/검수완료/대기중 탭 필터. 우측 패널에 현황 요약 카드 실시간 갱신</li>
+              <li><strong>Excel 템플릿 업로드 방식</strong> — 엑셀 템플릿 다운로드 → 현장에서 항목별 불합격 수량 기입 → 시스템 업로드 → GUI_UPLOAD로 파싱 후 DB 반영</li>
+              <li><strong>검사 결과 상세</strong> — 행 선택 시 우측에 검사 항목별 불량 내역(색상·PH·용량·납/수은·방부제 등) 자동 표시. 합격률·폐기 수량 실시간 계산</li>
+              <li><strong>제조원가 명세서 연동</strong> — 합격 처리 시 생산오더 기준 제조원가(직접비) 명세서 생성. 재료비·노무비·1EA당 원가 산출. PDF 다운로드 + 이메일 발송</li>
+              <li><strong>페기현황 탭</strong> — 폐기 처리된 LOT 이력 별도 관리</li>
             </ul>
           </div>
-          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span></div>
+
+          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span><span>GUI_UPLOAD</span><span>Excel Template</span></div>
         </div>
       </div>
 
       <!-- 07 -->
-      <div class="proj-card" onclick="toggleProj(this)">
-        <div class="proj-head">
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">07</div>
           <div>
             <div class="proj-info-title">전표 조회 Fiori 앱</div>
@@ -1052,23 +1123,23 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc07_main.png" alt="전표 조회 Fiori 앱 메인">
               <div class="img-caption">전표 조회 탭 — 조건 검색 + 전표 헤더 목록 (총 975건)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc07_item_detail.png" alt="헤더 클릭 시 아이템 드릴다운">
               <div class="img-caption">헤더 클릭 시 하단에 전표 아이템 자동 표시 (차/대변 구분)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc07_dashboard.png" alt="현황 탭 대시보드">
               <div class="img-caption">현황 탭 — 총/정상/미결/역분개 카드 + 전표유형별·통화별 현황</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc07_ab_filter.png" alt="역분개 전표 필터">
               <div class="img-caption">전표유형 AB 필터 — 역분개전표 173건만 필터링</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this)">
+            <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc07_excel.png" alt="Excel 저장">
               <div class="img-caption">Excel 저장 — 현재 검색 조건 결과를 xlsx로 직접 다운로드</div>
             </div>
@@ -1086,8 +1157,8 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c7t1')">CDS 헤더 View</button>
-            <button class="code-tab" onclick="switchTab(this,'c7t2')">CDS 아이템 View</button>
+            <button class="code-tab active" onclick="switchTab(this,'c7t1',event)">CDS 헤더 View</button>
+            <button class="code-tab" onclick="switchTab(this,'c7t2',event)">CDS 아이템 View</button>
           </div>
 
           <div class="proj-code code-panel" id="c7t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0007'</span>
@@ -1176,29 +1247,48 @@ ls_tcurr-ffact = <span class="kw">COND</span> #(
   <p>© 2025 박도현 · SAP ABAP Developer · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>
 </footer>
 
+<!-- 라이트박스 (전역) -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-cap"></div>
+  </div>
+</div>
+
 <script>
-function toggleProj(card){
+function toggleProj(head, ev){
+  if(ev) ev.stopPropagation();
+  const card=head.closest('.proj-card');
   const isOpen=card.classList.contains('open');
   document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
   if(!isOpen)card.classList.add('open');
 }
-function openLightbox(el){
-  event.stopPropagation();
+function openLightbox(el, ev){
+  if(ev) ev.stopPropagation();
   const img=el.querySelector('img');
   const cap=el.querySelector('.img-caption');
   document.getElementById('lightbox-img').src=img.src;
   document.getElementById('lightbox-cap').textContent=cap?cap.textContent:'';
   document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
 }
-function closeLightbox(){
+function closeLightbox(ev){
+  if(ev) ev.stopPropagation();
   document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow='';
 }
-function switchTab(btn,id){
-  btn.closest('.proj-body').querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
-  btn.closest('.proj-body').querySelectorAll('.code-panel').forEach(p=>p.style.display='none');
+function switchTab(btn, id, ev){
+  if(ev) ev.stopPropagation();
+  const body=btn.closest('.proj-body');
+  body.querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
+  body.querySelectorAll('.code-panel').forEach(p=>p.style.display='none');
   btn.classList.add('active');
   document.getElementById(id).style.display='block';
 }
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeLightbox();
+});
 const secs=document.querySelectorAll('section[id]');
 const links=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{

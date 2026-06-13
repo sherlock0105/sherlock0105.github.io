@@ -189,6 +189,26 @@ section{padding:5rem 0}
 .contact-val a{color:var(--blue);text-decoration:none}
 .contact-val a:hover{text-decoration:underline}
 
+/* IMAGE GALLERY */
+.img-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
+.img-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s}
+.img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
+.img-item img{width:100%;height:140px;object-fit:cover;display:block}
+.img-caption{font-size:11px;color:var(--text3);padding:.5rem .7rem;background:var(--bg);font-family:var(--mono);line-height:1.4}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+.lightbox.active{display:flex}
+.lightbox-inner{max-width:90vw;max-height:90vh;text-align:center}
+.lightbox-inner img{max-width:100%;max-height:80vh;border-radius:8px;display:block;margin:0 auto}
+#lightbox-cap{color:#fff;font-size:13px;margin-top:.8rem;opacity:.8}
+
+/* CODE TABS */
+.code-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:0;border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:.6rem}
+.code-tab{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.3rem .8rem;border-radius:6px;cursor:pointer;transition:all .15s}
+.code-tab:hover{color:var(--blue);border-color:var(--blue-mid)}
+.code-tab.active{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono)}
 
@@ -393,7 +413,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <div class="exp-right">
           <div class="exp-dot active"></div>
           <div class="exp-pm-badge">👑 PM</div>
-          <div class="exp-org">SAP 코리아 — SAP CODE 아카데미 1기</div>
+          <div class="exp-org">SAP 코리아 — SAP CODE 아카데미 1기 (개근 이수)</div>
           <div class="exp-title">ERP 구축 프로젝트 PM 겸 FI·QM 개발자</div>
           <div class="exp-desc">
             화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트를 PM으로 이끌며 FI·QM 모듈 커스텀 개발 총괄.
@@ -451,23 +471,149 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             FI 전표 종합 조회 및 역분개 처리 프로그램. 4-Tab 선택화면 + Split ALV + 동적 TOP-OF-PAGE + PDF 출력.<br>
             하나의 화면에서 전체/AR/AP/GL 전표를 분기 조회하고, 마이너스 역분개를 한 클릭으로 처리합니다.
           </div>
-          <img src="전표1.png" alt="전표 조회 및 역분개 프로그램 화면" class="proj-screenshot">
-          <div class="proj-features">
-            <div class="proj-features-title">핵심 기능</div>
+
+          <!-- 이미지 갤러리 -->
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_main.png" alt="전표 조회 메인 화면">
+              <div class="img-caption">전표 조회 메인 — Split ALV (목록 + 상세)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
+              <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
+              <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
+              <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
+              <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
+              <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this)">
+              <img src="doc01_general.png" alt="일반전표 탭 조회 결과">
+              <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
+            </div>
+          </div>
+
+          <!-- 라이트박스 -->
+          <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+            <div class="lightbox-inner">
+              <img id="lightbox-img" src="" alt="">
+              <div id="lightbox-cap"></div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
-              <li>4-Tab 선택화면 (전체 / AR / AP / GL) — 탭 전환 시 해당 탭 조건만 검증</li>
-              <li>미결·반제·역분개·임시 상태별 분리 조회</li>
-              <li>마이너스 역분개 — SHKZG 자동 반전 + 양방향 STBLG 연결</li>
-              <li>ABAP Spool → PDF 직접 다운로드 (개별 / 전체)</li>
-              <li>동적 TOP-OF-PAGE — 총 전표수, 금액, 기간 3×3 카드 자동 생성</li>
+              <li><strong>4-Tab 선택화면</strong> — 전체/AR/AP/GL 탭 전환 시 해당 탭 조건만 검증 후 RETURN, 타 탭 필수값 오류 방지</li>
+              <li><strong>Split ALV</strong> — 상단 전표 목록 클릭 시 하단 전표 상세 동적 갱신. 차변/대변 컬럼 분리로 가독성 확보</li>
+              <li><strong>역분개 전표 하단 병렬 표시</strong> — <code>set_rev_item</code> FORM으로 STBLG 연결된 역분개 전표를 원본 바로 아래 자동 배치</li>
+              <li><strong>마이너스 역분개</strong> — SHKZG 유지 + dmbtr/wrbtr에 ×(-1) 적용. 전표유형 AB로 신규 채번 후 원본 STBLG 양방향 업데이트</li>
+              <li><strong>반제 전표 역분개</strong> — DZ/KZ 유형 시 <code>set_clear</code> FORM으로 상대방 전표 augbl 초기화 후 역분개 진행</li>
+              <li><strong>ABAP Spool → PDF 직접 다운로드</strong> — 개별 전표 / 전체 전표 PDF 지원</li>
+              <li><strong>동적 TOP-OF-PAGE</strong> — CL_DD_DOCUMENT로 총 전표수·금액·미결·반제·역분개·조회기간 3×3 카드 자동 생성</li>
             </ul>
           </div>
-          <div class="proj-code"><span class="cm">* 역분개 로직 — SHKZG 자동 반전 + 양방향 STBLG 연결</span>
-<span class="kw">LOOP AT</span> lt_items_orig <span class="kw">INTO</span> ls_item.
-  ls_item-shkzg = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'H'</span> <span class="kw">ELSE</span> <span class="str">'S'</span> ).
-  <span class="kw">APPEND</span> ls_item <span class="kw">TO</span> lt_items_rev.
-<span class="kw">ENDLOOP</span>.</div>
-          <div class="proj-tech"><span>ABAP</span><span>ALV</span><span>FI</span><span>PDF Spool</span><span>CL_DD_DOCUMENT</span></div>
+
+          <!-- 코드 탭 -->
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'ct1')">역분개 마이너스 생성</button>
+            <button class="code-tab" onclick="switchTab(this,'ct2')">역분개 전표 병렬 배치</button>
+            <button class="code-tab" onclick="switchTab(this,'ct3')">차대변 분리 표시</button>
+            <button class="code-tab" onclick="switchTab(this,'ct4')">반제 전표 처리</button>
+          </div>
+
+          <div class="proj-code code-panel" id="ct1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
+<span class="kw">FORM</span> <span class="fn">reverse_items</span> <span class="kw">USING</span> pv_belnr <span class="kw">TYPE</span> zte3fi0002-belnr.
+  <span class="kw">LOOP AT</span> gt_item <span class="kw">INTO DATA</span>(ls_orig).
+    <span class="kw">APPEND VALUE</span> #( <span class="kw">BASE CORRESPONDING</span> #( ls_orig )
+      belnr   = pv_belnr
+      blart   = <span class="str">'AB'</span>
+      shkzg   = ls_orig-shkzg           <span class="cm">"SHKZG 유지</span>
+      dmbtr   = ls_orig-dmbtr * <span class="num">-1</span>    <span class="cm">"금액만 반전</span>
+      wrbtr   = ls_orig-wrbtr * <span class="num">-1</span>
+      dmbtr_s = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_orig-shkzg = <span class="str">'S'</span>
+                         <span class="kw">THEN</span> abs( ls_orig-dmbtr ) <span class="kw">ELSE</span> <span class="num">0</span> )
+      dmbtr_h = <span class="kw">COND</span> #( <span class="kw">WHEN</span> ls_orig-shkzg = <span class="str">'H'</span>
+                         <span class="kw">THEN</span> abs( ls_orig-dmbtr ) <span class="kw">ELSE</span> <span class="num">0</span> )
+    ) <span class="kw">TO</span> gt_rev_item.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="ct2" style="display:none"><span class="cm">* 역분개 전표를 원본 전표 바로 아래 배치 (중복 방지)</span>
+<span class="kw">FORM</span> <span class="fn">set_rev_item</span>.
+  <span class="kw">DATA</span>: lt_temp_header <span class="kw">LIKE</span> gt_header.
+  <span class="kw">LOOP AT</span> gt_header <span class="kw">INTO DATA</span>(ls_hdr).
+    <span class="kw">IF</span> line_exists( lt_temp_header[ belnr = ls_hdr-belnr ] ).
+      <span class="kw">CONTINUE</span>.
+    <span class="kw">ENDIF</span>.
+    <span class="kw">APPEND</span> ls_hdr <span class="kw">TO</span> lt_temp_header.
+    <span class="cm">"STBLG가 있으면 역분개 전표를 바로 다음 행에 추가</span>
+    <span class="kw">IF</span> ls_hdr-stblg <span class="kw">IS NOT INITIAL</span>.
+      <span class="kw">READ TABLE</span> gt_header <span class="kw">INTO DATA</span>(ls_rev)
+        <span class="kw">WITH KEY</span> belnr = ls_hdr-stblg.
+      <span class="kw">IF</span> sy-subrc = <span class="num">0</span>.
+        <span class="kw">IF NOT</span> line_exists( lt_temp_header[ belnr = ls_rev-belnr ] ).
+          <span class="kw">APPEND</span> ls_rev <span class="kw">TO</span> lt_temp_header.
+        <span class="kw">ENDIF</span>.
+      <span class="kw">ENDIF</span>.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+  gt_header = lt_temp_header.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="ct3" style="display:none"><span class="cm">* 차변/대변 컬럼 분리 + 아이콘(정상=녹색 / 역분개=빨강)</span>
+<span class="kw">FORM</span> <span class="fn">sum_dmbtr_sh</span>.
+  <span class="kw">LOOP AT</span> gt_item_data <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
+    <span class="kw">CASE</span> &lt;fs_item&gt;-shkzg.
+      <span class="kw">WHEN</span> <span class="str">'S'</span>.
+        &lt;fs_item&gt;-dmbtr_s   = &lt;fs_item&gt;-dmbtr.
+        &lt;fs_item&gt;-shkzg_txt = <span class="str">'차변'</span>.
+      <span class="kw">WHEN</span> <span class="str">'H'</span>.
+        &lt;fs_item&gt;-dmbtr_h   = &lt;fs_item&gt;-dmbtr.
+        &lt;fs_item&gt;-shkzg_txt = <span class="str">'대변'</span>.
+    <span class="kw">ENDCASE</span>.
+    <span class="cm">"역분개 전표 아이템 → 빨간 LED, 정상 → 초록 LED</span>
+    <span class="kw">IF</span> &lt;fs_item&gt;-belnr <span class="kw">EQ</span> gs_header-stblg.
+      &lt;fs_item&gt;-status = icon_led_red.
+    <span class="kw">ELSE</span>.
+      &lt;fs_item&gt;-status = icon_led_green.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+  <span class="kw">CHECK</span> gv_dmbtr_s <span class="kw">EQ</span> gv_dmbtr_h.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="ct4" style="display:none"><span class="cm">* DZ/KZ 전표 역분개 시 — 반제 정보 초기화 후 원전표 미결 복원</span>
+<span class="kw">FORM</span> <span class="fn">set_clear</span>.
+  <span class="kw">LOOP AT</span> gt_item <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
+    <span class="kw">IF</span> &lt;fs_item&gt;-augbl <span class="kw">IS NOT INITIAL</span>.
+      <span class="cm">"상대방 전표 augbl 초기화 → 미결 상태로 복원</span>
+      <span class="kw">UPDATE</span> zte3fi0003 <span class="kw">SET</span> augbl = <span class="str">' '</span>
+             augdt = <span class="str">'00000000'</span>
+       <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
+         <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
+      <span class="kw">UPDATE</span> zte3fi0002 <span class="kw">SET</span> bstat = <span class="str">' '</span>
+       <span class="kw">WHERE</span> bukrs = gv_sel_bukrs
+         <span class="kw">AND</span> belnr = &lt;fs_item&gt;-augbl.
+    <span class="kw">ENDIF</span>.
+    <span class="kw">CLEAR</span>: &lt;fs_item&gt;-augbl, &lt;fs_item&gt;-augdt.
+  <span class="kw">ENDLOOP</span>.
+  <span class="kw">UPDATE</span> zte3fi0003 <span class="kw">FROM TABLE</span> gt_item.
+  <span class="kw">COMMIT WORK AND WAIT</span>.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-tech"><span>ABAP</span><span>ALV Splitter</span><span>FI</span><span>PDF Spool</span><span>CL_DD_DOCUMENT</span><span>NUMBER_GET_NEXT</span></div>
         </div>
       </div>
 
@@ -722,6 +868,23 @@ function toggleProj(card){
   const isOpen=card.classList.contains('open');
   document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
   if(!isOpen)card.classList.add('open');
+}
+function openLightbox(el){
+  event.stopPropagation();
+  const img=el.querySelector('img');
+  const cap=el.querySelector('.img-caption');
+  document.getElementById('lightbox-img').src=img.src;
+  document.getElementById('lightbox-cap').textContent=cap?cap.textContent:'';
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+}
+function switchTab(btn,id){
+  btn.closest('.proj-body').querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
+  btn.closest('.proj-body').querySelectorAll('.code-panel').forEach(p=>p.style.display='none');
+  btn.classList.add('active');
+  document.getElementById(id).style.display='block';
 }
 const secs=document.querySelectorAll('section[id]');
 const links=document.querySelectorAll('.nav-links a');

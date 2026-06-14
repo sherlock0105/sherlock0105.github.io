@@ -7,8 +7,7 @@
 <title>박도현 · ABAP Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -31,13 +30,13 @@
   --purple:#7c3aed;
   --purple-light:#f5f3ff;
   --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
-  --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  --sans:'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   --radius:12px;
   --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
   --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15.5px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
 
 /* NAV */
 nav{
@@ -93,7 +92,7 @@ section{padding:5rem 0}
 .sec-head{margin-bottom:2.4rem}
 .sec-eyebrow{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .sec-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px}
-.sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.sec-title{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.3}
 
 /* SKILL */
 .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
@@ -106,7 +105,7 @@ section{padding:5rem 0}
 .skill-label{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text2)}
 .skill-items{display:flex;flex-direction:column;gap:.5rem}
 .skill-row{display:flex;justify-content:space-between;align-items:center}
-.skill-name{font-size:13px;color:var(--text);font-weight:500}
+.skill-name{font-size:13.5px;color:var(--text);font-weight:500}
 .skill-stars{display:flex;gap:2px}
 .star{width:8px;height:8px;border-radius:50%}
 .star.on{background:var(--blue)}
@@ -117,7 +116,7 @@ section{padding:5rem 0}
 .about-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;box-shadow:var(--shadow)}
 .about-card-label{font-size:11px;font-family:var(--mono);font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
 .about-list{list-style:none}
-.about-list li{font-size:13px;color:var(--text2);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:.8rem}
+.about-list li{font-size:13.5px;color:var(--text2);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:.8rem}
 .about-list li:last-child{border-bottom:none}
 .about-item-name{color:var(--text);font-weight:500}
 .about-item-meta{font-size:11px;color:var(--text3);white-space:nowrap;font-family:var(--mono)}
@@ -127,7 +126,7 @@ section{padding:5rem 0}
 /* STORY */
 .story-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .story-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);border-radius:2px 0 0 2px}
-.story-text{font-size:14px;color:var(--text2);line-height:1.9;max-width:820px}
+.story-text{font-size:14.5px;color:var(--text2);line-height:2;max-width:820px}
 .story-text p{margin-bottom:1rem}
 .story-text p:last-child{margin-bottom:0}
 
@@ -142,7 +141,7 @@ section{padding:5rem 0}
 .exp-dot.active{background:var(--blue);border-color:var(--blue)}
 .exp-org{font-size:11px;font-family:var(--mono);color:var(--blue);font-weight:500;margin-bottom:.25rem}
 .exp-title{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
-.exp-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:.8rem}
+.exp-desc{font-size:13.5px;color:var(--text2);line-height:1.85;margin-bottom:.8rem}
 .exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
 .exp-tag{font-size:11px;font-family:var(--mono);color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.15rem .55rem;border-radius:4px}
 .exp-pm-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--purple);background:var(--purple-light);border:1px solid #ddd6fe;padding:.2rem .6rem;border-radius:4px;margin-bottom:.5rem}
@@ -172,7 +171,7 @@ section{padding:5rem 0}
 .proj-features{margin-bottom:1.2rem}
 .proj-features-title{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
 .proj-features ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
-.proj-features ul li{font-size:13px;color:var(--text2);display:flex;gap:.6rem;line-height:1.55}
+.proj-features ul li{font-size:13.5px;color:var(--text2);display:flex;gap:.6rem;line-height:1.65}
 .proj-features ul li::before{content:'→';color:var(--blue);font-size:11px;flex-shrink:0;margin-top:3px}
 .proj-code{background:#1e1e2e;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;font-family:var(--mono);font-size:11.5px;color:#cdd6f4;overflow-x:auto;white-space:pre;line-height:1.75}
 .proj-code .cm{color:#6c7086}
@@ -182,6 +181,37 @@ section{padding:5rem 0}
 .proj-code .num{color:#fab387}
 .proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .proj-tech span{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.2rem .6rem;border-radius:4px}
+
+
+/* TEAM ROLE CARD */
+.pm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
+.pm-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.5rem;box-shadow:var(--shadow)}
+.pm-card-icon{font-size:22px;margin-bottom:.6rem}
+.pm-card-title{font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.7rem}
+.pm-card-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.pm-card-list li{font-size:13.5px;color:var(--text2);line-height:1.65;display:flex;gap:.5rem}
+.pm-card-list li::before{content:'·';color:var(--blue);font-weight:700;flex-shrink:0}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem}
+.stat-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-size:1.6rem;font-weight:700;color:var(--blue);font-family:var(--mono);line-height:1}
+.stat-unit{font-size:11px;color:var(--text3);margin-top:.1rem;font-family:var(--mono)}
+.stat-label{font-size:12px;color:var(--text2);margin-top:.4rem}
+
+/* SAP ENV */
+.env-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.env-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem .7rem;background:var(--bg);border-radius:7px;font-size:12.5px}
+.env-key{color:var(--text3);font-family:var(--mono)}
+.env-val{font-weight:600;color:var(--text);font-family:var(--mono)}
+
+/* POSTING TYPES */
+.blart-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.8rem}
+.blart-item{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:.5rem .7rem;display:flex;align-items:center;gap:.5rem}
+.blart-code{font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);white-space:nowrap;min-width:26px}
+.blart-name{font-size:11.5px;color:var(--text2)}
+
+@media(max-width:680px){.pm-grid{grid-template-columns:1fr}.stats-bar{grid-template-columns:repeat(2,1fr)}.blart-grid{grid-template-columns:repeat(2,1fr)}.env-grid{grid-template-columns:1fr}}
 
 /* PROJECT OVERVIEW — 대주제 + 비즈니스 모델 */
 .ov-theme{background:linear-gradient(135deg,var(--blue) 0%,#2554d4 100%);border-radius:16px;padding:2rem 2.2rem;color:#fff;margin-bottom:1.6rem;box-shadow:var(--shadow-md)}
@@ -298,10 +328,14 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div>
         <div class="hero-badge">✦ SAP ABAP Developer</div>
         <h1 class="hero-name">박도현<br><span>ABAP Developer</span></h1>
-        <p class="hero-title">SAP FI · PM · Master Pack ERP 프로젝트</p>
+        <p class="hero-title">SAP ABAP · FI · QM · Master Pack ERP 프로젝트</p>
+        <div style="display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap">
+          <span style="display:inline-flex;align-items:center;gap:.35rem;background:var(--purple-light);color:var(--purple);border:1px solid #ddd6fe;font-size:12px;font-weight:700;font-family:var(--mono);padding:.28rem .75rem;border-radius:6px">👑 Project Manager</span>
+          <span style="font-size:12.5px;color:var(--text3)">7명 팀 · Master Pack ERP 구축</span>
+        </div>
         <p class="hero-desc">
           요구사항의 본질을 고민하고, 데이터의 흐름을 명확하게 잇는 SAP ABAP 개발자입니다.<br>
-          FI 모듈 커스텀 개발 8종을 PM으로 직접 설계·구현했습니다.
+          FI·QM 모듈 CBO 8종을 직접 설계·구현했으며, 팀 전체 공용 아키텍처를 리드했습니다.
         </p>
         <div class="hero-chips">
           <span class="chip hi">ABAP</span>
@@ -311,7 +345,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <span class="chip">Fiori/SAPUI5</span>
           <span class="chip">OData(SEGW)</span>
           <span class="chip">FI Module</span>
-          <span class="chip">PM 경험</span>
+          <span class="chip">QM Module</span>
+          <span class="chip" style="color:var(--purple);background:var(--purple-light);border-color:#ddd6fe">Project Management</span>
         </div>
         <div class="hero-btns">
           <a class="btn btn-blue" href="#projects">프로젝트 보기 →</a>
@@ -321,7 +356,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="hero-card">
         <div class="hero-card-row">
           <span class="hero-card-label">Role</span>
-          <span class="hero-card-val blue">ABAP Dev · PM</span>
+          <span class="hero-card-val blue">PM · ABAP Dev</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Projects</span>
@@ -419,6 +454,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </ul>
       </div>
     </div>
+
+
   </div>
 </section>
 
@@ -457,13 +494,13 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="exp-right">
           <div class="exp-dot active"></div>
-          <div class="exp-pm-badge">👑 PM</div>
+          <div class="exp-pm-badge">👑 Project Manager</div>
           <div class="exp-org">SAP 코리아 — SAP CODE 아카데미 1기 (개근 이수)</div>
-          <div class="exp-title">ERP 구축 프로젝트 PM 겸 FI·QM 개발자</div>
+          <div class="exp-title">ERP 구축 프로젝트 PM · FI·QM 모듈 개발자</div>
           <div class="exp-desc">
-            화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트를 PM으로 이끌며 FI·QM 모듈 커스텀 개발 총괄.
+            화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트에서 FI·QM 모듈 커스텀 개발을 총괄.
             전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
-            8종의 CBO 프로그램을 직접 설계·구현. 개근 이수.
+            8종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드. 개근 이수.
           </div>
           <div class="exp-tags">
             <span class="exp-tag">ABAP</span>
@@ -477,6 +514,43 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 팀 기여 역할 상세 -->
+    <div style="margin-top:2rem">
+      <div class="sec-eyebrow" style="margin-bottom:.3rem">PM Role</div>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:1rem;font-family:var(--mono)">7인 팀의 프로젝트 매니저로 요구사항 관리부터 공용 아키텍처 설계까지 리드</p>
+      <div class="pm-grid">
+        <div class="pm-card">
+          <div class="pm-card-icon">🗂</div>
+          <div class="pm-card-title">요구사항 관리</div>
+          <ul class="pm-card-list">
+            <li>고객 요구사항을 기능 단위로 구조화해 팀 공유</li>
+            <li>변경 사항 발생 시 영향 범위·작업 우선순위 재정리</li>
+            <li>모듈 간 데이터 인터페이스 정의서 작성</li>
+          </ul>
+        </div>
+        <div class="pm-card">
+          <div class="pm-card-icon">🔗</div>
+          <div class="pm-card-title">팀 운영 (7명)</div>
+          <ul class="pm-card-list">
+            <li>FI·QM·MM·SD·PP 모듈 담당자 역할 분배</li>
+            <li>반복 발생 로직을 공용 Class·Function Module로 표준화해 배포</li>
+            <li>예외 처리 케이스 정리·공유로 팀 시행착오 감소</li>
+          </ul>
+        </div>
+        <div class="pm-card">
+          <div class="pm-card-icon">📐</div>
+          <div class="pm-card-title">설계 · 개발</div>
+          <ul class="pm-card-list">
+            <li>FI·QM 모듈 CBO 8종 직접 설계·구현</li>
+            <li>공용 Posting Class(ZCL_E3_FI_DOCUMENT) 설계로 전표 생성 일원화</li>
+            <li>공용 Function Module 7종으로 팀 UI 통일성 확보</li>
+          </ul>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </section>
@@ -525,7 +599,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#e0d8ec"></span>FI 재무</div>
     </div>
     <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;line-height:1.7;text-align:center">
-      이 중 <strong style="color:var(--blue)">FI 재무 · QM 품질관리</strong> 영역을 PM 겸 개발자로 직접 설계·구현했습니다.
+      이 중 <strong style="color:var(--blue)">FI 재무 · QM 품질관리</strong> 영역을 직접 설계·구현했습니다.
     </p>
   </div>
 </section>
@@ -540,7 +614,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <h2 class="sec-title">CBO 개발 프로그램 · 8종</h2>
     </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
-      SAP CODE 아카데미 Master Pack ERP 프로젝트에서 PM 겸 FI·QM 모듈 개발자로 직접 설계·구현한 프로그램입니다.<br>
+      SAP CODE 아카데미 Master Pack ERP 프로젝트에서 FI·QM 모듈 개발자로 직접 설계·구현한 프로그램입니다.<br>
       카드를 클릭하면 상세 내용을 확인할 수 있습니다.
     </p>
     <div class="proj-list">
@@ -1322,7 +1396,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_func_group.png" alt="Function Group 목록">
-              <div class="img-caption">ZFGE3FI01 Function Group — 고객·공급업체·전표·자재·생산·SD/QM 팝업 10종</div>
+              <div class="img-caption">ZFGE3FI01 Function Group — 고객·공급업체·전표·자재·생산·SD/QM 팝업 7종</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_tax_invoice.png" alt="전자세금계산서 관리 — 공용 전표 팝업 연동">
@@ -1339,7 +1413,21 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
             <ul>
               <li><strong>단일 진입점 POST_DOCUMENT (Public Method)</strong> — 전표유형(BLART)에 따라 AR/AP/GL Method로 자동 분기. 호출부에서 전표유형별 로직을 알 필요 없음</li>
               <li><strong>환율 자동 조회</strong> — 외화 전표 시 Function Module ZFE3FI0001로 기준일자·통화 환율 자동 세팅. KRW면 외화 필드 자동 클리어</li>
-              <li><strong>Number Range 자동 채번</strong> — BLART별 Number Range 자동 매핑 (SA=01, AB=02, KR=03, DR=05, AA=11 등)</li>
+              <li><strong>Number Range 자동 채번</strong> — 11종 전표유형(BLART)별 Number Range 자동 매핑
+                <div class="blart-grid">
+                  <div class="blart-item"><span class="blart-code">SA</span><span class="blart-name">일반전표</span></div>
+                  <div class="blart-item"><span class="blart-code">AB</span><span class="blart-name">역분개전표</span></div>
+                  <div class="blart-item"><span class="blart-code">KR</span><span class="blart-name">매입전표</span></div>
+                  <div class="blart-item"><span class="blart-code">KZ</span><span class="blart-name">지급전표</span></div>
+                  <div class="blart-item"><span class="blart-code">DR</span><span class="blart-name">매출전표</span></div>
+                  <div class="blart-item"><span class="blart-code">DZ</span><span class="blart-name">입금전표</span></div>
+                  <div class="blart-item"><span class="blart-code">WA</span><span class="blart-name">출고전표</span></div>
+                  <div class="blart-item"><span class="blart-code">WE</span><span class="blart-name">입고전표</span></div>
+                  <div class="blart-item"><span class="blart-code">RE</span><span class="blart-name">송장전표</span></div>
+                  <div class="blart-item"><span class="blart-code">PR</span><span class="blart-name">정산전표</span></div>
+                  <div class="blart-item"><span class="blart-code">AA</span><span class="blart-name">고정자산</span></div>
+                </div>
+              </li>
               <li><strong>차대변 불일치 사전 차단</strong> — 차변합계 ≠ 대변합계 시 ROLLBACK 후 오류 메시지 반환</li>
               <li><strong>전 모듈 재사용</strong> — SD·MM·PP·FI 전표가 모두 이 Class 한 곳을 호출. 모듈별 Posting 시나리오를 정리해 팀원과 공유</li>
             </ul>
@@ -1351,7 +1439,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <li><strong>ZFE3FI0004 — Customer Info Popup</strong> (Screen 300): 고객 마스터 상세 조회</li>
               <li><strong>ZFE3FI0005 — Vendor Info Popup</strong> (Screen 400): 공급업체 마스터 상세 조회</li>
               <li><strong>ZFE3FI0006 — Document Popup</strong>: 전표번호·회사코드·회계연도 입력받아 Screen 0500에 전표 헤더+아이템 표시. 어느 프로그램에서든 동일한 UI 제공</li>
-              <li><strong>ZFE3FI0007~0010</strong> — Material / Production / SD Delivery / QM Inspection Info Popup</li>
+              <li><strong>ZFE3FI0007~0010</strong> — Material / Production / SD Delivery / QM Inspection Info Popup (총 7종)</li>
               <li><strong>Screen 공용화로 UI 통일성 확보</strong> — 같은 Function Group 내 Screen을 공유해 팀원이 CALL FUNCTION 한 줄로 통일된 팝업 호출</li>
             </ul>
           </div>
@@ -1391,7 +1479,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
     <span class="kw">RETURN</span>.
   <span class="kw">ENDIF</span>.
   <span class="cm">* 2. BLART → Number Range 자동 매핑</span>
-  <span class="cm">*    SA=01 AB=02 KR=03 KZ=04 DR=05 DZ=06 WA=07 WE=08 RE=09 AA=11</span>
+  <span class="cm">*    SA=01 AB=02 KR=03 KZ=04 DR=05 DZ=06 WA=07 WE=08 RE=09 PR=10 AA=11</span>
   <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
     <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRE3FI01'</span>
     <span class="kw">IMPORTING</span> number      = lv_belnr.

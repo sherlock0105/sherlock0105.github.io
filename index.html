@@ -59,7 +59,7 @@ nav{
 .nav-cta:hover{opacity:.88}
 
 /* LAYOUT */
-.container{max-width:900px;margin:0 auto;padding:0 2rem}
+.container{max-width:1140px;margin:0 auto;padding:0 2.5rem}
 section{padding:5rem 0}
 .sec-div{border:none;border-top:1px solid var(--border);margin:0}
 
@@ -127,7 +127,7 @@ section{padding:5rem 0}
 /* STORY */
 .story-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .story-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);border-radius:2px 0 0 2px}
-.story-text{font-size:14px;color:var(--text2);line-height:1.9}
+.story-text{font-size:14px;color:var(--text2);line-height:1.9;max-width:820px}
 .story-text p{margin-bottom:1rem}
 .story-text p:last-child{margin-bottom:0}
 
@@ -494,7 +494,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <div class="ov-theme">
       <div class="ov-theme-label">대주제 · Main Theme</div>
       <div class="ov-theme-title">수익성 분석을 적용한 통합 재무 및 공급망 관리 서비스</div>
-      <div class="ov-theme-sub">자체 브랜드 화장품을 제조하고 국내외 유통 채널로 판매하는 기업(Master Pack)의 ERP 구축 프로젝트. MM·SD·PP·QM·FI/CO 전 모듈을 통합해 제품별 수익성 분석과 실시간 재무·공급망 관리를 구현했습니다.</div>
+      <div class="ov-theme-sub">자체 브랜드 화장품을 제조하고 국내외 유통 채널로 판매하는 기업(Master Pack)의 ERP 구축 프로젝트. MM·SD·PP·QM·FI 전 모듈을 통합해 제품별 수익성 분석과 실시간 재무·공급망 관리를 구현했습니다.</div>
     </div>
 
     <div class="ov-models">
@@ -514,18 +514,18 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
     <div class="proj-features-title" style="margin-bottom:.8rem;font-size:13px;color:var(--text2)">전체 업무 프로세스 흐름도</div>
     <div class="flow-wrap">
-      <img class="flow-img" src="images/process_flow.png" alt="Master Pack ERP 전체 프로세스 흐름도 — SD·PP·QM·MM·FI/CO" onclick="openImg(this.src)">
-      <div class="flow-cap">SD 판매 → PP 생산 → QM 품질관리 → MM 구매/자재 → FI/CO 재무 · 모듈 간 데이터 흐름 (클릭하면 확대)</div>
+      <img class="flow-img" src="images/process_flow.png" alt="Master Pack ERP 전체 프로세스 흐름도 — SD·PP·QM·MM·FI" onclick="openImg(this.src)">
+      <div class="flow-cap">SD 판매 → PP 생산 → QM 품질관리 → MM 구매/자재 → FI 재무 · 모듈 간 데이터 흐름 (클릭하면 확대)</div>
     </div>
     <div class="flow-legend">
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#cfe0fb"></span>SD 판매</div>
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#d4ead4"></span>PP 생산</div>
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#e2d4f0"></span>QM 품질관리</div>
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#fbeccd"></span>MM 구매/자재</div>
-      <div class="flow-leg"><span class="flow-leg-dot" style="background:#e0d8ec"></span>FI/CO 재무</div>
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#e0d8ec"></span>FI 재무</div>
     </div>
     <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;line-height:1.7;text-align:center">
-      이 중 <strong style="color:var(--blue)">FI/CO 재무 · QM 품질관리</strong> 영역을 PM 겸 개발자로 직접 설계·구현했습니다.
+      이 중 <strong style="color:var(--blue)">FI 재무 · QM 품질관리</strong> 영역을 PM 겸 개발자로 직접 설계·구현했습니다.
     </p>
   </div>
 </section>
@@ -1306,15 +1306,15 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="proj-body">
           <div class="proj-summary">
-            SD·MM·PP·FI·CO 전 모듈에서 공용으로 사용하는 Posting Class와 팝업 Function Module을 설계·구현.<br>
-            단일 인터페이스로 Number Range·환율·차대변 검증·CO Integration을 통합해 팀 전체의 중복 개발을 제거했습니다.
+            SD·MM·PP·FI 전 모듈에서 공용으로 사용하는 Posting Class와 팝업 Function Module을 설계·구현.<br>
+            단일 인터페이스로 Number Range·환율·차대변 검증을 통합해 팀 전체의 중복 개발을 제거했습니다.
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_class_methods.png" alt="ZCL_E3_FI_DOCUMENT Class Methods">
-              <div class="img-caption">ZCL_E3_FI_DOCUMENT — POST_DOCUMENT(Public) + AR/AP/GL/COMMON/CO Methods</div>
+              <div class="img-caption">ZCL_E3_FI_DOCUMENT — POST_DOCUMENT(Public) + AR/AP/GL 분기 Method 구조</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_posting_table.png" alt="모듈별 전표 분개 시나리오 정리표">
@@ -1341,8 +1341,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <li><strong>환율 자동 조회</strong> — 외화 전표 시 Function Module ZFE3FI0001로 기준일자·통화 환율 자동 세팅. KRW면 외화 필드 자동 클리어</li>
               <li><strong>Number Range 자동 채번</strong> — BLART별 Number Range 자동 매핑 (SA=01, AB=02, KR=03, DR=05, AA=11 등)</li>
               <li><strong>차대변 불일치 사전 차단</strong> — 차변합계 ≠ 대변합계 시 ROLLBACK 후 오류 메시지 반환</li>
-              <li><strong>CO Integration 자동화</strong> — FI 전표 생성 후 _POST_CO_DOCUMENT Method로 CO 전표 자동 생성. CO 실패 시 FI도 ROLLBACK</li>
-              <li><strong>전 모듈 재사용</strong> — SD·MM·PP·FI·CO 전표가 모두 이 Class 한 곳을 호출. 모듈별 Posting 시나리오를 정리해 팀원과 공유</li>
+              <li><strong>전 모듈 재사용</strong> — SD·MM·PP·FI 전표가 모두 이 Class 한 곳을 호출. 모듈별 Posting 시나리오를 정리해 팀원과 공유</li>
             </ul>
           </div>
 
@@ -1384,7 +1383,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
   <span class="kw">ENDCASE</span>.
 <span class="kw">ENDMETHOD</span>.</div>
 
-          <div class="proj-code code-panel" id="c8t2" style="display:none"><span class="cm">* 공통 처리 — 차대변 검증 → 채번 → INSERT → CO Integration → COMMIT</span>
+          <div class="proj-code code-panel" id="c8t2" style="display:none"><span class="cm">* 공통 처리 — 차대변 검증 → 채번 → INSERT → COMMIT</span>
 <span class="kw">METHOD</span> <span class="fn">_post_document_common</span>.
   <span class="cm">* 1. 차대변 불일치 차단</span>
   <span class="kw">IF</span> lv_debit <span class="kw">NE</span> lv_credit.
@@ -1397,8 +1396,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
     <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRE3FI01'</span>
     <span class="kw">IMPORTING</span> number      = lv_belnr.
   <span class="cm">* 3. 헤더/아이템 INSERT (외화 시 환율 변환 + KRW 처리)</span>
-  <span class="cm">* 4. CO Integration → 실패 시 FI도 ROLLBACK</span>
-  zcl_e3_fi_document=><span class="fn">_post_co_document</span>( ... ).
+  <span class="cm">* 4. 검증 통과 시 최종 반영</span>
   <span class="kw">COMMIT WORK AND WAIT</span>.
 <span class="kw">ENDMETHOD</span>.</div>
 
@@ -1424,7 +1422,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
   <span class="kw">CALL SCREEN</span> <span class="str">'0500'</span> STARTING AT <span class="num">20</span> <span class="num">3</span>.
 <span class="kw">ENDFUNCTION</span>.</div>
 
-          <div class="proj-tech"><span>ABAP OO</span><span>Static Method</span><span>Function Group</span><span>NUMBER_GET_NEXT</span><span>CO Integration</span><span>Team Shared</span></div>
+          <div class="proj-tech"><span>ABAP OO</span><span>Static Method</span><span>Function Group</span><span>NUMBER_GET_NEXT</span><span>Team Shared</span></div>
         </div>
       </div>
 

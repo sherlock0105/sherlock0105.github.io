@@ -6,7 +6,9 @@
 <meta name="description" content="박도현 SAP ABAP 개발자 포트폴리오">
 <title>박도현 · ABAP Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -28,8 +30,8 @@
   --amber-light:#fffbeb;
   --purple:#7c3aed;
   --purple-light:#f5f3ff;
-  --mono:'JetBrains Mono',monospace;
-  --sans:'Pretendard',-apple-system,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+  --sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
   --radius:12px;
   --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
   --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
@@ -181,6 +183,24 @@ section{padding:5rem 0}
 .proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .proj-tech span{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.2rem .6rem;border-radius:4px}
 
+/* CHALLENGE — AS-IS / TO-BE */
+.chal-list{display:flex;flex-direction:column;gap:1rem}
+.chal-card{background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.chal-cat{display:flex;align-items:center;gap:.7rem;padding:1rem 1.4rem;background:var(--bg);border-bottom:1px solid var(--border)}
+.chal-cat-no{width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:var(--mono);flex-shrink:0}
+.chal-cat-title{font-size:15px;font-weight:700;color:var(--text)}
+.chal-rows{padding:.4rem 0}
+.chal-row{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.chal-row:not(:last-child){border-bottom:1px solid var(--border)}
+.chal-cell{padding:1rem 1.4rem;font-size:13px;line-height:1.6}
+.chal-cell.asis{color:var(--text2)}
+.chal-cell.tobe{color:var(--text);background:#f7faff;border-left:1px solid var(--border)}
+.chal-tag{display:inline-block;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:.04em;padding:.12rem .5rem;border-radius:4px;margin-bottom:.5rem}
+.chal-tag.asis{color:#b4341f;background:#fbe9e6}
+.chal-tag.tobe{color:var(--blue);background:var(--blue-light)}
+.chal-mine{display:inline-block;font-size:10px;font-weight:600;font-family:var(--mono);color:#0a7d3c;background:#e6f7ee;border:1px solid #b8e6cd;padding:.1rem .45rem;border-radius:4px;margin-left:.5rem}
+@media(max-width:680px){.chal-row{grid-template-columns:1fr}.chal-cell.tobe{border-left:none;border-top:1px solid var(--border)}}
+
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
 .contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem}
@@ -244,6 +264,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="#story">Story</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#challenge">Challenge</a>
     <a href="#contact">Contact</a>
   </div>
   <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank">GitHub ↗</a>
@@ -393,7 +414,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="story-text">
         <p>안전관리자로 재직하던 중, ERP 개발 설명회에 참석한 적이 있습니다. 그 자리에서 기업의 자원 관리와 업무 과정이 전산 시스템으로 운영되는 모습을 보며 ERP와 같은 통합 관리 시스템에 관심을 가지게 되었습니다. 특히 재고가 자동으로 관리되고, 수요 예측에서 판매까지 이어지는 구조를 접하며 <strong>"이런 시스템을 직접 개발해 기업의 효율을 높이고 싶다"</strong>는 목표가 생겼습니다.</p>
         <p>이후 정보처리기사 필기시험에 합격하고 현재 실기를 준비하며 JavaScript, SQL(SQLite·MySQL·PostgreSQL) 등을 학습했습니다. SAP CODE 아카데미는 단순히 코딩을 배우는 과정이 아니라, SAP와 ABAP을 기반으로 ERP 시스템을 설계·구현하는 실무 역량을 체계적으로 쌓을 수 있다는 점에서 선택했습니다.</p>
-        <p>학습 과정에서는 단순한 기능 구현보다 구조적인 이해를 우선시했습니다. ALV 구현 방식, 도메인 텍스트 매핑, 프로그램 구조 설계 등 다양한 기술을 비교·분석하며 동작 원리와 구조를 끝까지 추적했고, 반복적으로 발생하는 로직은 공통 함수로 정리해 팀 전체의 시행착오를 줄이는 방식으로 협업했습니다.</p>
+        <p>학습 과정에서는 단순한 기능 구현보다 구조적인 이해를 우선시했습니다. ALV 구현 방식, 도메인 텍스트 매핑, 프로그램 구조 설계 등 다양한 기술을 비교·분석하며 동작 원리와 구조를 끝까지 추적했고, 반복적으로 발생하는 로직은 공통 함수로 정리해 팀 전체의 시행착오를 줄였습니다.</p>
       </div>
     </div>
   </div>
@@ -681,8 +702,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
               <li><strong>평가손익 컬러 표시</strong> — 이익=녹색 / 손실=빨강 셀 컬러. AR·AP 요약 카드로 전체 손익 한눈에 파악</li>
               <li><strong>미결잔액 TOP5 차트</strong> — ALV Chart 버튼 클릭 시 거래처별 미결잔액 막대 차트 팝업</li>
               <li><strong>외화보유현황 탭</strong> — 은행 보유 외화 + AR/AP 미결 외화 집계. 통화별 시계열 차트 내장</li>
-              <li><strong>평가/환입전표 팝업</strong> — 생성 전 예정 내역 미리보기. 공용 Function Module로 팝업 재사용</li>
-              <li><strong>배치잡 자동 전표 생성</strong> — 말일 평가전표 + 익월 1일 환입전표 쌍으로 자동 생성. zcl_e3_fi_document 공용 클래스 재사용</li>
+              <li><strong>평가/환입전표 팝업</strong> — 생성 전 예정 내역 미리보기. Function Module로 팝업 재사용</li>
+              <li><strong>배치잡 자동 전표 생성</strong> — 말일 평가전표 + 익월 1일 환입전표 쌍으로 자동 생성. Posting Class ZCL_E3_FI_DOCUMENT 재사용</li>
             </ul>
           </div>
 
@@ -942,70 +963,6 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">05</div>
           <div>
-            <div class="proj-info-title">완제품 검수 프로그램</div>
-            <div class="proj-info-sub">SAPMZE3QM0001 · Module Pool</div>
-            <div class="proj-info-badges">
-              <span class="pbadge mm">MM</span>
-              <span class="pbadge qm">QM</span>
-              <span class="pbadge fi">Module Pool</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수. 합격 품목에 한해 입고·재고 마스터 자동 연동.<br>
-            Excel 템플릿 업로드 방식으로 검수 결과 입력. 제조원가(직접비) 명세서 연동.
-          </div>
-
-          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_main.png" alt="완제품 검수 메인 화면">
-              <div class="img-caption">메인 — 검수목록 탭 + 우측 완제품 검수 현황 (합격률·폐기율·검사항목별 불량)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
-              <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
-              <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
-              <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
-              <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
-              <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
-            </div>
-          </div>
-
-          <div class="proj-features" style="margin-top:1.4rem">
-            <div class="proj-features-title">핵심 기능 상세</div>
-            <ul>
-              <li><strong>검수목록 조회</strong> — 검수유형·자재코드·생산번호·날짜 조건 검색. 전체/검수완료/대기중 탭 필터. 우측 패널에 현황 요약 카드 실시간 갱신</li>
-              <li><strong>Excel 템플릿 업로드 방식</strong> — 엑셀 템플릿 다운로드 → 현장에서 항목별 불합격 수량 기입 → 시스템 업로드 → GUI_UPLOAD로 파싱 후 DB 반영</li>
-              <li><strong>검사 결과 상세</strong> — 행 선택 시 우측에 검사 항목별 불량 내역(색상·PH·용량·납/수은·방부제 등) 자동 표시. 합격률·폐기 수량 실시간 계산</li>
-              <li><strong>제조원가 명세서 연동</strong> — 합격 처리 시 생산오더 기준 제조원가(직접비) 명세서 생성. 재료비·노무비·1EA당 원가 산출. PDF 다운로드 + 이메일 발송</li>
-              <li><strong>페기현황 탭</strong> — 폐기 처리된 LOT 이력 별도 관리</li>
-            </ul>
-          </div>
-
-          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span><span>GUI_UPLOAD</span><span>Excel Template</span></div>
-        </div>
-      </div>
-
-      <!-- 06 -->
-      <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
-          <div class="proj-num">06</div>
-          <div>
             <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
             <div class="proj-info-sub">ZCDS_E3_FI_0013 · Fiori / OData</div>
             <div class="proj-info-badges">
@@ -1096,6 +1053,70 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 <span class="kw">ENDMETHOD</span>.</div>
 
           <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>UNION ALL</span><span>Fiori</span><span>SAPUI5</span><span>OData</span><span>SEGW</span></div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
+          <div class="proj-num">06</div>
+          <div>
+            <div class="proj-info-title">완제품 검수 프로그램</div>
+            <div class="proj-info-sub">SAPMZE3QM0001 · Module Pool</div>
+            <div class="proj-info-badges">
+              <span class="pbadge mm">MM</span>
+              <span class="pbadge qm">QM</span>
+              <span class="pbadge fi">Module Pool</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            제조 라인에서 생산 완료된 제품의 품질·수량 최종 검수. 합격 품목에 한해 입고·재고 마스터 자동 연동.<br>
+            Excel 템플릿 업로드 방식으로 검수 결과 입력. 제조원가(직접비) 명세서 연동.
+          </div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_main.png" alt="완제품 검수 메인 화면">
+              <div class="img-caption">메인 — 검수목록 탭 + 우측 완제품 검수 현황 (합격률·폐기율·검사항목별 불량)</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
+              <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
+              <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
+              <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
+              <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
+              <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
+            <ul>
+              <li><strong>검수목록 조회</strong> — 검수유형·자재코드·생산번호·날짜 조건 검색. 전체/검수완료/대기중 탭 필터. 우측 패널에 현황 요약 카드 실시간 갱신</li>
+              <li><strong>Excel 템플릿 업로드 방식</strong> — 엑셀 템플릿 다운로드 → 현장에서 항목별 불합격 수량 기입 → 시스템 업로드 → GUI_UPLOAD로 파싱 후 DB 반영</li>
+              <li><strong>검사 결과 상세</strong> — 행 선택 시 우측에 검사 항목별 불량 내역(색상·PH·용량·납/수은·방부제 등) 자동 표시. 합격률·폐기 수량 실시간 계산</li>
+              <li><strong>제조원가 명세서 연동</strong> — 합격 처리 시 생산오더 기준 제조원가(직접비) 명세서 생성. 재료비·노무비·1EA당 원가 산출. PDF 다운로드 + 이메일 발송</li>
+              <li><strong>페기현황 탭</strong> — 폐기 처리된 LOT 이력 별도 관리</li>
+            </ul>
+          </div>
+
+          <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>MM</span><span>QM</span><span>ALV</span><span>GUI_UPLOAD</span><span>Excel Template</span></div>
         </div>
       </div>
 
@@ -1197,85 +1218,84 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
       </div>
 
-
       <!-- 08 -->
       <div class="proj-card">
         <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">08</div>
           <div>
-            <div class="proj-info-title">공용 전표 클래스 · 펑션모듈</div>
-            <div class="proj-info-sub">ZCL_E3_FI_DOCUMENT · ZFGE3FI01 · 팀 공용</div>
+            <div class="proj-info-title">Common Posting Class · Function Module</div>
+            <div class="proj-info-sub">ZCL_E3_FI_DOCUMENT · ZFGE3FI01 · Team Shared</div>
             <div class="proj-info-badges">
               <span class="pbadge fi">FI</span>
               <span class="pbadge fi">ABAP OO</span>
-              <span class="pbadge fi">Function</span>
-              <span class="pbadge pm">팀 공용</span>
+              <span class="pbadge fi">Function Module</span>
+              <span class="pbadge pm">Shared</span>
             </div>
           </div>
           <div class="proj-chevron">›</div>
         </div>
         <div class="proj-body">
           <div class="proj-summary">
-            SD·MM·PP·FI·CO 전 모듈에서 공용으로 사용하는 전표 생성 클래스와 팝업 펑션모듈을 설계·구현.<br>
-            단일 인터페이스로 번호범위·환율·차대변 검증·CO 연계를 통합해 팀 전체의 중복 개발을 제거했습니다.
+            SD·MM·PP·FI·CO 전 모듈에서 공용으로 사용하는 Posting Class와 팝업 Function Module을 설계·구현.<br>
+            단일 인터페이스로 Number Range·환율·차대변 검증·CO Integration을 통합해 팀 전체의 중복 개발을 제거했습니다.
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_class_methods.png" alt="ZCL_E3_FI_DOCUMENT 클래스 메서드 목록">
-              <div class="img-caption">ZCL_E3_FI_DOCUMENT — POST_DOCUMENT(Public) + AR/AP/GL/COMMON/CO 분기 메서드</div>
+              <img src="images/doc08_class_methods.png" alt="ZCL_E3_FI_DOCUMENT Class Methods">
+              <div class="img-caption">ZCL_E3_FI_DOCUMENT — POST_DOCUMENT(Public) + AR/AP/GL/COMMON/CO Methods</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_posting_table.png" alt="모듈별 전표 분개 시나리오 정리표">
-              <div class="img-caption">모듈별 전표 시나리오 정리표 — SD 국내 판매 출하·청구·채널수수료·입금 분개를 팀과 공유</div>
+              <div class="img-caption">모듈별 Posting 시나리오 정리표 — SD 국내 판매 출하·청구·채널수수료·입금 분개를 팀과 공유</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_func_group.png" alt="공용 펑션그룹 목록">
-              <div class="img-caption">ZFGE3FI01 펑션그룹 — 고객·공급업체·전표·자재·생산·SD/QM 팝업 10종</div>
+              <img src="images/doc08_func_group.png" alt="Function Group 목록">
+              <div class="img-caption">ZFGE3FI01 Function Group — 고객·공급업체·전표·자재·생산·SD/QM 팝업 10종</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
               <img src="images/doc08_tax_invoice.png" alt="전자세금계산서 관리 — 공용 전표 팝업 연동">
-              <div class="img-caption">전자세금계산서 관리 — ZFE3FI0006 공용 전표 팝업으로 전표 상세 조회 연동</div>
+              <div class="img-caption">전자세금계산서 관리 — ZFE3FI0006 Function Module로 전표 상세 조회 연동</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_doc_popup.png" alt="전표 정보 팝업 — 공용 펑션모듈">
+              <img src="images/doc08_doc_popup.png" alt="전표 정보 팝업 — 공용 Function Module">
               <div class="img-caption">전표 정보 팝업 — 어느 화면에서든 ZFE3FI0006 한 줄 호출로 동일한 팝업 표시</div>
             </div>
           </div>
 
           <div class="proj-features" style="margin-top:1.4rem">
-            <div class="proj-features-title">공용 클래스 — ZCL_E3_FI_DOCUMENT</div>
+            <div class="proj-features-title">Posting Class — ZCL_E3_FI_DOCUMENT</div>
             <ul>
-              <li><strong>단일 진입점 POST_DOCUMENT (Public)</strong> — 전표유형(BLART)에 따라 AR/AP/GL 메서드로 자동 분기. 호출부에서 전표유형별 로직을 알 필요 없음</li>
-              <li><strong>환율 자동 조회</strong> — 외화 전표 시 ZFE3FI0001로 기준일자·통화 환율 자동 세팅. KRW면 외화 필드 자동 클리어</li>
-              <li><strong>번호범위 자동 채번</strong> — BLART별 번호범위 자동 매핑 (SA=01, AB=02, KR=03, DR=05, AA=11 등)</li>
+              <li><strong>단일 진입점 POST_DOCUMENT (Public Method)</strong> — 전표유형(BLART)에 따라 AR/AP/GL Method로 자동 분기. 호출부에서 전표유형별 로직을 알 필요 없음</li>
+              <li><strong>환율 자동 조회</strong> — 외화 전표 시 Function Module ZFE3FI0001로 기준일자·통화 환율 자동 세팅. KRW면 외화 필드 자동 클리어</li>
+              <li><strong>Number Range 자동 채번</strong> — BLART별 Number Range 자동 매핑 (SA=01, AB=02, KR=03, DR=05, AA=11 등)</li>
               <li><strong>차대변 불일치 사전 차단</strong> — 차변합계 ≠ 대변합계 시 ROLLBACK 후 오류 메시지 반환</li>
-              <li><strong>CO 연계 자동화</strong> — FI 전표 생성 후 _POST_CO_DOCUMENT로 CO 전표 자동 생성. CO 실패 시 FI도 ROLLBACK</li>
-              <li><strong>전 모듈 재사용</strong> — SD·MM·PP·FI·CO 전표가 모두 이 클래스 한 곳을 호출. 모듈별 전표 시나리오를 정리해 팀원과 공유</li>
+              <li><strong>CO Integration 자동화</strong> — FI 전표 생성 후 _POST_CO_DOCUMENT Method로 CO 전표 자동 생성. CO 실패 시 FI도 ROLLBACK</li>
+              <li><strong>전 모듈 재사용</strong> — SD·MM·PP·FI·CO 전표가 모두 이 Class 한 곳을 호출. 모듈별 Posting 시나리오를 정리해 팀원과 공유</li>
             </ul>
           </div>
 
           <div class="proj-features" style="margin-top:1.2rem">
-            <div class="proj-features-title">공용 펑션모듈 그룹 — ZFGE3FI01</div>
+            <div class="proj-features-title">Function Group — ZFGE3FI01</div>
             <ul>
-              <li><strong>ZFE3FI0004 — 고객정보 팝업</strong> (300번 스크린): 고객 마스터 상세 조회</li>
-              <li><strong>ZFE3FI0005 — 공급업체정보 팝업</strong> (400번 스크린): 공급업체 마스터 상세 조회</li>
-              <li><strong>ZFE3FI0006 — 전표 팝업</strong>: 전표번호·회사코드·회계연도 입력받아 0500번 스크린에 전표 헤더+아이템 표시. 어느 프로그램에서든 동일한 UI 제공</li>
-              <li><strong>ZFE3FI0007~0010</strong> — 자재정보 / 생산정보 / SD 출고 문서 / QM 검수정보 팝업</li>
-              <li><strong>스크린 공용화로 UI 통일성 확보</strong> — 같은 Function Group 내 스크린을 공유해 팀원이 CALL FUNCTION 한 줄로 통일된 팝업 호출</li>
+              <li><strong>ZFE3FI0004 — Customer Info Popup</strong> (Screen 300): 고객 마스터 상세 조회</li>
+              <li><strong>ZFE3FI0005 — Vendor Info Popup</strong> (Screen 400): 공급업체 마스터 상세 조회</li>
+              <li><strong>ZFE3FI0006 — Document Popup</strong>: 전표번호·회사코드·회계연도 입력받아 Screen 0500에 전표 헤더+아이템 표시. 어느 프로그램에서든 동일한 UI 제공</li>
+              <li><strong>ZFE3FI0007~0010</strong> — Material / Production / SD Delivery / QM Inspection Info Popup</li>
+              <li><strong>Screen 공용화로 UI 통일성 확보</strong> — 같은 Function Group 내 Screen을 공유해 팀원이 CALL FUNCTION 한 줄로 통일된 팝업 호출</li>
             </ul>
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c8t1',event)">POST_DOCUMENT 진입점</button>
-            <button class="code-tab" onclick="switchTab(this,'c8t2',event)">COMMON 공통 처리</button>
-            <button class="code-tab" onclick="switchTab(this,'c8t3',event)">ZFE3FI0006 전표 팝업</button>
+            <button class="code-tab active" onclick="switchTab(this,'c8t1',event)">POST_DOCUMENT</button>
+            <button class="code-tab" onclick="switchTab(this,'c8t2',event)">_POST_DOCUMENT_COMMON</button>
+            <button class="code-tab" onclick="switchTab(this,'c8t3',event)">ZFE3FI0006 Popup</button>
           </div>
 
           <div class="proj-code code-panel" id="c8t1"><span class="cm">* 공용 진입점 — BLART로 AR/AP/GL 자동 분기 + 환율 자동 조회</span>
 <span class="kw">METHOD</span> <span class="fn">post_document</span>.
-  <span class="cm">* 외화 시 ZFE3FI0001로 환율 자동 조회</span>
+  <span class="cm">* 외화 시 Function Module ZFE3FI0001로 환율 자동 조회</span>
   <span class="kw">IF</span> is_header-waers <span class="kw">IS NOT INITIAL AND</span>
      is_header-waers <span class="kw">NE</span> <span class="str">'KRW'</span>.
     <span class="kw">CALL FUNCTION</span> <span class="str">'ZFE3FI0001'</span>
@@ -1294,25 +1314,25 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
   <span class="kw">ENDCASE</span>.
 <span class="kw">ENDMETHOD</span>.</div>
 
-          <div class="proj-code code-panel" id="c8t2" style="display:none"><span class="cm">* 공통 처리 — 차대변 검증 → 채번 → INSERT → CO 연계 → COMMIT</span>
+          <div class="proj-code code-panel" id="c8t2" style="display:none"><span class="cm">* 공통 처리 — 차대변 검증 → 채번 → INSERT → CO Integration → COMMIT</span>
 <span class="kw">METHOD</span> <span class="fn">_post_document_common</span>.
   <span class="cm">* 1. 차대변 불일치 차단</span>
   <span class="kw">IF</span> lv_debit <span class="kw">NE</span> lv_credit.
     ev_msg = |차대 불일치! 차변:{ lv_debit } / 대변:{ lv_credit }|.
     <span class="kw">RETURN</span>.
   <span class="kw">ENDIF</span>.
-  <span class="cm">* 2. BLART → 번호범위 자동 매핑</span>
+  <span class="cm">* 2. BLART → Number Range 자동 매핑</span>
   <span class="cm">*    SA=01 AB=02 KR=03 KZ=04 DR=05 DZ=06 WA=07 WE=08 RE=09 AA=11</span>
   <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
     <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRE3FI01'</span>
     <span class="kw">IMPORTING</span> number      = lv_belnr.
   <span class="cm">* 3. 헤더/아이템 INSERT (외화 시 환율 변환 + KRW 처리)</span>
-  <span class="cm">* 4. CO 연계 → 실패 시 FI도 ROLLBACK</span>
+  <span class="cm">* 4. CO Integration → 실패 시 FI도 ROLLBACK</span>
   zcl_e3_fi_document=><span class="fn">_post_co_document</span>( ... ).
   <span class="kw">COMMIT WORK AND WAIT</span>.
 <span class="kw">ENDMETHOD</span>.</div>
 
-          <div class="proj-code code-panel" id="c8t3" style="display:none"><span class="cm">* ZFE3FI0006 — 전표 팝업 (어느 화면에서든 동일하게 CALL FUNCTION 한 줄)</span>
+          <div class="proj-code code-panel" id="c8t3" style="display:none"><span class="cm">* ZFE3FI0006 — Document Popup (어느 화면에서든 CALL FUNCTION 한 줄)</span>
 <span class="kw">FUNCTION</span> <span class="fn">zfe3fi0006</span>.
   <span class="cm">* 필수 파라미터 없으면 리턴</span>
   <span class="kw">CHECK</span> iv_bukrs <span class="kw">IS NOT INITIAL AND</span>
@@ -1330,11 +1350,119 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       DISPLAY LIKE <span class="str">'E'</span>.
     <span class="kw">RETURN</span>.
   <span class="kw">ENDIF</span>.
-  <span class="cm">* 0500번 스크린 팝업으로 헤더+아이템 표시</span>
+  <span class="cm">* Screen 0500 팝업으로 헤더+아이템 표시</span>
   <span class="kw">CALL SCREEN</span> <span class="str">'0500'</span> STARTING AT <span class="num">20</span> <span class="num">3</span>.
 <span class="kw">ENDFUNCTION</span>.</div>
 
-          <div class="proj-tech"><span>ABAP OO</span><span>Static Method</span><span>Function Group</span><span>NUMBER_GET_NEXT</span><span>CO 연계</span><span>전 모듈 공용</span></div>
+          <div class="proj-tech"><span>ABAP OO</span><span>Static Method</span><span>Function Group</span><span>NUMBER_GET_NEXT</span><span>CO Integration</span><span>Team Shared</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- CHALLENGE : AS-IS / TO-BE -->
+<section id="challenge">
+  <div class="container">
+    <div class="sec-eyebrow">— CHALLENGE</div>
+    <h2 class="sec-title">프로젝트가 해결한 과제</h2>
+    <p class="sec-desc">화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트가 풀어낸 비즈니스 과제입니다.</p>
+
+    <div class="chal-list">
+
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">01</div>
+          <div class="chal-cat-title">다국적 거래에서 환율 관리의 복잡성</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수출 비중 급증으로 달러·엔화 등 다양한 통화 거래가 발생하나 실시간 환율 반영 체계가 부족했습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>배치잡으로 매일 환율을 가져와 환율 마스터 테이블에 저장하고, 각 모듈이 공용 Class Method로 전표를 만들 때 전기일 기준 환율을 자동 계산·세팅합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>매출 처리와 대금 관리 시 환율 적용 시점이 달라 회계 오류가 발생했습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>전표 헤더·아이템에 전기일 환율 + 반제일 환율 이력을 저장해 시점별 추적이 가능하며, 수동 반제 시에도 정합성을 유지합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>월말 결산 시 환율 변동에 따른 평가손익 산출이 어려워 정확한 현금흐름 파악에 한계가 있었습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>월말 외화 채권·채무를 일괄 재평가하는 배치와 환평가 손익 리포트를 제공하고, 통화별 미결잔액·KRW 환산액을 TOP-OF-PAGE에 표시합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">02</div>
+          <div class="chal-cat-title">제품별 수익성 분석 체계 부족</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>제품별로 발생하는 원재료비·생산비·물류비를 통합해 원가를 산정하기 어려웠습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>표준원가·실제원가를 산정해 월말에 제조원가(직접비) 명세서로 제품별 원가를 확인할 수 있게 했습니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매채널별 수수료·프로모션 비용·물류비를 반영한 실질 마진 분석 도구가 없었습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수수료율·프로모션·물류비·관세를 판매유형(채널)에 매핑하고, 프로모션 비용은 BOM(샘플)으로 등록해 반영합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">03</div>
+          <div class="chal-cat-title">채널·거래처별 판매정책 운영의 복잡성</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매채널과 거래처별 가격·할인 정책 관리가 복잡했습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>판매채널·거래처·할인 정책을 각각 테이블로 분리해 체계적으로 관리합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수기 관리로 오주문이 발생하고, 대규모 수출 증빙서류 작성에 과도한 시간이 소요됐습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수출 서류를 자동 생성하고 이메일로 발송합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>거래처별 리베이트 정산이 늦어지고 데이터 불일치가 발생해 해외 파트너사와의 신뢰가 저하됐습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>기간 내 목표 매출 달성 시 리베이트를 자동 발생·정산·청구합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">04</div>
+          <div class="chal-cat-title">원료 특성을 반영한 생산·재고 최적화 한계</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>유통기한 기반 재고 운영 체계가 미흡했습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>유통기한 필드를 설정해 원재료는 FIFO, 완제품은 FEFO로 출고합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>품질 이슈 발생 시 생산 이력 추적 시스템이 없어 원인 분석·대응이 지연됐습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>생산 LOT 단위 이력을 추적해 품질 이슈 발생 시 원인을 신속히 파악합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">05</div>
+          <div class="chal-cat-title">현장 업무·실시간 의사결정의 모바일 지원 한계</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>영업팀이 고객 방문 시 실시간 재고 확인 및 주문 처리가 불가능했습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오프라인 매장(백화점)별 재고를 실시간 조회하고, 모바일 수주·긴급 오더 + 바코드/QR 스캔 재고 카운트를 지원합니다.</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>경영진이 출장 중 핵심 KPI 모니터링·승인 업무 처리에 제약이 있었습니다.</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오더 승인·견적 승인·리베이트 정산 승인 및 모바일 임시전표 승인을 앱에서 처리합니다.</div>
+          </div>
         </div>
       </div>
 

@@ -183,6 +183,26 @@ section{padding:5rem 0}
 .proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .proj-tech span{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.2rem .6rem;border-radius:4px}
 
+/* PROJECT OVERVIEW — 대주제 + 비즈니스 모델 */
+.ov-theme{background:linear-gradient(135deg,var(--blue) 0%,#2554d4 100%);border-radius:16px;padding:2rem 2.2rem;color:#fff;margin-bottom:1.6rem;box-shadow:var(--shadow-md)}
+.ov-theme-label{font-size:11px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem}
+.ov-theme-title{font-size:1.5rem;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.ov-theme-sub{font-size:14px;opacity:.9;margin-top:.7rem;line-height:1.6}
+.ov-models{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.ov-model{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.ov-model-ico{width:42px;height:42px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:20px}
+.ov-model-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.45}
+
+/* PROCESS FLOW */
+.flow-wrap{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+.flow-img{width:100%;display:block;cursor:zoom-in;transition:opacity .15s}
+.flow-img:hover{opacity:.93}
+.flow-cap{font-size:12px;color:var(--text3);padding:.9rem 1.2rem;background:var(--bg);border-top:1px solid var(--border);text-align:center;font-family:var(--mono)}
+.flow-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;justify-content:center}
+.flow-leg{display:flex;align-items:center;gap:.4rem;font-size:12px;color:var(--text2)}
+.flow-leg-dot{width:12px;height:12px;border-radius:3px}
+@media(max-width:680px){.ov-models{grid-template-columns:1fr}}
+
 /* CHALLENGE — AS-IS / TO-BE */
 .chal-list{display:flex;flex-direction:column;gap:1rem}
 .chal-card{background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
@@ -263,6 +283,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="#about">About</a>
     <a href="#story">Story</a>
     <a href="#experience">Experience</a>
+    <a href="#overview">Overview</a>
     <a href="#projects">Projects</a>
     <a href="#challenge">Challenge</a>
     <a href="#contact">Contact</a>
@@ -457,6 +478,55 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- PROJECT OVERVIEW -->
+<section id="overview">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Overview</div>
+      <h2 class="sec-title">프로젝트 개요</h2>
+    </div>
+
+    <div class="ov-theme">
+      <div class="ov-theme-label">대주제 · Main Theme</div>
+      <div class="ov-theme-title">수익성 분석을 적용한 통합 재무 및 공급망 관리 서비스</div>
+      <div class="ov-theme-sub">자체 브랜드 화장품을 제조하고 국내외 유통 채널로 판매하는 기업(Master Pack)의 ERP 구축 프로젝트. MM·SD·PP·QM·FI/CO 전 모듈을 통합해 제품별 수익성 분석과 실시간 재무·공급망 관리를 구현했습니다.</div>
+    </div>
+
+    <div class="ov-models">
+      <div class="ov-model">
+        <div class="ov-model-ico">🧴</div>
+        <div class="ov-model-title">자체 브랜드 화장품 제품 개발 및 제조</div>
+      </div>
+      <div class="ov-model">
+        <div class="ov-model-ico">🏭</div>
+        <div class="ov-model-title">배치 기반 품질 관리 및 생산 운영</div>
+      </div>
+      <div class="ov-model">
+        <div class="ov-model-ico">🌐</div>
+        <div class="ov-model-title">국내외 다채널 유통 네트워크 운영 및 판매 채널 관리</div>
+      </div>
+    </div>
+
+    <div class="proj-features-title" style="margin-bottom:.8rem;font-size:13px;color:var(--text2)">전체 업무 프로세스 흐름도</div>
+    <div class="flow-wrap">
+      <img class="flow-img" src="images/process_flow.png" alt="Master Pack ERP 전체 프로세스 흐름도 — SD·PP·QM·MM·FI/CO" onclick="openImg(this.src)">
+      <div class="flow-cap">SD 판매 → PP 생산 → QM 품질관리 → MM 구매/자재 → FI/CO 재무 · 모듈 간 데이터 흐름 (클릭하면 확대)</div>
+    </div>
+    <div class="flow-legend">
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#cfe0fb"></span>SD 판매</div>
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#d4ead4"></span>PP 생산</div>
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#e2d4f0"></span>QM 품질관리</div>
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#fbeccd"></span>MM 구매/자재</div>
+      <div class="flow-leg"><span class="flow-leg-dot" style="background:#e0d8ec"></span>FI/CO 재무</div>
+    </div>
+    <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;line-height:1.7;text-align:center">
+      이 중 <strong style="color:var(--blue)">FI/CO 재무 · QM 품질관리</strong> 영역을 PM 겸 개발자로 직접 설계·구현했습니다.
+    </p>
   </div>
 </section>
 
@@ -1380,16 +1450,16 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="chal-rows">
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수출 비중 급증으로 달러·엔화 등 다양한 통화 거래가 발생하나 실시간 환율 반영 체계가 부족했습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>배치잡으로 매일 환율을 가져와 환율 마스터 테이블에 저장하고, 각 모듈이 공용 Class Method로 전표를 만들 때 전기일 기준 환율을 자동 계산·세팅합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수출 비중 급증으로 달러·엔화 등 다양한 통화 거래가 발생하나 실시간 환율 반영 체계가 부족</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>Batch Job으로 매일 환율을 가져와 환율 마스터 테이블에 저장. 각 모듈에서 전표 생성 시 공용 Class Method 사용, 내부 Function Module에서 전기일 기준 환율 자동 계산·세팅. 전표 헤더·아이템에 환율 이력 저장으로 시점별 추적</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>매출 처리와 대금 관리 시 환율 적용 시점이 달라 회계 오류가 발생했습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>전표 헤더·아이템에 전기일 환율 + 반제일 환율 이력을 저장해 시점별 추적이 가능하며, 수동 반제 시에도 정합성을 유지합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>매출 처리와 대금 관리 시 환율 적용 시점이 달라 회계 오류 발생</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>전표별 전기일 환율 + 반제일 환율 이력 저장 → 시점별 추적 가능 / 수동 반제에서 해결</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>월말 결산 시 환율 변동에 따른 평가손익 산출이 어려워 정확한 현금흐름 파악에 한계가 있었습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>월말 외화 채권·채무를 일괄 재평가하는 배치와 환평가 손익 리포트를 제공하고, 통화별 미결잔액·KRW 환산액을 TOP-OF-PAGE에 표시합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>월말 결산 시 환율 변동에 따른 평가 손익 산출이 어려워 정확한 현금 흐름 파악에 한계</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>월말 외화 채권·채무 일괄 재평가 배치 + 환평가 손익 리포트. 통화별 미결잔액 + KRW 환산액 TOP OF PAGE 표시</div>
           </div>
         </div>
       </div>
@@ -1401,12 +1471,12 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="chal-rows">
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>제품별로 발생하는 원재료비·생산비·물류비를 통합해 원가를 산정하기 어려웠습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>표준원가·실제원가를 산정해 월말에 제조원가(직접비) 명세서로 제품별 원가를 확인할 수 있게 했습니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>제품별로 발생하는 원재료비·생산비·물류비를 통합해 원가를 산정하기 어려움</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>표준원가·실제원가 산정 후 월말에 원가 확인</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매채널별 수수료·프로모션 비용·물류비를 반영한 실질 마진 분석 도구가 없었습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수수료율·프로모션·물류비·관세를 판매유형(채널)에 매핑하고, 프로모션 비용은 BOM(샘플)으로 등록해 반영합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>다양한 판매 채널별 수수료·프로모션 비용·물류비 등을 반영한 실질적 마진 분석 도구 부재</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수수료율·프로모션·물류비·관세를 판매유형(채널)에 매핑. 프로모션 비용 → BOM 등록(샘플)</div>
           </div>
         </div>
       </div>
@@ -1418,16 +1488,16 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="chal-rows">
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매채널과 거래처별 가격·할인 정책 관리가 복잡했습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>판매채널·거래처·할인 정책을 각각 테이블로 분리해 체계적으로 관리합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매 채널과 거래처별 가격 및 할인 정책 관리가 복잡</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>판매 채널·거래처·할인 정책 따로 테이블 만들어서 활용</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수기 관리로 오주문이 발생하고, 대규모 수출 증빙서류 작성에 과도한 시간이 소요됐습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수출 서류를 자동 생성하고 이메일로 발송합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수기 관리에 따른 오주문 발생 및 대규모 수출에 필요한 각종 증빙 서류 작성에 과도한 시간 소요</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>수출 서류 자동 생성 + 이메일 발송</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>거래처별 리베이트 정산이 늦어지고 데이터 불일치가 발생해 해외 파트너사와의 신뢰가 저하됐습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>기간 내 목표 매출 달성 시 리베이트를 자동 발생·정산·청구합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>거래처별 리베이트 정산이 늦어지고 데이터 불일치가 발생하여 해외 파트너사와의 신뢰 관계 저하</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>기간 내 목표 매출 달성 시 리베이트 자동 발생·정산·청구</div>
           </div>
         </div>
       </div>
@@ -1439,12 +1509,12 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="chal-rows">
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>유통기한 기반 재고 운영 체계가 미흡했습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>유통기한 필드를 설정해 원재료는 FIFO, 완제품은 FEFO로 출고합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>유통기한 기반 재고 운영 체계 미흡</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>유통기한 필드 설정 → 원재료 FIFO, 완제품 FEFO 출고</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>품질 이슈 발생 시 생산 이력 추적 시스템이 없어 원인 분석·대응이 지연됐습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>생산 LOT 단위 이력을 추적해 품질 이슈 발생 시 원인을 신속히 파악합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>품질 관련 이슈 발생 시 생산 이력 추적 시스템 부재로 인한 원인 분석 및 대응 지연</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>생산 LOT 단위 이력 추적으로 품질 이슈 원인 신속 파악</div>
           </div>
         </div>
       </div>
@@ -1456,12 +1526,12 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="chal-rows">
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>영업팀이 고객 방문 시 실시간 재고 확인 및 주문 처리가 불가능했습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오프라인 매장(백화점)별 재고를 실시간 조회하고, 모바일 수주·긴급 오더 + 바코드/QR 스캔 재고 카운트를 지원합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>영업팀 고객 방문 시 실시간 재고 확인 및 주문 처리 불가</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오프라인 매장(백화점)별 재고 실시간 조회 및 모바일 수주·긴급 오더 프로그램. 바코드/QR 스캔으로 재고 카운트</div>
           </div>
           <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>경영진이 출장 중 핵심 KPI 모니터링·승인 업무 처리에 제약이 있었습니다.</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오더 승인·견적 승인·리베이트 정산 승인 및 모바일 임시전표 승인을 앱에서 처리합니다.</div>
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>경영진 출장 중 핵심 KPI 모니터링 및 승인 업무 처리 제약</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>오더 승인·견적 승인·리베이트 정산 승인을 앱에서 처리. 모바일 임시전표 승인</div>
           </div>
         </div>
       </div>
@@ -1539,6 +1609,12 @@ function openLightbox(el, ev){
   const cap=el.querySelector('.img-caption');
   document.getElementById('lightbox-img').src=img.src;
   document.getElementById('lightbox-cap').textContent=cap?cap.textContent:'';
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function openImg(src){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-cap').textContent='전체 업무 프로세스 흐름도';
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow='hidden';
 }

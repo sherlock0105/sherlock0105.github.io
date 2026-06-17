@@ -352,7 +352,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Projects</span>
-          <span class="hero-card-val">7 CBO Programs</span>
+          <span class="hero-card-val">8 CBO Programs</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Course</span>
@@ -429,6 +429,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="about-item-badge done">취득 2026.03</span>
           </li>
           <li>
+            <span class="about-item-name">SAP Certified Associate – Backend Developer (ABAP Cloud)</span>
+            <span class="about-item-badge done">취득 2026.06</span>
+          </li>
+          <li>
             <span class="about-item-name">한국사능력검정 1급 · HSK 4급</span>
             <span class="about-item-badge done">취득</span>
           </li>
@@ -485,7 +489,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="exp-desc">
             화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트에서 FI·QM 모듈 커스텀 개발을 총괄.
             전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
-            7종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
+            8종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
           </div>
           <div class="exp-tags">
             <span class="exp-tag">ABAP</span>
@@ -714,7 +718,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="container">
     <div class="sec-head">
       <div class="sec-eyebrow">Projects</div>
-      <h2 class="sec-title">CBO 개발 프로그램 · 7종</h2>
+      <h2 class="sec-title">CBO 개발 프로그램 · 8종</h2>
     </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
       Master Pack ERP 구축 프로젝트에서 FI·QM 모듈을 담당해 직접 설계·구현한 프로그램입니다.<br>
@@ -1465,7 +1469,94 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
       </div>
 
-      <!-- 08 removed - moved to architecture section -->
+      <!-- 08 -->
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
+          <div class="proj-num">08</div>
+          <div>
+            <div class="proj-info-title">재무상태표 프로그램</div>
+            <div class="proj-info-sub">ZCDS_E3_FI_0016 · ABAP Report</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">ALV Tree</span>
+              <span class="pbadge fi">CDS View</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            회사코드·회계연도 기준 자산·부채·자본 재무상태표를 ALV Tree로 표시하는 프로그램. CDS View로 계정별 월별 잔액을 사전 집계.<br>
+            전기·당기 비교, 계정 단위 월별 드릴다운, 차트 시각화까지 한 화면에서 처리합니다.
+          </div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_main.png" alt="재무상태표 메인 화면">
+              <div class="img-caption">메인 — 자산/부채/자본 트리 + 전기·당기 비교 + 그룹 막대 차트</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
+              <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
+              <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
+            <ul>
+              <li><strong>ALV Tree 자산·부채·자본 구조</strong> — 회사코드·회계연도 입력 시 계정 마스터(major_class/minor_class) 기준으로 트리 구성. 전기·당기 잔액을 좌측에서 즉시 비교</li>
+              <li><strong>CDS View 월별 잔액 사전 집계</strong> — <code>ZCDS_E3_FI_0016</code>에서 전표 아이템을 월(MONAT) 단위로 SUM, 차변/대변(SHKZG)에 따라 부호 반전해 M01~M12 컬럼으로 제공</li>
+              <li><strong>트리 노드 ↔ 그리드 연동</strong> — 트리에서 계정 분류 또는 개별 계정 클릭 시 우측 그리드에 해당 범위의 월별 발생 잔액을 계정코드·계정명과 함께 동적 표시</li>
+              <li><strong>전기 vs 당기 차트</strong> — 자산·부채·자본 합계를 그룹 막대 차트로 시각화해 연간 재무구조 변동을 한눈에 파악</li>
+              <li><strong>TOP-OF-PAGE 요약</strong> — 자산·부채·자본 합계 및 전기 대비 증감액을 트렌드 아이콘과 함께 상단에 표시</li>
+              <li><strong>역분개·가계정 제외 처리</strong> — <code>bstat &lt;&gt; 'T'</code>, <code>stblg = ''</code>, <code>blart &lt;&gt; 'AB'</code> 조건으로 정상 확정 전표만 집계 대상에 포함</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c8t1',event)">CDS View 월별 집계</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c8t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0016'</span>
+<span class="cm">@AbapCatalog.compiler.compareFilter: true</span>
+<span class="cm">@AbapCatalog.preserveKey: true</span>
+<span class="cm">@AccessControl.authorizationCheck: #NOT_REQUIRED</span>
+<span class="cm">@EndUserText.label: '[FI] 계정코드 월별 잔액 집계'</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0016</span>
+  <span class="kw">with parameters</span>
+    p_bukrs : bukrs,
+    p_gjahr : gjahr
+  <span class="kw">as select from</span> zte3fi0001 <span class="kw">as</span> m
+    <span class="kw">inner join</span> zte3fi0003 <span class="kw">as</span> i <span class="kw">on</span> i.bukrs = m.bukrs <span class="kw">and</span> i.saknr = m.saknr
+    <span class="kw">inner join</span> zte3fi0002 <span class="kw">as</span> h <span class="kw">on</span> h.bukrs = i.bukrs <span class="kw">and</span> h.belnr = i.belnr <span class="kw">and</span> h.gjahr = i.gjahr
+{
+  <span class="kw">key</span> m.bukrs <span class="kw">as</span> Bukrs,  <span class="kw">key</span> m.saknr <span class="kw">as</span> Saknr,
+      m.stext <span class="kw">as</span> Stext,  m.major_class <span class="kw">as</span> MajorClass,  m.minor_class <span class="kw">as</span> MinorClass,
+      i.waers <span class="kw">as</span> Waers,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'01'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M01,
+      <span class="cm">"... M02 ~ M12 동일 패턴 반복</span>
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'12'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M12
+}
+<span class="kw">where</span>
+      m.bukrs = $parameters.p_bukrs
+  <span class="kw">and</span> h.gjahr = $parameters.p_gjahr
+  <span class="kw">and</span> h.bstat &lt;&gt; <span class="str">'T'</span>
+  <span class="kw">and</span> h.stblg = <span class="str">''</span>
+  <span class="kw">and</span> h.belnr <span class="kw">not like</span> <span class="str">'9%'</span>
+  <span class="kw">and</span> h.blart &lt;&gt; <span class="str">'AB'</span>
+<span class="kw">group by</span>
+  m.bukrs, m.saknr, m.stext, m.major_class, m.minor_class, i.waers</div>
+
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>ALV Tree</span><span>ALV Chart</span><span>FI</span></div>
+        </div>
+      </div>
 
     </div>
   </div>

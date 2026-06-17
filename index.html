@@ -352,7 +352,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Projects</span>
-          <span class="hero-card-val">8 CBO Programs</span>
+          <span class="hero-card-val">9 CBO Programs</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Course</span>
@@ -489,7 +489,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="exp-desc">
             화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트에서 FI·QM 모듈 커스텀 개발을 총괄.
             전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
-            8종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
+            9종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
           </div>
           <div class="exp-tags">
             <span class="exp-tag">ABAP</span>
@@ -718,7 +718,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="container">
     <div class="sec-head">
       <div class="sec-eyebrow">Projects</div>
-      <h2 class="sec-title">CBO 개발 프로그램 · 8종</h2>
+      <h2 class="sec-title">CBO 개발 프로그램 · 9종</h2>
     </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
       Master Pack ERP 구축 프로젝트에서 FI·QM 모듈을 담당해 직접 설계·구현한 프로그램입니다.<br>
@@ -795,13 +795,13 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
           <!-- 코드 탭 -->
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'ct1',event)">역분개 마이너스 생성</button>
-            <button class="code-tab" onclick="switchTab(this,'ct2',event)">역분개 전표 병렬 배치</button>
-            <button class="code-tab" onclick="switchTab(this,'ct3',event)">차대변 분리 표시</button>
-            <button class="code-tab" onclick="switchTab(this,'ct4',event)">반제 전표 처리</button>
+            <button class="code-tab active" onclick="switchTab(this,'c1t1',event)">역분개 마이너스 생성</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t2',event)">역분개 전표 병렬 배치</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t3',event)">차대변 분리 표시</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t4',event)">반제 전표 처리</button>
           </div>
 
-          <div class="proj-code code-panel" id="ct1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
+          <div class="proj-code code-panel" id="c1t1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
 <span class="kw">FORM</span> <span class="fn">reverse_items</span> <span class="kw">USING</span> pv_belnr <span class="kw">TYPE</span> zte3fi0002-belnr.
   <span class="kw">LOOP AT</span> gt_item <span class="kw">INTO DATA</span>(ls_orig).
     <span class="kw">APPEND VALUE</span> #( <span class="kw">BASE CORRESPONDING</span> #( ls_orig )
@@ -818,7 +818,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">ENDLOOP</span>.
 <span class="kw">ENDFORM</span>.</div>
 
-          <div class="proj-code code-panel" id="ct2" style="display:none"><span class="cm">* 역분개 전표를 원본 전표 바로 아래 배치 (중복 방지)</span>
+          <div class="proj-code code-panel" id="c1t2" style="display:none"><span class="cm">* 역분개 전표를 원본 전표 바로 아래 배치 (중복 방지)</span>
 <span class="kw">FORM</span> <span class="fn">set_rev_item</span>.
   <span class="kw">DATA</span>: lt_temp_header <span class="kw">LIKE</span> gt_header.
   <span class="kw">LOOP AT</span> gt_header <span class="kw">INTO DATA</span>(ls_hdr).
@@ -840,7 +840,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   gt_header = lt_temp_header.
 <span class="kw">ENDFORM</span>.</div>
 
-          <div class="proj-code code-panel" id="ct3" style="display:none"><span class="cm">* 차변/대변 컬럼 분리 + 아이콘(정상=녹색 / 역분개=빨강)</span>
+          <div class="proj-code code-panel" id="c1t3" style="display:none"><span class="cm">* 차변/대변 컬럼 분리 + 아이콘(정상=녹색 / 역분개=빨강)</span>
 <span class="kw">FORM</span> <span class="fn">sum_dmbtr_sh</span>.
   <span class="kw">LOOP AT</span> gt_item_data <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
     <span class="kw">CASE</span> &lt;fs_item&gt;-shkzg.
@@ -861,7 +861,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">CHECK</span> gv_dmbtr_s <span class="kw">EQ</span> gv_dmbtr_h.
 <span class="kw">ENDFORM</span>.</div>
 
-          <div class="proj-code code-panel" id="ct4" style="display:none"><span class="cm">* DZ/KZ 전표 역분개 시 — 반제 정보 초기화 후 원전표 미결 복원</span>
+          <div class="proj-code code-panel" id="c1t4" style="display:none"><span class="cm">* DZ/KZ 전표 역분개 시 — 반제 정보 초기화 후 원전표 미결 복원</span>
 <span class="kw">FORM</span> <span class="fn">set_clear</span>.
   <span class="kw">LOOP AT</span> gt_item <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
     <span class="kw">IF</span> &lt;fs_item&gt;-augbl <span class="kw">IS NOT INITIAL</span>.
@@ -1212,104 +1212,6 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       <!-- 06(이동됨: 원 05) -->
       <div class="proj-card">
         <div class="proj-head" onclick="toggleProj(this,event)">
-          <div class="proj-num">06</div>
-          <div>
-            <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
-            <div class="proj-info-sub">ZCDS_E3_FI_0013 · Fiori / OData</div>
-            <div class="proj-info-badges">
-              <span class="pbadge fi">Fiori</span>
-              <span class="pbadge fi">CDS View</span>
-              <span class="pbadge fi">OData</span>
-            </div>
-          </div>
-          <div class="proj-chevron">›</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-summary">
-            고객·공급업체 마스터를 통합 Business Partner 뷰로 묶어 Fiori 웹 UI에서 CRUD.<br>
-            CDS UNION ALL의 정석을 실전에서 다룬 프로그램. SEGW OData CRUD 풀세트 구현.
-          </div>
-
-          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
-              <div class="img-caption">BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
-              <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
-              <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
-              <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
-            </div>
-          </div>
-
-          <div class="proj-features" style="margin-top:1.4rem">
-            <div class="proj-features-title">핵심 기능 상세</div>
-            <ul>
-              <li><strong>CDS UNION ALL 통합 BP 뷰</strong> — 고객(ZTE3SD0001)과 공급업체(ZTE3MM0002)를 BpType=C/V로 구분해 단일 뷰로 통합</li>
-              <li><strong>유형·상태 필터</strong> — 전체/고객/공급업체 탭 + 전체/활성/비활성 필터 조합. BP코드·BP명 실시간 검색</li>
-              <li><strong>요약 카드</strong> — 총 BP·고객·공급업체 건수 상단 카드로 한눈에 파악</li>
-              <li><strong>BP 상세 조회</strong> — 기본 정보 + 연락처(전화·이메일·주소) + 재무 정보(결제조건·은행 정보) 통합 팝업</li>
-              <li><strong>신규 BP 생성</strong> — 유형 드롭다운 선택 시 폼 동적 분기. 필수값 검증 후 OData CREATE 호출</li>
-              <li><strong>수정 / 비활성화</strong> — OData UPDATE/DELETE. UseFlag 필드로 논리 삭제 처리</li>
-            </ul>
-          </div>
-
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c5t1',event)">CDS UNION ALL 전체</button>
-            <button class="code-tab" onclick="switchTab(this,'c5t2',event)">OData GET_ENTITYSET</button>
-          </div>
-
-          <div class="proj-code code-panel" id="c5t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0013'</span>
-<span class="cm">@EndUserText.label: '[FI] BP 통합 VIEW'</span>
-<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0013</span> <span class="kw">as select from</span> zte3sd0001
-{
-  <span class="kw">key</span> kunnr                        <span class="kw">as</span> BpCode,
-  <span class="kw">key cast</span>(<span class="str">'C'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>))    <span class="kw">as</span> BpType,
-      name1  <span class="kw">as</span> BpName,  expkz <span class="kw">as</span> CountryCode,
-      cast(useflag <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> UseFlag,
-      sdemail <span class="kw">as</span> Email,  sdname <span class="kw">as</span> RepName
-}
-<span class="kw">union all</span>
-<span class="kw">select from</span> zte3mm0002
-{
-  <span class="kw">key</span> lifnr                        <span class="kw">as</span> BpCode,
-  <span class="kw">key cast</span>(<span class="str">'V'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>))    <span class="kw">as</span> BpType,
-      vennm  <span class="kw">as</span> BpName,  land1 <span class="kw">as</span> CountryCode,
-      cast(statu <span class="kw">as</span> abap.char(<span class="num">1</span>))  <span class="kw">as</span> UseFlag,
-      venmail <span class="kw">as</span> Email,  repnm <span class="kw">as</span> RepName
-}</div>
-
-          <div class="proj-code code-panel" id="c5t2" style="display:none"><span class="cm">* OData GET_ENTITYSET — BpType / BpCode 필터 처리</span>
-<span class="kw">METHOD</span> <span class="fn">bp_get_entityset</span>.
-  <span class="kw">LOOP AT</span> it_filter_select_options
-    <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_filter&gt;).
-    <span class="kw">CASE</span> &lt;fs_filter&gt;-property.
-      <span class="kw">WHEN</span> <span class="str">'BpCode'</span>.
-        <span class="kw">MOVE-CORRESPONDING</span> &lt;fs_filter&gt;-select_options <span class="kw">TO</span> lr_bp_code.
-      <span class="kw">WHEN</span> <span class="str">'BpType'</span>.
-        <span class="kw">MOVE-CORRESPONDING</span> &lt;fs_filter&gt;-select_options <span class="kw">TO</span> lr_bp_type.
-    <span class="kw">ENDCASE</span>.
-  <span class="kw">ENDLOOP</span>.
-  <span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="fn">ZCDS_E3_FI_0013</span>
-   <span class="kw">WHERE</span> BpCode <span class="kw">IN</span> @lr_bp_code <span class="kw">AND</span> BpType <span class="kw">IN</span> @lr_bp_type
-    <span class="kw">INTO TABLE</span> @et_entityset.
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>UNION ALL</span><span>Fiori</span><span>SAPUI5</span><span>OData</span><span>SEGW</span></div>
-        </div>
-      </div>
-
-      <!-- 05(이동됨: 원 06) -->
-      <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">05</div>
           <div>
             <div class="proj-info-title">완제품 검수 프로그램</div>
@@ -1374,7 +1276,194 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       <!-- 07 -->
       <div class="proj-card">
         <div class="proj-head" onclick="toggleProj(this,event)">
+          <div class="proj-num">06</div>
+          <div>
+            <div class="proj-info-title">재무상태표 프로그램</div>
+            <div class="proj-info-sub">ZCDS_E3_FI_0016 · ABAP Report</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">FI</span>
+              <span class="pbadge fi">ALV Tree</span>
+              <span class="pbadge fi">CDS View</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            회사코드·회계연도 기준 자산·부채·자본 재무상태표를 ALV Tree로 표시하는 프로그램. CDS View로 계정별 월별 잔액을 사전 집계.<br>
+            전기·당기 비교, 계정 단위 월별 드릴다운, 차트 시각화까지 한 화면에서 처리합니다.
+          </div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_main.png" alt="재무상태표 메인 화면">
+              <div class="img-caption">메인 — 자산/부채/자본 트리 + 전기·당기 비교 + 그룹 막대 차트</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
+              <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
+              <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
+            <ul>
+              <li><strong>ALV Tree 자산·부채·자본 구조</strong> — 회사코드·회계연도 입력 시 계정 마스터(major_class/minor_class) 기준으로 트리 구성. 전기·당기 잔액을 좌측에서 즉시 비교</li>
+              <li><strong>CDS View 월별 잔액 사전 집계</strong> — <code>ZCDS_E3_FI_0016</code>에서 전표 아이템을 월(MONAT) 단위로 SUM, 차변/대변(SHKZG)에 따라 부호 반전해 M01~M12 컬럼으로 제공</li>
+              <li><strong>트리 노드 ↔ 그리드 연동</strong> — 트리에서 계정 분류 또는 개별 계정 클릭 시 우측 그리드에 해당 범위의 월별 발생 잔액을 계정코드·계정명과 함께 동적 표시</li>
+              <li><strong>전기 vs 당기 차트</strong> — 자산·부채·자본 합계를 그룹 막대 차트로 시각화해 연간 재무구조 변동을 한눈에 파악</li>
+              <li><strong>TOP-OF-PAGE 요약</strong> — 자산·부채·자본 합계 및 전기 대비 증감액을 트렌드 아이콘과 함께 상단에 표시</li>
+              <li><strong>역분개·가계정 제외 처리</strong> — <code>bstat &lt;&gt; 'T'</code>, <code>stblg = ''</code>, <code>blart &lt;&gt; 'AB'</code> 조건으로 정상 확정 전표만 집계 대상에 포함</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c6t1',event)">CDS View 월별 집계</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c6t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0016'</span>
+<span class="cm">@AbapCatalog.compiler.compareFilter: true</span>
+<span class="cm">@AbapCatalog.preserveKey: true</span>
+<span class="cm">@AccessControl.authorizationCheck: #NOT_REQUIRED</span>
+<span class="cm">@EndUserText.label: '[FI] 계정코드 월별 잔액 집계'</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0016</span>
+  <span class="kw">with parameters</span>
+    p_bukrs : bukrs,
+    p_gjahr : gjahr
+  <span class="kw">as select from</span> zte3fi0001 <span class="kw">as</span> m
+    <span class="kw">inner join</span> zte3fi0003 <span class="kw">as</span> i <span class="kw">on</span> i.bukrs = m.bukrs <span class="kw">and</span> i.saknr = m.saknr
+    <span class="kw">inner join</span> zte3fi0002 <span class="kw">as</span> h <span class="kw">on</span> h.bukrs = i.bukrs <span class="kw">and</span> h.belnr = i.belnr <span class="kw">and</span> h.gjahr = i.gjahr
+{
+  <span class="kw">key</span> m.bukrs <span class="kw">as</span> Bukrs,  <span class="kw">key</span> m.saknr <span class="kw">as</span> Saknr,
+      m.stext <span class="kw">as</span> Stext,  m.major_class <span class="kw">as</span> MajorClass,  m.minor_class <span class="kw">as</span> MinorClass,
+      i.waers <span class="kw">as</span> Waers,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'01'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M01,
+      <span class="cm">"... M02 ~ M12 동일 패턴 반복</span>
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'12'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M12
+}
+<span class="kw">where</span>
+      m.bukrs = $parameters.p_bukrs
+  <span class="kw">and</span> h.gjahr = $parameters.p_gjahr
+  <span class="kw">and</span> h.bstat &lt;&gt; <span class="str">'T'</span>
+  <span class="kw">and</span> h.stblg = <span class="str">''</span>
+  <span class="kw">and</span> h.belnr <span class="kw">not like</span> <span class="str">'9%'</span>
+  <span class="kw">and</span> h.blart &lt;&gt; <span class="str">'AB'</span>
+<span class="kw">group by</span>
+  m.bukrs, m.saknr, m.stext, m.major_class, m.minor_class, i.waers</div>
+
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>ALV Tree</span><span>ALV Chart</span><span>FI</span></div>
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
           <div class="proj-num">07</div>
+          <div>
+            <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
+            <div class="proj-info-sub">ZCDS_E3_FI_0013 · Fiori / OData</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">Fiori</span>
+              <span class="pbadge fi">CDS View</span>
+              <span class="pbadge fi">OData</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            고객·공급업체 마스터를 통합 Business Partner 뷰로 묶어 Fiori 웹 UI에서 CRUD.<br>
+            CDS UNION ALL의 정석을 실전에서 다룬 프로그램. SEGW OData CRUD 풀세트 구현.
+          </div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
+              <div class="img-caption">BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
+              <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
+              <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
+              <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
+            <ul>
+              <li><strong>CDS UNION ALL 통합 BP 뷰</strong> — 고객(ZTE3SD0001)과 공급업체(ZTE3MM0002)를 BpType=C/V로 구분해 단일 뷰로 통합</li>
+              <li><strong>유형·상태 필터</strong> — 전체/고객/공급업체 탭 + 전체/활성/비활성 필터 조합. BP코드·BP명 실시간 검색</li>
+              <li><strong>요약 카드</strong> — 총 BP·고객·공급업체 건수 상단 카드로 한눈에 파악</li>
+              <li><strong>BP 상세 조회</strong> — 기본 정보 + 연락처(전화·이메일·주소) + 재무 정보(결제조건·은행 정보) 통합 팝업</li>
+              <li><strong>신규 BP 생성</strong> — 유형 드롭다운 선택 시 폼 동적 분기. 필수값 검증 후 OData CREATE 호출</li>
+              <li><strong>수정 / 비활성화</strong> — OData UPDATE/DELETE. UseFlag 필드로 논리 삭제 처리</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c7t1',event)">CDS UNION ALL 전체</button>
+            <button class="code-tab" onclick="switchTab(this,'c7t2',event)">OData GET_ENTITYSET</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c7t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0013'</span>
+<span class="cm">@EndUserText.label: '[FI] BP 통합 VIEW'</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0013</span> <span class="kw">as select from</span> zte3sd0001
+{
+  <span class="kw">key</span> kunnr                        <span class="kw">as</span> BpCode,
+  <span class="kw">key cast</span>(<span class="str">'C'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>))    <span class="kw">as</span> BpType,
+      name1  <span class="kw">as</span> BpName,  expkz <span class="kw">as</span> CountryCode,
+      cast(useflag <span class="kw">as</span> abap.char(<span class="num">1</span>)) <span class="kw">as</span> UseFlag,
+      sdemail <span class="kw">as</span> Email,  sdname <span class="kw">as</span> RepName
+}
+<span class="kw">union all</span>
+<span class="kw">select from</span> zte3mm0002
+{
+  <span class="kw">key</span> lifnr                        <span class="kw">as</span> BpCode,
+  <span class="kw">key cast</span>(<span class="str">'V'</span> <span class="kw">as</span> abap.char(<span class="num">1</span>))    <span class="kw">as</span> BpType,
+      vennm  <span class="kw">as</span> BpName,  land1 <span class="kw">as</span> CountryCode,
+      cast(statu <span class="kw">as</span> abap.char(<span class="num">1</span>))  <span class="kw">as</span> UseFlag,
+      venmail <span class="kw">as</span> Email,  repnm <span class="kw">as</span> RepName
+}</div>
+
+          <div class="proj-code code-panel" id="c7t2" style="display:none"><span class="cm">* OData GET_ENTITYSET — BpType / BpCode 필터 처리</span>
+<span class="kw">METHOD</span> <span class="fn">bp_get_entityset</span>.
+  <span class="kw">LOOP AT</span> it_filter_select_options
+    <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_filter&gt;).
+    <span class="kw">CASE</span> &lt;fs_filter&gt;-property.
+      <span class="kw">WHEN</span> <span class="str">'BpCode'</span>.
+        <span class="kw">MOVE-CORRESPONDING</span> &lt;fs_filter&gt;-select_options <span class="kw">TO</span> lr_bp_code.
+      <span class="kw">WHEN</span> <span class="str">'BpType'</span>.
+        <span class="kw">MOVE-CORRESPONDING</span> &lt;fs_filter&gt;-select_options <span class="kw">TO</span> lr_bp_type.
+    <span class="kw">ENDCASE</span>.
+  <span class="kw">ENDLOOP</span>.
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="fn">ZCDS_E3_FI_0013</span>
+   <span class="kw">WHERE</span> BpCode <span class="kw">IN</span> @lr_bp_code <span class="kw">AND</span> BpType <span class="kw">IN</span> @lr_bp_type
+    <span class="kw">INTO TABLE</span> @et_entityset.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>UNION ALL</span><span>Fiori</span><span>SAPUI5</span><span>OData</span><span>SEGW</span></div>
+        </div>
+      </div>
+
+      <!-- 05(이동됨: 원 06) -->
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
+          <div class="proj-num">08</div>
           <div>
             <div class="proj-info-title">Fiori 전표 조회 앱</div>
             <div class="proj-info-sub">ZE3_FI_POST_SEARCH · Fiori / OData</div>
@@ -1429,11 +1518,11 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c7t1',event)">CDS 헤더 View</button>
-            <button class="code-tab" onclick="switchTab(this,'c7t2',event)">CDS 아이템 View</button>
+            <button class="code-tab active" onclick="switchTab(this,'c8t1',event)">CDS 헤더 View</button>
+            <button class="code-tab" onclick="switchTab(this,'c8t2',event)">CDS 아이템 View</button>
           </div>
 
-          <div class="proj-code code-panel" id="c7t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0007'</span>
+          <div class="proj-code code-panel" id="c8t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0007'</span>
 <span class="cm">@EndUserText.label: '[FI] 전표 조회 헤더'</span>
 <span class="cm">@OData.publish: true</span>
 <span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0007</span> <span class="kw">as select from</span> zte3fi0002
@@ -1446,7 +1535,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       erdat <span class="kw">as</span> Erdat,   ernam <span class="kw">as</span> Ernam,   rev_date <span class="kw">as</span> RevDate
 }</div>
 
-          <div class="proj-code code-panel" id="c7t2" style="display:none"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0006'</span>
+          <div class="proj-code code-panel" id="c8t2" style="display:none"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0006'</span>
 <span class="cm">@EndUserText.label: '[FI] 전표 조회 아이템'</span>
 <span class="cm">@OData.publish: true</span>
 <span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0006</span> <span class="kw">as select from</span> zte3fi0003
@@ -1472,89 +1561,57 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       <!-- 08 -->
       <div class="proj-card">
         <div class="proj-head" onclick="toggleProj(this,event)">
-          <div class="proj-num">08</div>
+          <div class="proj-num">09</div>
           <div>
-            <div class="proj-info-title">재무상태표 프로그램</div>
-            <div class="proj-info-sub">ZCDS_E3_FI_0016 · ABAP Report</div>
+            <div class="proj-info-title">Fiori 재무상태표 앱</div>
+            <div class="proj-info-sub">ZE3_FI_BALANCE_SHEET · Fiori / OData</div>
             <div class="proj-info-badges">
-              <span class="pbadge fi">FI</span>
-              <span class="pbadge fi">ALV Tree</span>
+              <span class="pbadge fi">Fiori</span>
               <span class="pbadge fi">CDS View</span>
+              <span class="pbadge fi">OData</span>
             </div>
           </div>
           <div class="proj-chevron">›</div>
         </div>
         <div class="proj-body">
           <div class="proj-summary">
-            회사코드·회계연도 기준 자산·부채·자본 재무상태표를 ALV Tree로 표시하는 프로그램. CDS View로 계정별 월별 잔액을 사전 집계.<br>
-            전기·당기 비교, 계정 단위 월별 드릴다운, 차트 시각화까지 한 화면에서 처리합니다.
+            재무상태표 프로그램(08번)의 CDS View를 OData로 노출해 Fiori 웹 UI로 재구성한 앱. 자산·부채·자본 합계 카드 + 전기·당기 비교 차트 + 계정별 상세 내역을 한 화면에서 제공.<br>
+            대차 일치 검증, Excel 저장, PDF 출력까지 지원합니다.
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery">
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_main.png" alt="재무상태표 메인 화면">
-              <div class="img-caption">메인 — 자산/부채/자본 트리 + 전기·당기 비교 + 그룹 막대 차트</div>
+              <img src="images/doc09_main.png" alt="Fiori 재무상태표 메인 화면">
+              <div class="img-caption">메인 — 대차 일치 검증 + 자산·부채·자본 요약 카드 + 비교 차트</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
-              <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
+              <img src="images/doc09_detail_scroll.png" alt="재무상태표 상세 내역 스크롤">
+              <div class="img-caption">상세 내역 — 계정과목별 전기·당기 잔액 트리 구조</div>
             </div>
             <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
-              <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
+              <img src="images/doc09_detail_full.png" alt="재무상태표 상세 내역 전체">
+              <div class="img-caption">상세 내역 전체 — 자산/부채/자본 합계 행 색상 강조</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img src="images/doc09_excel.png" alt="Excel 저장 결과">
+              <div class="img-caption">Excel 저장 — 현재 조회 결과를 xlsx로 직접 다운로드</div>
             </div>
           </div>
 
           <div class="proj-features" style="margin-top:1.4rem">
             <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
-              <li><strong>ALV Tree 자산·부채·자본 구조</strong> — 회사코드·회계연도 입력 시 계정 마스터(major_class/minor_class) 기준으로 트리 구성. 전기·당기 잔액을 좌측에서 즉시 비교</li>
-              <li><strong>CDS View 월별 잔액 사전 집계</strong> — <code>ZCDS_E3_FI_0016</code>에서 전표 아이템을 월(MONAT) 단위로 SUM, 차변/대변(SHKZG)에 따라 부호 반전해 M01~M12 컬럼으로 제공</li>
-              <li><strong>트리 노드 ↔ 그리드 연동</strong> — 트리에서 계정 분류 또는 개별 계정 클릭 시 우측 그리드에 해당 범위의 월별 발생 잔액을 계정코드·계정명과 함께 동적 표시</li>
-              <li><strong>전기 vs 당기 차트</strong> — 자산·부채·자본 합계를 그룹 막대 차트로 시각화해 연간 재무구조 변동을 한눈에 파악</li>
-              <li><strong>TOP-OF-PAGE 요약</strong> — 자산·부채·자본 합계 및 전기 대비 증감액을 트렌드 아이콘과 함께 상단에 표시</li>
-              <li><strong>역분개·가계정 제외 처리</strong> — <code>bstat &lt;&gt; 'T'</code>, <code>stblg = ''</code>, <code>blart &lt;&gt; 'AB'</code> 조건으로 정상 확정 전표만 집계 대상에 포함</li>
+              <li><strong>대차 일치 자동 검증</strong> — 자산 합계 = 부채 + 자본 등식을 매 조회 시 계산해 상단에 일치 여부 배너로 표시</li>
+              <li><strong>3종 요약 카드</strong> — 자산·부채·자본 총계를 전기 대비 증감률(%)과 함께 카드로 제공. 증감 방향에 따라 상승/하락 아이콘 자동 분기</li>
+              <li><strong>전기·당기 비교 차트 3종</strong> — 자산·부채·자본 전체 비교, 자산 구성(유동·비유동) 비교, 부채 구성 비교를 그룹 막대 차트로 각각 시각화</li>
+              <li><strong>재무상태표 상세 내역 트리</strong> — 자산/부채/자본 각 합계 행을 강조 색상으로 구분하고, 계정과목별 전기·당기 잔액을 들여쓰기 구조로 표시</li>
+              <li><strong>Excel 저장</strong> — 현재 조회 조건의 상세 내역 전체를 sap.ui.export로 xlsx 직접 다운로드. 컬럼 헤더·정렬 그대로 유지</li>
+              <li><strong>PDF 출력</strong> — 요약 카드 + 비교 차트 + 상세 내역을 한 장의 보고서 형태로 PDF 변환해 다운로드</li>
             </ul>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'c8t1',event)">CDS View 월별 집계</button>
-          </div>
-
-          <div class="proj-code code-panel" id="c8t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0016'</span>
-<span class="cm">@AbapCatalog.compiler.compareFilter: true</span>
-<span class="cm">@AbapCatalog.preserveKey: true</span>
-<span class="cm">@AccessControl.authorizationCheck: #NOT_REQUIRED</span>
-<span class="cm">@EndUserText.label: '[FI] 계정코드 월별 잔액 집계'</span>
-<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0016</span>
-  <span class="kw">with parameters</span>
-    p_bukrs : bukrs,
-    p_gjahr : gjahr
-  <span class="kw">as select from</span> zte3fi0001 <span class="kw">as</span> m
-    <span class="kw">inner join</span> zte3fi0003 <span class="kw">as</span> i <span class="kw">on</span> i.bukrs = m.bukrs <span class="kw">and</span> i.saknr = m.saknr
-    <span class="kw">inner join</span> zte3fi0002 <span class="kw">as</span> h <span class="kw">on</span> h.bukrs = i.bukrs <span class="kw">and</span> h.belnr = i.belnr <span class="kw">and</span> h.gjahr = i.gjahr
-{
-  <span class="kw">key</span> m.bukrs <span class="kw">as</span> Bukrs,  <span class="kw">key</span> m.saknr <span class="kw">as</span> Saknr,
-      m.stext <span class="kw">as</span> Stext,  m.major_class <span class="kw">as</span> MajorClass,  m.minor_class <span class="kw">as</span> MinorClass,
-      i.waers <span class="kw">as</span> Waers,
-      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
-      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'01'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M01,
-      <span class="cm">"... M02 ~ M12 동일 패턴 반복</span>
-      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
-      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'12'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M12
-}
-<span class="kw">where</span>
-      m.bukrs = $parameters.p_bukrs
-  <span class="kw">and</span> h.gjahr = $parameters.p_gjahr
-  <span class="kw">and</span> h.bstat &lt;&gt; <span class="str">'T'</span>
-  <span class="kw">and</span> h.stblg = <span class="str">''</span>
-  <span class="kw">and</span> h.belnr <span class="kw">not like</span> <span class="str">'9%'</span>
-  <span class="kw">and</span> h.blart &lt;&gt; <span class="str">'AB'</span>
-<span class="kw">group by</span>
-  m.bukrs, m.saknr, m.stext, m.major_class, m.minor_class, i.waers</div>
-
-          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>ALV Tree</span><span>ALV Chart</span><span>FI</span></div>
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>OData</span><span>Fiori</span><span>SAPUI5</span><span>Excel Export</span><span>PDF</span></div>
         </div>
       </div>
 

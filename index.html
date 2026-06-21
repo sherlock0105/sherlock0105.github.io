@@ -263,6 +263,13 @@ section{padding:5rem 0}
 .img-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s,transform .15s;background:var(--white)}
 .img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid);transform:translateY(-2px)}
 .img-item img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;background:#f0f2f7}
+.img-gallery-featured{margin-bottom:1.4rem}
+.img-item-main{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s;background:var(--white);margin-bottom:.8rem}
+.img-item-main:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
+.img-item-main img{width:100%;height:auto;max-height:420px;object-fit:contain;object-position:top;display:block;background:#f0f2f7}
+.img-grid-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.img-grid-sub:has(.img-item:only-child){grid-template-columns:1fr}
+.img-grid-sub .img-item img{height:120px}
 .img-caption{font-size:11px;color:var(--text2);padding:.6rem .8rem;background:var(--bg);line-height:1.45;border-top:1px solid var(--border)}
 
 /* LIGHTBOX */
@@ -768,34 +775,36 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
           <!-- 이미지 갤러리 -->
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc01_main.png" alt="전표 조회 메인 화면">
               <div class="img-caption">전표 조회 메인 — Split ALV (목록 + 상세)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
-              <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
-              <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
-              <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
-              <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
-              <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
-              <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
+                <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
+                <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
+                <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
+                <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
+                <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
+                <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
+              </div>
             </div>
           </div>
 
@@ -925,42 +934,44 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc02_main.png" alt="외화평가 메인 — 시뮬레이션 화면">
               <div class="img-caption">메인 화면 — ALV Tree + 시뮬레이션 패널 + AR/AP 요약 카드</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
-              <div class="img-caption">시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동 반영</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
-              <div class="img-caption">ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
-              <div class="img-caption">전체 보기 — 거래처별 전기금액 vs 평가금액 비교</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
-              <div class="img-caption">평가/환입전표 팝업 — 생성 전 예정 내역 미리보기</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
-              <div class="img-caption">미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
-              <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업">
-              <div class="img-caption">전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc02_vendor_popup.png" alt="공급업체 정보 팝업">
-              <div class="img-caption">공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
+                <div class="img-caption">시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동 반영</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
+                <div class="img-caption">ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
+                <div class="img-caption">전체 보기 — 거래처별 전기금액 vs 평가금액 비교</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
+                <div class="img-caption">평가/환입전표 팝업 — 생성 전 예정 내역 미리보기</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
+                <div class="img-caption">미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
+                <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업">
+                <div class="img-caption">전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc02_vendor_popup.png" alt="공급업체 정보 팝업">
+                <div class="img-caption">공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회</div>
+              </div>
             </div>
           </div>
 
@@ -1056,34 +1067,36 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc03_main.png" alt="자산관리 메인 화면">
               <div class="img-caption">메인 — ALV Tree(자산분류) + 12개월 감가상각 Grid + 자산현황 분석 차트</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_create.png" alt="자산 생성 팝업">
-              <div class="img-caption">자산 생성 팝업 — 분류 선택 시 상각방법 자동 세팅 + 파일 업로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_asset_popup.png" alt="자산 정보 팝업">
-              <div class="img-caption">자산 정보 팝업 — 핫스팟 클릭 시 감가누계·장부가액·전표번호 조회</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_doc_popup.png" alt="전표 정보 팝업">
-              <div class="img-caption">전표 팝업 — 전표번호 클릭 시 AA 자산전표 차/대변 아이템 조회</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_gos_attach.png" alt="GOS 파일 첨부 목록">
-              <div class="img-caption">GOS 첨부 목록 — 자산 취득명세서 PDF 업로드·다운로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_gos_pdf.png" alt="GOS 첨부 PDF 취득명세서">
-              <div class="img-caption">첨부 PDF — 건물 등 감가상각자산 취득명세서 (BINARY_RELATION_CREATE 연결)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc03_disposal.png" alt="자산 처분 팝업 — 매각">
-              <div class="img-caption">자산 처분 팝업 — 처분유형(매각/폐기/기타) + 고객번호·매각금액 입력</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_create.png" alt="자산 생성 팝업">
+                <div class="img-caption">자산 생성 팝업 — 분류 선택 시 상각방법 자동 세팅 + 파일 업로드</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_asset_popup.png" alt="자산 정보 팝업">
+                <div class="img-caption">자산 정보 팝업 — 핫스팟 클릭 시 감가누계·장부가액·전표번호 조회</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_doc_popup.png" alt="전표 정보 팝업">
+                <div class="img-caption">전표 팝업 — 전표번호 클릭 시 AA 자산전표 차/대변 아이템 조회</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_gos_attach.png" alt="GOS 파일 첨부 목록">
+                <div class="img-caption">GOS 첨부 목록 — 자산 취득명세서 PDF 업로드·다운로드</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_gos_pdf.png" alt="GOS 첨부 PDF 취득명세서">
+                <div class="img-caption">첨부 PDF — 건물 등 감가상각자산 취득명세서 (BINARY_RELATION_CREATE 연결)</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc03_disposal.png" alt="자산 처분 팝업 — 매각">
+                <div class="img-caption">자산 처분 팝업 — 처분유형(매각/폐기/기타) + 고객번호·매각금액 입력</div>
+              </div>
             </div>
           </div>
 
@@ -1165,14 +1178,16 @@ ls_asset-abdat = sy-datum.
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery" style="grid-template-columns:repeat(2,1fr)">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc04_table.png" alt="ZTE3FI0008 환율 마스터 테이블 — 218건 적재">
               <div class="img-caption">ZTE3FI0008 적재 결과 — EUR/JPY/USD 3통화 GDATU 역순 저장 (218건)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc04_batchlog.png" alt="배치잡 실행 로그 — ZE3BATCH0001">
-              <div class="img-caption">배치잡 실행 로그 — ZE3BATCH0001 환율 3건 저장 완료 (기준일: 20260610)</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc04_batchlog.png" alt="배치잡 실행 로그 — ZE3BATCH0001">
+                <div class="img-caption">배치잡 실행 로그 — ZE3BATCH0001 환율 3건 저장 완료 (기준일: 20260610)</div>
+              </div>
             </div>
           </div>
 
@@ -1250,30 +1265,32 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc06_main.png" alt="완제품 검수 메인 화면">
               <div class="img-caption">메인 — 검수목록 탭 + 우측 완제품 검수 현황 (합격률·폐기율·검사항목별 불량)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
-              <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
-              <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
-              <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
-              <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
-              <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
+                <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
+                <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
+                <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
+                <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
+                <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
+              </div>
             </div>
           </div>
 
@@ -1314,18 +1331,20 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc08_main.png" alt="재무상태표 메인 화면">
               <div class="img-caption">메인 — 자산/부채/자본 트리 + 전기·당기 비교 + 그룹 막대 차트</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
-              <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
-              <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
+                <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
+                <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
+              </div>
             </div>
           </div>
 
@@ -1402,22 +1421,24 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
               <div class="img-caption">BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
-              <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
-              <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
-              <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
+                <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
+                <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
+                <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
+              </div>
             </div>
           </div>
 
@@ -1501,26 +1522,28 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc07_main.png" alt="Fiori 전표 조회 앱 메인">
               <div class="img-caption">전표 조회 탭 — 조건 검색 + 전표 헤더 목록 (총 975건)</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc07_item_detail.png" alt="헤더 클릭 시 아이템 드릴다운">
-              <div class="img-caption">헤더 클릭 시 하단에 전표 아이템 자동 표시 (차/대변 구분)</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc07_dashboard.png" alt="현황 탭 대시보드">
-              <div class="img-caption">현황 탭 — 총/정상/미결/역분개 카드 + 전표유형별·통화별 현황</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc07_ab_filter.png" alt="역분개 전표 필터">
-              <div class="img-caption">전표유형 AB 필터 — 역분개전표 173건만 필터링</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc07_excel.png" alt="Excel 저장">
-              <div class="img-caption">Excel 저장 — 현재 검색 조건 결과를 xlsx로 직접 다운로드</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc07_item_detail.png" alt="헤더 클릭 시 아이템 드릴다운">
+                <div class="img-caption">헤더 클릭 시 하단에 전표 아이템 자동 표시 (차/대변 구분)</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc07_dashboard.png" alt="현황 탭 대시보드">
+                <div class="img-caption">현황 탭 — 총/정상/미결/역분개 카드 + 전표유형별·통화별 현황</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc07_ab_filter.png" alt="역분개 전표 필터">
+                <div class="img-caption">전표유형 AB 필터 — 역분개전표 173건만 필터링</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc07_excel.png" alt="Excel 저장">
+                <div class="img-caption">Excel 저장 — 현재 검색 조건 결과를 xlsx로 직접 다운로드</div>
+              </div>
             </div>
           </div>
 
@@ -1598,22 +1621,24 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
-          <div class="img-gallery">
-            <div class="img-item" onclick="openLightbox(this,event)">
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
               <img src="images/doc09_main.png" alt="Fiori 재무상태표 메인 화면">
               <div class="img-caption">메인 — 대차 일치 검증 + 자산·부채·자본 요약 카드 + 비교 차트</div>
             </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc09_detail_scroll.png" alt="재무상태표 상세 내역 스크롤">
-              <div class="img-caption">상세 내역 — 계정과목별 전기·당기 잔액 트리 구조</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc09_detail_full.png" alt="재무상태표 상세 내역 전체">
-              <div class="img-caption">상세 내역 전체 — 자산/부채/자본 합계 행 색상 강조</div>
-            </div>
-            <div class="img-item" onclick="openLightbox(this,event)">
-              <img src="images/doc09_excel.png" alt="Excel 저장 결과">
-              <div class="img-caption">Excel 저장 — 현재 조회 결과를 xlsx로 직접 다운로드</div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_detail_scroll.png" alt="재무상태표 상세 내역 스크롤">
+                <div class="img-caption">상세 내역 — 계정과목별 전기·당기 잔액 트리 구조</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_detail_full.png" alt="재무상태표 상세 내역 전체">
+                <div class="img-caption">상세 내역 전체 — 자산/부채/자본 합계 행 색상 강조</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_excel.png" alt="Excel 저장 결과">
+                <div class="img-caption">Excel 저장 — 현재 조회 결과를 xlsx로 직접 다운로드</div>
+              </div>
             </div>
           </div>
 
@@ -1967,10 +1992,11 @@ function toggleProj(head, ev){
   document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
   if(!isOpen){
     card.classList.add('open');
+    // 카드 제목(head)이 항상 화면 상단에 오도록 즉시 보정 (애니메이션 없이)
     requestAnimationFrame(()=>{
-      const headerOffset = 90; // 상단 고정 네비/헤더 높이 보정
-      const top = card.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      window.scrollTo({top:top, behavior:'smooth'});
+      const headerOffset = 90;
+      const top = head.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({top:top, behavior:'auto'});
     });
   }
 }

@@ -368,7 +368,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Projects</span>
-          <span class="hero-card-val">9 CBO Programs</span>
+          <span class="hero-card-val">10 CBO Programs</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Course</span>
@@ -515,7 +515,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="exp-desc">
             화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트에서 FI·QM 모듈 커스텀 개발을 총괄.
             전표 조회·역분개, 외화평가, 자산관리, 환율 API 연동, Fiori BP 마스터, 완제품 검수 프로그램 등
-            9종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
+            10종의 CBO 프로그램을 직접 설계·구현. 팀 공용 Posting Class·Function Module 표준화 리드.
           </div>
           <div class="exp-tags">
             <span class="exp-tag">ABAP</span>
@@ -744,7 +744,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="container">
     <div class="sec-head">
       <div class="sec-eyebrow">Projects</div>
-      <h2 class="sec-title">CBO 개발 프로그램 · 9종</h2>
+      <h2 class="sec-title">CBO 개발 프로그램 · 10종</h2>
     </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:1.6rem;line-height:1.7">
       Master Pack ERP 구축 프로젝트에서 FI·QM 모듈을 담당해 직접 설계·구현한 프로그램입니다.<br>
@@ -1655,6 +1655,65 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           </div>
 
           <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>OData</span><span>Fiori</span><span>SAPUI5</span><span>Excel Export</span><span>PDF</span></div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="proj-card">
+        <div class="proj-head" onclick="toggleProj(this,event)">
+          <div class="proj-num">10</div>
+          <div>
+            <div class="proj-info-title">사원 마스터 프로그램</div>
+            <div class="proj-info-sub">ZE3_HR_EMPLOYEE_MASTER · Fiori / OData</div>
+            <div class="proj-info-badges">
+              <span class="pbadge fi">Fiori</span>
+              <span class="pbadge fi">CDS View</span>
+              <span class="pbadge fi">CO</span>
+            </div>
+          </div>
+          <div class="proj-chevron">›</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-summary">
+            사원 마스터를 전체 화면에서 조회·등록하고, 부서별·직급별 인건비 현황을 분석하는 Fiori 앱.<br>
+            신규 사원 등록 시 직급 기준 기본급과 부서 기준 코스트센터를 자동 매핑하고, 급여 시작일은 입사일 기준으로 자동 계산합니다.
+          </div>
+
+          <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
+              <img src="images/doc10_main.png" alt="사원 마스터 메인 화면">
+              <div class="img-caption">메인 — 총 사원·재직·퇴사 현황 카드 + 사원 목록 (부서/직급/검색 필터)</div>
+            </div>
+            <div class="img-grid-sub">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc10_create.png" alt="신규 사원 등록 팝업">
+                <div class="img-caption">신규 사원 등록 — 부서·직급 선택 시 기본급·급여시작일·코스트센터 자동 입력</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc10_salary_chart.png" alt="부서별 급여 현황 차트">
+                <div class="img-caption">급여 현황 — 부서별 급여합계 막대 차트 + 인건비 상세 테이블</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc10_grade_table.png" alt="직급별 인건비 현황 테이블">
+                <div class="img-caption">직급별 인건비 현황 — CO 원가 분석 기준, 인원·급여합계·평균급여·비중</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-features" style="margin-top:1.4rem">
+            <div class="proj-features-title">핵심 기능 상세</div>
+            <ul>
+              <li><strong>전체 화면 사원 목록</strong> — 재직/퇴사 토글, 부서·직급 필터, 사번·이름 검색을 한 화면에서 동시 처리</li>
+              <li><strong>직급별 기본급 자동 매핑</strong> — 대표·이사·부장·과장·대리·사원 등 직급 선택 시 사전 정의된 기본급을 자동으로 채워 입력 오류 방지</li>
+              <li><strong>부서별 코스트센터 자동 매핑</strong> — 부서 선택과 동시에 해당 부서의 코스트센터 코드(예: CC_SD_DOM)를 자동 세팅해 CO 연계 누락 방지</li>
+              <li><strong>급여 시작일 자동 계산</strong> — 입사일이 급여 기준일(매월 25일)을 지났는지 판단해, 지났으면 익월 25일을 급여 시작일로 자동 설정</li>
+              <li><strong>부서별 인건비 대시보드</strong> — 부서별 급여합계를 막대 차트로 시각화하고, 인원·평균급여·전체 대비 비중(%)을 테이블로 함께 제공</li>
+              <li><strong>직급별 CO 원가 분석</strong> — 재직 사원 기준으로 직급별 인원·급여합계·평균급여·비중을 집계해 인건비 구조를 한눈에 파악</li>
+            </ul>
+          </div>
+
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>OData</span><span>Fiori</span><span>SAPUI5</span><span>CO</span><span>HR</span></div>
         </div>
       </div>
 

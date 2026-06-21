@@ -80,7 +80,11 @@ section{padding:5rem 0}
 .btn-blue:hover{background:#2d5ee8}
 .btn-outline{background:var(--white);color:var(--text2);border:1px solid var(--border2)}
 .btn-outline:hover{border-color:var(--blue);color:var(--blue)}
-.hero-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;box-shadow:var(--shadow-md);min-width:200px}
+.hero-card{background:var(--white);border:1px solid var(--border);border-top:3px solid transparent;background-image:linear-gradient(var(--white),var(--white)),linear-gradient(90deg,var(--blue),#f59e0b);background-origin:border-box;background-clip:padding-box,border-box;border-radius:var(--radius);padding:1.6rem 1.8rem;box-shadow:var(--shadow-md);min-width:240px}
+.hero-card-eyebrow{font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem}
+.hero-card-section-label{font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.3rem;margin-top:1rem}
+.hero-card-section-label:first-of-type{margin-top:0}
+.hero-card-text{font-size:13px;color:var(--text);line-height:1.5}
 .hero-card-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:13px}
 .hero-card-row:last-child{border-bottom:none}
 .hero-card-label{color:var(--text3);font-size:12px;white-space:nowrap;flex-shrink:0}
@@ -285,7 +289,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   .nav-links{display:none}
   .container{padding:0 1rem}
   .hero-inner{grid-template-columns:1fr}
-  .hero-card{display:none}
+  .hero-card{min-width:0;width:100%;margin-top:1.5rem}
   .skill-strip{gap:.5rem}
   .skill-pill{padding:.4rem .75rem .4rem .5rem}
   .about-grid{grid-template-columns:1fr}
@@ -341,7 +345,17 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
       </div>
       <div class="hero-card">
-        <div class="hero-card-row">
+        <div class="hero-card-eyebrow">Focus</div>
+        <div class="hero-card-text" style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:.9rem">SAP ABAP Developer</div>
+
+        <div class="hero-card-section-label">Process</div>
+        <div class="hero-card-text">FI 재무 · QM 품질관리 · ERP 흐름</div>
+
+        <div class="hero-card-section-label">Project</div>
+        <div class="hero-card-text">SAP CODE ERP 구축 프로젝트 PM / FI·QM 담당</div>
+
+        <div class="hero-card-section-label">Stack</div>
+        <div class="hero-card-row" style="border-bottom:1px solid var(--border);padding-top:.4rem">
           <span class="hero-card-label">Role</span>
           <span class="hero-card-val blue">PM · ABAP Dev</span>
         </div>
@@ -1951,7 +1965,14 @@ function toggleProj(head, ev){
   const card=head.closest('.proj-card');
   const isOpen=card.classList.contains('open');
   document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
-  if(!isOpen)card.classList.add('open');
+  if(!isOpen){
+    card.classList.add('open');
+    requestAnimationFrame(()=>{
+      const headerOffset = 90; // 상단 고정 네비/헤더 높이 보정
+      const top = card.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({top:top, behavior:'smooth'});
+    });
+  }
 }
 function openLightbox(el, ev){
   if(ev) ev.stopPropagation();

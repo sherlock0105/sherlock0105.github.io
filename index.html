@@ -146,11 +146,8 @@ section{padding:5rem 0}
 
 /* PROJECTS */
 .proj-list{display:flex;flex-direction:column;gap:.8rem}
-.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s}
-.proj-card:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
-.proj-card.open{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,110,248,.08),var(--shadow-md)}
-.proj-head{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.6rem;cursor:pointer;transition:background .15s}
-.proj-head:hover{background:var(--bg)}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.proj-head{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1.2rem 1.6rem}
 .proj-num{width:36px;height:36px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);flex-shrink:0}
 .proj-info-title{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
 .proj-info-sub{font-size:12px;color:var(--text3);font-family:var(--mono)}
@@ -160,10 +157,8 @@ section{padding:5rem 0}
 .pbadge.mm{background:var(--green-light);color:var(--green)}
 .pbadge.qm{background:var(--amber-light);color:var(--amber)}
 .pbadge.pm{background:var(--purple-light);color:var(--purple)}
-.proj-chevron{width:28px;height:28px;border-radius:6px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text3);transition:transform .2s,background .15s;flex-shrink:0}
-.proj-card.open .proj-chevron{transform:rotate(90deg);background:var(--blue-light);color:var(--blue)}
-.proj-body{display:none;padding:0 1.6rem 1.6rem;border-top:1px solid var(--border);padding-top:1.4rem}
-.proj-card.open .proj-body{display:block}
+.proj-chevron{display:none}
+.proj-body{display:block;padding:0 1.6rem 1.6rem;border-top:1px solid var(--border);padding-top:1.4rem}
 .proj-summary{font-size:13px;color:var(--text2);line-height:1.85;margin-bottom:1.2rem;padding:1rem 1.2rem;background:var(--bg);border-radius:8px;border-left:3px solid var(--blue)}
 .proj-screenshot{width:100%;border-radius:8px;border:1px solid var(--border);margin-bottom:1.2rem;display:block}
 .proj-features{margin-bottom:1.2rem}
@@ -755,7 +750,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
       <!-- 01 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">01</div>
           <div>
             <div class="proj-info-title">전표 조회 및 역분개 프로그램</div>
@@ -915,7 +910,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
       <!-- 02 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">02</div>
           <div>
             <div class="proj-info-title">월말 외화평가 프로그램</div>
@@ -1048,7 +1043,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
       <!-- 03 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">03</div>
           <div>
             <div class="proj-info-title">자산관리 및 감가상각 프로그램</div>
@@ -1160,7 +1155,7 @@ ls_asset-abdat = sy-datum.
 
       <!-- 04 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">04</div>
           <div>
             <div class="proj-info-title">환율 API 연동 프로그램</div>
@@ -1246,7 +1241,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 06(이동됨: 원 05) -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">05</div>
           <div>
             <div class="proj-info-title">완제품 검수 프로그램</div>
@@ -1312,7 +1307,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 07 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">06</div>
           <div>
             <div class="proj-info-title">재무상태표 프로그램</div>
@@ -1402,7 +1397,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 09 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">07</div>
           <div>
             <div class="proj-info-title">Fiori BP 마스터 프로그램</div>
@@ -1502,7 +1497,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 05(이동됨: 원 06) -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">08</div>
           <div>
             <div class="proj-info-title">Fiori 전표 조회 앱</div>
@@ -1602,7 +1597,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 08 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">09</div>
           <div>
             <div class="proj-info-title">Fiori 재무상태표 앱</div>
@@ -1661,7 +1656,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
       <!-- 10 -->
       <div class="proj-card">
-        <div class="proj-head" onclick="toggleProj(this,event)">
+        <div class="proj-head">
           <div class="proj-num">10</div>
           <div>
             <div class="proj-info-title">사원 마스터 프로그램</div>
@@ -2060,21 +2055,6 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 </div>
 
 <script>
-function toggleProj(head, ev){
-  if(ev) ev.stopPropagation();
-  const card=head.closest('.proj-card');
-  const isOpen=card.classList.contains('open');
-  document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('open'));
-  if(!isOpen){
-    card.classList.add('open');
-    // 카드 제목(head)이 항상 화면 상단에 오도록 즉시 보정 (애니메이션 없이)
-    requestAnimationFrame(()=>{
-      const headerOffset = 90;
-      const top = head.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      window.scrollTo({top:top, behavior:'auto'});
-    });
-  }
-}
 function openLightbox(el, ev){
   if(ev) ev.stopPropagation();
   const img=el.querySelector('img');

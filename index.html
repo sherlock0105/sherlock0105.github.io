@@ -1595,13 +1595,13 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
       </div>
 
-      <!-- 08 -->
+      <!-- 09 -->
       <div class="proj-card">
         <div class="proj-head">
           <div class="proj-num">09</div>
           <div>
-            <div class="proj-info-title">Fiori 재무상태표 앱</div>
-            <div class="proj-info-sub">ZE3_FI_BALANCE_SHEET · Fiori / OData</div>
+            <div class="proj-info-title">재무제표 조회 프로그램</div>
+            <div class="proj-info-sub">ZGWE3FI0001 · Fiori / OData</div>
             <div class="proj-info-badges">
               <span class="pbadge fi">Fiori</span>
               <span class="pbadge fi">CDS View</span>
@@ -1612,28 +1612,40 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
         </div>
         <div class="proj-body">
           <div class="proj-summary">
-            재무상태표 프로그램(08번)의 CDS View를 OData로 노출해 Fiori 웹 UI로 재구성한 앱. 자산·부채·자본 합계 카드 + 전기·당기 비교 차트 + 계정별 상세 내역을 한 화면에서 제공.<br>
-            대차 일치 검증, Excel 저장, PDF 출력까지 지원합니다.
+            재무상태표·손익계산서·현금흐름표를 한 화면에서 조회하는 Fiori 대시보드. 대차 일치 검증, 유동비율·부채비율 등 제조업 특화 KPI 위젯, 전기·당기 비교 차트를 제공합니다.<br>
+            상단 'AI 요약' 버튼 클릭 시 OData Function Import가 재무 데이터를 백엔드 AI 분석 모듈로 전달해 리포트를 즉시 반환합니다.
           </div>
 
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc09_main.png" alt="Fiori 재무상태표 메인 화면">
-              <div class="img-caption">메인 — 대차 일치 검증 + 자산·부채·자본 요약 카드 + 비교 차트</div>
+              <img src="images/doc09_main.png" alt="재무제표 조회 메인 화면">
+              <div class="img-caption">메인 — 대차 일치 검증 + 자산·부채·자본 요약 카드 + 유동비율·부채비율·자기자본비율·당좌비율 KPI</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_detail_scroll.png" alt="재무상태표 상세 내역 스크롤">
-                <div class="img-caption">상세 내역 — 계정과목별 전기·당기 잔액 트리 구조</div>
+                <img src="images/doc09_ai_report.png" alt="AI 재무 분석 리포트">
+                <div class="img-caption">AI 요약 — 재무제표 총평·주요 리스크·집중 모니터링 계정·향후 권장 조치 자동 생성</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_detail_full.png" alt="재무상태표 상세 내역 전체">
-                <div class="img-caption">상세 내역 전체 — 자산/부채/자본 합계 행 색상 강조</div>
+                <img src="images/doc09_chart.png" alt="자산·부채·자본 비교 차트">
+                <div class="img-caption">비교 차트 — 자산/부채 구성, 재고 카테고리별 비교, 연도별 추이(2018~2026)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_excel.png" alt="Excel 저장 결과">
-                <div class="img-caption">Excel 저장 — 현재 조회 결과를 xlsx로 직접 다운로드</div>
+                <img src="images/doc09_detail_collapsed.png" alt="재무상태표 상세 내역 접은 상태">
+                <div class="img-caption">상세 내역 — 자산/부채/자본 1depth 요약, 펼치기로 계정별 상세 확장</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_detail_expanded.png" alt="재무상태표 상세 내역 펼친 상태">
+                <div class="img-caption">상세 내역 전체 펼침 — 계정과목별 전기·당기 잔액 (예: 외상매출금, 외화보통예금 등)</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_pl.png" alt="손익계산서 탭">
+                <div class="img-caption">손익계산서 — 매출액·영업이익·당기순이익·영업이익률·매출원가율 KPI + 상세 내역</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img src="images/doc09_cf.png" alt="현금흐름표 탭">
+                <div class="img-caption">현금흐름표 — 영업활동 현금흐름·EBITDA·OCF Margin·FCF + 간접법 상세 내역</div>
               </div>
             </div>
           </div>
@@ -1641,16 +1653,95 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features" style="margin-top:1.4rem">
             <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
+              <li><strong>3대 재무제표 탭</strong> — 재무상태표·손익계산서·현금흐름표(간접법)를 탭 전환만으로 동일 화면에서 조회</li>
               <li><strong>대차 일치 자동 검증</strong> — 자산 합계 = 부채 + 자본 등식을 매 조회 시 계산해 상단에 일치 여부 배너로 표시</li>
-              <li><strong>3종 요약 카드</strong> — 자산·부채·자본 총계를 전기 대비 증감률(%)과 함께 카드로 제공. 증감 방향에 따라 상승/하락 아이콘 자동 분기</li>
-              <li><strong>전기·당기 비교 차트 3종</strong> — 자산·부채·자본 전체 비교, 자산 구성(유동·비유동) 비교, 부채 구성 비교를 그룹 막대 차트로 각각 시각화</li>
-              <li><strong>재무상태표 상세 내역 트리</strong> — 자산/부채/자본 각 합계 행을 강조 색상으로 구분하고, 계정과목별 전기·당기 잔액을 들여쓰기 구조로 표시</li>
-              <li><strong>Excel 저장</strong> — 현재 조회 조건의 상세 내역 전체를 sap.ui.export로 xlsx 직접 다운로드. 컬럼 헤더·정렬 그대로 유지</li>
-              <li><strong>PDF 출력</strong> — 요약 카드 + 비교 차트 + 상세 내역을 한 장의 보고서 형태로 PDF 변환해 다운로드</li>
+              <li><strong>제조업 특화 KPI 위젯</strong> — 유동비율·부채비율·자기자본비율·당좌비율(BS), 영업이익률·매출원가율(PL), EBITDA·OCF Margin·FCF(CF)를 위험/주의/양호 기준값과 함께 자동 판정</li>
+              <li><strong>AI 요약 — OData Function Import</strong> — `GenerateAiReport` 액션 호출 시 백엔드가 CDS View 데이터를 JSON 직렬화해 AI 분석 클래스로 전달, 총평·리스크·모니터링 대상·권장 조치를 리포트로 반환</li>
+              <li><strong>전기·당기 비교 차트</strong> — 자산/부채/자본 비교, 자산·부채 구성, 재고 카테고리별 비교, 2018~2026 연도별 추이를 그룹 막대·꺾은선 차트로 시각화</li>
+              <li><strong>계정별 상세 내역 트리</strong> — 자산/부채/자본 1depth 요약에서 모두 펼치기·접기로 계정과목별 전기·당기 잔액 전환</li>
+              <li><strong>Excel 저장 / PDF 출력</strong> — 현재 조회 조건의 상세 내역을 xlsx로 다운로드하거나, 요약 카드+차트+상세 내역을 PDF 보고서로 변환</li>
             </ul>
           </div>
 
-          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>OData</span><span>Fiori</span><span>SAPUI5</span><span>Excel Export</span><span>PDF</span></div>
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c9t1',event)">CDS View — 재무제표 잔액</button>
+            <button class="code-tab" onclick="switchTab(this,'c9t2',event)">OData GET_ENTITYSET</button>
+            <button class="code-tab" onclick="switchTab(this,'c9t3',event)">OData EXECUTE_ACTION (AI 요약)</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c9t1"><span class="cm">* 회계연도 누계 잔액 — 자산/부채/자본은 누적, 손익은 당해연도만 집계</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_FI_0011</span>
+  <span class="kw">with parameters</span> p_bukrs : bukrs, p_gjahr : gjahr, p_prev_gjahr : gjahr
+  <span class="kw">as select from</span> zte3fi0003 <span class="kw">as</span> i
+    <span class="kw">inner join</span> zte3fi0002 <span class="kw">as</span> h <span class="kw">on</span> h.bukrs = i.bukrs <span class="kw">and</span> h.belnr = i.belnr <span class="kw">and</span> h.gjahr = i.gjahr
+    <span class="kw">inner join</span> zte3fi0001 <span class="kw">as</span> m <span class="kw">on</span> m.bukrs = i.bukrs <span class="kw">and</span> m.saknr = i.saknr
+{
+  <span class="kw">key</span> i.bukrs, <span class="kw">key</span> i.saknr, m.stext, m.major_class, m.minor_class,
+  <span class="cm">-- 자산(1)·부채(2)·자본(3)·손익정리(9)는 해당연도까지 누계, 수익(4)·비용(5)은 당해연도만</span>
+  sum( <span class="kw">case</span>
+    <span class="kw">when</span> m.major_class <span class="kw">in</span> ( <span class="str">'1'</span>,<span class="str">'2'</span>,<span class="str">'3'</span>,<span class="str">'9'</span> ) <span class="kw">and</span> h.gjahr &lt;= $parameters.p_gjahr <span class="kw">then</span>
+      <span class="kw">case</span> m.major_class
+        <span class="kw">when</span> <span class="str">'1'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>
+        <span class="kw">else</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*-100 <span class="kw">else</span> i.dmbtr*100 <span class="kw">end</span>  <span class="cm">"부채·자본·손익정리는 반대 부호</span>
+      <span class="kw">end</span>
+    <span class="kw">when</span> m.major_class <span class="kw">in</span> ( <span class="str">'4'</span>,<span class="str">'5'</span> ) <span class="kw">and</span> h.gjahr = $parameters.p_gjahr <span class="kw">then</span>
+      <span class="kw">case</span> m.major_class
+        <span class="kw">when</span> <span class="str">'4'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'H'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>  <span class="cm">"수익: 대변 +</span>
+        <span class="kw">when</span> <span class="str">'5'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>  <span class="cm">"비용: 차변 +</span>
+      <span class="kw">end</span>
+    <span class="kw">else</span> 0
+  <span class="kw">end</span> )                <span class="kw">as</span> curr_amt,
+  sum( <span class="cm">/* 위와 동일 로직, p_prev_gjahr 기준 — 전기 잔액 */</span> ) <span class="kw">as</span> prev_amt
+}
+<span class="kw">where</span> i.bukrs = $parameters.p_bukrs <span class="kw">and</span> h.bstat &lt;&gt; <span class="str">'T'</span> <span class="kw">and</span> h.belnr <span class="kw">not like</span> <span class="str">'9%'</span>
+<span class="kw">group by</span> i.bukrs, i.saknr, m.stext, m.major_class, m.minor_class</div>
+
+          <div class="proj-code code-panel" id="c9t2" style="display:none"><span class="cm">* OData Entity Set 조회 — 회사코드·회계연도 파라미터 처리</span>
+<span class="kw">METHOD</span> <span class="fn">financialset_get_entityset</span>.
+  <span class="kw">DATA</span>: lt_financial <span class="kw">TYPE TABLE OF</span> zcds_e3_fi_0011.
+  <span class="kw">DATA</span>: lv_bukrs <span class="kw">TYPE</span> zte3fi0002-bukrs, lv_gjahr <span class="kw">TYPE</span> zte3fi0002-gjahr, lv_prev_gjahr <span class="kw">TYPE</span> zte3fi0002-gjahr.
+
+  lv_bukrs = <span class="kw">VALUE</span> #( it_filter_select_options[ property = <span class="str">'Bukrs'</span> ]-select_options[ 1 ]-low <span class="kw">OPTIONAL</span> ).
+  lv_gjahr = <span class="kw">VALUE</span> #( it_filter_select_options[ property = <span class="str">'Gjahr'</span> ]-select_options[ 1 ]-low <span class="kw">OPTIONAL</span> ).
+  <span class="kw">IF</span> lv_bukrs <span class="kw">IS INITIAL</span>. lv_bukrs = <span class="str">'1000'</span>. <span class="kw">ENDIF</span>.
+  <span class="kw">IF</span> lv_gjahr <span class="kw">IS INITIAL</span>. lv_gjahr = sy-datum(4). <span class="kw">ENDIF</span>.  <span class="cm">"기본값: 현재 연도</span>
+  lv_prev_gjahr = lv_gjahr - 1.
+
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> zcds_e3_fi_0011( p_bukrs = @lv_bukrs, p_gjahr = @lv_gjahr, p_prev_gjahr = @lv_prev_gjahr )
+    <span class="kw">INTO TABLE</span> @lt_financial.
+
+  <span class="kw">MOVE-CORRESPONDING</span> lt_financial <span class="kw">TO</span> et_entityset.
+  <span class="kw">SORT</span> et_entityset <span class="kw">BY</span> bukrs <span class="kw">ASCENDING</span> saknr <span class="kw">ASCENDING</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="c9t3" style="display:none"><span class="cm">* OData Function Import — 'AI 요약' 버튼 클릭 시 호출되는 액션</span>
+<span class="kw">METHOD</span> <span class="fn">/iwbep/if_mgw_appl_srv_runtime~execute_action</span>.
+  <span class="kw">IF</span> iv_action_name = <span class="str">'GenerateAiReport'</span>.
+    <span class="kw">DATA</span>(lv_bukrs) = <span class="kw">VALUE</span> #( it_parameter[ name = <span class="str">'Bukrs'</span> ]-value <span class="kw">OPTIONAL</span> ).
+    <span class="kw">DATA</span>(lv_gjahr) = <span class="kw">VALUE</span> #( it_parameter[ name = <span class="str">'Gjahr'</span> ]-value <span class="kw">OPTIONAL</span> ).
+    <span class="kw">IF</span> lv_bukrs <span class="kw">IS INITIAL</span>. lv_bukrs = <span class="str">'1000'</span>. <span class="kw">ENDIF</span>.
+    <span class="kw">IF</span> lv_gjahr <span class="kw">IS INITIAL</span>. lv_gjahr = sy-datum(4). <span class="kw">ENDIF</span>.
+    <span class="kw">DATA</span>(lv_prev_gjahr) = lv_gjahr - 1.
+
+    <span class="kw">DATA</span>: lt_financial <span class="kw">TYPE TABLE OF</span> zcds_e3_fi_0011.
+    <span class="kw">SELECT</span> * <span class="kw">FROM</span> zcds_e3_fi_0011( p_bukrs = @lv_bukrs, p_gjahr = @lv_gjahr, p_prev_gjahr = @lv_prev_gjahr )
+      <span class="kw">INTO TABLE</span> @lt_financial.
+
+    <span class="kw">IF</span> lt_financial <span class="kw">IS NOT INITIAL</span>.
+      <span class="cm">"재무 데이터 → JSON 직렬화 후 AI 분석 클래스로 전달</span>
+      <span class="kw">DATA</span>(lv_json_payload) = /ui2/cl_json=>serialize( data = lt_financial compress = abap_true
+                                                pretty_name = /ui2/cl_json=>pretty_mode-camel_case ).
+      <span class="kw">DATA</span>(lo_fi_analyzer) = <span class="kw">NEW</span> zcl_e3_fi_financial( ).
+      <span class="kw">DATA</span>(lv_ai_report) = lo_fi_analyzer-&gt;generate_report( iv_payload = lv_json_payload ).
+
+      <span class="kw">DATA</span>: ls_result <span class="kw">TYPE</span> zcl_zgwe3fi0001_mpc=&gt;aireportresult.
+      ls_result-reporttext = lv_ai_report.
+      copy_data_to_ref( <span class="kw">EXPORTING</span> is_data = ls_result <span class="kw">CHANGING</span> cr_data = er_data ).
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDIF</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-tech"><span>ABAP</span><span>CDS View</span><span>OData</span><span>SEGW</span><span>Fiori</span><span>SAPUI5</span><span>AI Integration</span><span>Excel Export</span><span>PDF</span></div>
         </div>
       </div>
 

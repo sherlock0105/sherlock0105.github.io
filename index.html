@@ -859,7 +859,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="proj-features" style="margin-top:1.4rem">
             <div class="proj-features-title">핵심 기능 상세</div>
             <ul>
-              <li><strong>4-Tab 선택화면</strong> — 전체/AR/AP/GL 탭 전환 시 해당 탭 조건만 검증 후 RETURN, 타 탭 필수값 오류 방지</li>
+              <li><strong>3-Tab 선택화면 (전체/AR/AP)</strong> — 탭 전환 시 해당 탭 조건만 검증 후 RETURN, 타 탭 필수값 오류 방지. 전표번호·전표유형·미결/반제 라디오 버튼 조건 포함</li>
               <li><strong>Split ALV</strong> — 상단 전표 목록 클릭 시 하단 전표 상세 동적 갱신. 차변/대변 컬럼 분리로 가독성 확보</li>
               <li><strong>역분개 전표 하단 병렬 표시</strong> — <code>set_rev_item</code> FORM으로 STBLG 연결된 역분개 전표를 원본 바로 아래 자동 배치</li>
               <li><strong>마이너스 역분개</strong> — SHKZG 유지 + dmbtr/wrbtr에 ×(-1) 적용. 전표유형 AB로 신규 채번 후 원본 STBLG 양방향 업데이트</li>
@@ -875,6 +875,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <button class="code-tab" onclick="switchTab(this,'c1t2',event)">역분개 전표 병렬 배치</button>
             <button class="code-tab" onclick="switchTab(this,'c1t3',event)">차대변 분리 표시</button>
             <button class="code-tab" onclick="switchTab(this,'c1t4',event)">반제 전표 처리</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t5',event)">3-Tab 전체/AR/AP 분기</button>
           </div>
 
           <div class="proj-code code-panel" id="c1t1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
@@ -956,6 +957,49 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">COMMIT WORK AND WAIT</span>.
 <span class="kw">ENDFORM</span>.</div>
 
+          <div class="proj-code code-panel" id="c1t5" style="display:none"><span class="cm">* AT SELECTION-SCREEN — 3-Tab 분기 검증 로직</span>
+<span class="cm">* 탭별 필수값만 검증. 타 탭 필드는 RETURN으로 우회</span>
+<span class="kw">AT SELECTION-SCREEN</span>.
+  <span class="kw">CASE</span> p_tab.
+    <span class="kw">WHEN</span> <span class="str">'ALL'</span>.   <span class="cm">* 전체 탭 — 기간만 필수</span>
+      <span class="kw">IF</span> s_budat-low <span class="kw">IS INITIAL</span>.
+        <span class="kw">MESSAGE</span> e000 <span class="kw">WITH</span> <span class="str">'전기일 시작값을 입력하십시오.'</span>. <span class="kw">RETURN</span>.
+      <span class="kw">ENDIF</span>.
+    <span class="kw">WHEN</span> <span class="str">'AR'</span>.    <span class="cm">* AR 탭 — 고객 필수 체크 가능</span>
+      <span class="kw">IF</span> s_kunnr[] <span class="kw">IS INITIAL AND</span> s_budat-low <span class="kw">IS INITIAL</span>.
+        <span class="kw">MESSAGE</span> e000 <span class="kw">WITH</span> <span class="str">'고객 또는 기간 조건을 입력하십시오.'</span>. <span class="kw">RETURN</span>.
+      <span class="kw">ENDIF</span>.
+    <span class="kw">WHEN</span> <span class="str">'AP'</span>.    <span class="cm">* AP 탭 — 공급업체 필수 체크 가능</span>
+      <span class="kw">IF</span> s_lifnr[] <span class="kw">IS INITIAL AND</span> s_budat-low <span class="kw">IS INITIAL</span>.
+        <span class="kw">MESSAGE</span> e000 <span class="kw">WITH</span> <span class="str">'공급업체 또는 기간 조건을 입력하십시오.'</span>. <span class="kw">RETURN</span>.
+      <span class="kw">ENDIF</span>.
+  <span class="kw">ENDCASE</span>.
+
+<span class="cm">* START-OF-SELECTION — 탭별 SELECT 분기</span>
+<span class="kw">START-OF-SELECTION</span>.
+  <span class="kw">CASE</span> p_tab.
+    <span class="kw">WHEN</span> <span class="str">'ALL'</span>.
+      <span class="kw">SELECT</span> * <span class="kw">FROM</span> zte3fi0002
+        <span class="kw">WHERE</span> budat <span class="kw">IN</span> s_budat
+          <span class="kw">AND</span> belnr <span class="kw">IN</span> s_belnr
+          <span class="kw">INTO TABLE</span> @gt_data.
+    <span class="kw">WHEN</span> <span class="str">'AR'</span>.
+      <span class="kw">SELECT</span> h~*, i~kunnr <span class="kw">FROM</span> zte3fi0002 <span class="kw">AS</span> h
+        <span class="kw">INNER JOIN</span> zte3fi0003 <span class="kw">AS</span> i
+          <span class="kw">ON</span> h~belnr = i~belnr <span class="kw">AND</span> h~gjahr = i~gjahr
+        <span class="kw">WHERE</span> budat <span class="kw">IN</span> s_budat
+          <span class="kw">AND</span> i~kunnr <span class="kw">IN</span> s_kunnr
+          <span class="kw">AND</span> i~kunnr <span class="kw">NE</span> @space
+          <span class="kw">INTO TABLE</span> @gt_data.
+    <span class="kw">WHEN</span> <span class="str">'AP'</span>.
+      <span class="kw">SELECT</span> h~*, i~lifnr <span class="kw">FROM</span> zte3fi0002 <span class="kw">AS</span> h
+        <span class="kw">INNER JOIN</span> zte3fi0003 <span class="kw">AS</span> i
+          <span class="kw">ON</span> h~belnr = i~belnr <span class="kw">AND</span> h~gjahr = i~gjahr
+        <span class="kw">WHERE</span> budat <span class="kw">IN</span> s_budat
+          <span class="kw">AND</span> i~lifnr <span class="kw">IN</span> s_lifnr
+          <span class="kw">AND</span> i~lifnr <span class="kw">NE</span> @space
+          <span class="kw">INTO TABLE</span> @gt_data.
+  <span class="kw">ENDCASE</span>.</div>
           <div class="proj-tech"><span>ABAP</span><span>ALV Splitter</span><span>FI</span><span>PDF Spool</span><span>CL_DD_DOCUMENT</span><span>NUMBER_GET_NEXT</span></div>
         </div>
       </div>
@@ -1012,14 +1056,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
                 <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
                 <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
               </div>
-              <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_doc_popup.png" alt="전표 정보 팝업">
-                <div class="img-caption">전표 정보 팝업 — 핫스팟 클릭 시 상세 아이템 조회</div>
-              </div>
-              <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_vendor_popup.png" alt="공급업체 정보 팝업">
-                <div class="img-caption">공급업체 정보 팝업 — 거래처 코드 클릭 시 마스터 조회</div>
-              </div>
+              
+              
             </div>
           </div>
 
@@ -1033,12 +1071,18 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
               <li><strong>외화보유현황 탭</strong> — 은행 보유 외화 + AR/AP 미결 외화 집계. 통화별 시계열 차트 내장</li>
               <li><strong>평가/환입전표 팝업</strong> — 생성 전 예정 내역 미리보기. Function Module로 팝업 재사용</li>
               <li><strong>배치잡 자동 전표 생성</strong> — 말일 평가전표 + 익월 1일 환입전표 쌍으로 자동 생성. Posting Class ZCL_E3_FI_DOCUMENT 재사용</li>
+              <li><strong>핫스팟 팝업 연동</strong> — 전표번호 클릭 시 전표 상세 팝업, 거래처 코드 클릭 시 고객/공급업체 마스터 조회. 공용 Function Group(ZFGE3FI01) 재사용</li>
+              <li><strong>요약 보기 / 전체 보기 전환</strong> — <code>gv_expand='X'</code> 상태에 따라 소계 행 화살표(▶/▼) 아이콘을 전환. 소계 클릭 시 거래처명을 마스터에서 재조회해 동적 표시</li>
+              <li><strong>전표 상태 아이콘 자동 표시</strong> — 평가손익 부호 기준으로 이익(녹색)·손실(빨강)·동일(비활성화) 신호등 아이콘과 상태 텍스트를 셀에 자동 반영</li>
+              <li><strong>외화보유현황 12개월 추이 차트</strong> — USD/EUR/JPY 통화별 보유잔액 최근 12개월 시계열 꺾은선 차트. 은행 보유액 + AR/AP 미결 외화 합산 표시</li>
             </ul>
           </div>
 
           <div class="code-tabs">
             <button class="code-tab active" onclick="switchTab(this,'c2t1',event)">평가손익 합계 계산</button>
             <button class="code-tab" onclick="switchTab(this,'c2t2',event)">평가 + 환입전표 생성</button>
+            <button class="code-tab" onclick="switchTab(this,'c2t3',event)">소계 텍스트 동적 표시</button>
+            <button class="code-tab" onclick="switchTab(this,'c2t4',event)">미결전표 조회 (get_data)</button>
           </div>
 
           <div class="proj-code code-panel" id="c2t1"><span class="cm">* 평가손익 합계 사전 계산 — 0일 때 전표 생성 방지</span>
@@ -1089,6 +1133,69 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <span class="kw">IMPORTING</span> ev_belnr  = lv_rev_belnr ).
 <span class="kw">ENDFORM</span>.</div>
 
+          <div class="proj-code code-panel" id="c2t3" style="display:none"><span class="cm">* ALV 소계(PARTNER) 행 클릭 시 거래처명 동적 표시 — handle_subtotal_text</span>
+<span class="cm">* gv_expand 상태에 따라 화살표(▶/▼) 전환</span>
+<span class="kw">FORM</span> handle_subtotal_text <span class="kw">USING</span> ps_info  <span class="kw">TYPE</span> lvc_s_stxt
+                                po_line  <span class="kw">TYPE REF TO</span> data
+                                po_event <span class="kw">TYPE REF TO</span> cl_alv_event_data.
+  <span class="kw">FIELD-SYMBOLS</span>: &lt;fs_line&gt; <span class="kw">LIKE LINE OF</span> gt_data_disp,
+                  &lt;fs_text&gt; <span class="kw">TYPE</span> any.
+  <span class="kw">DATA</span>: lv_kunnr <span class="kw">TYPE</span> zte3sd0001-kunnr,
+        lv_lifnr <span class="kw">TYPE</span> zte3mm0002-lifnr,
+        lv_arrow <span class="kw">TYPE</span> string.
+
+  <span class="kw">ASSIGN</span> po_line->* <span class="kw">TO</span> &lt;fs_line&gt;.
+  <span class="kw">CASE</span> ps_info-criteria.
+    <span class="kw">WHEN</span> <span class="str">'PARTNER'</span>.
+      <span class="cm">* gv_expand 기준으로 화살표(▶/▼) 동적 결정</span>
+      lv_arrow = <span class="kw">COND</span> #( <span class="kw">WHEN</span> gv_expand = <span class="str">'X'</span> <span class="kw">THEN</span> <span class="str">'▶'</span> <span class="kw">ELSE</span> <span class="str">'▼'</span> ).
+      <span class="cm">* 고객/공급업체 마스터 동적 조회 후 텍스트 조립</span>
+      <span class="kw">IF</span> &lt;fs_line&gt;-ar_ap = <span class="str">'AR'</span>.
+        lv_kunnr = &lt;fs_line&gt;-partner.
+        <span class="kw">SELECT SINGLE</span> name1 <span class="kw">FROM</span> zte3sd0001
+          <span class="kw">WHERE</span> kunnr <span class="kw">EQ</span> @lv_kunnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_name1).
+        <span class="kw">DATA</span>(lv_text) = |{ lv_arrow } 고객: { lv_kunnr } { lv_name1 }|.
+      <span class="kw">ELSE</span>.
+        lv_lifnr = &lt;fs_line&gt;-partner.
+        <span class="kw">SELECT SINGLE</span> vennm <span class="kw">FROM</span> zte3mm0002
+          <span class="kw">WHERE</span> lifnr <span class="kw">EQ</span> @lv_lifnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_vennm).
+        lv_text = |{ lv_arrow } 공급업체: { lv_lifnr } { lv_vennm }|.
+      <span class="kw">ENDIF</span>.
+  <span class="kw">ENDCASE</span>.
+  <span class="cm">* ALV 이벤트 데이터에 조립한 텍스트 덮어쓰기</span>
+  <span class="kw">ASSIGN</span> po_event->m_data->* <span class="kw">TO</span> &lt;fs_text&gt;.
+  &lt;fs_text&gt; = lv_text.  po_event->m_event_handled = <span class="str">'X'</span>.
+<span class="kw">ENDFORM</span>.</div>
+          <div class="proj-code code-panel" id="c2t4" style="display:none"><span class="cm">* FORM get_data — CDS View 기반 미결 전표 조회 (핵심 SELECT)</span>
+<span class="kw">FORM</span> get_data.
+  <span class="kw">REFRESH</span> : gt_data, gt_data_disp.
+
+  <span class="cm">* CDS View zcds_e3_fi_0001에 시뮬레이션 환율 파라미터로 전달</span>
+  <span class="cm">* shkzg='S'(차변) + kunnr/lifnr 존재 → 미결 외화 전표만 필터</span>
+  <span class="kw">SELECT</span> *
+    <span class="kw">FROM</span> zcds_e3_fi_0001(
+         p_usd = @gv_usd,
+         p_eur = @gv_eur,
+         p_jpy = @gv_jpy )
+   <span class="kw">WHERE</span> budat     &lt;= @gv_evdat
+     <span class="kw">AND</span> bukrs      = @gv_bukrs
+     <span class="kw">AND</span> shkzg      = <span class="str">'S'</span>
+     <span class="kw">AND</span> ( kunnr <span class="kw">NE</span> @space <span class="kw">OR</span> lifnr <span class="kw">NE</span> @space )
+    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @gt_data.
+
+  <span class="kw">IF</span> gt_data <span class="kw">IS INITIAL</span>.
+    <span class="kw">MESSAGE</span> s000 <span class="kw">WITH</span> <span class="str">'미결 외화전표가 없습니다.'</span>. <span class="kw">RETURN</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">* 환율 정보 SELECT — BINARY SEARCH용 정렬 병행</span>
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> zte3fi0008 <span class="kw">INTO TABLE</span> @gt_rate.
+  <span class="kw">SORT</span> gt_rate <span class="kw">BY</span> fcurr.
+
+  <span class="cm">* 기본 환율(시뮬 OFF 기준값) 세팅</span>
+  <span class="kw">PERFORM</span> base_ukurs.
+  <span class="cm">* 필드 매핑·평가손익 계산·색상/아이콘 설계</span>
+  <span class="kw">PERFORM</span> set_mapping_cds.
+<span class="kw">ENDFORM</span>.</div>
           <div class="proj-tech"><span>ABAP</span><span>Module Pool</span><span>ALV Tree</span><span>ALV Chart</span><span>FI</span><span>Batch Job</span><span>ZCL_E3_FI_DOCUMENT</span></div>
         </div>
       </div>
@@ -1713,6 +1820,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
             <ul>
               <li style="background:#fffbf0;margin:-0.2rem -0.2rem .6rem -0.2rem;padding:.6rem .8rem;border-radius:8px;border-left:3px solid #d6b656"><strong>🤖 AI 요약 — OData Function Import</strong> — <code style="background:var(--white);padding:.05rem .35rem;border-radius:4px;font-family:var(--mono);font-size:11.5px">GenerateAiReport</code> 액션 호출 시 백엔드가 CDS View 데이터를 JSON 직렬화해 AI 분석 클래스로 전달, 총평·리스크·모니터링 대상·권장 조치를 리포트로 자동 반환</li>
               <li><strong>3대 재무제표 탭</strong> — 재무상태표·손익계산서·현금흐름표(간접법)를 탭 전환만으로 동일 화면에서 조회</li>
+              <li><strong>단위 조 / 억 변환 토글</strong> — 금액 단위를 조·억 단위로 즉시 전환. 대형 금액 가독성 확보</li>
               <li><strong>대차 일치 자동 검증</strong> — 자산 합계 = 부채 + 자본 등식을 매 조회 시 계산해 상단에 일치 여부 배너로 표시</li>
               <li><strong>제조업 특화 KPI 위젯</strong> — 유동비율·부채비율·자기자본비율·당좌비율(BS), 영업이익률·매출원가율(PL), EBITDA·OCF Margin·FCF(CF)를 위험/주의/양호 기준값과 함께 자동 판정</li>
               <li><strong>전기·당기 비교 차트</strong> — 자산/부채/자본 비교, 자산·부채 구성, 재고 카테고리별 비교, 2018~2026 연도별 추이를 그룹 막대·꺾은선 차트로 시각화</li>
@@ -1735,7 +1843,8 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
     <span class="kw">inner join</span> zte3fi0001 <span class="kw">as</span> m <span class="kw">on</span> m.bukrs = i.bukrs <span class="kw">and</span> m.saknr = i.saknr
 {
   <span class="kw">key</span> i.bukrs, <span class="kw">key</span> i.saknr, m.stext, m.major_class, m.minor_class,
-  <span class="cm">-- 자산(1)·부채(2)·자본(3)·손익정리(9)는 해당연도까지 누계, 수익(4)·비용(5)은 당해연도만</span>
+  <span class="cm">-- 자산(1)·부채(2)·자본(3)·손익정리(9)는 해당연도까지 누계, 수익(4)·비용(5)은 당해연도만
+      -- *100: SAP CURR 필드 소수점 스케일 정규화 → UI5에서 /100 없이 원 단위 직접 표시</span>
   sum( <span class="kw">case</span>
     <span class="kw">when</span> m.major_class <span class="kw">in</span> ( <span class="str">'1'</span>,<span class="str">'2'</span>,<span class="str">'3'</span>,<span class="str">'9'</span> ) <span class="kw">and</span> h.gjahr &lt;= $parameters.p_gjahr <span class="kw">then</span>
       <span class="kw">case</span> m.major_class

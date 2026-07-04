@@ -58,7 +58,8 @@ nav{
 .nav-cta:hover{opacity:.88}
 
 /* LAYOUT */
-.container{max-width:1140px;margin:0 auto;padding:0 2.5rem}
+/* 기존 max-width: 1140px 에서 1400px 로 넓혀 글자 잘림 방지 */
+.container{max-width:1400px;margin:0 auto;padding:0 2.5rem}
 section{padding:5rem 0}
 .sec-div{border:none;border-top:1px solid var(--border);margin:0}
 
@@ -648,9 +649,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
     <div class="proj-features-title" style="margin-bottom:.8rem;font-size:13px;color:var(--text2)">전체 업무 프로세스 흐름도</div>
     <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow)">
-      <!-- draw.io diagram 코드는 생략하지 않고 유지합니다 (너무 길어질 경우 대비) -->
-      <!-- 실제로는 이 부분에 draw.io xml 등 원래 코드 사용 -->
-      <div style="padding:2rem;text-align:center;font-size:13px;color:#888;">(프로세스 흐름도 다이어그램 영역)</div>
+      <div onclick="openImg('images/process_flow.png', '전체 업무 프로세스 흐름도')" style="cursor:zoom-in;">
+        <img src="images/process_flow.png" alt="프로세스 흐름도" style="width:100%; display:block;">
+      </div>
     </div>
     <div class="flow-legend" style="margin-top:.8rem">
       <div class="flow-leg"><span class="flow-leg-dot" style="background:#cfe0fb"></span>SD 판매</div>
@@ -711,7 +712,58 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
-      <!-- 기타 과제 생략 없이 포함하려면 아래에 추가 -->
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">03</div>
+          <div class="chal-cat-title">채널·거래처별 판매정책 운영의 복잡성</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>판매 채널과 거래처별 가격 및 할인 정책 관리가 복잡</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>채널·거래처·할인 정책을 독립 마스터 테이블로 분리하고 각각 관리 프로그램을 구현해 정책 변경 시 영향 범위 최소화 및 재사용성 확보</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수기 관리에 따른 오주문 발생 및 대규모 수출에 필요한 각종 증빙 서류 작성에 과도한 시간 소요</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>청구서·수출신고필증·B/L을 자동 생성하고 거래처 이메일로 즉시 발송. 수작업 서류 작성 완전 제거</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>거래처별 리베이트 정산이 늦어지고 데이터 불일치가 발생하여 해외 파트너사와의 신뢰 관계 저하</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>목표 매출 달성 시 리베이트 발생·정산·청구를 자동화해 해외 파트너사와의 정산 오차 및 지연 제거</div>
+          </div>
+        </div>
+      </div>
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">04</div>
+          <div class="chal-cat-title">원료 특성을 반영한 생산·재고 최적화 한계</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>유통기한 기반 재고 운영 체계 미흡</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>유통기한 필드 적용으로 원재료 및 완제품 선입선출 진행. 유통기한 관리 배치잡으로 폐기 대상 및 할인 판매(잔여 3~6개월) 품목 자동 분류·알림</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>품질 관련 이슈 발생 시 생산 이력 추적 시스템 부재로 인한 원인 분석 및 대응 지연</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>배치 번호로 원료 입고→생산→출하 전 이력을 단일 조회로 추적. 품질 클레임 발생 시 원인 분석 및 신속 대응 가능</div>
+          </div>
+        </div>
+      </div>
+      <div class="chal-card">
+        <div class="chal-cat">
+          <div class="chal-cat-no">05</div>
+          <div class="chal-cat-title">현장 업무·실시간 의사결정의 모바일 지원 한계</div>
+        </div>
+        <div class="chal-rows">
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>영업팀 고객 방문 시 실시간 재고 확인 및 주문 처리 불가</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>Fiori 모바일로 실시간 재고 조회 + 고객 방문 현장에서 판매오더 즉시 생성. 사무실 복귀 없이 영업 마감 가능</div>
+          </div>
+          <div class="chal-row">
+            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>경영진 출장 중 핵심 KPI 모니터링 및 승인 업무 처리 제약</div>
+            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>Fiori 기반 핵심 KPI 대시보드를 모바일에서 실시간 확인하고, 오더·전표 승인을 현장에서 즉시 처리</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1030,6 +1082,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
               <li><strong>핫스팟 팝업 연동</strong> — 전표번호 클릭 시 전표 상세 팝업, 거래처 코드 클릭 시 고객/공급업체 마스터 조회. 공용 Function Group(ZFGE3FI01) 재사용</li>
               <li><strong>요약 보기 / 전체 보기 전환</strong> — <code>gv_expand='X'</code> 상태에 따라 소계 행 화살표(▶/▼) 아이콘을 전환. 소계 클릭 시 거래처명을 마스터에서 재조회해 동적 표시</li>
               <li><strong>전표 상태 아이콘 자동 표시</strong> — 평가손익 부호 기준으로 이익(녹색)·손실(빨강)·동일(비활성화) 신호등 아이콘과 상태 텍스트를 셀에 자동 반영</li>
+              <li><strong>외화보유현황 12개월 추이 차트</strong> — USD/EUR/JPY 통화별 보유잔액 최근 12개월 시계열 꺾은선 차트. 은행 보유액 + AR/AP 미결 외화 합산 표시</li>
             </ul>
           </div>
           
@@ -1088,7 +1141,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <span class="kw">IMPORTING</span> ev_belnr  = lv_rev_belnr ).
 <span class="kw">ENDFORM</span>.</div>
 
-          <div class="proj-code code-panel" id="c2t3" style="display:none"><span class="cm">* ALV 소계(PARTNER) 행 클릭 시 거래처명 동적 표시</span>
+          <div class="proj-code code-panel" id="c2t3" style="display:none"><span class="cm">* ALV 소계(PARTNER) 행 클릭 시 거래처명 동적 표시 — handle_subtotal_text</span>
+<span class="cm">* gv_expand 상태에 따라 화살표(▶/▼) 전환</span>
 <span class="kw">FORM</span> handle_subtotal_text <span class="kw">USING</span> ps_info  <span class="kw">TYPE</span> lvc_s_stxt
                                 po_line  <span class="kw">TYPE REF TO</span> data
                                 po_event <span class="kw">TYPE REF TO</span> cl_alv_event_data.
@@ -1101,17 +1155,22 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">ASSIGN</span> po_line->* <span class="kw">TO</span> &lt;fs_line&gt;.
   <span class="kw">CASE</span> ps_info-criteria.
     <span class="kw">WHEN</span> <span class="str">'PARTNER'</span>.
+      <span class="cm">* gv_expand 기준으로 화살표(▶/▼) 동적 결정</span>
       lv_arrow = <span class="kw">COND</span> #( <span class="kw">WHEN</span> gv_expand = <span class="str">'X'</span> <span class="kw">THEN</span> <span class="str">'▶'</span> <span class="kw">ELSE</span> <span class="str">'▼'</span> ).
+      <span class="cm">* 고객/공급업체 마스터 동적 조회 후 텍스트 조립</span>
       <span class="kw">IF</span> &lt;fs_line&gt;-ar_ap = <span class="str">'AR'</span>.
         lv_kunnr = &lt;fs_line&gt;-partner.
-        <span class="kw">SELECT SINGLE</span> name1 <span class="kw">FROM</span> zte3sd0001 <span class="kw">WHERE</span> kunnr <span class="kw">EQ</span> @lv_kunnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_name1).
+        <span class="kw">SELECT SINGLE</span> name1 <span class="kw">FROM</span> zte3sd0001
+          <span class="kw">WHERE</span> kunnr <span class="kw">EQ</span> @lv_kunnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_name1).
         <span class="kw">DATA</span>(lv_text) = |{ lv_arrow } 고객: { lv_kunnr } { lv_name1 }|.
       <span class="kw">ELSE</span>.
         lv_lifnr = &lt;fs_line&gt;-partner.
-        <span class="kw">SELECT SINGLE</span> vennm <span class="kw">FROM</span> zte3mm0002 <span class="kw">WHERE</span> lifnr <span class="kw">EQ</span> @lv_lifnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_vennm).
+        <span class="kw">SELECT SINGLE</span> vennm <span class="kw">FROM</span> zte3mm0002
+          <span class="kw">WHERE</span> lifnr <span class="kw">EQ</span> @lv_lifnr <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_vennm).
         lv_text = |{ lv_arrow } 공급업체: { lv_lifnr } { lv_vennm }|.
       <span class="kw">ENDIF</span>.
   <span class="kw">ENDCASE</span>.
+  <span class="cm">* ALV 이벤트 데이터에 조립한 텍스트 덮어쓰기</span>
   <span class="kw">ASSIGN</span> po_event->m_data->* <span class="kw">TO</span> &lt;fs_text&gt;.
   &lt;fs_text&gt; = lv_text.  po_event->m_event_handled = <span class="str">'X'</span>.
 <span class="kw">ENDFORM</span>.</div>
@@ -1141,7 +1200,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">SELECT</span> * <span class="kw">FROM</span> zte3fi0008 <span class="kw">INTO TABLE</span> @gt_rate.
   <span class="kw">SORT</span> gt_rate <span class="kw">BY</span> fcurr.
 
+  <span class="cm">* 기본 환율(시뮬 OFF 기준값) 세팅</span>
   <span class="kw">PERFORM</span> base_ukurs.
+  <span class="cm">* 필드 매핑·평가손익 계산·색상/아이콘 설계</span>
   <span class="kw">PERFORM</span> set_mapping_cds.
 <span class="kw">ENDFORM</span>.</div>
 
@@ -1438,7 +1499,26 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       i.waers <span class="kw">as</span> Waers,
       <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
       sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'01'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M01,
-      <span class="cm">"... M02 ~ M12 동일 패턴 반복</span>
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'02'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M02,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'03'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M03,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'04'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M04,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'05'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M05,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'06'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M06,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'07'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M07,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'08'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M08,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'09'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M09,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'10'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M10,
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'11'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M11,
       <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
       sum( <span class="kw">case</span> h.monat <span class="kw">when</span> <span class="str">'12'</span> <span class="kw">then</span> (<span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr <span class="kw">else</span> i.dmbtr * (<span class="num">-1</span>) <span class="kw">end</span>) <span class="kw">else</span> <span class="num">0</span> <span class="kw">end</span> ) <span class="kw">as</span> M12
 }
@@ -1703,19 +1783,21 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
     <span class="kw">inner join</span> zte3fi0001 <span class="kw">as</span> m <span class="kw">on</span> m.bukrs = i.bukrs <span class="kw">and</span> m.saknr = i.saknr
 {
   <span class="kw">key</span> i.bukrs, <span class="kw">key</span> i.saknr, m.stext, m.major_class, m.minor_class,
+  <span class="cm">-- 자산(1)·부채(2)·자본(3)·손익정리(9)는 해당연도까지 누계, 수익(4)·비용(5)은 당해연도만
+      -- *100: SAP CURR 필드 소수점 스케일 정규화 → UI5에서 /100 없이 원 단위 직접 표시</span>
   sum( <span class="kw">case</span>
     <span class="kw">when</span> m.major_class <span class="kw">in</span> ( <span class="str">'1'</span>,<span class="str">'2'</span>,<span class="str">'3'</span>,<span class="str">'9'</span> ) <span class="kw">and</span> h.gjahr &lt;= $parameters.p_gjahr <span class="kw">then</span>
       <span class="kw">case</span> m.major_class
         <span class="kw">when</span> <span class="str">'1'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>
-        <span class="kw">else</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*-100 <span class="kw">else</span> i.dmbtr*100 <span class="kw">end</span>
+        <span class="kw">else</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*-100 <span class="kw">else</span> i.dmbtr*100 <span class="kw">end</span>  <span class="cm">"부채·자본·손익정리는 반대 부호</span>
       <span class="kw">end</span>
     <span class="kw">when</span> m.major_class <span class="kw">in</span> ( <span class="str">'4'</span>,<span class="str">'5'</span> ) <span class="kw">and</span> h.gjahr = $parameters.p_gjahr <span class="kw">then</span>
       <span class="kw">case</span> m.major_class
-        <span class="kw">when</span> <span class="str">'4'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'H'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>
-        <span class="kw">when</span> <span class="str">'5'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>
+        <span class="kw">when</span> <span class="str">'4'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'H'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>  <span class="cm">"수익: 대변 +</span>
+        <span class="kw">when</span> <span class="str">'5'</span> <span class="kw">then</span> <span class="kw">case</span> i.shkzg <span class="kw">when</span> <span class="str">'S'</span> <span class="kw">then</span> i.dmbtr*100 <span class="kw">else</span> i.dmbtr*-100 <span class="kw">end</span>  <span class="cm">"비용: 차변 +</span>
       <span class="kw">end</span>
     <span class="kw">else</span> 0
-  <span class="kw">end</span> ) <span class="kw">as</span> curr_amt,
+  <span class="kw">end</span> )                <span class="kw">as</span> curr_amt,
   sum( <span class="cm">/* 위와 동일 로직, p_prev_gjahr 기준 — 전기 잔액 */</span> ) <span class="kw">as</span> prev_amt
 }
 <span class="kw">where</span> i.bukrs = $parameters.p_bukrs <span class="kw">and</span> h.bstat &lt;&gt; <span class="str">'T'</span> <span class="kw">and</span> h.belnr <span class="kw">not like</span> <span class="str">'9%'</span>
@@ -1729,7 +1811,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
   lv_bukrs = <span class="kw">VALUE</span> #( it_filter_select_options[ property = <span class="str">'Bukrs'</span> ]-select_options[ 1 ]-low <span class="kw">OPTIONAL</span> ).
   lv_gjahr = <span class="kw">VALUE</span> #( it_filter_select_options[ property = <span class="str">'Gjahr'</span> ]-select_options[ 1 ]-low <span class="kw">OPTIONAL</span> ).
   <span class="kw">IF</span> lv_bukrs <span class="kw">IS INITIAL</span>. lv_bukrs = <span class="str">'1000'</span>. <span class="kw">ENDIF</span>.
-  <span class="kw">IF</span> lv_gjahr <span class="kw">IS INITIAL</span>. lv_gjahr = sy-datum(4). <span class="kw">ENDIF</span>.
+  <span class="kw">IF</span> lv_gjahr <span class="kw">IS INITIAL</span>. lv_gjahr = sy-datum(4). <span class="kw">ENDIF</span>.  <span class="cm">"기본값: 현재 연도</span>
   lv_prev_gjahr = lv_gjahr - 1.
 
   <span class="kw">SELECT</span> * <span class="kw">FROM</span> zcds_e3_fi_0011( p_bukrs = @lv_bukrs, p_gjahr = @lv_gjahr, p_prev_gjahr = @lv_prev_gjahr )
@@ -1753,7 +1835,9 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
       <span class="kw">INTO TABLE</span> @lt_financial.
 
     <span class="kw">IF</span> lt_financial <span class="kw">IS NOT INITIAL</span>.
-      <span class="kw">DATA</span>(lv_json_payload) = /ui2/cl_json=>serialize( data = lt_financial compress = abap_true ).
+      <span class="cm">"재무 데이터 → JSON 직렬화 후 AI 분석 클래스로 전달</span>
+      <span class="kw">DATA</span>(lv_json_payload) = /ui2/cl_json=>serialize( data = lt_financial compress = abap_true
+                                                pretty_name = /ui2/cl_json=>pretty_mode-camel_case ).
       <span class="kw">DATA</span>(lo_fi_analyzer) = <span class="kw">NEW</span> zcl_e3_fi_financial( ).
       <span class="kw">DATA</span>(lv_ai_report) = lo_fi_analyzer-&gt;generate_report( iv_payload = lv_json_payload ).
 
@@ -1772,7 +1856,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
             <span class="dev-top-badge fblue">● FIORI</span>
           </div>
           <h3 class="dev-proj-title">사원 마스터 프로그램</h3>
-          <p class="dev-proj-desc">사원 마스터를 전체 화면에서 조회·등록하고, 부서별·직급별 인건비 현황을 분석하는 Fiori 앱.<br>신규 사원 등록 시 직급 기준 기본급과 부서 기준 코스트센터를 자동 매핑합니다.</p>
+          <p class="dev-proj-desc">사원 마스터를 전체 화면에서 조회·등록하고, 부서별·직급별 인건비 현황을 분석하는 Fiori 앱.<br>신규 사원 등록 시 직급 기준 기본급과 부서 기준 코스트센터를 자동 매핑하고, 급여 시작일은 입사일 기준으로 자동 계산합니다.</p>
           <div class="dev-tech-tags">
             <span class="dev-tech-tag">ABAP</span><span class="dev-tech-tag">CDS View</span><span class="dev-tech-tag">OData</span><span class="dev-tech-tag">Fiori</span><span class="dev-tech-tag">SAPUI5</span><span class="dev-tech-tag">CO</span><span class="dev-tech-tag">HR</span>
           </div>
@@ -1848,6 +1932,170 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="blart-item"><span class="blart-code">RE</span><span class="blart-name">송장</span></div>
           <div class="blart-item"><span class="blart-code">PR</span><span class="blart-name">정산</span></div>
         </div>
+
+        <div id="arch-code-wrap">
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'arch_t1',event)">공용 진입점 (BLART 분기)</button>
+            <button class="code-tab" onclick="switchTab(this,'arch_t2',event)">AP 분기 메서드</button>
+            <button class="code-tab" onclick="switchTab(this,'arch_t3',event)">공통 처리 (검증·채번·CO)</button>
+          </div>
+
+          <div class="proj-code code-panel" id="arch_t1"><span class="cm">* 공용 진입점 — BLART로 AR/AP/GL 자동 분기 + 환율 조회</span>
+<span class="kw">METHOD</span> <span class="fn">post_document</span>.
+  <span class="kw">DATA</span>: lv_msg(50), lv_belnr <span class="kw">TYPE</span> zte3fi0002-belnr,
+        lv_ukurs <span class="kw">TYPE</span> zte3fi0008-ukurs.
+
+  <span class="cm">* 외화 시 ZFE3FI0001으로 환율 자동 조회</span>
+  <span class="kw">IF</span> is_header-waers <span class="kw">IS NOT INITIAL AND</span>
+     is_header-waers <span class="kw">NE</span> <span class="str">'KRW'</span>.
+    <span class="kw">CALL FUNCTION</span> <span class="str">'ZFE3FI0001'</span>
+      <span class="kw">EXPORTING</span>  iv_date  = is_header-budat
+                 iv_fcurr = is_header-waers
+                 iv_tcurr = <span class="str">'KRW'</span>
+      <span class="kw">IMPORTING</span>  ev_ukurs = lv_ukurs.
+    <span class="kw">IF</span> lv_ukurs <span class="kw">IS INITIAL</span>.
+      ev_msg = |환율 미등록: { is_header-waers } { is_header-budat }|.
+      <span class="kw">RETURN</span>.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="kw">CASE</span> is_header-blart.
+    <span class="kw">WHEN</span> <span class="str">'DR'</span> <span class="kw">OR</span> <span class="str">'DZ'</span>.                   <span class="cm">"── AR 매출채권</span>
+      _post_document_ar(
+        <span class="kw">EXPORTING</span> is_header = is_header  it_items = it_items  iv_ukurs = lv_ukurs
+        <span class="kw">IMPORTING</span> ev_msg = lv_msg  ev_belnr = lv_belnr ).
+
+    <span class="kw">WHEN</span> <span class="str">'KR'</span> <span class="kw">OR</span> <span class="str">'KZ'</span> <span class="kw">OR</span> <span class="str">'RE'</span> <span class="kw">OR</span> <span class="str">'PR'</span>.   <span class="cm">"── AP 매입채무</span>
+      _post_document_ap(
+        <span class="kw">EXPORTING</span> is_header = is_header  it_items = it_items  iv_ukurs = lv_ukurs
+        <span class="kw">IMPORTING</span> ev_msg = lv_msg  ev_belnr = lv_belnr ).
+
+    <span class="kw">WHEN</span> <span class="str">'SA'</span> <span class="kw">OR</span> <span class="str">'WA'</span> <span class="kw">OR</span> <span class="str">'WE'</span>
+         <span class="kw">OR</span> <span class="str">'AB'</span> <span class="kw">OR</span> <span class="str">'AA'</span>.              <span class="cm">"── GL/MM/역분개/자산</span>
+      _post_document_gl(
+        <span class="kw">EXPORTING</span> is_header = is_header  it_items = it_items  iv_ukurs = lv_ukurs
+        <span class="kw">IMPORTING</span> ev_msg = lv_msg  ev_belnr = lv_belnr ).
+
+    <span class="kw">WHEN OTHERS</span>.
+      lv_msg = |지원하지 않는 BLART: { is_header-blart }|.
+  <span class="kw">ENDCASE</span>.
+
+  ev_belnr = lv_belnr.
+  ev_msg   = lv_msg.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="arch_t2" style="display:none"><span class="cm">* AP 분기 메서드 — BLART별 KOART/BSCHL 자동 세팅 후 COMMON 호출</span>
+<span class="kw">METHOD</span> <span class="fn">_post_document_ap</span>.
+  <span class="kw">DATA</span>: lt_items <span class="kw">TYPE TABLE OF</span> zte3fi0003,
+        ls_item  <span class="kw">TYPE</span> zte3fi0003.
+
+  lt_items = it_items.
+  is_header-open_flag = <span class="str">'X'</span>.   <span class="cm">"미결 플래그</span>
+
+  <span class="kw">LOOP AT</span> it_items <span class="kw">INTO</span> ls_item.
+    <span class="cm">* 계정 유형 (S=G/L  K=공급업체  D=고객)</span>
+    ls_item-koart = <span class="kw">COND</span> #(
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'S'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'K'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KZ'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'S'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KZ'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'K'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'RE'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'K'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'RE'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'S'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'PR'</span>                          <span class="kw">THEN</span> <span class="str">'S'</span> ).
+    <span class="cm">* 전기키</span>
+    ls_item-bschl = <span class="kw">COND</span> #(
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'31'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'40'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KZ'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'50'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'KZ'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'25'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'RE'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'31'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'RE'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'40'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'PR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'S'</span> <span class="kw">THEN</span> <span class="str">'40'</span>
+      <span class="kw">WHEN</span> is_header-blart = <span class="str">'PR'</span> <span class="kw">AND</span> ls_item-shkzg = <span class="str">'H'</span> <span class="kw">THEN</span> <span class="str">'50'</span> ).
+    <span class="kw">MODIFY</span> lt_items <span class="kw">FROM</span> ls_item <span class="kw">INDEX</span> sy-tabix.
+  <span class="kw">ENDLOOP</span>.
+
+  _post_document_common(
+    <span class="kw">EXPORTING</span> is_header = is_header  it_items = lt_items  iv_ukurs = iv_ukurs
+    <span class="kw">IMPORTING</span> ev_msg = ev_msg  ev_belnr = ev_belnr ).
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="arch_t3" style="display:none"><span class="cm">* 공통 처리 — 차대변 검증 → BLART별 채번 → INSERT → CO 연계 → COMMIT</span>
+<span class="kw">METHOD</span> <span class="fn">_post_document_common</span>.
+  <span class="cm">*-- 1. 아이템 존재 체크</span>
+  <span class="kw">IF</span> it_items[] <span class="kw">IS INITIAL</span>.
+    ev_msg = <span class="str">'아이템이 없습니다.'</span>.  <span class="kw">RETURN</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">*-- 2. 차대변 검증</span>
+  <span class="kw">LOOP AT</span> it_items <span class="kw">INTO</span> ls_item.
+    <span class="kw">CASE</span> ls_item-shkzg.
+      <span class="kw">WHEN</span> <span class="str">'S'</span>.  lv_debit  += ls_item-dmbtr.
+      <span class="kw">WHEN</span> <span class="str">'H'</span>.  lv_credit += ls_item-dmbtr.
+    <span class="kw">ENDCASE</span>.
+  <span class="kw">ENDLOOP</span>.
+  <span class="kw">IF</span> lv_debit <span class="kw">NE</span> lv_credit.
+    ev_msg = |차대 불일치! 차변:{ lv_debit } / 대변:{ lv_credit }|.  <span class="kw">RETURN</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">*-- 3. BLART → Number Range 자동 매핑</span>
+  <span class="cm">*      SA=01 AB=02 KR=03 KZ=04 DR=05 DZ=06 WA=07 WE=08 RE=09 PR=10 AA=11</span>
+  <span class="kw">CASE</span> is_header-blart.
+    <span class="kw">WHEN</span> <span class="str">'SA'</span>. lv_nr = <span class="str">'01'</span>.  <span class="kw">WHEN</span> <span class="str">'AB'</span>. lv_nr = <span class="str">'02'</span>.
+    <span class="kw">WHEN</span> <span class="str">'KR'</span>. lv_nr = <span class="str">'03'</span>.  <span class="kw">WHEN</span> <span class="str">'KZ'</span>. lv_nr = <span class="str">'04'</span>.
+    <span class="kw">WHEN</span> <span class="str">'DR'</span>. lv_nr = <span class="str">'05'</span>.  <span class="kw">WHEN</span> <span class="str">'DZ'</span>. lv_nr = <span class="str">'06'</span>.
+    <span class="kw">WHEN</span> <span class="str">'WA'</span>. lv_nr = <span class="str">'07'</span>.  <span class="kw">WHEN</span> <span class="str">'WE'</span>. lv_nr = <span class="str">'08'</span>.
+    <span class="kw">WHEN</span> <span class="str">'RE'</span>. lv_nr = <span class="str">'09'</span>.  <span class="kw">WHEN</span> <span class="str">'PR'</span>. lv_nr = <span class="str">'10'</span>.
+    <span class="kw">WHEN</span> <span class="str">'AA'</span>. lv_nr = <span class="str">'11'</span>.
+    <span class="kw">WHEN OTHERS</span>. ev_msg = |유효하지 않은 BLART: { is_header-blart }|. <span class="kw">RETURN</span>.
+  <span class="kw">ENDCASE</span>.
+
+  <span class="cm">*-- 4. 채번</span>
+  <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
+    <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRE3FI01'</span>
+    <span class="kw">IMPORTING</span> number = lv_belnr  <span class="kw">EXCEPTIONS OTHERS</span> = 1.
+  <span class="kw">IF</span> sy-subrc <span class="kw">NE</span> <span class="num">0</span>.
+    ev_msg = |채번 실패 NR:{ lv_nr }|.  <span class="kw">RETURN</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">*-- 5. 헤더 INSERT</span>
+  <span class="kw">MOVE-CORRESPONDING</span> is_header <span class="kw">TO</span> ls_header.
+  ls_header-bukrs = <span class="str">'1000'</span>.  ls_header-belnr = lv_belnr.
+  ls_header-kursf = iv_ukurs.  ls_header-bstat = <span class="str">' '</span>.
+  ls_header-erdat = sy-datum.  ls_header-ernam = sy-uname.
+  <span class="kw">INSERT</span> zte3fi0002 <span class="kw">FROM</span> ls_header.
+
+  <span class="cm">*-- 6. 아이템 INSERT (외화 환율 변환 포함)</span>
+  <span class="kw">LOOP AT</span> it_items <span class="kw">INTO</span> ls_item.
+    ls_item-belnr = lv_belnr.  ls_item-gjahr = ls_header-gjahr.
+    ls_item-fwaer = is_header-waers.   <span class="cm">"외화 통화키 보관</span>
+    ls_item-wrbtr = ls_item-dmbtr.     <span class="cm">"외화 원본금액 보관</span>
+    ls_item-ukurs = iv_ukurs.          <span class="cm">"환율 기록</span>
+    ls_item-waers = <span class="str">'KRW'</span>.
+    <span class="kw">IF</span> is_header-waers <span class="kw">EQ</span> <span class="str">'KRW'</span>.
+      <span class="kw">CLEAR</span>: ls_item-fwaer, ls_item-wrbtr, ls_item-ukurs.
+    <span class="kw">ELSEIF</span> iv_ukurs <span class="kw">IS NOT INITIAL</span>.
+      ls_item-dmbtr = ls_item-wrbtr * iv_ukurs.  <span class="cm">"KRW 환산</span>
+    <span class="kw">ENDIF</span>.
+    <span class="kw">INSERT</span> zte3fi0003 <span class="kw">FROM</span> ls_item.
+    <span class="kw">IF</span> sy-subrc <span class="kw">NE</span> <span class="num">0</span>.
+      <span class="kw">ROLLBACK WORK</span>.
+      ev_msg = |아이템 INSERT 실패 BUZEI:{ ls_item-buzei }|.  <span class="kw">RETURN</span>.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+
+  <span class="cm">*-- 7. CO 연계 → 실패 시 FI도 ROLLBACK</span>
+  zcl_e3_fi_document=>_post_co_document(
+    <span class="kw">EXPORTING</span> is_header = ls_header  it_items = it_items
+    <span class="kw">IMPORTING</span> ev_msg = lv_co_msg ).
+  <span class="kw">IF</span> lv_co_msg <span class="kw">IS NOT INITIAL</span>.
+    <span class="kw">ROLLBACK WORK</span>.  ev_msg = lv_co_msg.  <span class="kw">RETURN</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="kw">COMMIT WORK AND WAIT</span>.
+  ev_belnr = lv_belnr.
+<span class="kw">ENDMETHOD</span>.</div>
+        </div>
       </div>
 
       <!-- 공용 Function Module -->
@@ -1866,7 +2114,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0006</span>
               <span class="blart-name" style="font-weight:600">전표 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_doc_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_doc_popup.png', '전표 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_doc_popup.png" alt="전표 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">전표번호 클릭 시 헤더+아이템 팝업</div>
@@ -1876,7 +2124,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0004</span>
               <span class="blart-name" style="font-weight:600">고객 정보 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_customer_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_customer_popup.png', '고객 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_customer_popup.png" alt="고객 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">고객번호 클릭 시 마스터 정보 조회</div>
@@ -1886,7 +2134,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0005</span>
               <span class="blart-name" style="font-weight:600">공급업체 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_vendor_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_vendor_popup.png', '공급업체 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_vendor_popup.png" alt="공급업체 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">공급업체 코드 클릭 시 마스터 조회</div>
@@ -1896,7 +2144,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0007</span>
               <span class="blart-name" style="font-weight:600">자재 정보 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_material_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_material_popup.png', '자재 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_material_popup.png" alt="자재 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">자재코드 클릭 시 재고·유통기한 조회</div>
@@ -1906,7 +2154,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0008</span>
               <span class="blart-name" style="font-weight:600">생산 정보 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_production_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_production_popup.png', '생산 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_production_popup.png" alt="생산 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">생산오더 클릭 시 BOM·수량·납기 조회</div>
@@ -1916,7 +2164,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-code" style="font-size:11px;min-width:38px">0010</span>
               <span class="blart-name" style="font-weight:600">QM 검수 팝업</span>
             </div>
-            <div onclick="openImg('images/doc08_qm_popup.png')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
+            <div onclick="openImg('images/doc08_qm_popup.png', 'QM 검수 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
               <img src="images/doc08_qm_popup.png" alt="QM 검수 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">검수번호 클릭 시 합격·불합격 내역 조회</div>

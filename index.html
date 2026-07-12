@@ -95,9 +95,9 @@ section{padding:5rem 0}
 
 /* SECTION HEADER */
 .sec-head{margin-bottom:2.4rem}
-.sec-eyebrow{font-size:11px;font-family:var(--mono);font-weight:500;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.sec-eyebrow{font-size:11px;font-family:var(--mono);font-weight:600;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .sec-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px}
-.sec-title{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.sec-title{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1.3}
 
 /* SKILL */
 .skill-strip{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
@@ -248,7 +248,9 @@ section{padding:5rem 0}
 .code-tab:hover{color:var(--blue);border-color:var(--blue-mid);background:var(--blue-light)}
 .code-tab.active{color:#fff;background:var(--blue);border-color:var(--blue)}
 
-.proj-code{background:#1e1e2e;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;font-family:var(--mono);font-size:11.5px;color:#cdd6f4;overflow-x:auto;white-space:pre;line-height:1.75}
+.proj-code{background:#1e1e2e;border-radius:10px;padding:2.6rem 1.2rem 1.1rem;margin-bottom:1rem;font-family:var(--mono);font-size:11.5px;color:#cdd6f4;overflow-x:auto;white-space:pre;line-height:1.75;position:relative;border:1px solid #2c2c40}
+.proj-code::before{content:'';position:absolute;top:0;left:0;right:0;height:30px;background:#181825;border-bottom:1px solid #2c2c40;border-radius:9px 9px 0 0}
+.proj-code::after{content:'● ● ●';position:absolute;top:8px;left:14px;font-size:8px;letter-spacing:3px;color:#45475a;line-height:1;font-family:var(--sans)}
 .proj-code .cm{color:#6c7086}
 .proj-code .kw{color:#cba6f7}
 .proj-code .str{color:#a6e3a1}
@@ -277,8 +279,9 @@ section{padding:5rem 0}
 
 /* DEVELOPMENT (PROJECTS) LAYOUT */
 .dev-header { margin-bottom: 2rem; }
-.dev-eyebrow { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.05em; margin-bottom: 0.5rem; text-transform: uppercase; font-family: var(--sans); }
-.dev-title { font-size: 1.8rem; font-weight: 700; color: var(--text); }
+.dev-eyebrow { font-size: 11px; font-family: var(--mono); font-weight: 600; color: var(--blue); letter-spacing: .1em; margin-bottom: 0.5rem; text-transform: uppercase; display: flex; align-items: center; gap: .5rem; }
+.dev-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
+.dev-title { font-size: 1.7rem; font-weight: 700; color: var(--text); letter-spacing: -.02em; }
 
 .dev-layout { display: grid; grid-template-columns: 260px 1fr; background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-height: 800px; box-shadow: var(--shadow); }
 
@@ -319,10 +322,35 @@ section{padding:5rem 0}
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono)}
 
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* TO TOP */
+.to-top{position:fixed;right:1.4rem;bottom:1.4rem;width:42px;height:42px;border-radius:50%;background:var(--white);border:1px solid var(--border2);color:var(--text2);font-size:17px;cursor:pointer;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:150}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{color:var(--blue);border-color:var(--blue-mid);transform:translateY(-2px)}
+
+/* MOBILE NAV */
+.nav-burger{display:none;background:transparent;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:4px}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .2s,opacity .2s}
+.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:190;padding:.6rem 1rem 1rem;flex-direction:column}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;padding:.7rem .6rem;border-radius:8px}
+.mobile-menu a:hover{background:var(--blue-light);color:var(--blue)}
+
 /* MOBILE */
 @media(max-width:680px){
   nav{padding:0 1rem}
   .nav-links{display:none}
+  .nav-burger{display:flex}
   .container{padding:0 1rem}
   .hero-inner{grid-template-columns:1fr}
   .hero-card{min-width:0;width:100%;margin-top:1.5rem}
@@ -353,8 +381,21 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="#architecture">Architecture</a>
     <a href="#contact">Contact</a>
   </div>
-  <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank">GitHub ↗</a>
+  <div style="display:flex;align-items:center;gap:.4rem">
+    <a class="nav-cta" href="https://github.com/sherlock0105" target="_blank">GitHub ↗</a>
+    <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="toggleMobileMenu()">About</a>
+  <a href="#story" onclick="toggleMobileMenu()">Story</a>
+  <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+  <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+  <a href="#architecture" onclick="toggleMobileMenu()">Architecture</a>
+  <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="home">
@@ -864,32 +905,32 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc01_main.png" alt="전표 조회 메인 화면">
+              <img loading="lazy" src="images/doc01_main.png" alt="전표 조회 메인 화면">
               <div class="img-caption">전표 조회 메인 — Split ALV (목록 + 상세)</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
+                <img loading="lazy" src="images/doc01_selection.png" alt="선택 화면 — 전표 통합 조회 Tab">
                 <div class="img-caption">선택 화면 — 전표 통합 조회 Tab</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
+                <img loading="lazy" src="images/doc01_ar_tab.png" alt="선택 화면 — AR Tab (매출채권)">
                 <div class="img-caption">선택 화면 — AR Tab (고객번호 + 조회 조건)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
+                <img loading="lazy" src="images/doc01_reverse_popup.png" alt="역분개 팝업 — 사원 정보 + 역분개 코드 입력">
                 <div class="img-caption">역분개 팝업 — 사원 정보 자동 조회 + 역분개 사유 입력</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
+                <img loading="lazy" src="images/doc01_reverse_result.png" alt="역분개 후 — 차대변 반전된 아이템">
                 <div class="img-caption">역분개 후 — 마이너스 전표 생성 완료 (정상 + 역분개 병렬 표시)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
+                <img loading="lazy" src="images/doc01_pdf.png" alt="PDF 출력 — MASTERPACK 회계전표">
                 <div class="img-caption">PDF 출력 — ABAP Spool → 회계전표 PDF 직접 다운로드</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
+                <img loading="lazy" src="images/doc01_general.png" alt="일반전표 탭 조회 결과">
                 <div class="img-caption">전표 통합 조회 — 일반전표 탭 결과 화면</div>
               </div>
             </div>
@@ -905,6 +946,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
               <li><strong>반제 전표 역분개</strong> — DZ/KZ 유형 시 <code>set_clear</code> FORM으로 상대방 전표 augbl 초기화 후 역분개 진행</li>
               <li><strong>ABAP Spool → PDF 직접 다운로드</strong> — 개별 전표 / 전체 전표 PDF 지원</li>
               <li><strong>동적 TOP-OF-PAGE</strong> — CL_DD_DOCUMENT로 총 전표수·금액·미결·반제·역분개·조회기간 3×3 카드 자동 생성</li>
+              <li><strong>조건부 F4 서치헬프</strong> — '미결' 라디오 버튼 선택 상태에서 고객 F4 호출 시 <strong>미결 잔액이 실제로 남아있는 고객만</strong> 팝업에 표시. 반제 선택 시 반제 이력 고객만 조회</li>
+              <li><strong>XBLNR 참조번호 기반 원천문서 점프</strong> — 참조번호 접두어(WO/MM/OD)를 판별해 생산오더·구매검수·영업납품 등 <strong>전표를 발생시킨 타 모듈 원천 문서로 다이렉트 드릴다운</strong></li>
+              <li><strong>마스터 텍스트 일괄 매핑</strong> — 수천 건 루프마다 DB SELECT 대신 고객·사원·공급업체 마스터를 인터널 테이블에 선적재 후 <code>VALUE #( ... OPTIONAL )</code>로 메모리 내 매핑해 조회 성능 확보</li>
             </ul>
           </div>
 
@@ -914,6 +958,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <button class="code-tab" onclick="switchTab(this,'c1t3',event)">차대변 분리 표시</button>
             <button class="code-tab" onclick="switchTab(this,'c1t4',event)">반제 전표 처리</button>
             <button class="code-tab" onclick="switchTab(this,'c1t5',event)">3-Tab 전체/AR/AP 분기</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t6',event)">조건부 F4 서치헬프</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t7',event)">XBLNR 원천문서 점프</button>
+            <button class="code-tab" onclick="switchTab(this,'c1t8',event)">마스터 일괄 매핑</button>
           </div>
 
           <div class="proj-code code-panel" id="c1t1"><span class="cm">* 마이너스 역분개 — SHKZG 유지, dmbtr × -1</span>
@@ -1038,6 +1085,68 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <span class="kw">AND</span> i~lifnr <span class="kw">NE</span> @space
           <span class="kw">INTO TABLE</span> @gt_data.
   <span class="kw">ENDCASE</span>.</div>
+
+          <div class="proj-code code-panel" id="c1t6" style="display:none"><span class="cm">* 조건부 F4 — 미결/반제 라디오 상태에 따라 대상 고객만 서치헬프에 표시</span>
+<span class="kw">FORM</span> <span class="fn">f4_kunnr</span>.
+  <span class="cm">* 화면 라디오 버튼 값 읽기 (DYNP_VALUES_READ)</span>
+  <span class="kw">IF</span> lv_rb_opn = <span class="str">'X'</span>.        <span class="cm">"미결 전표 → 미결 잔액 보유 고객만</span>
+    <span class="kw">SELECT DISTINCT</span> a~kunnr, a~name1
+      <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @lt_cust
+      <span class="kw">FROM</span> zte3sd0001 <span class="kw">AS</span> a
+     <span class="kw">INNER JOIN</span> zte3fi0002 <span class="kw">AS</span> b <span class="kw">ON</span> a~kunnr = b~kunnr
+     <span class="kw">WHERE</span> b~bstat = <span class="str">''</span> <span class="kw">AND</span> b~open_flag = <span class="str">'X'</span>.
+
+  <span class="kw">ELSEIF</span> lv_rb_clr = <span class="str">'X'</span>.    <span class="cm">"반제 전표 → 반제 이력 고객만</span>
+    <span class="kw">SELECT DISTINCT</span> a~kunnr, a~name1
+      <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @lt_cust
+      <span class="kw">FROM</span> zte3sd0001 <span class="kw">AS</span> a
+     <span class="kw">INNER JOIN</span> zte3fi0002 <span class="kw">AS</span> b <span class="kw">ON</span> a~kunnr = b~kunnr
+     <span class="kw">WHERE</span> b~bstat = <span class="str">'C'</span>.
+  <span class="kw">ENDIF</span>.
+
+  <span class="kw">CALL FUNCTION</span> <span class="str">'F4IF_INT_TABLE_VALUE_REQUEST'</span>
+    <span class="kw">EXPORTING</span>  retfield  = <span class="str">'KUNNR'</span>  dynprofield = <span class="str">'SO_KUN-LOW'</span>
+               dynpprog  = sy-repid  dynpnr = sy-dynnr  value_org = <span class="str">'S'</span>
+    <span class="kw">TABLES</span>     value_tab = lt_cust.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="c1t7" style="display:none"><span class="cm">* XBLNR 참조번호 접두어 판별 — 타 모듈 원천 문서로 다이렉트 드릴다운</span>
+<span class="kw">FORM</span> <span class="fn">xblnr_popup</span> <span class="kw">USING</span> pv_xblnr <span class="kw">TYPE</span> zte3fi0002-xblnr
+                       pv_gjahr <span class="kw">TYPE</span> zte3fi0002-gjahr.
+  <span class="kw">CASE</span> pv_xblnr(2).
+    <span class="kw">WHEN</span> <span class="str">'WO'</span>.  <span class="cm">"생산오더 (PP)</span>
+      <span class="kw">CALL FUNCTION</span> <span class="str">'ZFE3FI0008'</span>
+        <span class="kw">EXPORTING</span> iv_aufnr = pv_xblnr.
+
+    <span class="kw">WHEN</span> <span class="str">'MM'</span>.  <span class="cm">"구매/검수 (MM·QM)</span>
+      <span class="kw">CALL FUNCTION</span> <span class="str">'ZFE3FI0010'</span>
+        <span class="kw">EXPORTING</span> iv_prueflos = pv_xblnr.
+
+    <span class="kw">WHEN</span> <span class="str">'OD'</span>.  <span class="cm">"영업 납품 (SD)</span>
+      <span class="kw">CALL FUNCTION</span> <span class="str">'ZFE3FI0009'</span>
+        <span class="kw">EXPORTING</span> iv_lfnum = pv_xblnr.
+  <span class="kw">ENDCASE</span>.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="c1t8" style="display:none"><span class="cm">* 마스터 텍스트 일괄 매핑 — 루프마다 DB SELECT 대신 메모리 매핑으로 성능 확보</span>
+<span class="kw">FORM</span> <span class="fn">set_master_data</span>.
+  <span class="cm">* 사원·고객·공급업체 마스터를 한 번에 선적재</span>
+  <span class="kw">SELECT</span> pernr, pernam <span class="kw">FROM</span> zte3cm0005 <span class="kw">INTO TABLE</span> @<span class="kw">DATA</span>(lt_emp).
+  <span class="kw">SELECT</span> kunnr, name1  <span class="kw">FROM</span> zte3sd0001 <span class="kw">INTO TABLE</span> @<span class="kw">DATA</span>(lt_cust).
+  <span class="kw">SELECT</span> lifnr, vennm  <span class="kw">FROM</span> zte3mm0002 <span class="kw">INTO TABLE</span> @<span class="kw">DATA</span>(lt_vend).
+
+  <span class="kw">LOOP AT</span> gt_header <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_h&gt;).
+    <span class="kw">IF</span> &lt;fs_h&gt;-pernr <span class="kw">IS NOT INITIAL</span>.
+      &lt;fs_h&gt;-pernr = <span class="kw">VALUE</span> #( lt_emp[ pernr = &lt;fs_h&gt;-pernr ]-pernam <span class="kw">OPTIONAL</span> ).
+    <span class="kw">ENDIF</span>.
+    <span class="kw">IF</span> &lt;fs_h&gt;-kunnr <span class="kw">IS NOT INITIAL</span>.
+      &lt;fs_h&gt;-kunnr = <span class="kw">VALUE</span> #( lt_cust[ kunnr = &lt;fs_h&gt;-kunnr ]-name1 <span class="kw">OPTIONAL</span> ).
+    <span class="kw">ENDIF</span>.
+    <span class="kw">IF</span> &lt;fs_h&gt;-lifnr <span class="kw">IS NOT INITIAL</span>.
+      &lt;fs_h&gt;-lifnr = <span class="kw">VALUE</span> #( lt_vend[ lifnr = &lt;fs_h&gt;-lifnr ]-vennm <span class="kw">OPTIONAL</span> ).
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDFORM</span>.</div>
         </div>
 
         <!-- 02 월말 외화평가 -->
@@ -1061,32 +1170,32 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc02_main.png" alt="외화평가 메인 — 시뮬레이션 화면">
+              <img loading="lazy" src="images/doc02_main.png" alt="외화평가 메인 — 시뮬레이션 화면">
               <div class="img-caption">메인 화면 — ALV Tree + 시뮬레이션 패널 + AR/AP 요약 카드</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
+                <img loading="lazy" src="images/doc02_sim_result.png" alt="시뮬레이션 실행 결과 — 변동률 입력 후">
                 <div class="img-caption">시뮬레이션 실행 — EUR +2%, USD +0.2% 입력 후 평가손익 변동 반영</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
+                <img loading="lazy" src="images/doc02_tree_detail.png" alt="ALV Tree 5단 계층 — 거래처별 전표 드릴다운">
                 <div class="img-caption">ALV Tree 드릴다운 — 통화 → 거래처 → 전표 5단 계층</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
+                <img loading="lazy" src="images/doc02_tree_list.png" alt="전체 거래처 평가손익 목록">
                 <div class="img-caption">전체 보기 — 거래처별 전기금액 vs 평가금액 비교</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
+                <img loading="lazy" src="images/doc02_eval_popup.png" alt="외화평가 예정전표 팝업">
                 <div class="img-caption">평가/환입전표 팝업 — 생성 전 예정 내역 미리보기</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
+                <img loading="lazy" src="images/doc02_chart.png" alt="AR/AP 미결잔액 TOP5 차트">
                 <div class="img-caption">미결잔액 TOP5 차트 — ALV Chart 클릭 시 팝업</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
+                <img loading="lazy" src="images/doc02_forex_tab.png" alt="외화보유현황 탭 — 은행 보유 외화 + 차트">
                 <div class="img-caption">외화보유현황 탭 — EUR/JPY/USD 은행 보유액 + 추이 차트</div>
               </div>
             </div>
@@ -1097,6 +1206,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <ul>
               <li><strong>ALV Tree 5단 계층</strong> — 전체 → AR/AP → 통화(EUR/JPY/USD) → 거래처 → 전표 드릴다운. 노드 클릭 시 우측 Grid 자동 필터링</li>
               <li><strong>통화별 변동률(%) 시뮬레이션</strong> — EUR/JPY/USD 개별 % 입력 → 환율 동적 계산 → 실행 시 Tree·Grid 동시 반영. 최근 1주일 평균 환율 자동 세팅</li>
+              <li><strong>시뮬레이션 배수 CDS 파라미터화</strong> — 변동률(%)을 CDS View 파라미터(p_usd/p_eur/p_jpy)로 넘겨 <strong>SimFactor 계산을 HANA DB단에 위임</strong>. ABAP 재계산 루프 제거</li>
               <li><strong>평가손익 컬러 표시</strong> — 이익=녹색 / 손실=빨강 셀 컬러. AR·AP 요약 카드로 전체 손익 한눈에 파악</li>
               <li><strong>미결잔액 TOP5 차트</strong> — ALV Chart 버튼 클릭 시 거래처별 미결잔액 막대 차트 팝업</li>
               <li><strong>외화보유현황 탭</strong> — 은행 보유 외화 + AR/AP 미결 외화 집계. 통화별 시계열 차트 내장</li>
@@ -1114,6 +1224,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <button class="code-tab" onclick="switchTab(this,'c2t2',event)">평가 + 환입전표 생성</button>
             <button class="code-tab" onclick="switchTab(this,'c2t3',event)">소계 텍스트 동적 표시</button>
             <button class="code-tab" onclick="switchTab(this,'c2t4',event)">미결전표 조회 (get_data)</button>
+            <button class="code-tab" onclick="switchTab(this,'c2t5',event)">CDS 시뮬레이션 파라미터</button>
+            <button class="code-tab" onclick="switchTab(this,'c2t6',event)">평가일 유효환율 추출</button>
           </div>
 
           <div class="proj-code code-panel" id="c2t1"><span class="cm">* 평가손익 합계 사전 계산 — 0일 때 전표 생성 방지</span>
@@ -1229,6 +1341,57 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <span class="kw">PERFORM</span> set_mapping_cds.
 <span class="kw">ENDFORM</span>.</div>
 
+          <div class="proj-code code-panel" id="c2t5" style="display:none"><span class="cm">* 시뮬레이션 변동률(%)을 CDS 파라미터로 전달 — DB단에서 SimFactor 계산</span>
+<span class="kw">define view entity</span> <span class="fn">ZCDS_E3_FI_0001</span>
+  <span class="kw">with parameters</span>
+    p_usd : abap.dec(5,2),
+    p_eur : abap.dec(5,2),
+    p_jpy : abap.dec(5,2)
+  <span class="kw">as select from</span> zte3fi0002 <span class="kw">as</span> h
+    <span class="kw">inner join</span>   zte3fi0003 <span class="kw">as</span> i <span class="kw">on</span> i.bukrs = h.bukrs
+                                <span class="kw">and</span> i.gjahr = h.gjahr
+                                <span class="kw">and</span> i.belnr = h.belnr
+{
+  <span class="kw">key</span> h.bukrs <span class="kw">as</span> Bukrs,  <span class="kw">key</span> h.belnr <span class="kw">as</span> Belnr,
+  <span class="kw">key</span> i.fwaer <span class="kw">as</span> Fwaer,  <span class="kw">key</span> i.shkzg <span class="kw">as</span> Shkzg,
+
+  <span class="cm">@Semantics.amount.currencyCode: 'Fwaer'</span>
+  sum( i.wrbtr ) <span class="kw">as</span> Wrbtr,
+  <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+  sum( i.dmbtr ) <span class="kw">as</span> Dmbtr,
+
+  <span class="cm">-- 통화별 변동률(%) → 시뮬레이션 배수 계산</span>
+  <span class="kw">case</span> i.fwaer
+    <span class="kw">when</span> <span class="str">'USD'</span> <span class="kw">then</span> cast( <span class="num">1</span> <span class="kw">as</span> abap.dec(10,4) )
+                  + ( cast( $parameters.p_usd <span class="kw">as</span> abap.dec(10,4) ) / <span class="num">100</span> )
+    <span class="kw">when</span> <span class="str">'EUR'</span> <span class="kw">then</span> cast( <span class="num">1</span> <span class="kw">as</span> abap.dec(10,4) )
+                  + ( cast( $parameters.p_eur <span class="kw">as</span> abap.dec(10,4) ) / <span class="num">100</span> )
+    <span class="kw">when</span> <span class="str">'JPY'</span> <span class="kw">then</span> cast( <span class="num">1</span> <span class="kw">as</span> abap.dec(10,4) )
+                  + ( cast( $parameters.p_jpy <span class="kw">as</span> abap.dec(10,4) ) / <span class="num">100</span> )
+    <span class="kw">else</span>            cast( <span class="num">1</span> <span class="kw">as</span> abap.dec(10,4) )
+  <span class="kw">end</span> <span class="kw">as</span> SimFactor
+}
+<span class="kw">where</span> h.bstat = <span class="str">''</span>  <span class="kw">and</span> h.stblg = <span class="str">''</span>  <span class="kw">and</span> h.open_flag = <span class="str">'X'</span>
+  <span class="kw">and</span> h.blart &lt;&gt; <span class="str">'AB'</span>  <span class="kw">and</span> i.fwaer &lt;&gt; <span class="str">'KRW'</span>  <span class="kw">and</span> i.augbl = <span class="str">''</span>
+<span class="kw">group by</span> h.bukrs, h.belnr, h.gjahr, i.shkzg, i.fwaer</div>
+
+          <div class="proj-code code-panel" id="c2t6" style="display:none"><span class="cm">* 평가기준일 시점의 유효 최신 환율 통화별 1건 추출</span>
+<span class="cm">* SAP 환율 테이블은 날짜 역순 키(99999999 - 실제일자)로 저장</span>
+<span class="kw">FORM</span> <span class="fn">get_init_data</span>.
+  <span class="kw">DATA</span>(lv_gdatu) = <span class="num">99999999</span> - gv_evdat.
+
+  <span class="kw">SELECT DISTINCT</span> fcurr gdatu ukurs ffact erdat
+    <span class="kw">INTO TABLE</span> gt_rate
+    <span class="kw">FROM</span> zte3fi0008
+   <span class="kw">WHERE</span> tcurr = <span class="str">'KRW'</span>
+     <span class="kw">AND</span> fcurr <span class="kw">IN</span> ( <span class="str">'USD'</span>, <span class="str">'EUR'</span>, <span class="str">'JPY'</span> )
+     <span class="kw">AND</span> gdatu &gt;= lv_gdatu.
+
+  <span class="cm">* 오름차순 정렬 = 숫자가 작을수록 최신 → 통화별 첫 행이 유효환율</span>
+  <span class="kw">SORT</span> gt_rate <span class="kw">BY</span> fcurr gdatu <span class="kw">ASCENDING</span>.
+  <span class="kw">DELETE ADJACENT DUPLICATES FROM</span> gt_rate <span class="kw">COMPARING</span> fcurr.
+<span class="kw">ENDFORM</span>.</div>
+
         </div>
 
         <!-- 03 자산관리 및 감가상각 -->
@@ -1246,32 +1409,32 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc03_main.png" alt="자산관리 메인 화면">
+              <img loading="lazy" src="images/doc03_main.png" alt="자산관리 메인 화면">
               <div class="img-caption">메인 — ALV Tree(자산분류) + 12개월 감가상각 Grid + 자산현황 분석 차트</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_create.png" alt="자산 생성 팝업">
+                <img loading="lazy" src="images/doc03_create.png" alt="자산 생성 팝업">
                 <div class="img-caption">자산 생성 팝업 — 분류 선택 시 상각방법 자동 세팅 + 파일 업로드</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_asset_popup.png" alt="자산 정보 팝업">
+                <img loading="lazy" src="images/doc03_asset_popup.png" alt="자산 정보 팝업">
                 <div class="img-caption">자산 정보 팝업 — 핫스팟 클릭 시 감가누계·장부가액·전표번호 조회</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_doc_popup.png" alt="전표 정보 팝업">
+                <img loading="lazy" src="images/doc03_doc_popup.png" alt="전표 정보 팝업">
                 <div class="img-caption">전표 팝업 — 전표번호 클릭 시 AA 자산전표 차/대변 아이템 조회</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_gos_attach.png" alt="GOS 파일 첨부 목록">
+                <img loading="lazy" src="images/doc03_gos_attach.png" alt="GOS 파일 첨부 목록">
                 <div class="img-caption">GOS 첨부 목록 — 자산 취득명세서 PDF 업로드·다운로드</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_gos_pdf.png" alt="GOS 첨부 PDF 취득명세서">
+                <img loading="lazy" src="images/doc03_gos_pdf.png" alt="GOS 첨부 PDF 취득명세서">
                 <div class="img-caption">첨부 PDF — 건물 등 감가상각자산 취득명세서 (BINARY_RELATION_CREATE 연결)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc03_disposal.png" alt="자산 처분 팝업 — 매각">
+                <img loading="lazy" src="images/doc03_disposal.png" alt="자산 처분 팝업 — 매각">
                 <div class="img-caption">자산 처분 팝업 — 처분유형(매각/폐기/기타) + 고객번호·매각금액 입력</div>
               </div>
             </div>
@@ -1286,6 +1449,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
               <li><strong>GOS 파일 첨부</strong> — GOS_ATTACHMENT_LIST_POPUP으로 취득명세서 PDF 업로드·다운로드. BINARY_RELATION_CREATE로 SAP 오브젝트 연결</li>
               <li><strong>감가상각 배치잡</strong> — SM36 매월 31일 자동 실행. 정액법(건물·기계·비품) / 정률법(차량) 분기. 잔존가치 초과 방지 + 중복 실행 방지</li>
               <li><strong>CDS View 12개월 일괄 조회</strong> — zcds_e3_fi_0015에서 m01~m12 컬럼으로 복잡한 계산 로직 최소화</li>
+              <li><strong>자산번호 자동 채번</strong> — 분류 선택 시 접두어(MC/BD 등) + MAX(anln1) + 1로 다음 번호 자동 부여. <code>UNPACK</code>으로 자릿수 정렬, 기본 상각방법(정률/정액)도 함께 자동 세팅</li>
+              <li><strong>매각 처분손익 자동 분개</strong> — 대변 취득원가 제거 + 차변 감가누계액 상계 후, 매각대금 vs 장부가액 비교로 처분이익(대변)/처분손실(차변)을 자동 판별해 대차평균 유지</li>
             </ul>
           </div>
 
@@ -1293,6 +1458,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <button class="code-tab active" onclick="switchTab(this,'c3t1',event)">감가상각 계산식</button>
             <button class="code-tab" onclick="switchTab(this,'c3t2',event)">처분 전표 생성</button>
             <button class="code-tab" onclick="switchTab(this,'c3t3',event)">CDS View 12개월</button>
+            <button class="code-tab" onclick="switchTab(this,'c3t4',event)">매각 처분손익 분개</button>
+            <button class="code-tab" onclick="switchTab(this,'c3t5',event)">자산번호 자동 채번</button>
           </div>
 
           <div class="proj-code code-panel" id="c3t1"><span class="cm">* 정액법 (AFASL=LINR) — 건물·기계장치·비품</span>
@@ -1330,6 +1497,76 @@ ls_asset-abdat = sy-datum.
    <span class="kw">AND</span> abflg <span class="kw">NE</span> <span class="str">'X'</span>
   <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @gt_item.</div>
 
+          <div class="proj-code code-panel" id="c3t4" style="display:none"><span class="cm">* 유형자산 매각 — 취득원가/누계액 상계 후 처분손익 자동 판별 분개</span>
+<span class="kw">FORM</span> <span class="fn">post_item_sale</span> <span class="kw">USING</span>    pv_asset pv_cash pv_gain_loss
+                    <span class="kw">CHANGING</span> pv_buzei pt_item.
+  <span class="kw">DATA</span> lv_loss <span class="kw">TYPE</span> p <span class="kw">DECIMALS</span> <span class="num">2</span>.
+
+  <span class="cm">* 차변: 감가상각누계액 제거 (자산 차감 계정 상계)</span>
+  <span class="kw">IF</span> gs_dispose_item-accum &gt; <span class="num">0</span>.
+    pv_buzei += <span class="num">1</span>.
+    <span class="kw">PERFORM</span> append_post_item <span class="kw">USING</span> pv_buzei <span class="str">'1300000006'</span> <span class="str">'A'</span> <span class="str">'S'</span>
+                                   gs_dispose_item-accum <span class="kw">CHANGING</span> pt_item.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">* 차변: 매각대금 (보통예금 / 외상매출금)</span>
+  <span class="kw">IF</span> gs_dispose-abamt &gt; <span class="num">0</span>.
+    pv_buzei += <span class="num">1</span>.
+    <span class="kw">PERFORM</span> append_post_item <span class="kw">USING</span> pv_buzei pv_cash <span class="str">'S'</span> <span class="str">'S'</span>
+                                   gs_dispose-abamt <span class="kw">CHANGING</span> pt_item.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">* 차변: 유형자산처분손실 (매각대금 &lt; 장부가액)</span>
+  <span class="kw">IF</span> pv_gain_loss &lt; <span class="num">0</span>.
+    pv_buzei += <span class="num">1</span>.
+    lv_loss = pv_gain_loss * <span class="num">-1</span>.
+    <span class="kw">PERFORM</span> append_post_item <span class="kw">USING</span> pv_buzei <span class="str">'5300000005'</span> <span class="str">'S'</span> <span class="str">'S'</span>
+                                   lv_loss <span class="kw">CHANGING</span> pt_item.
+  <span class="kw">ENDIF</span>.
+
+  <span class="cm">* 대변: 취득원가 제거 (장부에서 자산 제거)</span>
+  pv_buzei += <span class="num">1</span>.
+  <span class="kw">PERFORM</span> append_post_item <span class="kw">USING</span> pv_buzei pv_asset <span class="str">'A'</span> <span class="str">'H'</span>
+                                 gs_dispose_item-aprice <span class="kw">CHANGING</span> pt_item.
+
+  <span class="cm">* 대변: 유형자산처분이익 (매각대금 &gt; 장부가액)</span>
+  <span class="kw">IF</span> pv_gain_loss &gt; <span class="num">0</span>.
+    pv_buzei += <span class="num">1</span>.
+    <span class="kw">PERFORM</span> append_post_item <span class="kw">USING</span> pv_buzei <span class="str">'4200000004'</span> <span class="str">'S'</span> <span class="str">'H'</span>
+                                   pv_gain_loss <span class="kw">CHANGING</span> pt_item.
+  <span class="kw">ENDIF</span>.
+<span class="kw">ENDFORM</span>.</div>
+
+          <div class="proj-code code-panel" id="c3t5" style="display:none"><span class="cm">* 자산번호 자동 채번 — 접두어 + MAX + 1, UNPACK으로 자릿수 정렬</span>
+<span class="kw">FORM</span> <span class="fn">list_anlkl</span>.
+  <span class="kw">DATA</span>: lv_prefix(10), lv_pattern(10).
+  <span class="kw">CHECK</span> gs_asset-anlkl <span class="kw">IS NOT INITIAL</span>.
+
+  <span class="cm">* 분류별 접두어 + 기본 상각방법 자동 세팅</span>
+  <span class="kw">CASE</span> gs_asset-anlkl.
+    <span class="kw">WHEN</span> <span class="str">'BD'</span>. lv_prefix = <span class="str">'BD'</span>. gs_asset-afasl = <span class="str">'정액법'</span>.
+    <span class="kw">WHEN</span> <span class="str">'MC'</span>. lv_prefix = <span class="str">'MC'</span>. gs_asset-afasl = <span class="str">'정률법'</span>.
+    <span class="kw">WHEN</span> <span class="str">'VH'</span>. lv_prefix = <span class="str">'VH'</span>. gs_asset-afasl = <span class="str">'정액법'</span>.
+    <span class="kw">WHEN</span> <span class="str">'FE'</span>. lv_prefix = <span class="str">'FE'</span>. gs_asset-afasl = <span class="str">'정액법'</span>.
+    <span class="kw">WHEN</span> <span class="str">'LD'</span>. lv_prefix = <span class="str">'LD'</span>. gs_asset-afasl = <span class="str">'해당없음'</span>.
+  <span class="kw">ENDCASE</span>.
+
+  lv_pattern = |{ lv_prefix }%|.
+  <span class="kw">SELECT MAX</span>( anln1 ) <span class="kw">FROM</span> zte3cm0002
+    <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_max_no)
+   <span class="kw">WHERE</span> anln1 <span class="kw">LIKE</span> @lv_pattern.
+
+  <span class="kw">IF</span> lv_max_no <span class="kw">IS NOT INITIAL</span>.
+    <span class="kw">DATA</span>(lv_num_c) = lv_max_no+2(4).
+    <span class="kw">DATA</span>(lv_num_i) = lv_num_c.
+    lv_num_i = lv_num_i + <span class="num">1</span>.
+    <span class="kw">UNPACK</span> lv_num_i <span class="kw">TO</span> lv_num_c.       <span class="cm">"MC0001 → MC0002</span>
+    <span class="kw">CONCATENATE</span> lv_prefix lv_num_c <span class="kw">INTO</span> gs_asset-anln1.
+  <span class="kw">ELSE</span>.
+    <span class="kw">CONCATENATE</span> lv_prefix <span class="str">'0001'</span> <span class="kw">INTO</span> gs_asset-anln1.
+  <span class="kw">ENDIF</span>.
+<span class="kw">ENDFORM</span>.</div>
+
         </div>
 
         <!-- 04 환율 API 연동 -->
@@ -1346,12 +1583,12 @@ ls_asset-abdat = sy-datum.
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc04_table.png" alt="ZTE3FI0008 환율 마스터 테이블 — 218건 적재">
+              <img loading="lazy" src="images/doc04_table.png" alt="ZTE3FI0008 환율 마스터 테이블 — 218건 적재">
               <div class="img-caption">ZTE3FI0008 적재 결과 — EUR/JPY/USD 3통화 GDATU 역순 저장 (218건)</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc04_batchlog.png" alt="배치잡 실행 로그 — ZE3BATCH0001">
+                <img loading="lazy" src="images/doc04_batchlog.png" alt="배치잡 실행 로그 — ZE3BATCH0001">
                 <div class="img-caption">배치잡 실행 로그 — ZE3BATCH0001 환율 3건 저장 완료 (기준일: 20260610)</div>
               </div>
             </div>
@@ -1421,28 +1658,28 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc06_main.png" alt="완제품 검수 메인 화면">
+              <img loading="lazy" src="images/doc06_main.png" alt="완제품 검수 메인 화면">
               <div class="img-caption">메인 — 검수목록 탭 + 우측 완제품 검수 현황 (합격률·폐기율·검사항목별 불량)</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
+                <img loading="lazy" src="images/doc06_defect_list.png" alt="검수 결과 상세 — 항목별 불량 내역">
                 <div class="img-caption">검사 결과 상세 — 항목별 불량 수량·판정 + 합격률 98.1% 표시</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
+                <img loading="lazy" src="images/doc06_excel_template.png" alt="검수 결과 엑셀 템플릿">
                 <div class="img-caption">Excel 템플릿 — 검수번호·자재코드·항목코드·불합격 수량 입력 양식</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
+                <img loading="lazy" src="images/doc06_upload.png" alt="검수 결과 엑셀 업로드">
                 <div class="img-caption">Excel 업로드 — 템플릿 다운 → 현장 작성 → 시스템 업로드</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
+                <img loading="lazy" src="images/doc06_confirm_popup.png" alt="엑셀 저장 확인 팝업">
                 <div class="img-caption">저장 확인 팝업 — 완료건 및 오류건 제외 후 저장 처리</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
+                <img loading="lazy" src="images/doc06_cost_report.png" alt="제조원가 직접비 명세서">
                 <div class="img-caption">제조원가(직접비) 명세서 — 재료비·노무비·1EA당 원가 + 자재별 출고 내역</div>
               </div>
             </div>
@@ -1474,16 +1711,16 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc08_main.png" alt="재무상태표 메인 화면">
+              <img loading="lazy" src="images/doc08_main.png" alt="재무상태표 메인 화면">
               <div class="img-caption">메인 — 자산/부채/자본 트리 + 전기·당기 비교 + 그룹 막대 차트</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
+                <img loading="lazy" src="images/doc08_drilldown.png" alt="유동자산 드릴다운">
                 <div class="img-caption">유동자산 드릴다운 — 계정별 전기·당기 잔액 상세</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
+                <img loading="lazy" src="images/doc08_monthly.png" alt="비유동자산·부채 월별 잔액">
                 <div class="img-caption">비유동자산·부채 — 계정코드별 월별(1~12월) 발생 잔액</div>
               </div>
             </div>
@@ -1495,6 +1732,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <li><strong>ALV Tree 자산·부채·자본 구조</strong> — 회사코드·회계연도 입력 시 계정 마스터(major_class/minor_class) 기준으로 트리 구성. 전기·당기 잔액을 좌측에서 즉시 비교</li>
               <li><strong>CDS View 월별 잔액 사전 집계</strong> — <code>ZCDS_E3_FI_0016</code>에서 전표 아이템을 월(MONAT) 단위로 SUM, 차변/대변(SHKZG)에 따라 부호 반전해 M01~M12 컬럼으로 제공</li>
               <li><strong>트리 노드 ↔ 그리드 연동</strong> — 트리에서 계정 분류 또는 개별 계정 클릭 시 우측 그리드에 해당 범위의 월별 발생 잔액을 계정코드·계정명과 동적 표시</li>
+              <li><strong>SAKNR Range 동적 구성</strong> — 클릭된 노드가 단일 계정/중분류/대분류/전체 중 무엇인지 판별해 해당 범위 계정코드를 Range 변수로 조립, CDS 파라미터 뷰에 그대로 전달</li>
               <li><strong>전기 vs 당기 차트</strong> — 자산·부채·자본 합계를 그룹 막대 차트로 시각화해 연간 재무구조 변동을 한눈에 파악</li>
               <li><strong>역분개·가계정 제외 처리</strong> — <code>bstat &lt;&gt; 'T'</code>, <code>stblg = ''</code>, <code>blart &lt;&gt; 'AB'</code> 조건으로 정상 확정 전표만 집계 대상에 포함</li>
             </ul>
@@ -1502,6 +1740,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 
           <div class="code-tabs">
             <button class="code-tab active" onclick="switchTab(this,'c6t1',event)">CDS View 월별 집계</button>
+            <button class="code-tab" onclick="switchTab(this,'c6t2',event)">트리 노드 동적 필터링</button>
           </div>
 
           <div class="proj-code code-panel" id="c6t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0016'</span>
@@ -1555,6 +1794,50 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 <span class="kw">group by</span>
   m.bukrs, m.saknr, m.stext, m.major_class, m.minor_class, i.waers</div>
 
+          <div class="proj-code code-panel" id="c6t2" style="display:none"><span class="cm">* 트리 클릭 → 계정/중분류/대분류/전체 판별 → SAKNR Range 동적 구성</span>
+<span class="kw">FORM</span> <span class="fn">filter_detail</span> <span class="kw">USING</span> pv_node_key <span class="kw">TYPE</span> lvc_nkey.
+  gcl_tree-&gt;<span class="fn">get_outtab_line</span>(
+    <span class="kw">EXPORTING</span> i_node_key = pv_node_key
+    <span class="kw">IMPORTING</span> e_outtab_line = ls_node_data ).
+
+  <span class="kw">REFRESH</span>: gt_header, gt_prev, lr_saknr.
+
+  <span class="kw">IF</span> ls_node_data-saknr <span class="kw">IS NOT INITIAL</span>.      <span class="cm">"1. 단일 계정 클릭</span>
+    lr_saknr = <span class="kw">VALUE</span> #( ( sign = <span class="str">'I'</span> option = <span class="str">'EQ'</span>
+                          low = ls_node_data-saknr ) ).
+  <span class="kw">ELSEIF</span> ls_node_data-fs_lv2 <span class="kw">IS NOT INITIAL</span>. <span class="cm">"2. 중분류(유동자산 등) 클릭</span>
+    <span class="kw">LOOP AT</span> gt_data <span class="kw">INTO</span> gs_data <span class="kw">WHERE</span> fs_lv2 <span class="kw">EQ</span> ls_node_data-fs_lv2.
+      <span class="kw">APPEND VALUE</span> #( sign = <span class="str">'I'</span> option = <span class="str">'EQ'</span> low = gs_data-saknr ) <span class="kw">TO</span> lr_saknr.
+    <span class="kw">ENDLOOP</span>.
+  <span class="kw">ELSEIF</span> ls_node_data-fs_lv1 <span class="kw">IS NOT INITIAL</span>. <span class="cm">"3. 대분류(자산 등) 클릭</span>
+    <span class="kw">LOOP AT</span> gt_data <span class="kw">INTO</span> gs_data <span class="kw">WHERE</span> fs_lv1 <span class="kw">EQ</span> ls_node_data-fs_lv1.
+      <span class="kw">APPEND VALUE</span> #( sign = <span class="str">'I'</span> option = <span class="str">'EQ'</span> low = gs_data-saknr ) <span class="kw">TO</span> lr_saknr.
+    <span class="kw">ENDLOOP</span>.
+  <span class="kw">ENDIF</span>.                                     <span class="cm">"4. 전체 → Range 비움 (조건 없음)</span>
+
+  <span class="cm">* 당기 월별 잔액 — 구성된 Range를 CDS 파라미터 뷰에 그대로 전달</span>
+  <span class="kw">SELECT</span> saknr, stext, waers,
+         m01, m02, m03, m04, m05, m06,
+         m07, m08, m09, m10, m11, m12
+    <span class="kw">FROM</span> <span class="fn">zcds_e3_fi_0016</span>( p_bukrs = @pa_bukrs, p_gjahr = @pa_gjahr )
+    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @gt_header
+   <span class="kw">WHERE</span> saknr <span class="kw">IN</span> @lr_saknr
+   <span class="kw">ORDER BY</span> saknr.
+
+  <span class="cm">* 전기 월별 잔액 — 동일 Range, 연도만 -1</span>
+  lv_prev_gjahr = pa_gjahr - <span class="num">1</span>.
+  <span class="kw">SELECT</span> saknr, stext, waers, m01, m02, m03, m04, m05, m06,
+         m07, m08, m09, m10, m11, m12
+    <span class="kw">FROM</span> <span class="fn">zcds_e3_fi_0016</span>( p_bukrs = @pa_bukrs, p_gjahr = @lv_prev_gjahr )
+    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @gt_prev
+   <span class="kw">WHERE</span> saknr <span class="kw">IN</span> @lr_saknr
+   <span class="kw">ORDER BY</span> saknr.
+
+  <span class="kw">PERFORM</span> set_chart.
+  gcl_grid-&gt;<span class="fn">refresh_table_display</span>(
+    <span class="kw">EXPORTING</span> is_stable = gs_stable  i_soft_refresh = space ).
+<span class="kw">ENDFORM</span>.</div>
+
         </div>
 
         <!-- 07 Fiori BP 마스터 -->
@@ -1571,20 +1854,20 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
+              <img loading="lazy" src="images/doc05_main.png" alt="BP 마스터 목록 메인 화면">
               <div class="img-caption">BP 목록 — 총 BP·고객·공급업체 카운트 카드 + 유형/상태 필터</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
+                <img loading="lazy" src="images/doc05_filter.png" alt="고객 필터 + 검색 결과">
                 <div class="img-caption">고객 탭 + BP코드 검색 — KR0 입력 시 국내 고객 12건 필터링</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
+                <img loading="lazy" src="images/doc05_detail.png" alt="BP 상세 조회 팝업">
                 <div class="img-caption">BP 상세 조회 — 기본·연락처·재무 정보 + 수정/비활성화</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc05_create.png" alt="신규 BP 생성 팝업">
+                <img loading="lazy" src="images/doc05_create.png" alt="신규 BP 생성 팝업">
                 <div class="img-caption">신규 BP 생성 — 유형 선택 후 기본·연락처·재무 정보 입력</div>
               </div>
             </div>
@@ -1599,12 +1882,14 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <li><strong>BP 상세 조회</strong> — 기본 정보 + 연락처(전화·이메일·주소) + 재무 정보(결제조건·은행 정보) 통합 팝업</li>
               <li><strong>신규 BP 생성</strong> — 유형 드롭다운 선택 시 폼 동적 분기. 필수값 검증 후 OData CREATE 호출</li>
               <li><strong>수정 / 비활성화</strong> — OData UPDATE/DELETE. UseFlag 필드로 논리 삭제 처리</li>
+              <li><strong>부분 갱신 병합 패턴</strong> — UPDATE 시 기존 레코드를 선조회한 뒤 <code>VALUE #( BASE ... )</code>로 병합해, 화면에서 입력하지 않은 필드가 공백으로 덮어쓰이는 문제 방지</li>
             </ul>
           </div>
 
           <div class="code-tabs">
             <button class="code-tab active" onclick="switchTab(this,'c7t1',event)">CDS UNION ALL 전체</button>
             <button class="code-tab" onclick="switchTab(this,'c7t2',event)">OData GET_ENTITYSET</button>
+            <button class="code-tab" onclick="switchTab(this,'c7t3',event)">UPDATE — 부분 갱신 병합</button>
           </div>
 
           <div class="proj-code code-panel" id="c7t1"><span class="cm">@AbapCatalog.sqlViewName: 'ZCDSV_E3_FI_0013'</span>
@@ -1643,6 +1928,41 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
     <span class="kw">INTO TABLE</span> @et_entityset.
 <span class="kw">ENDMETHOD</span>.</div>
 
+          <div class="proj-code code-panel" id="c7t3" style="display:none"><span class="cm">* UPDATE_ENTITY — 기존 레코드 선조회 후 VALUE #( BASE ... ) 병합</span>
+<span class="cm">* 화면에서 입력하지 않은 필드가 공백으로 덮어쓰이는 것을 방지</span>
+<span class="kw">METHOD</span> <span class="fn">bpmasterset_update_entity</span>.
+  io_data_provider-&gt;<span class="fn">read_entry_data</span>( <span class="kw">IMPORTING</span> es_data = ls_save ).
+
+  <span class="kw">CASE</span> ls_save-bptype.
+    <span class="kw">WHEN</span> <span class="str">'C'</span>.
+      <span class="cm">* 기존 고객 데이터 먼저 조회</span>
+      <span class="kw">SELECT SINGLE</span> * <span class="kw">FROM</span> zte3sd0001
+        <span class="kw">INTO</span> @<span class="kw">DATA</span>(ls_cust)
+        <span class="kw">WHERE</span> kunnr = @ls_save-bpcode.
+
+      <span class="cm">* BASE: 기존 값 유지 + 요청 값만 덮어쓰기</span>
+      ls_cust = <span class="kw">VALUE</span> #( <span class="kw">BASE</span> ls_cust
+        name1   = ls_save-bpname
+        stcd1   = ls_save-bizregno
+        telf1   = ls_save-telno
+        zterm   = ls_save-paymentterm
+        bankac  = ls_save-bankaccount
+        useflag = ls_save-useflag ).
+
+      <span class="kw">UPDATE</span> zte3sd0001 <span class="kw">FROM</span> @ls_cust.
+
+    <span class="kw">WHEN</span> <span class="str">'V'</span>.
+      <span class="cm">* 공급업체 동일 패턴 (zte3mm0002)</span>
+  <span class="kw">ENDCASE</span>.
+
+  <span class="kw">IF</span> sy-subrc <span class="kw">EQ</span> <span class="num">0</span>.
+    <span class="kw">COMMIT WORK AND WAIT</span>.
+    er_entity = ls_save.
+  <span class="kw">ELSE</span>.
+    <span class="kw">ROLLBACK WORK</span>.
+  <span class="kw">ENDIF</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
         </div>
 
         <!-- 08 Fiori 전표 조회 앱 -->
@@ -1659,24 +1979,24 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc07_main.png" alt="Fiori 전표 조회 앱 메인">
+              <img loading="lazy" src="images/doc07_main.png" alt="Fiori 전표 조회 앱 메인">
               <div class="img-caption">전표 조회 탭 — 조건 검색 + 전표 헤더 목록 (총 975건)</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc07_item_detail.png" alt="헤더 클릭 시 아이템 드릴다운">
+                <img loading="lazy" src="images/doc07_item_detail.png" alt="헤더 클릭 시 아이템 드릴다운">
                 <div class="img-caption">헤더 클릭 시 하단에 전표 아이템 자동 표시 (차/대변 구분)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc07_dashboard.png" alt="현황 탭 대시보드">
+                <img loading="lazy" src="images/doc07_dashboard.png" alt="현황 탭 대시보드">
                 <div class="img-caption">현황 탭 — 총/정상/미결/역분개 카드 + 전표유형별·통화별 현황</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc07_ab_filter.png" alt="역분개 전표 필터">
+                <img loading="lazy" src="images/doc07_ab_filter.png" alt="역분개 전표 필터">
                 <div class="img-caption">전표유형 AB 필터 — 역분개전표 173건만 필터링</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc07_excel.png" alt="Excel 저장">
+                <img loading="lazy" src="images/doc07_excel.png" alt="Excel 저장">
                 <div class="img-caption">Excel 저장 — 현재 검색 조건 결과를 xlsx로 직접 다운로드</div>
               </div>
             </div>
@@ -1747,32 +2067,32 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc09_main.png" alt="재무제표 조회 메인 화면">
+              <img loading="lazy" src="images/doc09_main.png" alt="재무제표 조회 메인 화면">
               <div class="img-caption">메인 — 대차 일치 검증 + 자산·부채·자본 요약 카드 + 유동비율·부채비율·자기자본비율·당좌비율 KPI</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_ai_report.png" alt="AI 재무 분석 리포트">
+                <img loading="lazy" src="images/doc09_ai_report.png" alt="AI 재무 분석 리포트">
                 <div class="img-caption">AI 요약 — 재무제표 총평·주요 리스크·집중 모니터링 계정·향후 권장 조치 자동 생성</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_chart.png" alt="자산·부채·자본 비교 차트">
+                <img loading="lazy" src="images/doc09_chart.png" alt="자산·부채·자본 비교 차트">
                 <div class="img-caption">비교 차트 — 자산/부채 구성, 재고 카테고리별 비교, 연도별 추이(2018~2026)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_detail_collapsed.png" alt="재무상태표 상세 내역 접은 상태">
+                <img loading="lazy" src="images/doc09_detail_collapsed.png" alt="재무상태표 상세 내역 접은 상태">
                 <div class="img-caption">상세 내역 — 자산/부채/자본 1depth 요약, 펼치기로 계정별 상세 확장</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_detail_expanded.png" alt="재무상태표 상세 내역 펼친 상태">
+                <img loading="lazy" src="images/doc09_detail_expanded.png" alt="재무상태표 상세 내역 펼친 상태">
                 <div class="img-caption">상세 내역 전체 펼침 — 계정과목별 전기·당기 잔액 (예: 외상매출금, 외화보통예금 등)</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_pl.png" alt="손익계산서 탭">
+                <img loading="lazy" src="images/doc09_pl.png" alt="손익계산서 탭">
                 <div class="img-caption">손익계산서 — 매출액·영업이익·당기순이익·영업이익률·매출원가율 KPI + 상세 내역</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc09_cf.png" alt="현금흐름표 탭">
+                <img loading="lazy" src="images/doc09_cf.png" alt="현금흐름표 탭">
                 <div class="img-caption">현금흐름표 — 영업활동 현금흐름·EBITDA·OCF Margin·FCF + 간접법 상세 내역</div>
               </div>
             </div>
@@ -1887,20 +2207,20 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           <div class="proj-features-title" style="margin-bottom:.8rem">화면 구성</div>
           <div class="img-gallery-featured">
             <div class="img-item-main" onclick="openLightbox(this,event)">
-              <img src="images/doc10_main.png" alt="사원 마스터 메인 화면">
+              <img loading="lazy" src="images/doc10_main.png" alt="사원 마스터 메인 화면">
               <div class="img-caption">메인 — 총 사원·재직·퇴사 현황 카드 + 사원 목록 (부서/직급/검색 필터)</div>
             </div>
             <div class="img-grid-sub">
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc10_create.png" alt="신규 사원 등록 팝업">
+                <img loading="lazy" src="images/doc10_create.png" alt="신규 사원 등록 팝업">
                 <div class="img-caption">신규 사원 등록 — 부서·직급 선택 시 기본급·급여시작일·코스트센터 자동 입력</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc10_salary_chart.png" alt="부서별 급여 현황 차트">
+                <img loading="lazy" src="images/doc10_salary_chart.png" alt="부서별 급여 현황 차트">
                 <div class="img-caption">급여 현황 — 부서별 급여합계 막대 차트 + 인건비 상세 테이블</div>
               </div>
               <div class="img-item" onclick="openLightbox(this,event)">
-                <img src="images/doc10_grade_table.png" alt="직급별 인건비 현황 테이블">
+                <img loading="lazy" src="images/doc10_grade_table.png" alt="직급별 인건비 현황 테이블">
                 <div class="img-caption">직급별 인건비 현황 — CO 원가 분석 기준, 인원·급여합계·평균급여·비중</div>
               </div>
             </div>
@@ -1915,8 +2235,66 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <li><strong>급여 시작일 자동 계산</strong> — 입사일이 급여 기준일(매월 25일)을 지났는지 판단해, 지났으면 익월 25일을 급여 시작일로 자동 설정</li>
               <li><strong>부서별 인건비 대시보드</strong> — 부서별 급여합계를 막대 차트로 시각화하고, 인원·평균급여·전체 대비 비중(%)을 테이블로 함께 제공</li>
               <li><strong>직급별 CO 원가 분석</strong> — 재직 사원 기준으로 직급별 인원·급여합계·평균급여·비중을 집계해 인건비 구조를 한눈에 파악</li>
+              <li><strong>급여 이력 Time-Slice 관리</strong> — 급여 변경 시 기존 이력의 종료일(ENDDA)을 신규 시작일-1로 닫고 새 레코드를 INSERT. 이력 삭제 없이 <strong>과거 시점 급여도 그대로 추적 가능</strong></li>
             </ul>
           </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'c10t1',event)">CDS 사원+유효급여 조인</button>
+            <button class="code-tab" onclick="switchTab(this,'c10t2',event)">급여 이력 Time-Slice</button>
+          </div>
+
+          <div class="proj-code code-panel" id="c10t1"><span class="cm">* 사원 마스터 + 현재 유효한 급여 계약만 LEFT JOIN (endda = '99991231')</span>
+<span class="cm">@OData.entitySet.name: 'Employee'</span>
+<span class="cm">@OData.publish: true</span>
+<span class="kw">define view</span> <span class="fn">ZCDS_E3_CM_0003</span>
+  <span class="kw">as select from</span>    zte3cm0005 <span class="kw">as</span> e
+    <span class="kw">left outer join</span> zte3cm0006 <span class="kw">as</span> s <span class="kw">on</span>  s.pernr = e.pernr
+                                    <span class="kw">and</span> s.endda = <span class="str">'99991231'</span>
+{
+  <span class="kw">key</span> e.pernr       <span class="kw">as</span> Pernr,      <span class="cm">-- 사원 ID</span>
+      e.btrtl       <span class="kw">as</span> Btrtl,      <span class="cm">-- 부서</span>
+      e.pernam      <span class="kw">as</span> Pernam,     <span class="cm">-- 이름</span>
+      e.grade       <span class="kw">as</span> Grade,      <span class="cm">-- 직급</span>
+      e.eindt       <span class="kw">as</span> Eindt,      <span class="cm">-- 입사일</span>
+      e.retire_yn   <span class="kw">as</span> RetireYn,
+      e.approver_yn <span class="kw">as</span> ApproverYn, <span class="cm">-- 결재자 여부</span>
+
+      s.begda       <span class="kw">as</span> Begda,      <span class="cm">-- 급여 시작일</span>
+      s.endda       <span class="kw">as</span> Endda,
+
+      <span class="cm">@Semantics.amount.currencyCode: 'Waers'</span>
+      s.betrg       <span class="kw">as</span> Betrg,      <span class="cm">-- 기본급</span>
+      s.waers       <span class="kw">as</span> Waers,
+      s.kostl       <span class="kw">as</span> Kostl       <span class="cm">-- 코스트센터 (CO 연계)</span>
+}</div>
+
+          <div class="proj-code code-panel" id="c10t2" style="display:none"><span class="cm">* 급여 변경 — 기존 이력을 begda-1로 닫고 신규 INSERT (이력 보존)</span>
+<span class="kw">METHOD</span> <span class="fn">employeeset_update_entity</span>.
+  io_data_provider-&gt;<span class="fn">read_entry_data</span>( <span class="kw">IMPORTING</span> es_data = er_entity ).
+
+  <span class="cm">* 사원 마스터 갱신 (생략)</span>
+
+  <span class="kw">IF</span> er_entity-betrg <span class="kw">IS NOT INITIAL</span>.
+    <span class="cm">* 1) 현재 유효 이력의 종료일을 신규 시작일 - 1로 마감</span>
+    lv_endda_new = er_entity-begda - <span class="num">1</span>.
+
+    <span class="kw">UPDATE</span> zte3cm0006
+       <span class="kw">SET</span> endda = lv_endda_new
+     <span class="kw">WHERE</span> pernr = er_entity-pernr
+       <span class="kw">AND</span> endda = <span class="str">'99991231'</span>.
+
+    <span class="cm">* 2) 새 급여 계약을 무기한(99991231)으로 INSERT</span>
+    <span class="kw">CLEAR</span> ls_sal.
+    ls_sal-pernr = er_entity-pernr.
+    ls_sal-begda = er_entity-begda.
+    ls_sal-endda = <span class="str">'99991231'</span>.
+    ls_sal-betrg = er_entity-betrg.
+    ls_sal-waers = er_entity-waers.
+    ls_sal-kostl = er_entity-kostl.
+    <span class="kw">INSERT</span> zte3cm0006 <span class="kw">FROM</span> ls_sal.
+  <span class="kw">ENDIF</span>.
+<span class="kw">ENDMETHOD</span>.</div>
         </div>
 
       </main>
@@ -2138,7 +2516,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">전표 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_doc_popup.png', '전표 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_doc_popup.png" alt="전표 정보 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_doc_popup.png" alt="전표 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">전표번호 클릭 시 헤더+아이템 팝업</div>
           </div>
@@ -2148,7 +2526,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">고객 정보 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_customer_popup.png', '고객 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_customer_popup.png" alt="고객 정보 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_customer_popup.png" alt="고객 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">고객번호 클릭 시 마스터 정보 조회</div>
           </div>
@@ -2158,7 +2536,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">공급업체 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_vendor_popup.png', '공급업체 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_vendor_popup.png" alt="공급업체 정보 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_vendor_popup.png" alt="공급업체 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">공급업체 코드 클릭 시 마스터 조회</div>
           </div>
@@ -2168,7 +2546,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">자재 정보 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_material_popup.png', '자재 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_material_popup.png" alt="자재 정보 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_material_popup.png" alt="자재 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">자재코드 클릭 시 재고·유통기한 조회</div>
           </div>
@@ -2178,7 +2556,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">생산 정보 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_production_popup.png', '생산 정보 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_production_popup.png" alt="생산 정보 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_production_popup.png" alt="생산 정보 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">생산오더 클릭 시 BOM·수량·납기 조회</div>
           </div>
@@ -2188,7 +2566,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
               <span class="blart-name" style="font-weight:600">QM 검수 팝업</span>
             </div>
             <div onclick="openImg('images/doc08_qm_popup.png', 'QM 검수 팝업')" style="cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-              <img src="images/doc08_qm_popup.png" alt="QM 검수 팝업" style="width:100%;display:block">
+              <img loading="lazy" src="images/doc08_qm_popup.png" alt="QM 검수 팝업" style="width:100%;display:block">
             </div>
             <div style="font-size:11px;color:var(--text3);text-align:center">검수번호 클릭 시 합격·불합격 내역 조회</div>
           </div>
@@ -2205,7 +2583,7 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
           Master Pack ERP 전체 커스텀 테이블(Z테이블)의 엔터티 관계도입니다. 모듈별로 색상을 구분해 SD(핑크)·PP(퍼플)·PM(올리브)·QM(그린)·MM(네이비)·CO(레드)·FI(오렌지) 영역의 테이블과 FK 관계를 한눈에 볼 수 있습니다.
         </p>
         <div onclick="openImg('images/masterpack_erd.png','Master Pack 전체 ERD — SD·MM·PP·QM·FI·CO')" style="cursor:zoom-in;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-          <img src="images/masterpack_erd.png" alt="Master Pack 전체 ERD" style="width:100%;display:block">
+          <img loading="lazy" src="images/masterpack_erd.png" alt="Master Pack 전체 ERD" style="width:100%;display:block">
         </div>
         <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:.5rem">클릭하면 전체 화면으로 확대됩니다</div>
       </div>
@@ -2252,6 +2630,8 @@ lv_json = lo_http_client->response-><span class="fn">get_cdata</span>( ).
 <footer>
   <p>© 2026 박도현 · SAP ABAP Developer · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>
 </footer>
+
+<button class="to-top" id="to-top" aria-label="맨 위로" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- 라이트박스 (전역) -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -2398,8 +2778,40 @@ function switchTab(btn, id, ev){
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape')closeLightbox();
 });
+
+// 모바일 메뉴 토글
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('nav-burger');
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+}
+
+// 스크롤 리베일 (reduced-motion 존중)
+(function initReveal(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll(
+    '.sec-head, .about-card, .story-card, .exp-item, .snap-card, .ov-theme, .ov-model, .chal-card, .contact-card'
+  );
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  targets.forEach(el=>{
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+})();
+
 const secs=document.querySelectorAll('section[id]');
 const links=document.querySelectorAll('.nav-links a');
+const toTopBtn=document.getElementById('to-top');
 window.addEventListener('scroll',()=>{
   let cur='';
   secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id;});
@@ -2408,6 +2820,7 @@ window.addEventListener('scroll',()=>{
     a.style.background=active?'var(--blue-light)':'';
     a.style.color=active?'var(--blue)':'';
   });
+  if(toTopBtn) toTopBtn.classList.toggle('show', window.scrollY>700);
 },{passive:true});
 </script>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>

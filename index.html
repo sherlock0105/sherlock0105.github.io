@@ -413,6 +413,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 .cred-tag{display:inline-block;font-size:11px;font-weight:700;padding:.12rem .5rem;border-radius:999px;margin-top:.3rem}
 .cred-tag.done{color:var(--green);background:var(--green-light)}
 .cred-tag.ing{color:var(--amber);background:var(--amber-light)}
+.edu-li{display:flex;gap:.9rem;align-items:flex-start}
+.edu-date{font-size:12px;font-family:var(--mono);color:var(--text3);white-space:nowrap;padding-top:.15rem}
 .award-li{display:flex;gap:.7rem;align-items:flex-start}
 .award-ico{font-size:1.2rem;line-height:1.4}
 
@@ -599,7 +601,6 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="tl-tag">CDS View</span>
             <span class="tl-tag">FI Module</span>
             <span class="tl-tag">QM Module</span>
-            <span class="tl-tag">개발 리드</span>
           </div>
           <a class="tl-btn" href="project.html">프로젝트 상세 →</a>
         </div>
@@ -620,24 +621,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     </div>
     <div class="stack-grid">
       <div class="stack-col">
-        <div class="stack-col-label">CORE · 주력</div>
+        <div class="stack-col-label">상 · CORE</div>
         <ul>
           <li>ABAP <span>ALV · Module Pool · Batch</span></li>
           <li>SAP FI / QM <span>모듈 개발</span></li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="stack-col-label">중 · ACTIVE</div>
+        <ul>
+          <li>SAPUI5 / Fiori</li>
           <li>CDS View / OData <span>SAP Gateway</span></li>
         </ul>
       </div>
       <div class="stack-col">
-        <div class="stack-col-label">ACTIVE · 활용</div>
+        <div class="stack-col-label">하 · BASE</div>
         <ul>
-          <li>SAPUI5 / Fiori</li>
           <li>JavaScript</li>
           <li>SQL</li>
-        </ul>
-      </div>
-      <div class="stack-col">
-        <div class="stack-col-label">BASE · 기초</div>
-        <ul>
           <li>Python</li>
           <li>React</li>
           <li>Git</li>
@@ -649,13 +650,19 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="cred-card">
         <div class="cred-label">🎓 학력</div>
         <ul>
-          <li>
-            <span class="cred-name">한국폴리텍1대학 스마트시스템제어과</span>
-            <span class="cred-meta">2019 – 2021 · 3.85/4.5</span>
+          <li class="edu-li">
+            <span class="edu-date">2016.02–2020.02</span>
+            <div>
+              <span class="cred-name">한국폴리텍대학 성남캠퍼스 <span class="cred-tag done">졸업</span></span>
+              <span class="cred-meta">스마트시스템제어과</span>
+            </div>
           </li>
-          <li>
-            <span class="cred-name">인창고등학교</span>
-            <span class="cred-meta">2015 – 2018</span>
+          <li class="edu-li">
+            <span class="edu-date">2013.02–2016.02</span>
+            <div>
+              <span class="cred-name">인창고등학교 <span class="cred-tag done">졸업</span></span>
+              <span class="cred-meta">문과계열</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -675,7 +682,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="cred-tag done">취득 2026.03</span>
           </li>
           <li>
-            <span class="cred-name">한국사능력검정 1급 · HSK 4급</span>
+            <span class="cred-name">HSK 4급</span>
             <span class="cred-tag done">취득</span>
           </li>
           <li>

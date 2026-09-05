@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="박도현 SAP RAP 프로젝트 포트폴리오">
+<title>박도현 · RAP 프로젝트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f9fc;
+  --white:#ffffff;
+  --border:#e8eaf0;
+  --border2:#d1d5e0;
+  --text:#1a1d27;
+  --text2:#4a5068;
+  --text3:#8890a8;
+  --blue:#7c6ee6;
+  --blue-light:#f3f0ff;
+  --blue-mid:#d8ccf7;
+  --green:#16a34a;
+  --green-light:#f0fdf4;
+  --red:#dc2626;
+  --red-light:#fef2f2;
+  --amber:#d97706;
+  --amber-light:#fffbeb;
+  --purple:#7c3aed;
+  --purple-light:#f5f3ff;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+  --sans:'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --radius:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15.5px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:56px;
+}
+.nav-left{display:flex;align-items:center;gap:.6rem}
+.nav-dot{width:8px;height:8px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.nav-name{font-size:14px;font-weight:600}
+.nav-role{font-size:12px;color:var(--text3);font-family:var(--mono)}
+.nav-links{display:flex;gap:.2rem}
+.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:.4rem .8rem;border-radius:6px;font-weight:500;transition:all .15s}
+.nav-links a:hover{background:var(--blue-light);color:var(--blue)}
+.nav-cta{font-size:13px;font-weight:600;color:#fff;background:var(--blue);padding:.4rem 1rem;border-radius:6px;text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:.88}
+
+/* LAYOUT */
+/* 기존 max-width: 1140px 에서 1400px 로 넓혀 글자 잘림 방지 */
+.container{max-width:1180px;margin:0 auto;padding:0 2.5rem}
+section{padding:5rem 0}
+.sec-div{border:none;border-top:1px solid var(--border);margin:0}
+
+/* HERO */
+#home{padding-top:96px;padding-bottom:4rem;background:linear-gradient(160deg,#f3efff 0%,var(--bg) 60%);border-bottom:1px solid var(--border)}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-mid);font-size:12px;font-weight:600;font-family:var(--mono);padding:.3rem .9rem;border-radius:999px;margin-bottom:1.4rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%}
+.hero-name{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:.5rem}
+.hero-name span{color:var(--blue)}
+.hero-title{font-size:1.05rem;color:var(--text2);margin-bottom:1.2rem}
+.hero-desc{color:var(--text2);font-size:14px;line-height:1.85;max-width:520px;margin-bottom:1.8rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.chip{font-size:12px;font-family:var(--mono);font-weight:500;color:var(--text2);background:var(--white);border:1px solid var(--border2);padding:.25rem .7rem;border-radius:6px}
+.chip.hi{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:13px;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;transition:all .15s;cursor:pointer;border:none}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#2d5ee8}
+.btn-outline{background:var(--white);color:var(--text2);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.hero-card{background:var(--white);border:1px solid var(--border);border-top:3px solid transparent;background-image:linear-gradient(var(--white),var(--white)),linear-gradient(90deg,var(--blue),#f59e0b);background-origin:border-box;background-clip:padding-box,border-box;border-radius:var(--radius);padding:1.6rem 1.8rem;box-shadow:var(--shadow-md);min-width:240px}
+.hero-card-eyebrow{font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem}
+.hero-card-section-label{font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.3rem;margin-top:1rem}
+.hero-card-section-label:first-of-type{margin-top:0}
+.hero-card-text{font-size:13px;color:var(--text);line-height:1.5}
+.hero-card-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.hero-card-row:last-child{border-bottom:none}
+.hero-card-label{color:var(--text3);font-size:12px;white-space:nowrap;flex-shrink:0}
+.hero-card-val{font-weight:600;font-size:12px;font-family:var(--mono);text-align:right;white-space:nowrap}
+.hero-card-val.blue{color:var(--blue)}
+.hero-card-val.green{color:var(--green)}
+
+/* SECTION HEADER */
+.sec-head{margin-bottom:2.4rem}
+.sec-eyebrow{font-size:11px;font-family:var(--mono);font-weight:600;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.sec-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px}
+.sec-title{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+
+/* SKILL */
+.skill-strip{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
+.skill-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);border-radius:9999px;padding:.45rem .9rem .45rem .55rem;box-shadow:var(--shadow)}
+.skill-pill-icon{width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.skill-pill-icon.blue{background:var(--blue-light)}
+.skill-pill-icon.purple{background:var(--purple-light)}
+.skill-pill-icon.green{background:var(--green-light)}
+.skill-pill-tier{font-size:10px;font-weight:600;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.04em;margin-right:.1rem}
+.skill-pill-name{font-size:13px;color:var(--text);font-weight:500}
+.skill-pill-stars{display:flex;gap:2px;margin-left:.15rem}
+.star{width:8px;height:8px;border-radius:50%}
+.star.on{background:var(--blue)}
+.star.off{background:var(--border2)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;box-shadow:var(--shadow)}
+.about-card-label{font-size:11px;font-family:var(--mono);font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.about-list{list-style:none}
+.about-list li{font-size:13.5px;color:var(--text2);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:.8rem}
+.about-list li:last-child{border-bottom:none}
+.about-item-name{color:var(--text);font-weight:500}
+.about-item-meta{font-size:11px;color:var(--text3);white-space:nowrap;font-family:var(--mono)}
+.about-item-badge{font-size:10px;font-weight:600;padding:.15rem .5rem;border-radius:4px;background:var(--amber-light);color:var(--amber);white-space:nowrap}
+.about-item-badge.done{background:var(--green-light);color:var(--green)}
+
+/* STORY */
+.story-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.story-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);border-radius:2px 0 0 2px}
+.story-text{font-size:14.5px;color:var(--text2);line-height:2;max-width:820px}
+.story-text p{margin-bottom:1rem}
+.story-text p:last-child{margin-bottom:0}
+
+/* EXPERIENCE TIMELINE */
+.exp-timeline{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:160px 1fr;position:relative}
+.exp-item::before{content:'';position:absolute;left:160px;top:0;bottom:0;width:1px;background:var(--border);z-index:0}
+.exp-left{padding:1.6rem 2rem 1.6rem 0;text-align:right}
+.exp-date{font-size:11px;font-family:var(--mono);color:var(--text3);line-height:1.5}
+.exp-right{padding:1.6rem 0 1.6rem 2rem;position:relative}
+.exp-dot{position:absolute;left:-6px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--white);border:2px solid var(--border2);z-index:1}
+.exp-dot.active{background:var(--blue);border-color:var(--blue)}
+.exp-org{font-size:11px;font-family:var(--mono);color:var(--blue);font-weight:500;margin-bottom:.25rem}
+.exp-title{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.exp-desc{font-size:13.5px;color:var(--text2);line-height:1.85;margin-bottom:.8rem}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.exp-tag{font-size:11px;font-family:var(--mono);color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:.15rem .55rem;border-radius:4px}
+.exp-pm-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--purple);background:var(--purple-light);border:1px solid #ddd6fe;padding:.2rem .6rem;border-radius:4px;margin-bottom:.5rem}
+
+/* TEAM ROLE CARD */
+.snap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.snap-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:12px;padding:1.4rem 1.5rem;box-shadow:var(--shadow)}
+.snap-card.c-info{border-top-color:#3daeff}
+.snap-card.c-amber{border-top-color:#d6b656}
+.snap-card.c-green{border-top-color:var(--green)}
+.snap-icon{width:34px;height:34px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:.8rem}
+.snap-card.c-info .snap-icon{background:#e8f4ff}
+.snap-card.c-amber .snap-icon{background:#fff2cc}
+.snap-card.c-green .snap-icon{background:var(--green-light)}
+.snap-title{font-size:1.02rem;font-weight:700;color:var(--text);margin-bottom:1rem}
+.snap-block{margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.snap-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.snap-block-label{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.snap-block-text{font-size:12.5px;color:var(--text2);line-height:1.55}
+.snap-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.snap-chip{font-size:11.5px;font-weight:600;color:var(--text);background:var(--bg);border:1px solid var(--border);padding:.25rem .65rem;border-radius:6px}
+.snap-chip.abap{background:var(--blue-light);color:var(--blue);border-color:#c7dcff}
+.snap-chip.fiori{background:#fff2cc;color:#854F0B;border-color:#f0e0a8}
+.snap-stack-group{margin-bottom:.6rem}
+.snap-stack-label{font-size:10.5px;font-weight:700;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+@media(max-width:900px){.snap-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.snap-grid{grid-template-columns:1fr}}
+
+/* PROJECT OVERVIEW — 대주제 + 비즈니스 모델 */
+.ov-theme{background:linear-gradient(135deg,var(--blue) 0%,#2554d4 100%);border-radius:16px;padding:2rem 2.2rem;color:#fff;margin-bottom:1.6rem;box-shadow:var(--shadow-md)}
+.ov-theme-label{font-size:11px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.6rem}
+.ov-theme-title{font-size:1.5rem;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.ov-theme-sub{font-size:14px;opacity:.9;margin-top:.7rem;line-height:1.6}
+.ov-models{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.ov-model{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.ov-model-ico{width:42px;height:42px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:20px}
+.ov-model-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.45}
+
+/* PROCESS FLOW */
+.flow-wrap{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+.flow-img{width:100%;display:block;cursor:zoom-in;transition:opacity .15s}
+.flow-img:hover{opacity:.93}
+.flow-cap{font-size:12px;color:var(--text3);padding:.9rem 1.2rem;background:var(--bg);border-top:1px solid var(--border);text-align:center;font-family:var(--mono)}
+.flow-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;justify-content:center}
+.flow-leg{display:flex;align-items:center;gap:.4rem;font-size:12px;color:var(--text2)}
+.flow-leg-dot{width:12px;height:12px;border-radius:3px}
+@media(max-width:680px){.ov-models{grid-template-columns:1fr}}
+
+/* CHALLENGE — AS-IS / TO-BE */
+.chal-list{display:flex;flex-direction:column;gap:1.1rem}
+.chal-card{background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+.chal-cat{display:flex;align-items:center;gap:.85rem;padding:1.1rem 1.6rem;background:var(--bg);border-bottom:1px solid var(--border)}
+.chal-cat-no{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:var(--mono);flex-shrink:0}
+.chal-cat-no.solved{background:#1a9e5c}
+.chal-solved-pill{display:inline-flex;align-items:center;gap:.3rem;font-size:11px;font-weight:700;color:#1a9e5c;background:#e5f7ee;border:1px solid #bfe8d3;padding:.2rem .65rem;border-radius:9999px}
+.chal-hl{background:#fff3b0;padding:.05rem .2rem;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.chal-cat-title{font-size:15px;font-weight:700;color:var(--text)}
+.chal-rows{padding:.2rem 0}
+.chal-row{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.chal-row:not(:last-child){border-bottom:1px solid var(--border)}
+.chal-cell{padding:1.15rem 1.6rem;font-size:13px;line-height:1.7}
+.chal-cell.asis{color:var(--text2)}
+.chal-cell.tobe{color:var(--text);background:#f7faff;border-left:1px solid var(--border)}
+.chal-tag{display:inline-block;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:.04em;padding:.12rem .5rem;border-radius:4px;margin-bottom:.5rem}
+.chal-tag.asis{color:#b4341f;background:#fbe9e6}
+.chal-tag.tobe{color:var(--blue);background:var(--blue-light)}
+.chal-mine{display:inline-block;font-size:10px;font-weight:600;font-family:var(--mono);color:#0a7d3c;background:#e6f7ee;border:1px solid #b8e6cd;padding:.1rem .45rem;border-radius:4px;margin-left:.5rem}
+@media(max-width:680px){.chal-row{grid-template-columns:1fr}.chal-cell.tobe{border-left:none;border-top:1px solid var(--border)}}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem}
+.contact-icon{width:36px;height:36px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-label{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:.2rem}
+.contact-val{font-size:13px;font-weight:600;color:var(--text)}
+.contact-val a{color:var(--blue);text-decoration:none}
+.contact-val a:hover{text-decoration:underline}
+
+/* IMAGE GALLERY & CODE BLOCKS */
+.img-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
+.img-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s,transform .15s;background:var(--white)}
+.img-item:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid);transform:translateY(-2px)}
+.img-item img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;background:#f0f2f7}
+.img-gallery-featured{margin-bottom:1.4rem}
+.img-item-main{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:box-shadow .15s,border-color .15s;background:var(--white);margin-bottom:.8rem}
+.img-item-main:hover{box-shadow:var(--shadow-md);border-color:var(--blue-mid)}
+.img-item-main img{width:100%;height:auto;max-height:420px;object-fit:contain;object-position:top;display:block;background:#f0f2f7}
+.img-grid-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.img-grid-sub:has(.img-item:only-child){grid-template-columns:1fr}
+.img-grid-sub .img-item img{height:120px}
+.img-caption{font-size:11px;color:var(--text2);padding:.6rem .8rem;background:var(--bg);line-height:1.45;border-top:1px solid var(--border)}
+
+.sec-desc{font-size:13.5px;color:var(--text2);line-height:1.75}
+
+.blart-grid{display:grid;gap:.6rem}
+.blart-item{display:flex;align-items:center;gap:.5rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem}
+.blart-code{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-light);border-radius:5px;padding:.15rem .5rem;flex-shrink:0;text-align:center}
+.blart-name{font-size:12.5px;color:var(--text2);font-weight:500}
+
+.code-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.7rem}
+.code-tab{font-size:11.5px;font-family:var(--mono);font-weight:500;color:var(--text2);background:var(--white);border:1px solid var(--border2);padding:.4rem .9rem;border-radius:7px;cursor:pointer;transition:all .15s}
+.code-tab:hover{color:var(--blue);border-color:var(--blue-mid);background:var(--blue-light)}
+.code-tab.active{color:#fff;background:var(--blue);border-color:var(--blue)}
+
+.proj-code{background:#1e1e2e;border-radius:10px;padding:2.6rem 1.2rem 1.1rem;margin-bottom:1rem;font-family:var(--mono);font-size:11.5px;color:#cdd6f4;overflow-x:auto;white-space:pre;line-height:1.75;position:relative;border:1px solid #2c2c40}
+.proj-code::before{content:'';position:absolute;top:0;left:0;right:0;height:30px;background:#181825;border-bottom:1px solid #2c2c40;border-radius:9px 9px 0 0}
+.proj-code::after{content:'● ● ●';position:absolute;top:8px;left:14px;font-size:8px;letter-spacing:3px;color:#45475a;line-height:1;font-family:var(--sans)}
+.proj-code .cm{color:#6c7086}
+.proj-code .kw{color:#cba6f7}
+.proj-code .str{color:#a6e3a1}
+.proj-code .fn{color:#89b4fa}
+.proj-code .num{color:#fab387}
+
+.proj-features-title{font-size:12px;font-weight:600;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.proj-features ul{list-style:none;display:flex;flex-direction:column;gap:.3rem;margin-bottom:1.4rem}
+.proj-features ul li{font-size:13.5px;color:var(--text2);display:flex;gap:.6rem;line-height:1.65}
+.proj-features ul li::before{content:'→';color:var(--blue);font-size:11px;flex-shrink:0;margin-top:3px}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(15,18,30,.92);z-index:9999;align-items:center;justify-content:center;padding:3rem 2rem;cursor:zoom-out}
+.lightbox.active{display:flex}
+.lightbox-inner{max-width:92vw;max-height:90vh;text-align:center;cursor:default}
+.lightbox-imgwrap{max-width:92vw;max-height:82vh;overflow:auto;cursor:grab;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-imgwrap.grabbing{cursor:grabbing}
+.lightbox-imgwrap img{display:block;max-width:100%;max-height:82vh;object-fit:contain;transition:width .12s ease;user-select:none;-webkit-user-drag:none}
+.lightbox-zoom-controls{position:absolute;top:1.5rem;left:2rem;display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.3rem .5rem;z-index:10000;cursor:default}
+.lightbox-zoom-controls button{width:26px;height:26px;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lightbox-zoom-controls button:hover{background:rgba(255,255,255,.3)}
+.lightbox-zoom-controls span{color:#fff;font-size:11px;font-family:var(--mono);min-width:38px;text-align:center}
+#lightbox-cap{color:#fff;font-size:13px;margin-top:1rem;opacity:.85;font-family:var(--mono)}
+.lightbox-close{position:absolute;top:1.5rem;right:2rem;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;transition:opacity .15s;line-height:1;z-index:10000}
+.lightbox-close:hover{opacity:1}
+
+/* DEVELOPMENT (PROJECTS) LAYOUT */
+.dev-header { margin-bottom: 2rem; }
+.dev-eyebrow { font-size: 11px; font-family: var(--mono); font-weight: 600; color: var(--blue); letter-spacing: .1em; margin-bottom: 0.5rem; text-transform: uppercase; display: flex; align-items: center; gap: .5rem; }
+.dev-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
+.dev-title { font-size: 1.7rem; font-weight: 700; color: var(--text); letter-spacing: -.02em; }
+
+.dev-layout { display: grid; grid-template-columns: 260px 1fr; background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-height: 800px; box-shadow: var(--shadow); }
+
+/* SIDEBAR */
+.dev-sidebar { background: #fafbfc; border-right: 1px solid var(--border); padding: 1.5rem 0; position: sticky; top: 76px; align-self: start; border-radius: 12px 0 0 12px; }
+.dev-back { display: block; padding: 0 1.5rem 1.5rem; color: var(--text2); font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+.dev-back:hover { color: var(--blue); }
+.dev-nav-group { font-size: 12px; font-weight: 600; color: var(--text3); padding: 0 1.5rem; margin-bottom: 0.6rem; }
+.dev-nav-item { display: flex; align-items: center; gap: 0.6rem; width: 100%; text-align: left; background: transparent; border: none; padding: 0.8rem 1.5rem; font-size: 14px; font-weight: 500; color: var(--text2); cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; }
+.dev-nav-item:hover { background: #f0f2f7; }
+.dev-nav-item.active { background: #f1ecfd; border-left-color: var(--blue); color: var(--blue); font-weight: 600; }
+.dev-nav-badge { font-size: 10px; font-family: var(--mono); font-weight: 700; letter-spacing: 0.05em; min-width: 36px; }
+.dev-nav-badge.abap { color: #16a34a; }
+.dev-nav-badge.fiori { color: #7c6ee6; }
+
+/* MAIN CONTENT */
+.dev-main { padding: 2.5rem 3rem; background: var(--white); border-radius: 0 12px 12px 0; }
+.dev-project-content { display: none; }
+.dev-project-content.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.dev-top-badges { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+.dev-top-badge { font-size: 12px; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; }
+.dev-top-badge.blue { background: var(--blue); color: #fff; }
+.dev-top-badge.green { color: var(--green); font-family: var(--mono); font-weight: 600; }
+.dev-top-badge.fblue { color: var(--blue); font-family: var(--mono); font-weight: 600; }
+.dev-proj-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); line-height: 1.3; }
+.dev-proj-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; }
+.dev-tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.dev-tech-tag { font-size: 13px; font-weight: 500; color: #4a5568; background: #f3f0ff; border: 1px solid #ddd4f5; padding: 0.4rem 0.8rem; border-radius: 6px; }
+
+@media(max-width: 850px) {
+   .dev-layout { grid-template-columns: 1fr; }
+   .dev-sidebar { border-right: none; border-bottom: 1px solid var(--border); position: static; border-radius: 12px 12px 0 0; }
+   .dev-main { padding: 1.5rem; border-radius: 0 0 12px 12px; }
+}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:var(--mono)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* TO TOP */
+.to-top{position:fixed;right:1.4rem;bottom:1.4rem;width:42px;height:42px;border-radius:50%;background:var(--white);border:1px solid var(--border2);color:var(--text2);font-size:17px;cursor:pointer;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:150}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{color:var(--blue);border-color:var(--blue-mid);transform:translateY(-2px)}
+
+/* MOBILE NAV */
+.nav-burger{display:none;background:transparent;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:4px}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .2s,opacity .2s}
+.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:190;padding:.6rem 1rem 1rem;flex-direction:column}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;padding:.7rem .6rem;border-radius:8px}
+.mobile-menu a:hover{background:var(--blue-light);color:var(--blue)}
+
+/* MOBILE */
+@media(max-width:680px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .container{padding:0 1rem}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{min-width:0;width:100%;margin-top:1.5rem}
+  .skill-strip{gap:.5rem}
+  .skill-pill{padding:.4rem .75rem .4rem .5rem}
+  .about-grid{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;padding-left:1.5rem}
+  .exp-item::before{left:0}
+  .exp-left{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .blart-grid{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* ===== NEW: CAREER TIMELINE ===== */
+.tl{position:relative;margin-top:1rem}
+.tl-item{display:grid;grid-template-columns:150px 1fr;gap:2.2rem;position:relative;padding-bottom:3.2rem}
+.tl-item:last-child{padding-bottom:.5rem}
+.tl-item::before{content:'';position:absolute;left:150px;top:10px;bottom:-10px;width:2px;background:var(--blue-mid)}
+.tl-item:last-child::before{bottom:auto;height:calc(100% - 10px)}
+.tl-left{text-align:right;padding-right:1.6rem}
+.tl-year{font-size:1.9rem;font-weight:700;font-family:var(--mono);color:var(--text);line-height:1.1}
+.tl-range{font-size:12px;font-family:var(--mono);color:var(--blue);font-weight:600;margin-top:.3rem;line-height:1.5}
+.tl-dot{position:absolute;left:150px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--blue);transform:translateX(-6px);box-shadow:0 0 0 4px var(--blue-light)}
+.tl-item.upcoming .tl-dot{border-color:var(--blue-mid);box-shadow:0 0 0 4px #f6f3fd}
+.tl-body{padding-left:1.6rem;padding-top:0}
+.tl-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.tl-title{font-size:1.25rem;font-weight:700;color:var(--text)}
+.tl-badge{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.15rem .6rem;border-radius:999px}
+.tl-badge.soon{color:var(--text3);background:#f4f4f8;border-color:var(--border2)}
+.tl-sub{font-size:13px;color:var(--text3);margin:.25rem 0 .7rem}
+.tl-desc{font-size:14.5px;color:var(--text2);line-height:1.85;max-width:760px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.tl-tag{font-size:12.5px;font-weight:600;color:var(--text2);background:var(--white);border:1px solid var(--border2);padding:.3rem .8rem;border-radius:999px}
+.tl-tag.hl{color:var(--blue);background:var(--blue-light);border-color:var(--blue-mid)}
+.tl-btn{display:inline-block;margin-top:1.2rem;font-size:13.5px;font-weight:600;color:var(--blue);background:var(--white);border:1.5px solid var(--blue-mid);padding:.55rem 1.2rem;border-radius:9px;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tl-btn:hover{background:var(--blue-light);border-color:var(--blue)}
+.tl-btn:disabled{color:var(--text3);border-color:var(--border);background:var(--bg);cursor:not-allowed}
+
+/* ===== NEW: STACK ===== */
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.6rem}
+.stack-col{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.5rem;box-shadow:var(--shadow);border-top:3px solid var(--blue)}
+.stack-col:nth-child(2){border-top-color:var(--blue-mid)}
+.stack-col:nth-child(3){border-top-color:var(--border2)}
+.stack-col-label{font-size:12px;font-weight:700;font-family:var(--mono);color:var(--blue);letter-spacing:.06em;margin-bottom:.9rem}
+.stack-col:nth-child(3) .stack-col-label{color:var(--text3)}
+.stack-col ul{list-style:none}
+.stack-col li{font-size:14px;font-weight:600;color:var(--text);padding:.45rem 0;border-bottom:1px dashed var(--border)}
+.stack-col li:last-child{border-bottom:none}
+.stack-col li span{font-size:12px;font-weight:500;color:var(--text3);margin-left:.4rem}
+
+/* ===== NEW: EDU / CERT / AWARD CARDS ===== */
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem;align-items:start}
+.cred-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.5rem;box-shadow:var(--shadow)}
+.cred-label{font-size:14px;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.cred-card ul{list-style:none}
+.cred-card li{padding:.7rem 0;border-bottom:1px solid var(--border)}
+.cred-card li:last-child{border-bottom:none;padding-bottom:0}
+.cred-name{display:block;font-size:13.5px;font-weight:600;color:var(--text);line-height:1.5}
+.cred-meta{display:block;font-size:12px;color:var(--text3);margin-top:.15rem}
+.cred-tag{display:inline-block;font-size:11px;font-weight:700;padding:.12rem .5rem;border-radius:999px;margin-top:.3rem}
+.cred-tag.done{color:var(--green);background:var(--green-light)}
+.cred-tag.ing{color:var(--amber);background:var(--amber-light)}
+.edu-li{display:flex;gap:.9rem;align-items:flex-start}
+.edu-date{font-size:12px;font-family:var(--mono);color:var(--text3);white-space:nowrap;padding-top:.15rem}
+.award-li{display:flex;gap:.7rem;align-items:flex-start}
+.award-ico{font-size:1.2rem;line-height:1.4}
+
+/* ===== NEW: PROJECT DETAIL TOGGLE ===== */
+.detail-topbar{position:sticky;top:56px;margin-top:56px;z-index:150;background:var(--blue-light);border-bottom:1px solid var(--blue-mid)}
+.detail-topbar .container{display:flex;align-items:center;justify-content:space-between;padding-top:.6rem;padding-bottom:.6rem}
+.detail-topbar-title{font-size:13px;font-weight:700;color:var(--blue)}
+.detail-back{font-size:13px;font-weight:600;color:var(--blue);background:var(--white);border:1px solid var(--blue-mid);padding:.4rem .9rem;border-radius:8px;cursor:pointer;font-family:var(--sans)}
+.detail-back:hover{background:#fff;border-color:var(--blue)}
+
+@media(max-width:760px){
+  .tl-item{grid-template-columns:1fr;gap:.4rem;padding-left:1.4rem}
+  .tl-item::before{left:0}
+  .tl-dot{left:0;top:6px}
+  .tl-left{text-align:left;padding-right:0;display:flex;align-items:baseline;gap:.7rem}
+  .tl-body{padding-left:0}
+  .stack-grid,.cred-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-dot"></div>
+    <span class="nav-name">박도현</span>
+    <span class="nav-role">ABAP Dev</span>
+  </div>
+  <div class="nav-links">
+    <a href="#snapshot">Snapshot</a>
+    <a href="#overview">Overview</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#projects">Projects</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.4rem">
+    <a class="nav-cta" href="index.html#experience">← 포트폴리오</a>
+    <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#snapshot" onclick="toggleMobileMenu()">Snapshot</a>
+  <a href="#overview" onclick="toggleMobileMenu()">Overview</a>
+  <a href="#architecture" onclick="toggleMobileMenu()">Architecture</a>
+  <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+  <a href="index.html#experience" onclick="toggleMobileMenu()">← 포트폴리오로</a>
+</div>
+
+<div class="detail-topbar">
+  <div class="container">
+    <span class="detail-topbar-title">RAP 프로젝트 · 구매-입고 프로세스</span>
+    <a class="detail-back" href="index.html#experience">← 포트폴리오로</a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<section id="pd-header" style="padding:3rem 0 2.2rem;background:linear-gradient(160deg,#f3f0ff 0%,var(--bg) 65%);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="sec-eyebrow">Project Detail</div>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.3;margin-bottom:.8rem">
+      구매-입고 프로세스 RAP 구현
+    </h1>
+    <p style="color:var(--text2);font-size:14.5px;line-height:1.8;max-width:720px">
+      SAP Cloud ABAP·RAP 심화 과정 2기 · 2026.07 – 진행 중 · 개인 프로젝트<br>
+      <strong>자재·계정·공급업체 마스터부터 구매오더·입고까지, Managed RAP 표준 패턴으로 설계·구현</strong>
+    </p>
+    <div class="hero-chips" style="margin-top:1.2rem">
+      <span class="chip hi">RAP (Managed)</span>
+      <span class="chip hi">CDS View</span>
+      <span class="chip">Behavior Definition</span>
+      <span class="chip">Draft</span>
+      <span class="chip">Cross-BO EML</span>
+      <span class="chip">OData V2/V4</span>
+    </div>
+  </div>
+</section>
+
+<!-- SNAPSHOT -->
+<section id="snapshot">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Snapshot</div>
+      <h2 class="sec-title">프로젝트 스냅샷</h2>
+    </div>
+    <div class="snap-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem">
+      <div class="snap-card">
+        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">👤</div>
+        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.4rem">My Role</div>
+        <div style="font-weight:700;margin-bottom:.5rem">개인 프로젝트</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.7">RAP 심화 과정 커리큘럼 실습 — 설계 원칙을 세우고 그 기준으로 8개 BO를 직접 구현</div>
+      </div>
+      <div class="snap-card c-info">
+        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:#e8f4ff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">🧾</div>
+        <div style="font-size:12px;font-weight:700;color:#3daeff;font-family:var(--mono);margin-bottom:.4rem">Business Scope</div>
+        <div style="font-weight:700;margin-bottom:.5rem">조달 프로세스 전 구간</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.7">자재/계정/공급업체 마스터 → 회계결정코드 → 구매정보레코드 → 구매오더 → 입고</div>
+      </div>
+      <div class="snap-card c-amber">
+        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:#fff2cc;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">⚙️</div>
+        <div style="font-size:12px;font-weight:700;color:#d6b656;font-family:var(--mono);margin-bottom:.4rem">RAP 개념</div>
+        <div style="font-weight:700;margin-bottom:.5rem">Determination · Validation · Action</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.7">Draft, Late/Early Numbering, Factory Action, Cross-BO EML</div>
+      </div>
+      <div class="snap-card c-green">
+        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">📦</div>
+        <div style="font-size:12px;font-weight:700;color:var(--green);font-family:var(--mono);margin-bottom:.4rem">Outputs</div>
+        <div style="font-weight:700;margin-bottom:.5rem">Business Object 8종</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.7">Draft 기반 5종 · No-Draft 3종 + 공통 재사용 클래스(zcl_a10_check) 1종</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" style="background:var(--white)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Overview</div>
+      <h2 class="sec-title">프로젝트 개요</h2>
+    </div>
+    <div class="ov-theme">
+      <div class="ov-theme-label">대주제 · Main Theme</div>
+      <div class="ov-theme-title">Managed RAP으로 구현한 조달-입고 프로세스</div>
+      <div class="ov-theme-sub">
+        자재·계정·공급업체 마스터 데이터부터 회계결정코드, 구매정보레코드, 구매오더, 입고까지 8개 Business Object를 RAP 표준 패턴으로 설계했습니다.
+        각 BO는 독립적으로 동작하지만, 구매오더와 입고는 Cross-BO EML로 연동되어 입고수량이 구매오더에 실시간 반영됩니다.
+      </div>
+    </div>
+    <div class="ov-models">
+      <div class="ov-model">
+        <div class="ov-model-ico">🗂️</div>
+        <div class="ov-model-title">마스터 데이터 3종</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.65">자재·계정·공급업체. 자재/공급업체는 Draft + 다국어 텍스트 Composition, 계정은 즉시 확정되는 단순 구조라 Draft 미사용</div>
+      </div>
+      <div class="ov-model">
+        <div class="ov-model-ico">🔗</div>
+        <div class="ov-model-title">구매오더 ↔ 입고 Cross-BO</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.65">입고 저장 시 구매오더의 receiveQty 액션을 EML로 호출. "얼마 입고했는지"만 전달하고 누적·완료 판정은 구매오더가 직접 책임</div>
+      </div>
+      <div class="ov-model">
+        <div class="ov-model-ico">🧩</div>
+        <div class="ov-model-title">공통 재사용 컴포넌트</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.65">7개 BO의 Validation에서 반복되는 존재 여부·중복·조합 검증을 zcl_a10_check 한 클래스로 통합</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE / 설계 원칙 -->
+<section id="architecture">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Architecture</div>
+      <h2 class="sec-title">설계 원칙</h2>
+    </div>
+    <p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:1.8rem;max-width:760px">
+      코드 자체보다 <strong>왜 이렇게 짜야 하는지 판단하는 기준</strong>을 세우는 데 가장 공을 들였습니다. 8개 BO를 만들며 반복해서 마주친 판단을
+      원칙 4가지로 정리했고, 이 기준이 아래 각 Business Object의 설계에 그대로 적용되어 있습니다.
+    </p>
+
+    <div class="arch-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem">
+
+      <div class="story-card" style="padding:1.6rem">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">01 · 검증은 SQL이 하게 한다</div>
+        <div style="font-weight:700;margin-bottom:.6rem">Internal Table LOOP → CDS LEFT OUTER JOIN</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.75">
+          처음엔 <code>FOR ALL ENTRIES</code>로 일괄 조회 후 <code>LOOP + READ TABLE</code>로 대조하는 Classic ABAP 방식으로 zcl_a10_check를 통일했습니다.
+          리뷰에서 "판단 로직 자체를 Internal Table이 아니라 CDS 뷰(SQL)가 하게 해야 한다"는 지적을 받아, 존재 여부·조합 유효성 판단을 CDS LEFT OUTER JOIN 후
+          매칭 안 되는 것만(JOIN 대상 IS NULL) SQL이 골라내는 방식으로 전면 수정했습니다. SORTED/HASHED 테이블도 습관적으로 쓰지 않고
+          대량 반복조회가 실제로 증명된 경우에만 예외로 남겼습니다.
+        </p>
+      </div>
+
+      <div class="story-card" style="padding:1.6rem">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">02 · Cross-BO는 EML EXECUTE만</div>
+        <div style="font-weight:700;margin-bottom:.6rem">"얼마"만 전달, 판단은 상대 BO가</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.75">
+          입고(호출하는 쪽)는 구매오더 필드를 직접 UPDATE하지 않습니다. 이미 정의된 액션(receiveQty)을 EML EXECUTE로 호출해 "얼마 입고했다"는 사실만 전달하고,
+          누적 계산과 완료 판정은 구매오더 스스로 책임집니다. COMMIT ENTITIES는 Behavior Implementation 안에서 호출하면 안 되고(프레임워크가 저장 시퀀스 끝에 자동 처리)
+          넣지 않는 것으로 확정했습니다. 같은 BO 내부 조회는 <code>IN LOCAL MODE</code>, 다른 BO 호출 시엔 쓰지 않는다는 원칙도 코드 전반에 일관 적용했습니다.
+        </p>
+      </div>
+
+      <div class="story-card" style="padding:1.6rem">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">03 · 채번은 PK 성격으로 판단</div>
+        <div style="font-weight:700;margin-bottom:.6rem">Early Numbering vs Late Numbering</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.75">
+          아이템 순번처럼 헤더 안에서 관리되는 키는 NUMBERING 메서드(Early)로, 회계결정코드처럼 PK 자체가 업무 의미를 가지며 Draft 없이 즉시 저장 확정되는 BO는
+          Late Numbering으로 나눴습니다. determination on save로 PK 필드를 채우려다 <code>BEHAVIOR_CONTRACT_VIOLATION(EMPTY_UPDATE)</code> 덤프를 겪은 뒤
+          "PK 필드는 UPDATE로 변경 불가"라는 RAP 제약을 실제로 확인하고 정리한 기준입니다.
+        </p>
+      </div>
+
+      <div class="story-card" style="padding:1.6rem">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">04 · Prepare는 안내, Activate가 차단</div>
+        <div style="font-weight:700;margin-bottom:.6rem">check_confirm으로 최종 확정 통합</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.75">
+          개별 soft validation은 Prepare 단계 실시간 피드백(reported)만 담당하고, 정작 저장을 막는 failed 처리가 빠져 있어 실질적으로 아무것도 막지 못하는 구조가
+          여러 BO에서 반복됐습니다. 8개 BO 모두에 check_confirm을 신설해 Activate 직전 한 번의 READ로 핵심 필드를 모아 failed 처리를 전담시키고,
+          메시지 생성은 soft validation에게 남겨 같은 조건이 두 번 메시지를 띄우지 않도록 역할을 분리했습니다.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--white)">
+  <div class="container">
+
+    <div class="dev-header">
+      <div class="dev-eyebrow">DEVELOPMENT</div>
+      <h2 class="dev-title">Business Object 8종</h2>
+    </div>
+
+    <div class="dev-layout">
+      <aside class="dev-sidebar">
+        <a href="index.html#experience" class="dev-back">← 포트폴리오로 돌아가기</a>
+
+        <div class="dev-nav-group">마스터 데이터</div>
+        <button class="dev-nav-item active" onclick="switchDev('rap-01', this)">
+          <span class="dev-nav-num">01</span>
+          <span class="dev-nav-badge abap">MARA</span> 자재 마스터
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-02', this)">
+          <span class="dev-nav-num">02</span>
+          <span class="dev-nav-badge abap">SKA1</span> FI 계정 마스터
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-03', this)">
+          <span class="dev-nav-num">03</span>
+          <span class="dev-nav-badge abap">LFA1</span> 공급업체 마스터
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-04', this)">
+          <span class="dev-nav-num">04</span>
+          <span class="dev-nav-badge abap">T030</span> 회계결정코드
+        </button>
+
+        <div class="dev-nav-group">구매 프로세스</div>
+        <button class="dev-nav-item" onclick="switchDev('rap-05', this)">
+          <span class="dev-nav-num">05</span>
+          <span class="dev-nav-badge fiori">EINA</span> 구매정보 레코드
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-06', this)">
+          <span class="dev-nav-num">06</span>
+          <span class="dev-nav-badge fiori">EKKO</span> 구매오더
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-07', this)">
+          <span class="dev-nav-num">07</span>
+          <span class="dev-nav-badge fiori">MKPF</span> 입고
+        </button>
+
+        <div class="dev-nav-group">공용 인프라</div>
+        <button class="dev-nav-item" onclick="switchDev('rap-08', this)">
+          <span class="dev-nav-num">08</span>
+          <span class="dev-nav-badge abap">CHECK</span> 공통 재사용 컴포넌트
+        </button>
+      </aside>
+
+      <div class="dev-main">
+
+        <!-- 01 자재 마스터 -->
+        <div id="rap-01" class="dev-project-content active">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">MASTER DATA</span>
+            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+          </div>
+          <h3 class="dev-proj-title">자재 마스터 (MARA)</h3>
+          <p class="dev-proj-desc">
+            자재 마스터 + 자재명(다국어) Composition 구조. Object Page 안에서 언어별 텍스트를 CRUD할 수 있게 자식 엔티티로 붙였습니다.
+            자재유형별로 사용 가능한 플랜트·저장위치·평가클래스 조합이 다른데, 표준 SAP에는 이 3원 조합을 관리하는 개념 자체가 없어 매핑 테이블을 새로 설계했습니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V4</span>
+            <span class="dev-tech-tag">Draft</span>
+            <span class="dev-tech-tag">Determination</span>
+            <span class="dev-tech-tag">Validation</span>
+            <span class="dev-tech-tag">Action</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>자재유형-플랜트-저장위치 3원 매핑 신규 설계</strong> — 표준 SAP엔 자재유형-플랜트(T134M류)는 있어도 자재유형-저장위치를 엮는 개념이 없어, 매핑 테이블(ZTA10MTART_LGORT)과 이를 노출하는 CDS(ZI_A10_MTART_LGORT)를 직접 정의. 검증·Search Help·초기화 로직이 전부 이 뷰 하나를 공용으로 참조</li>
+              <li><strong>단계적 필드 초기화</strong> — 자재유형(Mtart) 변경 시 2단계로 판정: ① Mtart-Werks 조합 자체가 무효면 플랜트·저장위치 둘 다 초기화, ② 플랜트는 유효한데 3원 조합만 무효면 저장위치만 초기화. "무효면 무조건 둘 다 지운다"는 단순 규칙 대신, 조합을 세분화해 사용자가 이미 입력한 유효한 값은 최대한 보존하는 방향으로 설계</li>
+              <li><strong>자재유형별 채번 대역</strong> — FERT→01 / HALB→02 / HIBE→03 / ROH→04 / VERP→05 대역 분기, FERT0001 형태로 접두어를 부여해 번호만 봐도 유형 파악 가능. Draft 중엔 채번하지 않고 Activate 시점에만 실행</li>
+              <li><strong>확정 후 필드 잠금</strong> — 저장 시 Matfi(확정 플래그) 자동 설정. 확정·사용중지 상태면 핵심 필드 전부 read-only, 자재유형은 채번 완료 이후 Unlock을 해도 영구 잠금</li>
+              <li><strong>Activate 최종 확정 — check_confirm</strong> — Werks/Lgort/Mtart/Bklas/Ersda/Stprs/Peinh/Matnr을 한 번의 READ로 묶어 failed 처리. 개별 soft validation은 Prepare 실시간 피드백만 담당하도록 역할 분리</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r1t1',event)">매핑 CDS + Determination</button>
+            <button class="code-tab" onclick="switchTab(this,'r1t2',event)">clear_werks_lgort 2단계 판정</button>
+            <button class="code-tab" onclick="switchTab(this,'r1t3',event)">set_mapping_key 채번</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r1t1"><span class="cm">* 자재유형-플랜트-저장위치 3원 매핑 — 표준에 없는 개념이라 직접 정의</span>
+<span class="kw">define view entity</span> <span class="fn">ZI_A10_MTART_LGORT</span>
+  <span class="kw">as select from</span> ztA10mtart_lgort
+{
+  <span class="kw">key</span> mtart <span class="kw">as</span> MaterialType,
+  <span class="kw">key</span> werks <span class="kw">as</span> Plant,
+  <span class="kw">key</span> lgort <span class="kw">as</span> StorageLocation
+}
+<span class="cm">-- 최종 데이터: FERT-K210-L001(본사), FERT-K220-L001(제품),
+-- HIBE-K220-L003(소모품), ROH-K230-L001(원자재), HALB-K230-L002(반제품)</span>
+
+<span class="kw">managed implementation in class</span> zbp_r_a10_mara <span class="kw">unique</span>;
+<span class="kw">strict</span>(<span class="num">2</span>);
+<span class="kw">define behavior for</span> ZR_A10_MARA <span class="kw">alias</span> Material
+<span class="kw">persistent table</span> ztA10mara <span class="kw">draft table</span> ztA10mara_d
+<span class="kw">lock master total</span> <span class="kw">etag master</span> LocChangedAt
+{
+  <span class="kw">create</span>;
+  <span class="kw">update</span>;
+  <span class="kw">field</span> ( <span class="kw">readonly</span> ) Matnr, Waers;
+  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Werks, Lgort, Mtart, Bklas;
+
+  <span class="kw">determination</span> set_default_value <span class="kw">on modify</span> { <span class="kw">create</span>; }
+  <span class="kw">determination</span> set_mapping_key <span class="kw">on save</span> { <span class="kw">create</span>; }
+  <span class="kw">determination</span> clear_bklas <span class="kw">on modify</span> { <span class="kw">field</span> Mtart; }
+  <span class="kw">determination</span> clear_lgort <span class="kw">on modify</span> { <span class="kw">field</span> Werks; }
+  <span class="kw">determination</span> clear_werks_lgort <span class="kw">on modify</span> { <span class="kw">field</span> Mtart; }
+
+  <span class="kw">validation</span> check_Plant <span class="kw">on save</span> { <span class="kw">field</span> Mtart, Werks, Lgort; }
+  <span class="kw">validation</span> check_confirm <span class="kw">on save</span> { <span class="kw">create</span>; <span class="kw">update</span>; }
+
+  <span class="kw">association</span> _Text { <span class="kw">create</span>; <span class="kw">with draft</span>; }
+
+  <span class="kw">mapping for</span> ztA10mara
+  {
+    Matnr = matnr; Werks = werks; Lgort = lgort; Mtart = mtart; Bklas = bklas;
+    Matfi = matfi; Lvorm = lvorm;
+  }
+}</div>
+
+          <div class="proj-code code-panel" id="r1t2" style="display:none"><span class="cm">* 자재유형 변경 시 플랜트/저장위치 2단계 판정
+* ① Mtart-Werks 조합 자체가 무효 → 둘 다 초기화
+* ② 플랜트는 유효, 3원 조합만 무효 → 저장위치만 초기화</span>
+<span class="kw">METHOD</span> <span class="fn">clear_werks_lgort</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_mara <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> Material
+      <span class="kw">FIELDS</span> ( Mtart Werks Lgort )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_material).
+
+  <span class="kw">LOOP AT</span> lt_material <span class="kw">INTO DATA</span>(ls_mat).
+    <span class="cm">* ① 2원 조합(Mtart-Werks) 유효성 — CDS LEFT OUTER JOIN 기반</span>
+    DATA(lt_invalid_mw) = zcl_a10_check=>get_invalid_mtart_werks(
+                              iv_mtart = ls_mat-Mtart  iv_werks = ls_mat-Werks ).
+
+    <span class="kw">IF</span> lt_invalid_mw <span class="kw">IS NOT INITIAL</span>.
+      <span class="cm">* 플랜트 자체가 무효 → Werks + Lgort 둘 다 초기화</span>
+      MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
+        <span class="kw">ENTITY</span> Material
+          <span class="kw">UPDATE FIELDS</span> ( Werks Lgort )
+          <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Werks = <span class="str">''</span>  Lgort = <span class="str">''</span> ) ).
+    <span class="kw">ELSE</span>.
+      <span class="cm">* ② 3원 조합(Mtart-Werks-Lgort)만 확인 → 저장위치만 초기화</span>
+      DATA(lt_invalid_mwl) = zcl_a10_check=>get_invalid_mtart_werks_lgort(
+                                iv_mtart = ls_mat-Mtart
+                                iv_werks = ls_mat-Werks
+                                iv_lgort = ls_mat-Lgort ).
+      <span class="kw">IF</span> lt_invalid_mwl <span class="kw">IS NOT INITIAL</span>.
+        MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
+          <span class="kw">ENTITY</span> Material
+            <span class="kw">UPDATE FIELDS</span> ( Lgort )
+            <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Lgort = <span class="str">''</span> ) )
+          <span class="kw">REPORTED DATA</span>(ls_reported).
+        <span class="cm">* 왜 초기화됐는지 warning으로 안내</span>
+        APPEND VALUE #( %tky = ls_mat-%tky  %msg = new_message( ... severity = if_abap_behv_message=>severity-warning ) )
+          <span class="kw">TO</span> reported-material.
+      <span class="kw">ENDIF</span>.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r1t3" style="display:none"><span class="cm">* 자재유형별 채번 — Draft 중엔 스킵, Activate 시점에만 실행
+* 보강: 이미 채번된 건 재채번 방지 필터 추가</span>
+<span class="kw">METHOD</span> <span class="fn">set_mapping_key</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_mara <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> Material
+      <span class="kw">FIELDS</span> ( Mtart Matnr )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_material).
+
+  <span class="cm">* 방어 필터 — 다른 모듈처럼 이미 채번된 건은 제외</span>
+  <span class="kw">DELETE</span> lt_material <span class="kw">WHERE</span> Matnr <span class="kw">IS NOT INITIAL</span>.
+  <span class="kw">CHECK</span> lt_material <span class="kw">IS NOT INITIAL</span>.
+
+  <span class="kw">LOOP AT</span> lt_material <span class="kw">INTO DATA</span>(ls_mat).
+    DATA(lv_nr) = <span class="kw">SWITCH</span> #( ls_mat-Mtart
+                    <span class="kw">WHEN</span> <span class="str">'FERT'</span> <span class="kw">THEN</span> <span class="str">'01'</span>
+                    <span class="kw">WHEN</span> <span class="str">'HALB'</span> <span class="kw">THEN</span> <span class="str">'02'</span>
+                    <span class="kw">WHEN</span> <span class="str">'HIBE'</span> <span class="kw">THEN</span> <span class="str">'03'</span>
+                    <span class="kw">WHEN</span> <span class="str">'ROH'</span>  <span class="kw">THEN</span> <span class="str">'04'</span>
+                    <span class="kw">WHEN</span> <span class="str">'VERP'</span> <span class="kw">THEN</span> <span class="str">'05'</span> ).
+
+    <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
+      <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRA10MAT'</span>
+      <span class="kw">IMPORTING</span> number = DATA(lv_seq).
+
+    DATA(lv_matnr) = |{ ls_mat-Mtart }{ lv_seq }|.  <span class="cm">"예: FERT0001</span>
+
+    MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
+      <span class="kw">ENTITY</span> Material
+        <span class="kw">UPDATE FIELDS</span> ( Matnr )
+        <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Matnr = lv_matnr ) ).
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+        </div>
+
+        <!-- 02 FI 계정 마스터 -->
+        <div id="rap-02" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">MASTER DATA</span>
+            <span class="dev-top-badge fblue">Managed · OData V2 · No-Draft</span>
+          </div>
+          <h3 class="dev-proj-title">FI 계정 마스터 (SKA1)</h3>
+          <p class="dev-proj-desc">
+            계정 마스터 + 계정명(다국어) Composition. 저장하면 바로 확정되는 단순 마스터 성격이라 FS 요건에 따라 Draft를 사용하지 않았습니다.
+            공급업체 프로젝트에서 "매입채무 계정만 선택"하는 요건이 있어, 계정유형(Glact)과는 별개로 조정계정 타입(Mitkz) 필드를 추가해 역할을 분리했습니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V2</span>
+            <span class="dev-tech-tag">No-Draft</span>
+            <span class="dev-tech-tag">표준 도메인 재사용</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>Glact / Mitkz 역할 분리</strong> — 계정유형(Glact=대차대조표/영업외/1차원가/2차원가/현금)만으로는 대차대조표 안의 현금·매입채무·매출채권·자산을 구분할 수 없어, SAP 표준 필드 Mitkz(D=고객/K=공급업체/A=자산)를 추가. 필터링은 Mitkz='K', 화면 표시는 Glact로 역할 분리</li>
+              <li><strong>용도별 Search Help 분리</strong> — 같은 계정 마스터를 참조하지만 ZI_A10_SKA1_F4(Mitkz='K' 필터, 공급업체용)와 ZI_A10_SKA1_ALL_F4(필터 없음, 회계결정코드용)로 뷰를 나눠서 관리</li>
+              <li><strong>표준 도메인 텍스트 재사용</strong> — 조정계정 타입은 커스텀 텍스트 테이블 대신 표준 도메인 Fixed Value 텍스트(I_DomainFixedValueText)를 그대로 조회. 다국어 번역을 직접 관리할 필요가 없어 유지보수 비용이 0</li>
+              <li><strong>다국어 텍스트 처리</strong> — 목록·헤더에는 현재 로그온 언어 텍스트 1건만 노출(성능), Object Page에는 별도 Facet으로 전체 언어 CRUD</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r2t1',event)">Mitkz 필터링 Search Help</button>
+            <button class="code-tab" onclick="switchTab(this,'r2t2',event)">check_saknr_unique</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r2t1"><span class="cm">* 계정(공급업체용) — Mitkz='K' 필터. 매입채무 계정만 노출</span>
+<span class="kw">define view entity</span> <span class="fn">ZI_A10_SKA1_F4</span>
+  <span class="kw">as select from</span> ztA10ska1
+{
+  <span class="kw">key</span> saknr <span class="kw">as</span> AccountNumber,
+      txt20 <span class="kw">as</span> AccountName
+}
+<span class="kw">where</span> mitkz = <span class="str">'K'</span>
+
+<span class="cm">* 계정(회계결정코드용) — 필터 없음. 재고·GR/IR 등 전체 유형 필요</span>
+<span class="kw">define view entity</span> <span class="fn">ZI_A10_SKA1_ALL_F4</span>
+  <span class="kw">as select from</span> ztA10ska1
+{
+  <span class="kw">key</span> saknr <span class="kw">as</span> AccountNumber,
+      txt20 <span class="kw">as</span> AccountName
+}
+
+<span class="cm">* 조정계정 타입 — 표준 도메인 Fixed Value 텍스트 재사용 (커스텀 텍스트 테이블 불필요)</span>
+<span class="kw">define view entity</span> <span class="fn">ZI_A10_MITKZ</span>
+  <span class="kw">as select from</span> I_DomainFixedValueText( P_ScalarFunction = <span class="str">'DATA'</span> )
+{
+  <span class="kw">key</span> DomainValue <span class="kw">as</span> Mitkz,
+      DomainValueText <span class="kw">as</span> MitkzText
+}
+<span class="kw">where</span> DomainName = <span class="str">'ZDA10MITKZ'</span></div>
+
+          <div class="proj-code code-panel" id="r2t2" style="display:none"><span class="cm">* 계정번호 중복 등록 방지 — FOR ALL ENTRIES 일괄 조회</span>
+<span class="kw">METHOD</span> <span class="fn">check_saknr_unique</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_ska1 <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> Account
+      <span class="kw">FIELDS</span> ( Saknr Glact )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_account).
+
+  DATA(lt_dup) = zcl_a10_check=>get_invalid_saknr( it_account = lt_account ).
+
+  <span class="kw">LOOP AT</span> lt_dup <span class="kw">INTO DATA</span>(ls_dup).
+    APPEND VALUE #( %tky = ls_dup-%tky ) <span class="kw">TO</span> failed-account.
+    APPEND VALUE #( %tky = ls_dup-%tky
+                     %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'020'</span>
+                                          v1 = ls_dup-Saknr
+                                          severity = if_abap_behv_message=>severity-error ) )
+      <span class="kw">TO</span> reported-account.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+        </div>
+
+        <!-- 03 공급업체 마스터 -->
+        <div id="rap-03" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">MASTER DATA</span>
+            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+          </div>
+          <h3 class="dev-proj-title">공급업체 마스터 (LFA1)</h3>
+          <p class="dev-proj-desc">
+            공급업체 마스터 단일 BO. 자재 프로젝트에서 검증한 Draft 구조를 그대로 재사용했습니다.
+            공급업체 분류(Fdgrv A1~A6)별로 채번 대역이 갈리는데, SNRO 번호범위의 인터벌 이름을 분류코드와 동일하게 지정해 자재 프로젝트의 SWITCH 분기 코드를 없앴습니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V4</span>
+            <span class="dev-tech-tag">Draft</span>
+            <span class="dev-tech-tag">SNRO 인터벌 재사용</span>
+            <span class="dev-tech-tag">Action Parameter</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>SNRO 인터벌명 = 분류코드 — 분기 코드 제거</strong> — 자재(MARA)는 SWITCH로 자재유형→번호대역을 매핑했지만, 공급업체는 SNRO 번호범위의 인터벌 이름을 분류코드와 동일하게(A1~A6) 지정해 Fdgrv 값을 그대로 인터벌 번호로 전달. 분류가 A7으로 늘어나도 코드 수정 없이 SNRO 인터벌만 추가하면 됨</li>
+              <li><strong>조정계정 우회 방어</strong> — check_akont에서 매입채무 관련 계정(Mitkz='K')인지 확인. Value Help로 1차 필터링되지만 API 직접 호출로 우회 가능해 백엔드 검증을 별도로 둠</li>
+              <li><strong>Fixed Value도 백엔드에서 재검증</strong> — 공급업체 분류(Fdgrv)를 "콤보박스로 막혀있으니 검증이 필요 없다"고 판단했다가, check_akont와 같은 논리로 재검토해 도메인 Fixed Value 범위 값인지 체크하는 로직을 추가(get_invalid_fdgrv 신규 작성)</li>
+              <li><strong>사유 입력 Action</strong> — block_vendor는 파라미터(Abstract Entity)로 거래종료 사유를 팝업으로 입력받고, 미입력 시 failed 처리로 저장을 차단. Loevm 플래그를 read-only로 잠가 액션으로만 변경 가능하게 해 상태 변경이 한 지점을 통과하도록 설계</li>
+              <li><strong>4단계 화면 제어</strong> — Delete는 Draft 단계만 허용, Block/Unblock 상호 배타, 거래종료 시 핵심 필드 전부 read-only, 거래종료 상태면 Edit 버튼 자체를 비활성화(불필요한 Draft 레코드 생성도 함께 차단)</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r3t1',event)">SNRO 인터벌 재사용 채번</button>
+            <button class="code-tab" onclick="switchTab(this,'r3t2',event)">block_vendor — 사유 입력 Action</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r3t1"><span class="cm">* 분류코드 = SNRO 인터벌명 — 분기 코드가 사라짐
+* Fdgrv 값을 그대로 인터벌 번호로 전달 (A1~A6)</span>
+<span class="kw">METHOD</span> <span class="fn">set_mapping_key</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> Vendor
+      <span class="kw">FIELDS</span> ( Fdgrv Lifnr )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_vendor).
+
+  <span class="kw">DELETE</span> lt_vendor <span class="kw">WHERE</span> Lifnr <span class="kw">IS NOT INITIAL</span>.
+  <span class="kw">CHECK</span> lt_vendor <span class="kw">IS NOT INITIAL</span>.
+
+  <span class="kw">LOOP AT</span> lt_vendor <span class="kw">INTO DATA</span>(ls_vnd).
+    <span class="cm">* 분류가 A7으로 늘어나도 SNRO 인터벌만 추가하면 코드 수정 불필요</span>
+    <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
+      <span class="kw">EXPORTING</span> nr_range_nr = ls_vnd-Fdgrv  object = <span class="str">'ZNRA10VND'</span>
+      <span class="kw">IMPORTING</span> number = DATA(lv_lifnr).
+
+    MODIFY ENTITIES OF zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
+      <span class="kw">ENTITY</span> Vendor
+        <span class="kw">UPDATE FIELDS</span> ( Lifnr )
+        <span class="kw">WITH VALUE</span> #( ( %tky = ls_vnd-%tky  Lifnr = lv_lifnr ) ).
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r3t2" style="display:none"><span class="cm">* 거래종료 — 사유 미입력 시 저장 차단</span>
+<span class="kw">define behavior for</span> ZR_A10_LFA1 <span class="kw">alias</span> Vendor
+{
+  ...
+  <span class="kw">action</span> ( <span class="kw">features</span> : <span class="kw">instance</span> ) block_vendor <span class="kw">parameter</span> ZA10_A_BLOCK_REASON <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
+  <span class="kw">action</span> ( <span class="kw">features</span> : <span class="kw">instance</span> ) unblock_vendor <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
+  <span class="kw">field</span> ( <span class="kw">readonly</span> ) Loevm;   <span class="cm">"액션으로만 변경 가능</span>
+}
+
+<span class="kw">METHOD</span> <span class="fn">block_vendor</span>.
+  <span class="kw">LOOP AT</span> keys <span class="kw">INTO DATA</span>(ls_key).
+    <span class="kw">IF</span> ls_key-%param-BlockReason <span class="kw">IS INITIAL</span>.
+      APPEND VALUE #( %tky = ls_key-%tky ) <span class="kw">TO</span> failed-vendor.
+      APPEND VALUE #( %tky = ls_key-%tky
+                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'041'</span>
+                                            severity = if_abap_behv_message=>severity-error ) )
+        <span class="kw">TO</span> reported-vendor.
+      <span class="kw">CONTINUE</span>.
+    <span class="kw">ENDIF</span>.
+
+    MODIFY ENTITIES OF zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
+      <span class="kw">ENTITY</span> Vendor
+        <span class="kw">UPDATE FIELDS</span> ( Loevm BlockReason )
+        <span class="kw">WITH VALUE</span> #( ( %tky = ls_key-%tky
+                              Loevm = <span class="str">'X'</span>
+                              BlockReason = ls_key-%param-BlockReason ) ).
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+        </div>
+
+        <!-- 04 회계결정코드 -->
+        <div id="rap-04" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">MASTER DATA</span>
+            <span class="dev-top-badge fblue">Managed · OData V2 · Late Numbering</span>
+          </div>
+          <h3 class="dev-proj-title">회계결정코드 (T030)</h3>
+          <p class="dev-proj-desc">
+            물류 트랜잭션(입고/출고) 발생 시 어떤 G/L 계정에 전기할지 결정하는 마스터. 물류 담당자가 회계 지식 없이도 업무를 처리할 수 있게 하는 것이 목적입니다.
+            Seqnr(순번)이 PK를 구성하는 필드라 채번 방식을 두고 가장 오래 고민한 BO입니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V2</span>
+            <span class="dev-tech-tag">No-Draft</span>
+            <span class="dev-tech-tag">Late Numbering</span>
+            <span class="dev-tech-tag">Behavior Saver</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>Late Numbering 채택 근거</strong> — FS 요건은 "순번은 같은 이동유형 내 최대값+1"인데 Seqnr이 PK. determination on save로 채번을 시도했다가 RAP에서 키 필드는 UPDATE로 변경 불가하다는 <code>BEHAVIOR_CONTRACT_VIOLATION(EMPTY_UPDATE)</code> 덤프를 확인. PK를 UUID로 바꾸는 대안도 있었지만, Draft 없는 V2라 "저장하는 순간 최종 키가 정해지는" Late Numbering이 저장 모델과 더 맞아 선택</li>
+              <li><strong>Behavior Saver 구현</strong> — Local Types에 cl_abap_behavior_saver를 상속한 Saver 클래스를 추가하고 adjust_numbers를 재정의. 저장 직전 이동유형별 DB 최대 순번을 조회해 +1을 임시 키에서 최종 키로 확정. 같은 요청에 동일 이동유형이 여러 건이면 직전 값에 이어 순차 배정</li>
+              <li><strong>차변/대변 지시자(Shkzg) 추가</strong> — FS 필드 표에는 없었으나 화면 요건(수정 시 차변/대변 변경 가능)에 있어 추가. 같은 회계결정코드라도 방향이 다르면 다른 계정이 매핑됨(WRX는 입고 시 대변, 송장 반제 시 차변) — Bwart+Ktosl 조합만으로는 방향을 표현할 수 없어 별도 필드가 필요했음</li>
+              <li><strong>조건부 필수 검증</strong> — BSX(재고계정)/PRD(가격차이)는 자재의 평가클래스별로 계정이 갈리므로 평가클래스 필수, WRX(GR/IR 반제)는 평가클래스와 무관하게 하나의 계정을 쓰므로 필수 아님 — 회계 로직에 근거한 조건부 필수 처리</li>
+              <li><strong>검증 6개로 분리</strong> — 처음엔 하나의 check_key에 전부 몰아넣었다가 다시 쪼갬. 검증 성격이 서로 달라(코드 유효성/조건부 필수/참조 무결성/유니크 제약) 필드별 트리거 조건을 따로 걸 수 있고 불필요한 재실행도 줄어듦</li>
+              <li><strong>제거한 자동화 — set_default_shkzg</strong> — Ktosl 값으로 차변/대변을 자동 결정하는 Determination을 만들었다가 제거. BSX(재고계정)는 입고 시 차변, 출고 시 대변이라 코드 하나로 방향이 정해지지 않아 회계적 근거가 부족한 자동화는 오히려 잘못된 데이터를 만든다고 판단</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r4t1',event)">Late Numbering — Saver 클래스</button>
+            <button class="code-tab" onclick="switchTab(this,'r4t2',event)">check_bklas_req 조건부 필수</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r4t1"><span class="cm">* BDEF — late numbering 선언</span>
+<span class="kw">define behavior for</span> ZR_A10_T030 <span class="kw">alias</span> AcctDetermination
+<span class="kw">late numbering</span>
+{
+  <span class="kw">create</span>;
+  <span class="kw">update</span>;
+  <span class="kw">delete</span>;
+  <span class="kw">field</span> ( <span class="kw">readonly</span> : <span class="kw">update</span> ) Bwart, Seqnr;
+  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Ktosl, Saknr;
+
+  <span class="kw">validation</span> check_bklas_req <span class="kw">on save</span> { <span class="kw">field</span> Ktosl, Bklas; }
+  ...
+}
+
+<span class="cm">* Behavior Pool Local Types — Saver 클래스에서 순번 최종 확정</span>
+<span class="kw">CLASS</span> lcl_saver <span class="kw">DEFINITION INHERITING FROM</span> cl_abap_behavior_saver.
+  <span class="kw">PROTECTED SECTION</span>.
+    <span class="kw">METHODS</span> adjust_numbers <span class="kw">REDEFINITION</span>.
+<span class="kw">ENDCLASS</span>.
+
+<span class="kw">CLASS</span> lcl_saver <span class="kw">IMPLEMENTATION</span>.
+  <span class="kw">METHOD</span> adjust_numbers.
+    <span class="kw">LOOP AT</span> mapped-acctdetermination <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_map&gt;).
+      <span class="cm">* 이동유형별 DB 최대 순번 조회 후 +1</span>
+      <span class="kw">SELECT SINGLE MAX</span>( seqnr ) <span class="kw">FROM</span> ztA10t030
+        <span class="kw">WHERE</span> bwart = @&lt;fs_map&gt;-Bwart <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_max).
+
+      lv_max += <span class="num">1</span>.
+      &lt;fs_map&gt;-Seqnr = lv_max.
+      <span class="cm">* 같은 요청 내 동일 이동유형이 여러 건이면 다음 루프에서
+         방금 배정한 값을 이어받아 순차 배정</span>
+    <span class="kw">ENDLOOP</span>.
+  <span class="kw">ENDMETHOD</span>.
+<span class="kw">ENDCLASS</span>.</div>
+
+          <div class="proj-code code-panel" id="r4t2" style="display:none"><span class="cm">* BSX/PRD는 평가클래스 필수, WRX는 무관 — 회계 로직 기반 조건부 필수</span>
+<span class="kw">METHOD</span> <span class="fn">check_bklas_req</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_t030 <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> AcctDetermination
+      <span class="kw">FIELDS</span> ( Ktosl Bklas )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_det).
+
+  <span class="kw">LOOP AT</span> lt_det <span class="kw">INTO DATA</span>(ls_det).
+    <span class="cm">* BSX(재고) / PRD(가격차이) — 자재 평가클래스별로 계정이 갈림 → 필수</span>
+    <span class="kw">IF</span> ls_det-Ktosl <span class="kw">IN</span> <span class="kw">VALUE</span> ztt_ktosl( ( <span class="str">'BSX'</span> ) ( <span class="str">'PRD'</span> ) )
+       <span class="kw">AND</span> ls_det-Bklas <span class="kw">IS INITIAL</span>.
+      APPEND VALUE #( %tky = ls_det-%tky ) <span class="kw">TO</span> failed-acctdetermination.
+      APPEND VALUE #( %tky = ls_det-%tky
+                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'052'</span>
+                                            severity = if_abap_behv_message=>severity-error ) )
+        <span class="kw">TO</span> reported-acctdetermination.
+    <span class="kw">ENDIF</span>.
+    <span class="cm">* WRX(GR/IR) — 평가클래스 무관하게 계정 하나만 사용 → 필수 아님</span>
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+        </div>
+
+        <!-- 05 구매정보 레코드 -->
+        <div id="rap-05" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">PROCUREMENT</span>
+            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+          </div>
+          <h3 class="dev-proj-title">구매정보 레코드 (EINA/EINE)</h3>
+          <p class="dev-proj-desc">
+            공급업체별·자재별로 플랜트마다 구매가격·최대구매수량·예정배송일수를 관리하는 마스터. Header(EINA)-Item(EINE) 2단 Composition 구조(1:N)이며,
+            구매오더 모듈이 이 레코드를 참조해 자재·가격·플랜트 정보를 자동으로 끌어옵니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V4</span>
+            <span class="dev-tech-tag">Draft</span>
+            <span class="dev-tech-tag">1:N Composition</span>
+            <span class="dev-tech-tag">교차 검증</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>연도별 채번</strong> — 구매정보번호를 2026000005 형태로 연도+순번 채번. Draft 중엔 채번하지 않고 Activate 시점에만 실행(자재 프로젝트의 set_mapping_key와 동일 원리)</li>
+              <li><strong>Prepare 경고 vs 저장 차단 분리</strong> — 공급업체/자재/구매단위 필수값은 생성 화면에서 mandatory 표시를 하지 않고 저장 시점에만 체크하라는 FS 요건에 따라 instance feature 대신 validation으로 구현. Draft 편집 중에는 경고(severity-warning)만 주고 저장은 막지 않다가, check_confirm에서 최종적으로 error 처리</li>
+              <li><strong>교차 필드 검증 완성</strong> — 최소수량(Minbm)이 최대구매수량(Bstma)을 초과할 수 없다는 검증이 원래 빈 메서드로 미구현 상태였던 것을 완성</li>
+              <li><strong>실존 여부까지 확인하는 check_confirm</strong> — 공급업체·자재가 삭제된 상태인지까지 확인해야 해서 zcl_a10_check.get_invalid_lifnr / get_invalid_matnr를 재사용</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r5t1',event)">BDEF — Header/Item Composition</button>
+            <button class="code-tab" onclick="switchTab(this,'r5t2',event)">check_qty 교차 검증</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r5t1"><span class="cm">* Header(EINA) - Item(EINE) 1:N, Item PK = inf_uuid + werks</span>
+<span class="kw">managed implementation in class</span> zbp_r_a10_eina <span class="kw">unique</span>;
+<span class="kw">strict</span>(<span class="num">2</span>);
+<span class="kw">define behavior for</span> ZR_A10_EINA <span class="kw">alias</span> PurchaseInfo
+<span class="kw">persistent table</span> ztA10eina <span class="kw">draft table</span> ztA10eina_d
+<span class="kw">lock master total</span> <span class="kw">etag master</span> LocChangedAt
+{
+  <span class="kw">create</span>;
+  <span class="kw">update</span>;
+  <span class="kw">delete</span>( <span class="kw">features</span> : <span class="kw">instance</span> );
+
+  <span class="kw">determination</span> set_infnr <span class="kw">on save</span> { <span class="kw">create</span>; }
+
+  <span class="kw">validation</span> check_lifnr <span class="kw">on save</span> { <span class="kw">field</span> Lifnr; }
+  <span class="kw">validation</span> check_duplicate <span class="kw">on save</span> { <span class="kw">field</span> Lifnr, Matnr; }
+  <span class="kw">validation</span> check_confirm <span class="kw">on save</span> { <span class="kw">create</span>; <span class="kw">update</span>; }
+
+  <span class="kw">association</span> _Item { <span class="kw">create</span>; <span class="kw">with draft</span>; }
+  <span class="kw">mapping for</span> ztA10eina { ... }
+}
+
+<span class="kw">define behavior for</span> ZI_A10_EINE <span class="kw">alias</span> PurchaseItem
+{
+  <span class="kw">update</span>;
+  <span class="kw">delete</span>;
+  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Werks, Meins;
+
+  <span class="kw">determination</span> set_item_default <span class="kw">on modify</span> { <span class="kw">create</span>; }
+  <span class="kw">validation</span> check_qty <span class="kw">on save</span> { <span class="kw">field</span> Minbm, Bstma; }
+  <span class="kw">validation</span> check_prdat <span class="kw">on save</span> { <span class="kw">field</span> Prdat; }
+
+  <span class="kw">mapping for</span> ztA10eine { ... }
+}</div>
+
+          <div class="proj-code code-panel" id="r5t2" style="display:none"><span class="cm">* 최소수량이 최대구매수량을 초과할 수 없다 — 원래 빈 메서드였던 것을 완성</span>
+<span class="kw">METHOD</span> <span class="fn">check_qty</span>.
+  <span class="kw">READ ENTITIES OF</span> zi_a10_eine <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> PurchaseItem
+      <span class="kw">FIELDS</span> ( Minbm Bstma )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_item).
+
+  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
+    <span class="kw">IF</span> ls_item-Bstma &lt; <span class="num">0</span> <span class="kw">OR</span> ls_item-Minbm &lt; <span class="num">0</span>.
+      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-purchaseitem.
+    <span class="kw">ENDIF</span>.
+    <span class="cm">* 교차 검증 — 최소수량이 최대수량을 넘으면 안 됨</span>
+    <span class="kw">IF</span> ls_item-Minbm &gt; ls_item-Bstma <span class="kw">AND</span> ls_item-Bstma &gt; <span class="num">0</span>.
+      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-purchaseitem.
+      APPEND VALUE #( %tky = ls_item-%tky
+                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'065'</span>
+                                            severity = if_abap_behv_message=>severity-error ) )
+        <span class="kw">TO</span> reported-purchaseitem.
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+        </div>
+
+        <!-- 06 구매오더 -->
+        <div id="rap-06" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">PROCUREMENT · CORE</span>
+            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+          </div>
+          <h3 class="dev-proj-title">구매오더 (EKKO / EKPO)</h3>
+          <p class="dev-proj-desc">
+            Header(EKKO)-Item(EKPO) 1:N Composition. 구매정보레코드·공급업체·자재를 참조하는 구매 프로세스의 중심 BO입니다.
+            입고 모듈이 저장 시점에 이 BO의 액션을 Cross-BO EML로 호출해 입고수량을 반영합니다 — 이 프로젝트에서 Cross-BO 설계 원칙을 처음 확정했습니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V4</span>
+            <span class="dev-tech-tag">Draft</span>
+            <span class="dev-tech-tag">Early Numbering</span>
+            <span class="dev-tech-tag">Cross-BO EML</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>Cross-BO 액션 — receiveQty</strong> — 입고 모듈이 저장 시점에 호출하는 액션. 다른 BO가 이 BO의 필드를 직접 UPDATE하는 방식(Case1)과, 액션을 통해 요청만 하고 계산은 이 BO 스스로 책임지는 방식(Case2) 중 Case2를 채택 — 누적 계산(Wemng += 이번수량)과 완료 판정(Elikz)의 소유권을 명확히 이 BO에 둬서, 완료 판정 규칙이 바뀌어도 입고 쪽 코드는 건드릴 필요가 없게 설계</li>
+              <li><strong>아이템 순번 Early Numbering</strong> — Ebelp(10/20/30) 채번을 determination의 UPDATE FIELDS로 처리하려다 "PK 필드는 UPDATE로 반영되지 않는다"는 제약을 실제 테스트로 확인 → NUMBERING 메서드로 전환. 헤더별 기존 최대 순번을 조회한 뒤 +10씩 채번</li>
+              <li><strong>양방향 정합성 검증</strong> — check_infnr_matnr(아이템→헤더 방향)과 check_vendor_info(헤더→아이템 역방향)를 함께 둬서 PO를 헤더에서 고쳐도, 아이템에서 고쳐도 어긋난 조합이 저장되지 않게 함</li>
+              <li><strong>입고 반영 시 아이템 상태도 함께 갱신</strong> — PO 취소(deleteFlag) 시 헤더만 Loekz를 세우면, 그 PO 아이템은 여전히 유효한 상태로 남아 취소된 PO의 아이템이 입고 Value Help에 계속 노출되는 문제를 발견 → 헤더+아이템을 한 번에 조회해 아이템의 Loekz까지 함께 갱신하도록 보강. resetFlag도 대칭 처리</li>
+              <li><strong>Value Help 어노테이션 보강</strong> — CDS 필드 목록에 공급업체(Lifnr)가 있어도, Value Help 노출 여부는 @UI.selectionField/@UI.lineItem이 별도로 결정한다는 걸 실제로 확인 후 어노테이션을 보강</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r6t1',event)">receiveQty — Cross-BO 액션</button>
+            <button class="code-tab" onclick="switchTab(this,'r6t2',event)">earlynumbering_cba_Item</button>
+            <button class="code-tab" onclick="switchTab(this,'r6t3',event)">deleteFlag — 아이템 연쇄 갱신</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r6t1"><span class="cm">* Cross-BO 액션 — "얼마 입고했다"만 받고, 누적·완료 판정은 이 BO가 소유</span>
+<span class="kw">define behavior for</span> ZI_A10_EKPO <span class="kw">alias</span> PurchasingItem
+{
+  ...
+  <span class="kw">action</span> receiveQty <span class="kw">parameter</span> ZA10_A_RECEIVE_QTY <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
+}
+
+<span class="kw">METHOD</span> <span class="fn">receiveQty</span>.
+  <span class="kw">READ ENTITIES OF</span> zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> PurchasingItem
+      <span class="kw">FIELDS</span> ( Menge Wemng )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_item).
+
+  <span class="kw">LOOP AT</span> keys <span class="kw">INTO DATA</span>(ls_key).
+    <span class="kw">READ TABLE</span> lt_item <span class="kw">INTO DATA</span>(ls_item) <span class="kw">WITH KEY</span> %tky = ls_key-%tky.
+    <span class="kw">CHECK</span> sy-subrc = <span class="num">0</span>.
+
+    <span class="cm">* 누적 — 이 BO가 소유하는 계산</span>
+    DATA(lv_new_wemng) = ls_item-Wemng + ls_key-%param-ReceiveQty.
+
+    MODIFY ENTITIES OF zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
+      <span class="kw">ENTITY</span> PurchasingItem
+        <span class="kw">UPDATE FIELDS</span> ( Wemng Elikz )
+        <span class="kw">WITH VALUE</span> #( ( %tky   = ls_key-%tky
+                              Wemng = lv_new_wemng
+                              <span class="cm">* 완료 판정도 이 BO 책임 — 규칙이 바뀌어도 입고 쪽 코드는 그대로</span>
+                              Elikz = <span class="kw">COND</span> #( <span class="kw">WHEN</span> lv_new_wemng &gt;= ls_item-Menge <span class="kw">THEN</span> abap_true
+                                              <span class="kw">ELSE</span> abap_false ) ) ).
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.
+
+<span class="cm">* 입고(호출하는 쪽) — determination(on save)에서 EXECUTE로 호출</span>
+<span class="kw">METHOD</span> <span class="fn">set_receive_qty</span>.
+  ...
+  <span class="kw">EXECUTE</span> receiveQty
+    <span class="kw">OF</span> zi_a10_ekpo
+      <span class="kw">ENTITY</span> PurchasingItem
+      <span class="kw">FROM VALUE</span> #( ( %tky-EbelnUuid = lv_ebeln_uuid  %tky-Ebelp = ls_gr-Ebelp
+                        %param-ReceiveQty = ls_gr-Menge ) ).
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r6t2" style="display:none"><span class="cm">* 아이템 순번(Ebelp) 채번 — PK 필드라 determination UPDATE 불가 → NUMBERING으로 전환</span>
+<span class="kw">define behavior for</span> ZI_A10_EKPO <span class="kw">alias</span> PurchasingItem
+{
+  <span class="kw">create</span> ( <span class="kw">numbering</span> : <span class="kw">managed</span> );
+  ...
+}
+
+<span class="kw">METHOD</span> <span class="fn">earlynumbering_cba_item</span>.
+  <span class="kw">LOOP AT</span> entities <span class="kw">INTO DATA</span>(ls_header).
+    <span class="cm">* 헤더별 기존 최대 순번 조회</span>
+    <span class="kw">SELECT SINGLE MAX</span>( ebelp ) <span class="kw">FROM</span> ztA10ekpo
+      <span class="kw">WHERE</span> ebeln_uuid = @ls_header-EbelnUuid
+      <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_max).
+
+    <span class="kw">LOOP AT</span> ls_header-%target <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
+      lv_max += <span class="num">10</span>.  <span class="cm">"10/20/30 간격 채번</span>
+      &lt;fs_item&gt;-Ebelp = lv_max.
+      mapped-purchasingitem = <span class="kw">VALUE</span> #( <span class="kw">BASE</span> mapped-purchasingitem
+                              ( %cid = &lt;fs_item&gt;-%cid  %key = &lt;fs_item&gt;-%key
+                                %tky = &lt;fs_item&gt;-%tky ) ).
+    <span class="kw">ENDLOOP</span>.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r6t3" style="display:none"><span class="cm">* PO 취소 — 헤더 Loekz만 세우면 아이템은 여전히 유효한 상태로 남는 문제 발견 후 보강</span>
+<span class="kw">METHOD</span> <span class="fn">deleteflag</span>.
+  <span class="kw">READ ENTITIES OF</span> zr_a10_ekko <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> PurchasingHeader
+      <span class="kw">BY</span> \_Item
+      <span class="kw">FIELDS</span> ( Loekz )
+      <span class="kw">WITH</span> CORRESPONDING #( keys )
+    <span class="kw">RESULT</span> DATA(lt_item).
+
+  MODIFY ENTITIES OF zr_a10_ekko <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> PurchasingHeader
+      <span class="kw">UPDATE FIELDS</span> ( Loekz DelReason )
+      <span class="kw">WITH VALUE</span> #( ( %tky = keys[ <span class="num">1</span> ]-%tky
+                            Loekz = <span class="str">'X'</span>
+                            DelReason = keys[ <span class="num">1</span> ]-%param-BlockReason ) )
+    <span class="kw">ENTITY</span> PurchasingItem
+      <span class="cm">"헤더뿐 아니라 아이템도 함께 갱신 — 취소된 PO가
+        입고 Value Help에 계속 노출되는 문제 해결</span>
+      <span class="kw">UPDATE FIELDS</span> ( Loekz )
+      <span class="kw">WITH</span> CORRESPONDING #( lt_item <span class="kw">MAPPING</span> Loekz = <span class="str">'X'</span> ).
+<span class="kw">ENDMETHOD</span>.</div>
+
+        </div>
+
+        <!-- 07 입고 -->
+        <div id="rap-07" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">PROCUREMENT · CORE</span>
+            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+          </div>
+          <h3 class="dev-proj-title">입고 (MKPF / MSEG)</h3>
+          <p class="dev-proj-desc">
+            Header(MKPF)-Item(MSEG) 1:N Composition. 구매오더를 참조해 입고를 등록하고, 저장 시 참조 구매오더의 입고수량·완료여부를
+            Cross-BO로 갱신합니다. 아이템 삭제 검증 방식을 두 번 갈아엎은 끝에 표준 Draft 패턴으로 정리한 BO입니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">RAP Managed</span>
+            <span class="dev-tech-tag">OData V4</span>
+            <span class="dev-tech-tag">Draft</span>
+            <span class="dev-tech-tag">Cross-BO EML</span>
+            <span class="dev-tech-tag">Prepare Validation</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><strong>이동유형 도메인 확장</strong> — FS 요건이었던 311(플랜트이동)·511(무상입고)이 도메인에 누락돼 있던 것을 발견해 추가. 재고타입(가용/품질검사/보류) 도메인(ZDA10INSMK)도 아예 없어 새로 정의</li>
+              <li><strong>이동유형 단일성 검증</strong> — 입고번호를 이동유형에 따라 4/5/9번대로 분기 채번하는데, 판단 기준을 첫 아이템으로 삼기 때문에 "한 문서 내 이동유형은 반드시 동일해야 한다"는 전제가 필요. check_bwart_item 검증을 별도로 신설해 이 전제를 보장(표준 SAP MKPF엔 원래 이동유형 필드가 없어 섞이는 게 정상이지만, 이 프로젝트의 커스텀 채번 요건 때문에 자체적으로 강제해야 하는 제약이라는 점을 구분)</li>
+              <li><strong>Cross-BO 저장 시점 EML — set_receive_qty</strong> — 저장 시 참조 구매오더의 receiveQty 액션을 EML로 호출. Ebeln(텍스트)을 EbelnUuid로 변환하는 다리 역할을 ZI_A10_EKPO_F4가 담당. 311/511(PO 미참조)은 호출 대상에서 제외</li>
+              <li><strong>Draft 트랜잭션 버퍼의 함정 — 형제 소비량 계산 롤백</strong> — 한 문서 안에서 같은 PO 아이템을 참조하는 아이템이 2개 이상이면 서로의 소비량을 모른 채 동일한 잔량이 중복 제안되는 문제를 확인. Draft 테이블(zta10mseg_d)을 직접 SELECT해서 형제 소비량을 빼는 방식을 시도했으나, "Draft 트랜잭션 버퍼와 DB 테이블은 실시간 동기화가 아니다"라는 RAP 동작 원리에 위배되는 접근이었음을 인지하고 롤백 — 화면 제안값은 근사치로 두고, 실제 초과 여부는 저장 시점 check_gr_qty에서만 정확히 판단하는 원칙으로 단순화</li>
+              <li><strong>아이템 삭제 검증 — 2차 시도 끝에 표준 패턴으로 정리</strong> — 아래 코드 탭 참고. 최종적으로 표준 Delete + Prepare validation(always) 조합으로 Fiori 표준 UX를 회복</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r7t1',event)">아이템 삭제 검증 — 설계 변경 과정</button>
+            <button class="code-tab" onclick="switchTab(this,'r7t2',event)">set_item_data — 형제 소비량 롤백</button>
+            <button class="code-tab" onclick="switchTab(this,'r7t3',event)">check_bwart_po / check_gr_qty</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r7t1"><span class="cm">* 1차 시도 (폐기) — CheckFlag 토글 + deleteItem 커스텀 액션
+* 표준 Delete를 끄고, 커스텀 액션 안에서 삭제+부모 CheckFlag 갱신을 함께 처리
+* → 표준 Delete를 꺼야 해서 테이블 다중선택 삭제 등 Fiori 표준 UX를 포기해야 함 → 폐기</span>
+
+<span class="cm">* 최종 채택 — Prepare의 validation(always)
+* 강사 예시(항공사 BO)의 draft determine action Prepare 패턴을 참고해 전환</span>
+<span class="kw">define behavior for</span> ZR_A10_MKPF <span class="kw">alias</span> GoodsReceipt
+{
+  ...
+  <span class="kw">draft action</span> Prepare
+  {
+    <span class="cm">* 필드 트리거 조건과 무관하게 항상 재실행
+       → 아이템 삭제만 이루어진 경우에도 검증이 누락되지 않음</span>
+    <span class="kw">validation</span> ( <span class="kw">always</span> ) check_item;
+  }
+}
+<span class="cm">* 커스텀 액션과 CheckFlag 토글 로직을 제거하고 표준 Delete를 되살려
+   Fiori 표준 UX(다중선택 삭제 등)를 회복</span></div>
+
+          <div class="proj-code code-panel" id="r7t2" style="display:none"><span class="cm">* 구매오더 아이템 선택 시 자동 반영 — 형제 소비량 롤백 이력</span>
+<span class="kw">METHOD</span> <span class="fn">set_item_data</span>.
+  <span class="kw">READ ENTITIES OF</span> zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
+    <span class="kw">ENTITY</span> PurchasingItem
+      <span class="kw">FIELDS</span> ( Menge Wemng Werks Matnr Netpr )
+      <span class="kw">WITH</span> CORRESPONDING #( lt_ekpo_key )
+    <span class="kw">RESULT</span> DATA(lt_ekpo).
+
+  <span class="kw">LOOP AT</span> lt_ekpo <span class="kw">INTO DATA</span>(ls_ekpo).
+    <span class="cm">* 시도했다가 롤백한 접근:
+       SELECT * FROM zta10mseg_d WHERE ebeln = ... (형제 아이템 소비량 차감)
+       → Draft 버퍼는 실시간 동기화가 아니라 부정확한 값이 나올 수 있음
+
+       최종 원칙: 화면 제안값은 근사치(OpenQty)로만 제공</span>
+    DATA(lv_open_qty) = ls_ekpo-Menge - ls_ekpo-Wemng.
+
+    MODIFY ENTITIES OF zi_a10_mseg <span class="kw">IN LOCAL MODE</span>
+      <span class="kw">ENTITY</span> GoodsReceiptItem
+        <span class="kw">UPDATE FIELDS</span> ( Menge Werks Matnr Netpr )
+        <span class="kw">WITH VALUE</span> #( ( %tky = ...
+                              Menge = lv_open_qty
+                              Werks = ls_ekpo-Werks
+                              Matnr = ls_ekpo-Matnr
+                              Netpr = ls_ekpo-Netpr ) ).
+  <span class="kw">ENDLOOP</span>.
+<span class="cm">* 실제 초과 여부의 정확한 판정은 check_gr_qty(저장 시점)가 전담</span>
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r7t3" style="display:none"><span class="cm">* 101/102는 PO·공급업체 필수, 311/511은 PO 없이도 허용
+* 초기 구현에서 101/102 판정 변수가 같은 상수를 참조하는 복붙 실수로
+  101 입고 건의 PO 필수 검증이 통째로 빠져있던 버그 발견 후 수정</span>
+<span class="kw">METHOD</span> <span class="fn">check_bwart_po</span>.
+  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
+    <span class="kw">IF</span> ls_item-Bwart <span class="kw">IN</span> <span class="kw">VALUE</span> ztt_bwart( ( <span class="str">'101'</span> ) ( <span class="str">'102'</span> ) )
+       <span class="kw">AND</span> ( ls_item-Ebeln <span class="kw">IS INITIAL</span> <span class="kw">OR</span> ls_item-Lifnr <span class="kw">IS INITIAL</span> ).
+      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-goodsreceiptitem.
+    <span class="kw">ENDIF</span>.
+    <span class="cm">* 311/511은 PO 없이도 허용 — 조건에서 자연히 제외</span>
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.
+
+<span class="cm">* 입고가능수량(OpenQty) 초과 시 저장 차단 — 아이템 단건 기준</span>
+<span class="kw">METHOD</span> <span class="fn">check_gr_qty</span>.
+  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
+    <span class="kw">READ TABLE</span> lt_ekpo <span class="kw">INTO DATA</span>(ls_ekpo) <span class="kw">WITH KEY</span> Ebeln = ls_item-Ebeln  Ebelp = ls_item-Ebelp.
+    DATA(lv_open) = ls_ekpo-Menge - ls_ekpo-Wemng.
+
+    <span class="kw">IF</span> ls_item-Menge &gt; lv_open.
+      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-goodsreceiptitem.
+      APPEND VALUE #( %tky = ls_item-%tky
+                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'081'</span>
+                                            severity = if_abap_behv_message=>severity-error ) )
+        <span class="kw">TO</span> reported-goodsreceiptitem.
+    <span class="kw">ENDIF</span>.
+    <span class="cm">* 형제 아이템 합산 검증은 아이템 단건 기준 비교 이후 단계로 남겨둠</span>
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.</div>
+
+        </div>
+
+        <!-- 08 공통 재사용 컴포넌트 -->
+        <div id="rap-08" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">SHARED INFRA</span>
+            <span class="dev-top-badge fblue">Global Class</span>
+          </div>
+          <h3 class="dev-proj-title">공통 재사용 컴포넌트 (zcl_a10_check)</h3>
+          <p class="dev-proj-desc">
+            각 BO의 BDEF Validation에서 반복적으로 등장하는 "일괄조회 → 존재하지 않는/중복인 것만 반환" 패턴을 한 곳에 모은 공용 유틸리티 클래스입니다.
+            특정 FS 문서에 속하지 않는 구현 세부사항이라 개별 FS에는 언급이 없지만, 8개 BO 전체 검증 로직의 기반입니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">공통 클래스</span>
+            <span class="dev-tech-tag">CDS LEFT OUTER JOIN</span>
+            <span class="dev-tech-tag">리뷰 반영</span>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 원칙 변경 이력</div>
+            <p style="font-size:13.5px;color:var(--text2);line-height:1.9">
+              원래는 SELECT를 FOR ALL ENTRIES로 일괄 조회한 뒤 LOOP + READ TABLE로 매칭하는 방식으로 통일했습니다.
+              리뷰에서 "이건 Classic ABAP 방식이고 RAP 방식이 아니다. SORTED/HASHED는 데이터가 많을 때만 쓰는 것이지 습관적으로 쓰면 안 되고,
+              판단 로직 자체를 Internal Table+LOOP이 아니라 CDS 뷰(SQL)가 하게 해야 한다"는 지적을 받아 원칙을 바꿨습니다.
+              새 원칙은 CDS 뷰(또는 인라인 itab)를 LEFT OUTER JOIN해서 매칭 안 되는 것만(JOIN 대상 IS NULL) SQL이 직접 골라내게 하는 것입니다.
+              Internal Table 타입도 기본은 STANDARD TABLE(EMPTY KEY)로 통일하고, SORTED/HASHED는 실제로 대량 반복조회가 증명된 경우에만 예외적으로 사용합니다.
+            </p>
+            <p style="font-size:13.5px;color:var(--text2);line-height:1.9;margin-top:.8rem">
+              EML(READ/MODIFY ENTITIES)도 검토했지만, 이 클래스의 메서드는 전부 "업무 코드값(Lifnr/Matnr/Saknr 등)으로 존재 여부를 찾는" 작업인데
+              각 BO의 실제 키는 UUID라서 EML의 READ ENTITIES로는 애초에 조회가 불가능합니다(EML은 실제 키를 이미 알고 있을 때만 사용 가능).
+              이런 값 기반 조회·중복 체크는 CDS 프로젝션 뷰 SELECT가 맞는 방식이라고 결론지었습니다.
+            </p>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <div class="dev-nav-group" style="padding:0 0 .6rem">재사용 메서드</div>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
+              <li><code>get_invalid_mtart_bklas / get_invalid_werks_lgort</code> — 자재유형-평가클래스, 플랜트-저장위치 조합 검증. 자재(MARA) 프로젝트에서 최초 작성</li>
+              <li><code>get_invalid_saknr / get_saknr_status</code> — 계정번호 실존 여부 및 상태(삭제/조정계정 타입) 조회. get_saknr_status는 공급업체의 check_akont를 위해 Mitkz까지 함께 조회하도록 확장</li>
+              <li><code>get_invalid_werks</code> — 플랜트 도메인 Fixed Value 유효성 체크. 자재·구매정보레코드(EINA) Item에서 공용 사용</li>
+              <li><code>get_invalid_mtart_werks / get_invalid_mtart_werks_lgort</code> — 자재유형-플랜트(2원), 자재유형-플랜트-저장위치(3원) 조합 유효성. 신규 매핑 CDS(ZI_A10_MTART_LGORT) 기준</li>
+              <li><code>get_invalid_fdgrv</code> — 공급업체 분류 도메인 Fixed Value 유효성 체크. get_invalid_bwart/get_invalid_ktosl과 동일 패턴</li>
+              <li><code>get_invalid_lifnr / get_invalid_matnr</code> — 공급업체/자재 실존 여부. 구매정보 레코드(EINA)의 check_confirm에서 재사용</li>
+              <li><code>get_duplicate_lifnr_matnr</code> — 공급업체+자재 조합 중복 체크. 구매정보 레코드 전용 신규 작성</li>
+              <li><code>get_duplicate_matnr</code> — 자재코드 중복 체크. 자재 마스터의 check_matnr_dup / check_confirm에서 사용</li>
+            </ul>
+          </div>
+
+          <div class="code-tabs">
+            <button class="code-tab active" onclick="switchTab(this,'r8t1',event)">이전 방식 (폐기) vs 현재 방식</button>
+            <button class="code-tab" onclick="switchTab(this,'r8t2',event)">get_invalid_saknr 예시</button>
+          </div>
+
+          <div class="proj-code code-panel" id="r8t1"><span class="cm">* [폐기] Classic ABAP — FOR ALL ENTRIES + LOOP + READ TABLE</span>
+<span class="kw">METHOD</span> get_invalid_saknr_old.
+  <span class="kw">SELECT</span> saknr <span class="kw">FROM</span> ztA10ska1
+    <span class="kw">FOR ALL ENTRIES IN</span> it_account
+    <span class="kw">WHERE</span> saknr = @it_account-saknr
+    <span class="kw">INTO TABLE</span> @<span class="kw">DATA</span>(lt_valid).
+
+  <span class="kw">LOOP AT</span> it_account <span class="kw">INTO DATA</span>(ls_acc).
+    <span class="kw">READ TABLE</span> lt_valid <span class="kw">WITH KEY</span> saknr = ls_acc-saknr <span class="kw">TRANSPORTING NO FIELDS</span>.
+    <span class="kw">IF</span> sy-subrc &lt;&gt; <span class="num">0</span>.
+      APPEND ls_acc <span class="kw">TO</span> rt_invalid.  <span class="cm">"판단을 ABAP LOOP이 함</span>
+    <span class="kw">ENDIF</span>.
+  <span class="kw">ENDLOOP</span>.
+<span class="kw">ENDMETHOD</span>.
+
+<span class="cm">* [현재] CDS LEFT OUTER JOIN — 판단을 SQL이 함</span>
+<span class="kw">METHOD</span> <span class="fn">get_invalid_saknr</span>.
+  <span class="kw">SELECT</span> a~saknr <span class="kw">FROM</span> @it_account <span class="kw">AS</span> a
+    <span class="kw">LEFT OUTER JOIN</span> ztA10ska1 <span class="kw">AS</span> b <span class="kw">ON</span> a~saknr = b~saknr
+    <span class="kw">WHERE</span> b~saknr <span class="kw">IS NULL</span>          <span class="cm">"매칭 안 된 것만 SQL이 직접 골라냄</span>
+    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @rt_invalid.
+<span class="kw">ENDMETHOD</span>.</div>
+
+          <div class="proj-code code-panel" id="r8t2" style="display:none"><span class="cm">* 계정 실존 여부 + 조정계정 타입(Mitkz)까지 함께 조회
+* (공급업체 check_akont에서 '매입채무 계정인지'까지 판단하기 위해 확장)</span>
+<span class="kw">METHOD</span> <span class="fn">get_saknr_status</span>.
+  <span class="kw">SELECT</span> a~saknr, b~mitkz, b~xloev <span class="kw">FROM</span> @it_saknr <span class="kw">AS</span> a
+    <span class="kw">LEFT OUTER JOIN</span> ztA10ska1 <span class="kw">AS</span> b <span class="kw">ON</span> a~saknr = b~saknr
+    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @rt_status.
+
+  <span class="cm">* 호출부(공급업체 check_akont)에서 판단:
+     - b~saknr이 비어있으면 실존하지 않는 계정
+     - xloev = 'X'면 삭제된 계정
+     - mitkz &lt;&gt; 'K'면 매입채무 관련 계정이 아님</span>
+<span class="kw">ENDMETHOD</span>.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 박도현 · SAP ABAP Developer · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>
+</footer>
+
+<button class="to-top" id="to-top" aria-label="맨 위로" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- 라이트박스 (전역) -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <div class="lightbox-zoom-controls" onclick="event.stopPropagation()">
+    <button type="button" onclick="lbZoom(-0.25)" title="축소">−</button>
+    <span id="lightbox-zoom-pct">100%</span>
+    <button type="button" onclick="lbZoom(0.25)" title="확대">+</button>
+    <button type="button" onclick="lbZoomReset()" title="원본 크기로">⟲</button>
+  </div>
+  <div class="lightbox-inner" id="lightbox-inner" onclick="event.stopPropagation()">
+    <div class="lightbox-imgwrap" id="lightbox-imgwrap">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <div id="lightbox-cap"></div>
+  </div>
+</div>
+
+<script>
+
+let lbScale = 1;
+let lbBaseWidth = 0;
+let lbDragging = false, lbDragStartX = 0, lbDragStartY = 0, lbScrollStartX = 0, lbScrollStartY = 0;
+
+function lbResetView(){
+  lbScale = 1;
+  const img = document.getElementById('lightbox-img');
+  const wrap = document.getElementById('lightbox-imgwrap');
+  wrap.scrollLeft = 0; wrap.scrollTop = 0;
+  img.style.maxWidth = '';
+  img.style.maxHeight = '';
+  img.style.width = '';
+  img.onload = () => {
+    requestAnimationFrame(()=>{
+      lbBaseWidth = img.getBoundingClientRect().width || img.naturalWidth;
+    });
+  };
+  document.getElementById('lightbox-zoom-pct').textContent = '100%';
+}
+
+function lbApplyZoom(){
+  const img = document.getElementById('lightbox-img');
+  if(lbBaseWidth){
+    img.style.maxWidth = 'none';
+    img.style.maxHeight = 'none';
+    img.style.width = (lbBaseWidth * lbScale) + 'px';
+  }
+  document.getElementById('lightbox-zoom-pct').textContent = Math.round(lbScale*100) + '%';
+}
+
+function lbZoom(delta){
+  lbScale = Math.min(4, Math.max(0.5, lbScale + delta));
+  lbApplyZoom();
+}
+function lbZoomReset(){
+  lbScale = 1;
+  const img = document.getElementById('lightbox-img');
+  img.style.maxWidth = '';
+  img.style.maxHeight = '';
+  img.style.width = '';
+  document.getElementById('lightbox-zoom-pct').textContent = '100%';
+  requestAnimationFrame(()=>{
+    lbBaseWidth = img.getBoundingClientRect().width || img.naturalWidth;
+  });
+}
+
+function openLightbox(el, ev){
+  if(ev) ev.stopPropagation();
+  const img=el.querySelector('img');
+  const cap=el.querySelector('.img-caption');
+  if(!img) return;
+  document.getElementById('lightbox-img').src=img.src;
+  document.getElementById('lightbox-cap').textContent=cap?cap.textContent:'';
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+  lbResetView();
+}
+function openImg(src, cap){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-cap').textContent=cap||'';
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+  lbResetView();
+}
+function closeLightbox(ev){
+  if(ev) ev.stopPropagation();
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+(function initLightboxZoomPan(){
+  const wrap = document.getElementById('lightbox-imgwrap');
+  if(!wrap) return;
+  wrap.addEventListener('wheel', (e)=>{
+    e.preventDefault();
+    lbZoom(e.deltaY < 0 ? 0.15 : -0.15);
+  }, {passive:false});
+  wrap.addEventListener('mousedown', (e)=>{
+    lbDragging = true;
+    wrap.classList.add('grabbing');
+    lbDragStartX = e.clientX; lbDragStartY = e.clientY;
+    lbScrollStartX = wrap.scrollLeft; lbScrollStartY = wrap.scrollTop;
+  });
+  window.addEventListener('mousemove', (e)=>{
+    if(!lbDragging) return;
+    wrap.scrollLeft = lbScrollStartX - (e.clientX - lbDragStartX);
+    wrap.scrollTop = lbScrollStartY - (e.clientY - lbDragStartY);
+  });
+  window.addEventListener('mouseup', ()=>{
+    lbDragging = false;
+    wrap.classList.remove('grabbing');
+  });
+  wrap.addEventListener('dblclick', ()=> lbZoomReset());
+})();
+
+// 사이드바 프로젝트 탭 전환
+function switchDev(id, btn) {
+  document.querySelectorAll('.dev-nav-item').forEach(el => el.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.dev-project-content').forEach(el => el.classList.remove('active'));
+  const panel = document.getElementById(id);
+  panel.classList.add('active');
+
+  // 콘텐츠 전환 시 제목이 상단(고정 네비 아래)에 보이도록 스크롤
+  const NAV_OFFSET = 76; // 고정 네비(56px) + 여백
+  const rect = panel.getBoundingClientRect();
+  const targetY = window.scrollY + rect.top - NAV_OFFSET;
+  window.scrollTo({ top: targetY, behavior: 'smooth' });
+}
+
+function switchTab(btn, id, ev){
+  if(ev) ev.stopPropagation();
+  const tabGroup = btn.closest('.code-tabs');
+  if(!tabGroup) return;
+  tabGroup.querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const parent = tabGroup.parentElement;
+  parent.querySelectorAll('.code-panel').forEach(p=>p.style.display='none');
+  const target = document.getElementById(id);
+  if(target) target.style.display='block';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeLightbox();
+});
+
+// 모바일 메뉴 토글
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('nav-burger');
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+}
+
+// 스크롤 리베일 (reduced-motion 존중)
+(function initReveal(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll(
+    '.sec-head, .story-card, .tl-item, .stack-col, .cred-card, .snap-card, .ov-theme, .ov-model, .chal-card, .contact-card'
+  );
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  targets.forEach(el=>{
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+})();
+
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+const toTopBtn=document.getElementById('to-top');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(s.offsetParent!==null&&window.scrollY>=s.offsetTop-80)cur=s.id;});
+  links.forEach(a=>{
+    const active=a.getAttribute('href')==='#'+cur;
+    a.style.background=active?'var(--blue-light)':'';
+    a.style.color=active?'var(--blue)':'';
+  });
+  if(toTopBtn) toTopBtn.classList.toggle('show', window.scrollY>700);
+},{passive:true});
+</script>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="박도현 SAP RAP 프로젝트 포트폴리오">
+<meta name="description" content="박도현 SAP RAP 프로젝트 — 구매·입고·회계 통합 프로세스">
 <title>박도현 · RAP 프로젝트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -419,7 +419,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 .award-ico{font-size:1.2rem;line-height:1.4}
 
 /* ===== NEW: PROJECT DETAIL TOGGLE ===== */
-.detail-topbar{position:sticky;top:56px;margin-top:56px;z-index:150;background:var(--blue-light);border-bottom:1px solid var(--blue-mid)}
+.detail-topbar{position:sticky;top:56px;z-index:150;background:var(--blue-light);border-bottom:1px solid var(--blue-mid)}
 .detail-topbar .container{display:flex;align-items:center;justify-content:space-between;padding-top:.6rem;padding-bottom:.6rem}
 .detail-topbar-title{font-size:13px;font-weight:700;color:var(--blue)}
 .detail-back{font-size:13px;font-weight:600;color:var(--blue);background:var(--white);border:1px solid var(--blue-mid);padding:.4rem .9rem;border-radius:8px;cursor:pointer;font-family:var(--sans)}
@@ -434,6 +434,53 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   .stack-grid,.cred-grid{grid-template-columns:1fr}
 }
 
+/* ── RAP 페이지 전용 ─────────────────── */
+
+/* 고정 네비 아래 스티키 topbar 겹침 방지 */
+.detail-topbar{margin-top:56px}
+
+/* 프로세스 흐름 체인 */
+.flow-chain{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap}
+.flow-node{flex:1;min-width:150px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:.45rem}
+.flow-node.accent{border-color:var(--blue-mid);background:var(--blue-light)}
+.flow-no{font-size:10.5px;font-family:var(--mono);font-weight:700;color:var(--blue);letter-spacing:.08em}
+.flow-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.4}
+.flow-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.flow-arrow{display:flex;align-items:center;color:var(--border2);font-size:18px;flex-shrink:0}
+@media(max-width:860px){
+  .flow-chain{flex-direction:column}
+  .flow-node{min-width:0}
+  .flow-arrow{justify-content:center;transform:rotate(90deg);padding:.1rem 0}
+}
+
+/* 설계 원칙 카드 */
+.pr-list{display:flex;flex-direction:column;gap:1.2rem}
+.pr-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.pr-head{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.5rem;background:var(--white);border-bottom:1px solid var(--border)}
+.pr-no{width:32px;height:32px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;font-family:var(--mono);flex-shrink:0}
+.pr-title{font-size:15.5px;font-weight:700;color:var(--text);line-height:1.45}
+.pr-sub{font-size:12.5px;color:var(--text3);margin-top:.2rem;line-height:1.5}
+.pr-body{padding:1.3rem 1.5rem}
+.pr-why{font-size:13.5px;color:var(--text2);line-height:1.85;margin-bottom:1rem}
+.pr-why:last-child{margin-bottom:0}
+.pr-label{display:inline-block;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.1rem .5rem;border-radius:4px;margin-right:.55rem;vertical-align:1px}
+
+/* 모듈 패널 내 설계 블록 */
+.pr-block{margin-bottom:2.2rem;padding-bottom:2rem;border-bottom:1px dashed var(--border)}
+.pr-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.pr-block-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:.9rem;padding-left:.7rem;border-left:3px solid var(--blue-mid);line-height:1.45}
+
+/* 요약 카드 */
+.sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-bottom:1.6rem}
+.sum-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:.7rem}
+.sum-no{font-size:11px;font-family:var(--mono);font-weight:700;color:var(--blue);letter-spacing:.08em}
+.sum-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.5}
+.sum-desc{font-size:12.5px;color:var(--text2);line-height:1.75}
+@media(max-width:900px){.sum-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.sum-grid{grid-template-columns:1fr}}
+.sum-result{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:12px;padding:1.3rem 1.5rem;font-size:13.5px;color:var(--text2);line-height:1.85}
+.sum-result-label{display:inline-block;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--blue);margin-right:.6rem}
+
 </style>
 </head>
 
@@ -446,10 +493,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <span class="nav-role">ABAP Dev</span>
   </div>
   <div class="nav-links">
-    <a href="#snapshot">Snapshot</a>
     <a href="#overview">Overview</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#projects">Projects</a>
+    <a href="#principles">설계 원칙</a>
+    <a href="#projects">Modules</a>
+    <a href="#summary">Summary</a>
   </div>
   <div style="display:flex;align-items:center;gap:.4rem">
     <a class="nav-cta" href="index.html#experience">← 포트폴리오</a>
@@ -459,1072 +506,820 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#snapshot" onclick="toggleMobileMenu()">Snapshot</a>
   <a href="#overview" onclick="toggleMobileMenu()">Overview</a>
-  <a href="#architecture" onclick="toggleMobileMenu()">Architecture</a>
-  <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+  <a href="#principles" onclick="toggleMobileMenu()">설계 원칙</a>
+  <a href="#projects" onclick="toggleMobileMenu()">Modules</a>
+  <a href="#summary" onclick="toggleMobileMenu()">Summary</a>
   <a href="index.html#experience" onclick="toggleMobileMenu()">← 포트폴리오로</a>
 </div>
 
 <div class="detail-topbar">
   <div class="container">
-    <span class="detail-topbar-title">RAP 프로젝트 · 구매-입고 프로세스</span>
+    <span class="detail-topbar-title">RAP 프로젝트 · 구매 · 입고 · 회계 통합 프로세스</span>
     <a class="detail-back" href="index.html#experience">← 포트폴리오로</a>
   </div>
 </div>
 
 <!-- PAGE HEADER -->
-<section id="pd-header" style="padding:3rem 0 2.2rem;background:linear-gradient(160deg,#f3f0ff 0%,var(--bg) 65%);border-bottom:1px solid var(--border)">
+<section id="pd-header" style="padding:3.4rem 0 2.6rem;background:linear-gradient(160deg,#f3f0ff 0%,var(--bg) 65%);border-bottom:1px solid var(--border)">
   <div class="container">
     <div class="sec-eyebrow">Project Detail</div>
-    <h1 style="font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.3;margin-bottom:.8rem">
-      구매-입고 프로세스 RAP 구현
+    <h1 style="font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.35;margin-bottom:1rem">
+      구매 · 입고 · 회계 통합 프로세스
     </h1>
-    <p style="color:var(--text2);font-size:14.5px;line-height:1.8;max-width:720px">
-      SAP Cloud ABAP·RAP 심화 과정 2기 · 2026.07 – 진행 중 · 개인 프로젝트<br>
-      <strong>자재·계정·공급업체 마스터부터 구매오더·입고까지, Managed RAP 표준 패턴으로 설계·구현</strong>
+    <p style="color:var(--text2);font-size:15px;line-height:1.85;max-width:760px;margin-bottom:.6rem">
+      SAP RAP 기반 8개 Business Object 설계 · 구현
     </p>
-    <div class="hero-chips" style="margin-top:1.2rem">
+    <p style="color:var(--text2);font-size:14px;line-height:1.85;max-width:760px">
+      SAP Cloud ABAP·RAP 심화 과정 2기 · 개인 프로젝트<br>
+      <strong>각 담당자가 자기 업무만 처리해도 전체 흐름이 이어지도록, 사용자는 최소 항목만 입력하고 나머지는 참조 관계를 따라 자동으로 채워지게 설계했습니다.</strong>
+    </p>
+    <div class="hero-chips" style="margin-top:1.3rem">
       <span class="chip hi">RAP (Managed)</span>
-      <span class="chip hi">CDS View</span>
-      <span class="chip">Behavior Definition</span>
+      <span class="chip hi">CDS 3계층</span>
       <span class="chip">Draft</span>
-      <span class="chip">Cross-BO EML</span>
-      <span class="chip">OData V2/V4</span>
-    </div>
-  </div>
-</section>
-
-<!-- SNAPSHOT -->
-<section id="snapshot">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Snapshot</div>
-      <h2 class="sec-title">프로젝트 스냅샷</h2>
-    </div>
-    <div class="snap-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem">
-      <div class="snap-card">
-        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">👤</div>
-        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.4rem">My Role</div>
-        <div style="font-weight:700;margin-bottom:.5rem">개인 프로젝트</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.7">RAP 심화 과정 커리큘럼 실습 — 설계 원칙을 세우고 그 기준으로 8개 BO를 직접 구현</div>
-      </div>
-      <div class="snap-card c-info">
-        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:#e8f4ff;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">🧾</div>
-        <div style="font-size:12px;font-weight:700;color:#3daeff;font-family:var(--mono);margin-bottom:.4rem">Business Scope</div>
-        <div style="font-weight:700;margin-bottom:.5rem">조달 프로세스 전 구간</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.7">자재/계정/공급업체 마스터 → 회계결정코드 → 구매정보레코드 → 구매오더 → 입고</div>
-      </div>
-      <div class="snap-card c-amber">
-        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:#fff2cc;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">⚙️</div>
-        <div style="font-size:12px;font-weight:700;color:#d6b656;font-family:var(--mono);margin-bottom:.4rem">RAP 개념</div>
-        <div style="font-weight:700;margin-bottom:.5rem">Determination · Validation · Action</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.7">Draft, Late/Early Numbering, Factory Action, Cross-BO EML</div>
-      </div>
-      <div class="snap-card c-green">
-        <div class="snap-icon" style="width:38px;height:38px;border-radius:9px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:.8rem">📦</div>
-        <div style="font-size:12px;font-weight:700;color:var(--green);font-family:var(--mono);margin-bottom:.4rem">Outputs</div>
-        <div style="font-weight:700;margin-bottom:.5rem">Business Object 8종</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.7">Draft 기반 5종 · No-Draft 3종 + 공통 재사용 클래스(zcl_a10_check) 1종</div>
-      </div>
+      <span class="chip">Custom Entity</span>
+      <span class="chip">Cross-BO Action</span>
+      <span class="chip">Side Effects</span>
     </div>
   </div>
 </section>
 
 <!-- OVERVIEW -->
-<section id="overview" style="background:var(--white)">
+<section id="overview">
   <div class="container">
     <div class="sec-head">
       <div class="sec-eyebrow">Overview</div>
-      <h2 class="sec-title">프로젝트 개요</h2>
+      <h2 class="sec-title">전체 프로세스 흐름</h2>
     </div>
-    <div class="ov-theme">
-      <div class="ov-theme-label">대주제 · Main Theme</div>
-      <div class="ov-theme-title">Managed RAP으로 구현한 조달-입고 프로세스</div>
-      <div class="ov-theme-sub">
-        자재·계정·공급업체 마스터 데이터부터 회계결정코드, 구매정보레코드, 구매오더, 입고까지 8개 Business Object를 RAP 표준 패턴으로 설계했습니다.
-        각 BO는 독립적으로 동작하지만, 구매오더와 입고는 Cross-BO EML로 연동되어 입고수량이 구매오더에 실시간 반영됩니다.
-      </div>
-    </div>
-    <div class="ov-models">
-      <div class="ov-model">
-        <div class="ov-model-ico">🗂️</div>
-        <div class="ov-model-title">마스터 데이터 3종</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.65">자재·계정·공급업체. 자재/공급업체는 Draft + 다국어 텍스트 Composition, 계정은 즉시 확정되는 단순 구조라 Draft 미사용</div>
-      </div>
-      <div class="ov-model">
-        <div class="ov-model-ico">🔗</div>
-        <div class="ov-model-title">구매오더 ↔ 입고 Cross-BO</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.65">입고 저장 시 구매오더의 receiveQty 액션을 EML로 호출. "얼마 입고했는지"만 전달하고 누적·완료 판정은 구매오더가 직접 책임</div>
-      </div>
-      <div class="ov-model">
-        <div class="ov-model-ico">🧩</div>
-        <div class="ov-model-title">공통 재사용 컴포넌트</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.65">7개 BO의 Validation에서 반복되는 존재 여부·중복·조합 검증을 zcl_a10_check 한 클래스로 통합</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ARCHITECTURE / 설계 원칙 -->
-<section id="architecture">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Architecture</div>
-      <h2 class="sec-title">설계 원칙</h2>
-    </div>
-    <p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:1.8rem;max-width:760px">
-      코드 자체보다 <strong>왜 이렇게 짜야 하는지 판단하는 기준</strong>을 세우는 데 가장 공을 들였습니다. 8개 BO를 만들며 반복해서 마주친 판단을
-      원칙 4가지로 정리했고, 이 기준이 아래 각 Business Object의 설계에 그대로 적용되어 있습니다.
+    <p style="color:var(--text2);font-size:14.5px;line-height:1.85;margin-bottom:2rem;max-width:800px">
+      기준정보 → 구매정보레코드 → 구매오더 → 입고 → 회계전표. 선행 프로세스의 데이터가 후속 트랜잭션으로 자동 연계되도록 설계했습니다.
     </p>
 
-    <div class="arch-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem">
+    <div class="flow-chain">
+      <div class="flow-node">
+        <div class="flow-no">01</div>
+        <div class="flow-title">기준정보</div>
+        <div class="flow-desc">자재 · 계정<br>공급업체 · 회계결정코드</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-no">02</div>
+        <div class="flow-title">구매정보레코드</div>
+        <div class="flow-desc">공급업체 × 자재<br>가격 · 수량 조건</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-no">03</div>
+        <div class="flow-title">구매오더 (PO)</div>
+        <div class="flow-desc">발주 생성<br>조건 자동 반영</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-no">04</div>
+        <div class="flow-title">입고 (GR)</div>
+        <div class="flow-desc">PO 참조 입고<br>수량 자동 갱신</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node accent">
+        <div class="flow-no">05</div>
+        <div class="flow-title">회계전표 (FI)</div>
+        <div class="flow-desc">전표 자동 생성<br>조회 전용</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="story-card" style="padding:1.6rem">
-        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">01 · 검증은 SQL이 하게 한다</div>
-        <div style="font-weight:700;margin-bottom:.6rem">Internal Table LOOP → CDS LEFT OUTER JOIN</div>
-        <p style="font-size:13px;color:var(--text2);line-height:1.75">
-          처음엔 <code>FOR ALL ENTRIES</code>로 일괄 조회 후 <code>LOOP + READ TABLE</code>로 대조하는 Classic ABAP 방식으로 zcl_a10_check를 통일했습니다.
-          리뷰에서 "판단 로직 자체를 Internal Table이 아니라 CDS 뷰(SQL)가 하게 해야 한다"는 지적을 받아, 존재 여부·조합 유효성 판단을 CDS LEFT OUTER JOIN 후
-          매칭 안 되는 것만(JOIN 대상 IS NULL) SQL이 골라내는 방식으로 전면 수정했습니다. SORTED/HASHED 테이블도 습관적으로 쓰지 않고
-          대량 반복조회가 실제로 증명된 경우에만 예외로 남겼습니다.
-        </p>
+<!-- 공통 설계 원칙 -->
+<section id="principles" style="background:var(--white)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Common Design</div>
+      <h2 class="sec-title">공통 설계 원칙</h2>
+    </div>
+    <p style="color:var(--text2);font-size:14.5px;line-height:1.85;margin-bottom:2.2rem;max-width:800px">
+      한 번 정한 패턴을 8개 모듈에 동일하게 적용했습니다. 아래 5가지가 모든 Business Object의 기반입니다.
+    </p>
+
+    <div class="pr-list">
+
+      <div class="pr-card">
+        <div class="pr-head">
+          <div class="pr-no">01</div>
+          <div>
+            <div class="pr-title">CDS 3계층 분리</div>
+            <div class="pr-sub">Base Table → Interface(ZI_) → Root(ZR_) → Projection(ZC_)</div>
+          </div>
+        </div>
+        <div class="pr-body">
+          <p class="pr-why"><span class="pr-label">분리 기준</span>다른 BO가 Base Table을 직접 참조하면 테이블 구조 변경 시 참조하는 모든 지점을 함께 수정해야 합니다. 외부 참조는 Interface View(ZI_)로만 가능하도록 접근 경로를 강제했습니다.</p>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_cds-layers_1.png" alt="Interface View 정의">
+              <div class="img-caption">Interface View (ZI_A10_EKKO) — Text Association 포함</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_cds-layers_2.png" alt="Root View 정의">
+              <div class="img-caption">Root View (ZR_) — Composition 및 Draft 대상</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_cds-layers_3.png" alt="Projection View 정의">
+              <div class="img-caption">Projection View (ZC_) — UI 노출 필드 선별</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="story-card" style="padding:1.6rem">
-        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">02 · Cross-BO는 EML EXECUTE만</div>
-        <div style="font-weight:700;margin-bottom:.6rem">"얼마"만 전달, 판단은 상대 BO가</div>
-        <p style="font-size:13px;color:var(--text2);line-height:1.75">
-          입고(호출하는 쪽)는 구매오더 필드를 직접 UPDATE하지 않습니다. 이미 정의된 액션(receiveQty)을 EML EXECUTE로 호출해 "얼마 입고했다"는 사실만 전달하고,
-          누적 계산과 완료 판정은 구매오더 스스로 책임집니다. COMMIT ENTITIES는 Behavior Implementation 안에서 호출하면 안 되고(프레임워크가 저장 시퀀스 끝에 자동 처리)
-          넣지 않는 것으로 확정했습니다. 같은 BO 내부 조회는 <code>IN LOCAL MODE</code>, 다른 BO 호출 시엔 쓰지 않는다는 원칙도 코드 전반에 일관 적용했습니다.
-        </p>
+      <div class="pr-card">
+        <div class="pr-head">
+          <div class="pr-no">02</div>
+          <div>
+            <div class="pr-title">텍스트는 Interface View에 Association으로 재사용</div>
+            <div class="pr-sub">코드성 필드의 텍스트를 사전 정의해 노출</div>
+          </div>
+        </div>
+        <div class="pr-body">
+          <p class="pr-why"><span class="pr-label">개선 효과</span>메인 Interface View에 Text Association을 정의해 두어, 다수의 Search Help에서 텍스트 조인 로직을 반복 작성하지 않고 재사용할 수 있도록 했습니다.</p>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_text-association_1.png" alt="Text Association 정의">
+              <div class="img-caption">Interface View에 Text Association 사전 정의</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_text-association_2.png" alt="Association 재사용">
+              <div class="img-caption">Search Help에서 조인 없이 재사용</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="story-card" style="padding:1.6rem">
-        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">03 · 채번은 PK 성격으로 판단</div>
-        <div style="font-weight:700;margin-bottom:.6rem">Early Numbering vs Late Numbering</div>
-        <p style="font-size:13px;color:var(--text2);line-height:1.75">
-          아이템 순번처럼 헤더 안에서 관리되는 키는 NUMBERING 메서드(Early)로, 회계결정코드처럼 PK 자체가 업무 의미를 가지며 Draft 없이 즉시 저장 확정되는 BO는
-          Late Numbering으로 나눴습니다. determination on save로 PK 필드를 채우려다 <code>BEHAVIOR_CONTRACT_VIOLATION(EMPTY_UPDATE)</code> 덤프를 겪은 뒤
-          "PK 필드는 UPDATE로 변경 불가"라는 RAP 제약을 실제로 확인하고 정리한 기준입니다.
-        </p>
+      <div class="pr-card">
+        <div class="pr-head">
+          <div class="pr-no">03</div>
+          <div>
+            <div class="pr-title">메시지 상수화</div>
+            <div class="pr-sub">필드명을 단어 단위로 등록하고 공용 문장의 파라미터로 조합</div>
+          </div>
+        </div>
+        <div class="pr-body">
+          <p class="pr-why"><span class="pr-label">개선 효과</span>「&amp;1는 필수 입력입니다」 형태의 공통 포맷과 필드명 변수를 조합하는 방식으로, 메시지 ID의 무분별한 증가를 막고 유지보수 효율을 높였습니다.</p>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_message-const_1.png" alt="메시지 클래스">
+              <div class="img-caption">메시지 클래스 — 필드명 단어 단위 등록</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_message-const_2.png" alt="공통 포맷">
+              <div class="img-caption">공통 문장 포맷 + 파라미터 조합</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_message-const_3.png" alt="호출부">
+              <div class="img-caption">호출부 — 상수 참조로 통일</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="story-card" style="padding:1.6rem">
-        <div style="font-size:12px;font-weight:700;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">04 · Prepare는 안내, Activate가 차단</div>
-        <div style="font-weight:700;margin-bottom:.6rem">check_confirm으로 최종 확정 통합</div>
-        <p style="font-size:13px;color:var(--text2);line-height:1.75">
-          개별 soft validation은 Prepare 단계 실시간 피드백(reported)만 담당하고, 정작 저장을 막는 failed 처리가 빠져 있어 실질적으로 아무것도 막지 못하는 구조가
-          여러 BO에서 반복됐습니다. 8개 BO 모두에 check_confirm을 신설해 Activate 직전 한 번의 READ로 핵심 필드를 모아 failed 처리를 전담시키고,
-          메시지 생성은 soft validation에게 남겨 같은 조건이 두 번 메시지를 띄우지 않도록 역할을 분리했습니다.
-        </p>
+      <div class="pr-card">
+        <div class="pr-head">
+          <div class="pr-no">04</div>
+          <div>
+            <div class="pr-title">Draft 단계 검증 — Prepare와 Activate 역할 분리</div>
+            <div class="pr-sub">실시간 피드백과 최종 저장 차단을 나눔</div>
+          </div>
+        </div>
+        <div class="pr-body">
+          <p class="pr-why"><span class="pr-label">검증 로직 분리</span>개별 Validation은 Prepare 단계에서 실시간 피드백을, Activate 단계의 확인 검증이 최종 저장 차단을 담당하도록 분리했습니다. 동일 오류가 중복 출력되는 것을 방지하고 입력 편의성을 확보했습니다.</p>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_draft-validation_1.png" alt="Prepare 단계 검증">
+              <div class="img-caption">Prepare — 입력 중 실시간 피드백</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_draft-validation_2.png" alt="Activate 단계 검증">
+              <div class="img-caption">Activate — 최종 저장 차단 전담</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr-card">
+        <div class="pr-head">
+          <div class="pr-no">05</div>
+          <div>
+            <div class="pr-title">사용중지 · 해제 Action으로 상태 전환</div>
+            <div class="pr-sub">물리 삭제 대신 상태 플래그를 Action으로만 변경</div>
+          </div>
+        </div>
+        <div class="pr-body">
+          <p class="pr-why"><span class="pr-label">설계</span>상태 플래그를 read-only로 제어해 Action을 통해서만 변경되도록 했습니다. 중지 사유는 Action 파라미터로 입력받아 저장하므로 변경 이력을 추적할 수 있습니다.</p>
+          <div class="img-gallery">
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_status-action_1.png" alt="사용중지 Action">
+              <div class="img-caption">사용중지 Action — 사유 파라미터 입력</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_status-action_2.png" alt="상태 플래그 제어">
+              <div class="img-caption">상태 플래그 read-only 제어</div>
+            </div>
+            <div class="img-item" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_status-action_3.png" alt="해제 Action">
+              <div class="img-caption">해제 Action — 상태 복원</div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" style="background:var(--white)">
+<!-- MODULES -->
+<section id="projects">
   <div class="container">
 
     <div class="dev-header">
-      <div class="dev-eyebrow">DEVELOPMENT</div>
-      <h2 class="dev-title">Business Object 8종</h2>
+      <div class="dev-eyebrow">MODULES</div>
+      <h2 class="dev-title">모듈별 설계</h2>
     </div>
 
     <div class="dev-layout">
       <aside class="dev-sidebar">
         <a href="index.html#experience" class="dev-back">← 포트폴리오로 돌아가기</a>
 
-        <div class="dev-nav-group">마스터 데이터</div>
+        <div class="dev-nav-group">기준정보</div>
         <button class="dev-nav-item active" onclick="switchDev('rap-01', this)">
-          <span class="dev-nav-num">01</span>
+          <span class="dev-nav-num">①</span>
           <span class="dev-nav-badge abap">MARA</span> 자재 마스터
         </button>
         <button class="dev-nav-item" onclick="switchDev('rap-02', this)">
-          <span class="dev-nav-num">02</span>
+          <span class="dev-nav-num">②</span>
           <span class="dev-nav-badge abap">SKA1</span> FI 계정 마스터
         </button>
         <button class="dev-nav-item" onclick="switchDev('rap-03', this)">
-          <span class="dev-nav-num">03</span>
+          <span class="dev-nav-num">③</span>
           <span class="dev-nav-badge abap">LFA1</span> 공급업체 마스터
         </button>
         <button class="dev-nav-item" onclick="switchDev('rap-04', this)">
-          <span class="dev-nav-num">04</span>
+          <span class="dev-nav-num">④</span>
           <span class="dev-nav-badge abap">T030</span> 회계결정코드
         </button>
 
-        <div class="dev-nav-group">구매 프로세스</div>
+        <div class="dev-nav-group">구매 · 입고</div>
         <button class="dev-nav-item" onclick="switchDev('rap-05', this)">
-          <span class="dev-nav-num">05</span>
-          <span class="dev-nav-badge fiori">EINA</span> 구매정보 레코드
+          <span class="dev-nav-num">⑤</span>
+          <span class="dev-nav-badge fiori">EINA</span> 구매정보레코드
         </button>
         <button class="dev-nav-item" onclick="switchDev('rap-06', this)">
-          <span class="dev-nav-num">06</span>
+          <span class="dev-nav-num">⑥</span>
           <span class="dev-nav-badge fiori">EKKO</span> 구매오더
         </button>
         <button class="dev-nav-item" onclick="switchDev('rap-07', this)">
-          <span class="dev-nav-num">07</span>
+          <span class="dev-nav-num">⑦</span>
           <span class="dev-nav-badge fiori">MKPF</span> 입고
         </button>
 
-        <div class="dev-nav-group">공용 인프라</div>
+        <div class="dev-nav-group">연동 · 회계</div>
         <button class="dev-nav-item" onclick="switchDev('rap-08', this)">
-          <span class="dev-nav-num">08</span>
-          <span class="dev-nav-badge abap">CHECK</span> 공통 재사용 컴포넌트
+          <span class="dev-nav-num">⑥↔⑦</span>
+          <span class="dev-nav-badge abap">LINK</span> BO 간 연동
+        </button>
+        <button class="dev-nav-item" onclick="switchDev('rap-09', this)">
+          <span class="dev-nav-num">⑧</span>
+          <span class="dev-nav-badge abap">BKPF</span> 회계전표
         </button>
       </aside>
 
       <div class="dev-main">
 
-        <!-- 01 자재 마스터 -->
+        <!-- ① 자재 마스터 -->
         <div id="rap-01" class="dev-project-content active">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">MASTER DATA</span>
-            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+            <span class="dev-top-badge blue">① 기준정보</span>
+            <span class="dev-top-badge fblue">MARA · Draft</span>
           </div>
           <h3 class="dev-proj-title">자재 마스터 (MARA)</h3>
           <p class="dev-proj-desc">
-            자재 마스터 + 자재명(다국어) Composition 구조. Object Page 안에서 언어별 텍스트를 CRUD할 수 있게 자식 엔티티로 붙였습니다.
-            자재유형별로 사용 가능한 플랜트·저장위치·평가클래스 조합이 다른데, 표준 SAP에는 이 3원 조합을 관리하는 개념 자체가 없어 매핑 테이블을 새로 설계했습니다.
+            자재유형·플랜트·저장위치의 유효 조합을 관리하는 커스텀 테이블과, 자재유형·평가클래스를 매핑하는 Interface View를 신규 정의했습니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V4</span>
-            <span class="dev-tech-tag">Draft</span>
-            <span class="dev-tech-tag">Determination</span>
-            <span class="dev-tech-tag">Validation</span>
-            <span class="dev-tech-tag">Action</span>
+            <span class="dev-tech-tag">매핑 테이블 신규 정의</span>
+            <span class="dev-tech-tag">종속 Search Help</span>
+            <span class="dev-tech-tag">Interface View</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>자재유형-플랜트-저장위치 3원 매핑 신규 설계</strong> — 표준 SAP엔 자재유형-플랜트(T134M류)는 있어도 자재유형-저장위치를 엮는 개념이 없어, 매핑 테이블(ZTA10MTART_LGORT)과 이를 노출하는 CDS(ZI_A10_MTART_LGORT)를 직접 정의. 검증·Search Help·초기화 로직이 전부 이 뷰 하나를 공용으로 참조</li>
-              <li><strong>단계적 필드 초기화</strong> — 자재유형(Mtart) 변경 시 2단계로 판정: ① Mtart-Werks 조합 자체가 무효면 플랜트·저장위치 둘 다 초기화, ② 플랜트는 유효한데 3원 조합만 무효면 저장위치만 초기화. "무효면 무조건 둘 다 지운다"는 단순 규칙 대신, 조합을 세분화해 사용자가 이미 입력한 유효한 값은 최대한 보존하는 방향으로 설계</li>
-              <li><strong>자재유형별 채번 대역</strong> — FERT→01 / HALB→02 / HIBE→03 / ROH→04 / VERP→05 대역 분기, FERT0001 형태로 접두어를 부여해 번호만 봐도 유형 파악 가능. Draft 중엔 채번하지 않고 Activate 시점에만 실행</li>
-              <li><strong>확정 후 필드 잠금</strong> — 저장 시 Matfi(확정 플래그) 자동 설정. 확정·사용중지 상태면 핵심 필드 전부 read-only, 자재유형은 채번 완료 이후 Unlock을 해도 영구 잠금</li>
-              <li><strong>Activate 최종 확정 — check_confirm</strong> — Werks/Lgort/Mtart/Bklas/Ersda/Stprs/Peinh/Matnr을 한 번의 READ로 묶어 failed 처리. 개별 soft validation은 Prepare 실시간 피드백만 담당하도록 역할 분리</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">매핑 테이블 · Interface View 신규 정의</div>
+            <p class="pr-why"><span class="pr-label">정의 배경</span>표준에는 자재유형과 저장위치를 함께 통제하는 구조가 없어, 실제 운영에서 허용되는 조합만 등록해 관리하도록 테이블을 신규 정의했습니다. 평가클래스 매핑은 표준 구조를 참고해 Interface View로 구성했습니다.</p>
+            <p class="pr-why"><span class="pr-label">정의 일원화</span>이 매핑 하나를 플랜트 Search Help와 저장위치 Search Help가 공통 참조하므로, 조합이 추가되어도 수정 지점은 한 곳으로 유지됩니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_1.png" alt="매핑 테이블 정의">
+                <div class="img-caption">자재유형·플랜트·저장위치 매핑 테이블</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_2.png" alt="매핑 데이터">
+                <div class="img-caption">등록된 유효 조합 데이터</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_3.png" alt="Search Help 뷰">
+                <div class="img-caption">매핑을 참조하는 Search Help View</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_4.png" alt="평가클래스 매핑">
+                <div class="img-caption">자재유형 · 평가클래스 매핑 Interface View</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_5.png" alt="평가클래스 데이터">
+                <div class="img-caption">평가클래스 매핑 데이터</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-mapping_6.png" alt="매핑 참조 구조">
+                <div class="img-caption">매핑 참조 구조 — 수정 지점 일원화</div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r1t1',event)">매핑 CDS + Determination</button>
-            <button class="code-tab" onclick="switchTab(this,'r1t2',event)">clear_werks_lgort 2단계 판정</button>
-            <button class="code-tab" onclick="switchTab(this,'r1t3',event)">set_mapping_key 채번</button>
+          <div class="pr-block">
+            <div class="pr-block-title">종속 Search Help — 자재유형 → 평가클래스, 플랜트 → 저장위치</div>
+            <p class="pr-why"><span class="pr-label">설계</span>자재유형을 선택하면 허용된 평가클래스와 플랜트만, 플랜트를 선택하면 해당 조합의 저장위치만 노출됩니다. <strong>잘못된 조합이 입력되는 경로 자체를 차단하는 것</strong>이 목적입니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-searchhelp_1.png" alt="자재유형 선택">
+                <div class="img-caption">자재유형 선택 → 허용 평가클래스만 노출</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-searchhelp_2.png" alt="플랜트 후보 제한">
+                <div class="img-caption">해당 자재유형의 플랜트만 후보로 제한</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-searchhelp_3.png" alt="저장위치 후보 제한">
+                <div class="img-caption">플랜트 선택 → 조합된 저장위치만 노출</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_mara-searchhelp_4.png" alt="최종 입력 결과">
+                <div class="img-caption">유효 조합만으로 완성된 입력 결과</div>
+              </div>
+            </div>
           </div>
-
-          <div class="proj-code code-panel" id="r1t1"><span class="cm">* 자재유형-플랜트-저장위치 3원 매핑 — 표준에 없는 개념이라 직접 정의</span>
-<span class="kw">define view entity</span> <span class="fn">ZI_A10_MTART_LGORT</span>
-  <span class="kw">as select from</span> ztA10mtart_lgort
-{
-  <span class="kw">key</span> mtart <span class="kw">as</span> MaterialType,
-  <span class="kw">key</span> werks <span class="kw">as</span> Plant,
-  <span class="kw">key</span> lgort <span class="kw">as</span> StorageLocation
-}
-<span class="cm">-- 최종 데이터: FERT-K210-L001(본사), FERT-K220-L001(제품),
--- HIBE-K220-L003(소모품), ROH-K230-L001(원자재), HALB-K230-L002(반제품)</span>
-
-<span class="kw">managed implementation in class</span> zbp_r_a10_mara <span class="kw">unique</span>;
-<span class="kw">strict</span>(<span class="num">2</span>);
-<span class="kw">define behavior for</span> ZR_A10_MARA <span class="kw">alias</span> Material
-<span class="kw">persistent table</span> ztA10mara <span class="kw">draft table</span> ztA10mara_d
-<span class="kw">lock master total</span> <span class="kw">etag master</span> LocChangedAt
-{
-  <span class="kw">create</span>;
-  <span class="kw">update</span>;
-  <span class="kw">field</span> ( <span class="kw">readonly</span> ) Matnr, Waers;
-  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Werks, Lgort, Mtart, Bklas;
-
-  <span class="kw">determination</span> set_default_value <span class="kw">on modify</span> { <span class="kw">create</span>; }
-  <span class="kw">determination</span> set_mapping_key <span class="kw">on save</span> { <span class="kw">create</span>; }
-  <span class="kw">determination</span> clear_bklas <span class="kw">on modify</span> { <span class="kw">field</span> Mtart; }
-  <span class="kw">determination</span> clear_lgort <span class="kw">on modify</span> { <span class="kw">field</span> Werks; }
-  <span class="kw">determination</span> clear_werks_lgort <span class="kw">on modify</span> { <span class="kw">field</span> Mtart; }
-
-  <span class="kw">validation</span> check_Plant <span class="kw">on save</span> { <span class="kw">field</span> Mtart, Werks, Lgort; }
-  <span class="kw">validation</span> check_confirm <span class="kw">on save</span> { <span class="kw">create</span>; <span class="kw">update</span>; }
-
-  <span class="kw">association</span> _Text { <span class="kw">create</span>; <span class="kw">with draft</span>; }
-
-  <span class="kw">mapping for</span> ztA10mara
-  {
-    Matnr = matnr; Werks = werks; Lgort = lgort; Mtart = mtart; Bklas = bklas;
-    Matfi = matfi; Lvorm = lvorm;
-  }
-}</div>
-
-          <div class="proj-code code-panel" id="r1t2" style="display:none"><span class="cm">* 자재유형 변경 시 플랜트/저장위치 2단계 판정
-* ① Mtart-Werks 조합 자체가 무효 → 둘 다 초기화
-* ② 플랜트는 유효, 3원 조합만 무효 → 저장위치만 초기화</span>
-<span class="kw">METHOD</span> <span class="fn">clear_werks_lgort</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_mara <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> Material
-      <span class="kw">FIELDS</span> ( Mtart Werks Lgort )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_material).
-
-  <span class="kw">LOOP AT</span> lt_material <span class="kw">INTO DATA</span>(ls_mat).
-    <span class="cm">* ① 2원 조합(Mtart-Werks) 유효성 — CDS LEFT OUTER JOIN 기반</span>
-    DATA(lt_invalid_mw) = zcl_a10_check=>get_invalid_mtart_werks(
-                              iv_mtart = ls_mat-Mtart  iv_werks = ls_mat-Werks ).
-
-    <span class="kw">IF</span> lt_invalid_mw <span class="kw">IS NOT INITIAL</span>.
-      <span class="cm">* 플랜트 자체가 무효 → Werks + Lgort 둘 다 초기화</span>
-      MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
-        <span class="kw">ENTITY</span> Material
-          <span class="kw">UPDATE FIELDS</span> ( Werks Lgort )
-          <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Werks = <span class="str">''</span>  Lgort = <span class="str">''</span> ) ).
-    <span class="kw">ELSE</span>.
-      <span class="cm">* ② 3원 조합(Mtart-Werks-Lgort)만 확인 → 저장위치만 초기화</span>
-      DATA(lt_invalid_mwl) = zcl_a10_check=>get_invalid_mtart_werks_lgort(
-                                iv_mtart = ls_mat-Mtart
-                                iv_werks = ls_mat-Werks
-                                iv_lgort = ls_mat-Lgort ).
-      <span class="kw">IF</span> lt_invalid_mwl <span class="kw">IS NOT INITIAL</span>.
-        MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
-          <span class="kw">ENTITY</span> Material
-            <span class="kw">UPDATE FIELDS</span> ( Lgort )
-            <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Lgort = <span class="str">''</span> ) )
-          <span class="kw">REPORTED DATA</span>(ls_reported).
-        <span class="cm">* 왜 초기화됐는지 warning으로 안내</span>
-        APPEND VALUE #( %tky = ls_mat-%tky  %msg = new_message( ... severity = if_abap_behv_message=>severity-warning ) )
-          <span class="kw">TO</span> reported-material.
-      <span class="kw">ENDIF</span>.
-    <span class="kw">ENDIF</span>.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r1t3" style="display:none"><span class="cm">* 자재유형별 채번 — Draft 중엔 스킵, Activate 시점에만 실행
-* 보강: 이미 채번된 건 재채번 방지 필터 추가</span>
-<span class="kw">METHOD</span> <span class="fn">set_mapping_key</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_mara <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> Material
-      <span class="kw">FIELDS</span> ( Mtart Matnr )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_material).
-
-  <span class="cm">* 방어 필터 — 다른 모듈처럼 이미 채번된 건은 제외</span>
-  <span class="kw">DELETE</span> lt_material <span class="kw">WHERE</span> Matnr <span class="kw">IS NOT INITIAL</span>.
-  <span class="kw">CHECK</span> lt_material <span class="kw">IS NOT INITIAL</span>.
-
-  <span class="kw">LOOP AT</span> lt_material <span class="kw">INTO DATA</span>(ls_mat).
-    DATA(lv_nr) = <span class="kw">SWITCH</span> #( ls_mat-Mtart
-                    <span class="kw">WHEN</span> <span class="str">'FERT'</span> <span class="kw">THEN</span> <span class="str">'01'</span>
-                    <span class="kw">WHEN</span> <span class="str">'HALB'</span> <span class="kw">THEN</span> <span class="str">'02'</span>
-                    <span class="kw">WHEN</span> <span class="str">'HIBE'</span> <span class="kw">THEN</span> <span class="str">'03'</span>
-                    <span class="kw">WHEN</span> <span class="str">'ROH'</span>  <span class="kw">THEN</span> <span class="str">'04'</span>
-                    <span class="kw">WHEN</span> <span class="str">'VERP'</span> <span class="kw">THEN</span> <span class="str">'05'</span> ).
-
-    <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
-      <span class="kw">EXPORTING</span> nr_range_nr = lv_nr  object = <span class="str">'ZNRA10MAT'</span>
-      <span class="kw">IMPORTING</span> number = DATA(lv_seq).
-
-    DATA(lv_matnr) = |{ ls_mat-Mtart }{ lv_seq }|.  <span class="cm">"예: FERT0001</span>
-
-    MODIFY ENTITIES OF zr_a10_mara <span class="kw">IN LOCAL MODE</span>
-      <span class="kw">ENTITY</span> Material
-        <span class="kw">UPDATE FIELDS</span> ( Matnr )
-        <span class="kw">WITH VALUE</span> #( ( %tky = ls_mat-%tky  Matnr = lv_matnr ) ).
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
         </div>
 
-        <!-- 02 FI 계정 마스터 -->
+        <!-- ② FI 계정 마스터 -->
         <div id="rap-02" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">MASTER DATA</span>
-            <span class="dev-top-badge fblue">Managed · OData V2 · No-Draft</span>
+            <span class="dev-top-badge blue">② 기준정보</span>
+            <span class="dev-top-badge fblue">SKA1</span>
           </div>
           <h3 class="dev-proj-title">FI 계정 마스터 (SKA1)</h3>
           <p class="dev-proj-desc">
-            계정 마스터 + 계정명(다국어) Composition. 저장하면 바로 확정되는 단순 마스터 성격이라 FS 요건에 따라 Draft를 사용하지 않았습니다.
-            공급업체 프로젝트에서 "매입채무 계정만 선택"하는 요건이 있어, 계정유형(Glact)과는 별개로 조정계정 타입(Mitkz) 필드를 추가해 역할을 분리했습니다.
+            공급업체 화면에서 매입채무 계정만 선택 가능하게 하려면 계정을 성격 기준으로 구분할 수 있어야 했습니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V2</span>
-            <span class="dev-tech-tag">No-Draft</span>
-            <span class="dev-tech-tag">표준 도메인 재사용</span>
+            <span class="dev-tech-tag">필드 추가 (mitkz)</span>
+            <span class="dev-tech-tag">용도별 View 분리</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>Glact / Mitkz 역할 분리</strong> — 계정유형(Glact=대차대조표/영업외/1차원가/2차원가/현금)만으로는 대차대조표 안의 현금·매입채무·매출채권·자산을 구분할 수 없어, SAP 표준 필드 Mitkz(D=고객/K=공급업체/A=자산)를 추가. 필터링은 Mitkz='K', 화면 표시는 Glact로 역할 분리</li>
-              <li><strong>용도별 Search Help 분리</strong> — 같은 계정 마스터를 참조하지만 ZI_A10_SKA1_F4(Mitkz='K' 필터, 공급업체용)와 ZI_A10_SKA1_ALL_F4(필터 없음, 회계결정코드용)로 뷰를 나눠서 관리</li>
-              <li><strong>표준 도메인 텍스트 재사용</strong> — 조정계정 타입은 커스텀 텍스트 테이블 대신 표준 도메인 Fixed Value 텍스트(I_DomainFixedValueText)를 그대로 조회. 다국어 번역을 직접 관리할 필요가 없어 유지보수 비용이 0</li>
-              <li><strong>다국어 텍스트 처리</strong> — 목록·헤더에는 현재 로그온 언어 텍스트 1건만 노출(성능), Object Page에는 별도 Facet으로 전체 언어 CRUD</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">조정계정 타입(mitkz) 필드 추가</div>
+            <p class="pr-why"><span class="pr-label">추가 배경</span>계정유형(Glact)의 대차대조표 항목에 현금·매입채무·매출채권이 함께 포함되어 <strong>Glact만으로는 구분이 불가능</strong>합니다. 표준에서 해당 구분을 담당하는 조정계정 타입(mitkz)을 필드로 추가했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ska1-mitkz.png" alt="mitkz 필드 추가">
+                <div class="img-caption">조정계정 타입(mitkz) 필드 추가 — 계정 성격 구분</div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r2t1',event)">Mitkz 필터링 Search Help</button>
-            <button class="code-tab" onclick="switchTab(this,'r2t2',event)">check_saknr_unique</button>
+          <div class="pr-block">
+            <div class="pr-block-title">용도별 Search Help 분리</div>
+            <p class="pr-why"><span class="pr-label">설계</span>동일한 계정 마스터를 참조하지만 호출하는 화면의 요건이 달라 View를 두 개로 분리했습니다. 공급업체용은 mitkz='K' 조건으로 매입채무 계정만 노출하고, 회계결정코드용은 재고·GR/IR 등 전체 유형이 필요해 조건 없이 노출합니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ska1-searchhelp_1.png" alt="공급업체용 Search Help">
+                <div class="img-caption">공급업체용 — mitkz='K' 매입채무 계정만</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ska1-searchhelp_2.png" alt="회계결정코드용 Search Help">
+                <div class="img-caption">회계결정코드용 — 조건 없이 전체 유형</div>
+              </div>
+            </div>
           </div>
-
-          <div class="proj-code code-panel" id="r2t1"><span class="cm">* 계정(공급업체용) — Mitkz='K' 필터. 매입채무 계정만 노출</span>
-<span class="kw">define view entity</span> <span class="fn">ZI_A10_SKA1_F4</span>
-  <span class="kw">as select from</span> ztA10ska1
-{
-  <span class="kw">key</span> saknr <span class="kw">as</span> AccountNumber,
-      txt20 <span class="kw">as</span> AccountName
-}
-<span class="kw">where</span> mitkz = <span class="str">'K'</span>
-
-<span class="cm">* 계정(회계결정코드용) — 필터 없음. 재고·GR/IR 등 전체 유형 필요</span>
-<span class="kw">define view entity</span> <span class="fn">ZI_A10_SKA1_ALL_F4</span>
-  <span class="kw">as select from</span> ztA10ska1
-{
-  <span class="kw">key</span> saknr <span class="kw">as</span> AccountNumber,
-      txt20 <span class="kw">as</span> AccountName
-}
-
-<span class="cm">* 조정계정 타입 — 표준 도메인 Fixed Value 텍스트 재사용 (커스텀 텍스트 테이블 불필요)</span>
-<span class="kw">define view entity</span> <span class="fn">ZI_A10_MITKZ</span>
-  <span class="kw">as select from</span> I_DomainFixedValueText( P_ScalarFunction = <span class="str">'DATA'</span> )
-{
-  <span class="kw">key</span> DomainValue <span class="kw">as</span> Mitkz,
-      DomainValueText <span class="kw">as</span> MitkzText
-}
-<span class="kw">where</span> DomainName = <span class="str">'ZDA10MITKZ'</span></div>
-
-          <div class="proj-code code-panel" id="r2t2" style="display:none"><span class="cm">* 계정번호 중복 등록 방지 — FOR ALL ENTRIES 일괄 조회</span>
-<span class="kw">METHOD</span> <span class="fn">check_saknr_unique</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_ska1 <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> Account
-      <span class="kw">FIELDS</span> ( Saknr Glact )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_account).
-
-  DATA(lt_dup) = zcl_a10_check=>get_invalid_saknr( it_account = lt_account ).
-
-  <span class="kw">LOOP AT</span> lt_dup <span class="kw">INTO DATA</span>(ls_dup).
-    APPEND VALUE #( %tky = ls_dup-%tky ) <span class="kw">TO</span> failed-account.
-    APPEND VALUE #( %tky = ls_dup-%tky
-                     %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'020'</span>
-                                          v1 = ls_dup-Saknr
-                                          severity = if_abap_behv_message=>severity-error ) )
-      <span class="kw">TO</span> reported-account.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
         </div>
 
-        <!-- 03 공급업체 마스터 -->
+        <!-- ③ 공급업체 마스터 -->
         <div id="rap-03" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">MASTER DATA</span>
-            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+            <span class="dev-top-badge blue">③ 기준정보</span>
+            <span class="dev-top-badge fblue">LFA1 · Draft</span>
           </div>
           <h3 class="dev-proj-title">공급업체 마스터 (LFA1)</h3>
           <p class="dev-proj-desc">
-            공급업체 마스터 단일 BO. 자재 프로젝트에서 검증한 Draft 구조를 그대로 재사용했습니다.
-            공급업체 분류(Fdgrv A1~A6)별로 채번 대역이 갈리는데, SNRO 번호범위의 인터벌 이름을 분류코드와 동일하게 지정해 자재 프로젝트의 SWITCH 분기 코드를 없앴습니다.
+            공급업체에 연결되는 조정계정이 실제 매입채무 계정인지 여부까지 검증합니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V4</span>
-            <span class="dev-tech-tag">Draft</span>
-            <span class="dev-tech-tag">SNRO 인터벌 재사용</span>
-            <span class="dev-tech-tag">Action Parameter</span>
+            <span class="dev-tech-tag">화면 제어 + 백엔드 검증 이중화</span>
+            <span class="dev-tech-tag">Validation</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>SNRO 인터벌명 = 분류코드 — 분기 코드 제거</strong> — 자재(MARA)는 SWITCH로 자재유형→번호대역을 매핑했지만, 공급업체는 SNRO 번호범위의 인터벌 이름을 분류코드와 동일하게(A1~A6) 지정해 Fdgrv 값을 그대로 인터벌 번호로 전달. 분류가 A7으로 늘어나도 코드 수정 없이 SNRO 인터벌만 추가하면 됨</li>
-              <li><strong>조정계정 우회 방어</strong> — check_akont에서 매입채무 관련 계정(Mitkz='K')인지 확인. Value Help로 1차 필터링되지만 API 직접 호출로 우회 가능해 백엔드 검증을 별도로 둠</li>
-              <li><strong>Fixed Value도 백엔드에서 재검증</strong> — 공급업체 분류(Fdgrv)를 "콤보박스로 막혀있으니 검증이 필요 없다"고 판단했다가, check_akont와 같은 논리로 재검토해 도메인 Fixed Value 범위 값인지 체크하는 로직을 추가(get_invalid_fdgrv 신규 작성)</li>
-              <li><strong>사유 입력 Action</strong> — block_vendor는 파라미터(Abstract Entity)로 거래종료 사유를 팝업으로 입력받고, 미입력 시 failed 처리로 저장을 차단. Loevm 플래그를 read-only로 잠가 액션으로만 변경 가능하게 해 상태 변경이 한 지점을 통과하도록 설계</li>
-              <li><strong>4단계 화면 제어</strong> — Delete는 Draft 단계만 허용, Block/Unblock 상호 배타, 거래종료 시 핵심 필드 전부 read-only, 거래종료 상태면 Edit 버튼 자체를 비활성화(불필요한 Draft 레코드 생성도 함께 차단)</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">조정계정 검증 — 존재 여부 + 성격까지</div>
+            <p class="pr-why"><span class="pr-label">설계</span>Value Help에서 매입채무 계정만 노출하되, <strong>화면 제어만으로는 우회 입력을 막을 수 없으므로</strong> 저장 시점에 계정의 성격(mitkz)을 다시 검증하도록 구성했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_lfa1-akont.png" alt="조정계정 검증">
+                <div class="img-caption">저장 시점 계정 성격(mitkz) 재검증</div>
+              </div>
+            </div>
           </div>
-
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r3t1',event)">SNRO 인터벌 재사용 채번</button>
-            <button class="code-tab" onclick="switchTab(this,'r3t2',event)">block_vendor — 사유 입력 Action</button>
-          </div>
-
-          <div class="proj-code code-panel" id="r3t1"><span class="cm">* 분류코드 = SNRO 인터벌명 — 분기 코드가 사라짐
-* Fdgrv 값을 그대로 인터벌 번호로 전달 (A1~A6)</span>
-<span class="kw">METHOD</span> <span class="fn">set_mapping_key</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> Vendor
-      <span class="kw">FIELDS</span> ( Fdgrv Lifnr )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_vendor).
-
-  <span class="kw">DELETE</span> lt_vendor <span class="kw">WHERE</span> Lifnr <span class="kw">IS NOT INITIAL</span>.
-  <span class="kw">CHECK</span> lt_vendor <span class="kw">IS NOT INITIAL</span>.
-
-  <span class="kw">LOOP AT</span> lt_vendor <span class="kw">INTO DATA</span>(ls_vnd).
-    <span class="cm">* 분류가 A7으로 늘어나도 SNRO 인터벌만 추가하면 코드 수정 불필요</span>
-    <span class="kw">CALL FUNCTION</span> <span class="str">'NUMBER_GET_NEXT'</span>
-      <span class="kw">EXPORTING</span> nr_range_nr = ls_vnd-Fdgrv  object = <span class="str">'ZNRA10VND'</span>
-      <span class="kw">IMPORTING</span> number = DATA(lv_lifnr).
-
-    MODIFY ENTITIES OF zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
-      <span class="kw">ENTITY</span> Vendor
-        <span class="kw">UPDATE FIELDS</span> ( Lifnr )
-        <span class="kw">WITH VALUE</span> #( ( %tky = ls_vnd-%tky  Lifnr = lv_lifnr ) ).
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r3t2" style="display:none"><span class="cm">* 거래종료 — 사유 미입력 시 저장 차단</span>
-<span class="kw">define behavior for</span> ZR_A10_LFA1 <span class="kw">alias</span> Vendor
-{
-  ...
-  <span class="kw">action</span> ( <span class="kw">features</span> : <span class="kw">instance</span> ) block_vendor <span class="kw">parameter</span> ZA10_A_BLOCK_REASON <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
-  <span class="kw">action</span> ( <span class="kw">features</span> : <span class="kw">instance</span> ) unblock_vendor <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
-  <span class="kw">field</span> ( <span class="kw">readonly</span> ) Loevm;   <span class="cm">"액션으로만 변경 가능</span>
-}
-
-<span class="kw">METHOD</span> <span class="fn">block_vendor</span>.
-  <span class="kw">LOOP AT</span> keys <span class="kw">INTO DATA</span>(ls_key).
-    <span class="kw">IF</span> ls_key-%param-BlockReason <span class="kw">IS INITIAL</span>.
-      APPEND VALUE #( %tky = ls_key-%tky ) <span class="kw">TO</span> failed-vendor.
-      APPEND VALUE #( %tky = ls_key-%tky
-                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'041'</span>
-                                            severity = if_abap_behv_message=>severity-error ) )
-        <span class="kw">TO</span> reported-vendor.
-      <span class="kw">CONTINUE</span>.
-    <span class="kw">ENDIF</span>.
-
-    MODIFY ENTITIES OF zr_a10_lfa1 <span class="kw">IN LOCAL MODE</span>
-      <span class="kw">ENTITY</span> Vendor
-        <span class="kw">UPDATE FIELDS</span> ( Loevm BlockReason )
-        <span class="kw">WITH VALUE</span> #( ( %tky = ls_key-%tky
-                              Loevm = <span class="str">'X'</span>
-                              BlockReason = ls_key-%param-BlockReason ) ).
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
         </div>
 
-        <!-- 04 회계결정코드 -->
+        <!-- ④ 회계결정코드 -->
         <div id="rap-04" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">MASTER DATA</span>
-            <span class="dev-top-badge fblue">Managed · OData V2 · Late Numbering</span>
+            <span class="dev-top-badge blue">④ 기준정보</span>
+            <span class="dev-top-badge fblue">T030 · Factory Action</span>
           </div>
           <h3 class="dev-proj-title">회계결정코드 (T030)</h3>
           <p class="dev-proj-desc">
-            물류 트랜잭션(입고/출고) 발생 시 어떤 G/L 계정에 전기할지 결정하는 마스터. 물류 담당자가 회계 지식 없이도 업무를 처리할 수 있게 하는 것이 목적입니다.
-            Seqnr(순번)이 PK를 구성하는 필드라 채번 방식을 두고 가장 오래 고민한 BO입니다.
+            물류 트랜잭션 발생 시 어떤 G/L 계정에 전기할지 결정하는 마스터입니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V2</span>
-            <span class="dev-tech-tag">No-Draft</span>
-            <span class="dev-tech-tag">Late Numbering</span>
-            <span class="dev-tech-tag">Behavior Saver</span>
+            <span class="dev-tech-tag">필드 추가 (shkzg)</span>
+            <span class="dev-tech-tag">조건부 필수</span>
+            <span class="dev-tech-tag">Factory Action</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>Late Numbering 채택 근거</strong> — FS 요건은 "순번은 같은 이동유형 내 최대값+1"인데 Seqnr이 PK. determination on save로 채번을 시도했다가 RAP에서 키 필드는 UPDATE로 변경 불가하다는 <code>BEHAVIOR_CONTRACT_VIOLATION(EMPTY_UPDATE)</code> 덤프를 확인. PK를 UUID로 바꾸는 대안도 있었지만, Draft 없는 V2라 "저장하는 순간 최종 키가 정해지는" Late Numbering이 저장 모델과 더 맞아 선택</li>
-              <li><strong>Behavior Saver 구현</strong> — Local Types에 cl_abap_behavior_saver를 상속한 Saver 클래스를 추가하고 adjust_numbers를 재정의. 저장 직전 이동유형별 DB 최대 순번을 조회해 +1을 임시 키에서 최종 키로 확정. 같은 요청에 동일 이동유형이 여러 건이면 직전 값에 이어 순차 배정</li>
-              <li><strong>차변/대변 지시자(Shkzg) 추가</strong> — FS 필드 표에는 없었으나 화면 요건(수정 시 차변/대변 변경 가능)에 있어 추가. 같은 회계결정코드라도 방향이 다르면 다른 계정이 매핑됨(WRX는 입고 시 대변, 송장 반제 시 차변) — Bwart+Ktosl 조합만으로는 방향을 표현할 수 없어 별도 필드가 필요했음</li>
-              <li><strong>조건부 필수 검증</strong> — BSX(재고계정)/PRD(가격차이)는 자재의 평가클래스별로 계정이 갈리므로 평가클래스 필수, WRX(GR/IR 반제)는 평가클래스와 무관하게 하나의 계정을 쓰므로 필수 아님 — 회계 로직에 근거한 조건부 필수 처리</li>
-              <li><strong>검증 6개로 분리</strong> — 처음엔 하나의 check_key에 전부 몰아넣었다가 다시 쪼갬. 검증 성격이 서로 달라(코드 유효성/조건부 필수/참조 무결성/유니크 제약) 필드별 트리거 조건을 따로 걸 수 있고 불필요한 재실행도 줄어듦</li>
-              <li><strong>제거한 자동화 — set_default_shkzg</strong> — Ktosl 값으로 차변/대변을 자동 결정하는 Determination을 만들었다가 제거. BSX(재고계정)는 입고 시 차변, 출고 시 대변이라 코드 하나로 방향이 정해지지 않아 회계적 근거가 부족한 자동화는 오히려 잘못된 데이터를 만든다고 판단</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">차변/대변 지시자(shkzg) 추가</div>
+            <p class="pr-why"><span class="pr-label">추가 배경</span>동일한 회계결정코드라도 <strong>전기 방향에 따라 매핑되는 계정이 달라집니다</strong>. GR/IR 계정은 입고 시 대변, 송장 반제 시 차변으로 사용되므로 방향 지시자를 별도 필드로 관리했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-shkzg.png" alt="shkzg 필드">
+                <div class="img-caption">차변/대변 지시자 필드 — 이동유형·코드 조합으로 표현 불가한 정보</div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r4t1',event)">Late Numbering — Saver 클래스</button>
-            <button class="code-tab" onclick="switchTab(this,'r4t2',event)">check_bklas_req 조건부 필수</button>
+          <div class="pr-block">
+            <div class="pr-block-title">평가클래스 조건부 필수 — 회계 로직 기반</div>
+            <p class="pr-why"><span class="pr-label">설계</span>BSX(재고)·PRD(가격차이)는 자재의 평가클래스별로 전기 계정이 달라지므로 평가클래스가 필수이며, GR/IR과 같이 계정이 단일한 경우에는 필수로 적용하지 않았습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-bklas.png" alt="조건부 필수 검증">
+                <div class="img-caption">회계결정코드에 따라 평가클래스 필수 여부 분기</div>
+              </div>
+            </div>
           </div>
 
-          <div class="proj-code code-panel" id="r4t1"><span class="cm">* BDEF — late numbering 선언</span>
-<span class="kw">define behavior for</span> ZR_A10_T030 <span class="kw">alias</span> AcctDetermination
-<span class="kw">late numbering</span>
-{
-  <span class="kw">create</span>;
-  <span class="kw">update</span>;
-  <span class="kw">delete</span>;
-  <span class="kw">field</span> ( <span class="kw">readonly</span> : <span class="kw">update</span> ) Bwart, Seqnr;
-  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Ktosl, Saknr;
-
-  <span class="kw">validation</span> check_bklas_req <span class="kw">on save</span> { <span class="kw">field</span> Ktosl, Bklas; }
-  ...
-}
-
-<span class="cm">* Behavior Pool Local Types — Saver 클래스에서 순번 최종 확정</span>
-<span class="kw">CLASS</span> lcl_saver <span class="kw">DEFINITION INHERITING FROM</span> cl_abap_behavior_saver.
-  <span class="kw">PROTECTED SECTION</span>.
-    <span class="kw">METHODS</span> adjust_numbers <span class="kw">REDEFINITION</span>.
-<span class="kw">ENDCLASS</span>.
-
-<span class="kw">CLASS</span> lcl_saver <span class="kw">IMPLEMENTATION</span>.
-  <span class="kw">METHOD</span> adjust_numbers.
-    <span class="kw">LOOP AT</span> mapped-acctdetermination <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_map&gt;).
-      <span class="cm">* 이동유형별 DB 최대 순번 조회 후 +1</span>
-      <span class="kw">SELECT SINGLE MAX</span>( seqnr ) <span class="kw">FROM</span> ztA10t030
-        <span class="kw">WHERE</span> bwart = @&lt;fs_map&gt;-Bwart <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_max).
-
-      lv_max += <span class="num">1</span>.
-      &lt;fs_map&gt;-Seqnr = lv_max.
-      <span class="cm">* 같은 요청 내 동일 이동유형이 여러 건이면 다음 루프에서
-         방금 배정한 값을 이어받아 순차 배정</span>
-    <span class="kw">ENDLOOP</span>.
-  <span class="kw">ENDMETHOD</span>.
-<span class="kw">ENDCLASS</span>.</div>
-
-          <div class="proj-code code-panel" id="r4t2" style="display:none"><span class="cm">* BSX/PRD는 평가클래스 필수, WRX는 무관 — 회계 로직 기반 조건부 필수</span>
-<span class="kw">METHOD</span> <span class="fn">check_bklas_req</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_t030 <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> AcctDetermination
-      <span class="kw">FIELDS</span> ( Ktosl Bklas )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_det).
-
-  <span class="kw">LOOP AT</span> lt_det <span class="kw">INTO DATA</span>(ls_det).
-    <span class="cm">* BSX(재고) / PRD(가격차이) — 자재 평가클래스별로 계정이 갈림 → 필수</span>
-    <span class="kw">IF</span> ls_det-Ktosl <span class="kw">IN</span> <span class="kw">VALUE</span> ztt_ktosl( ( <span class="str">'BSX'</span> ) ( <span class="str">'PRD'</span> ) )
-       <span class="kw">AND</span> ls_det-Bklas <span class="kw">IS INITIAL</span>.
-      APPEND VALUE #( %tky = ls_det-%tky ) <span class="kw">TO</span> failed-acctdetermination.
-      APPEND VALUE #( %tky = ls_det-%tky
-                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'052'</span>
-                                            severity = if_abap_behv_message=>severity-error ) )
-        <span class="kw">TO</span> reported-acctdetermination.
-    <span class="kw">ENDIF</span>.
-    <span class="cm">* WRX(GR/IR) — 평가클래스 무관하게 계정 하나만 사용 → 필수 아님</span>
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
+          <div class="pr-block">
+            <div class="pr-block-title">복사 기능(copy_determ) — Factory Action</div>
+            <p class="pr-why"><span class="pr-label">적용 배경</span>이동유형·트랜잭션·평가클래스·계정이 동일하고 전기 방향만 다른 레코드가 반복적으로 필요하다고 판단했습니다. <strong>기존 인스턴스 변경이 아니라 신규 키를 갖는 인스턴스를 생성하는 동작</strong>이므로 Factory Action으로 구현했습니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-copy_1.png" alt="복사 Action 선언">
+                <div class="img-caption">Factory Action 선언</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-copy_2.png" alt="복사 실행">
+                <div class="img-caption">원본 레코드 선택 후 복사 실행</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-copy_3.png" alt="복사 결과">
+                <div class="img-caption">신규 키로 생성된 레코드</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 05 구매정보 레코드 -->
+        <!-- ⑤ 구매정보레코드 -->
         <div id="rap-05" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">PROCUREMENT</span>
-            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+            <span class="dev-top-badge blue">⑤ 구매</span>
+            <span class="dev-top-badge fblue">EINA / EINE · Draft</span>
           </div>
-          <h3 class="dev-proj-title">구매정보 레코드 (EINA/EINE)</h3>
+          <h3 class="dev-proj-title">구매정보레코드 (EINA / EINE)</h3>
           <p class="dev-proj-desc">
-            공급업체별·자재별로 플랜트마다 구매가격·최대구매수량·예정배송일수를 관리하는 마스터. Header(EINA)-Item(EINE) 2단 Composition 구조(1:N)이며,
-            구매오더 모듈이 이 레코드를 참조해 자재·가격·플랜트 정보를 자동으로 끌어옵니다.
+            공급업체 × 자재 조건을 관리하며, 하나의 헤더에 아이템은 하나만 존재하는 구조입니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V4</span>
-            <span class="dev-tech-tag">Draft</span>
-            <span class="dev-tech-tag">1:N Composition</span>
-            <span class="dev-tech-tag">교차 검증</span>
+            <span class="dev-tech-tag">1:1 Composition</span>
+            <span class="dev-tech-tag">입력 순서 제어</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>연도별 채번</strong> — 구매정보번호를 2026000005 형태로 연도+순번 채번. Draft 중엔 채번하지 않고 Activate 시점에만 실행(자재 프로젝트의 set_mapping_key와 동일 원리)</li>
-              <li><strong>Prepare 경고 vs 저장 차단 분리</strong> — 공급업체/자재/구매단위 필수값은 생성 화면에서 mandatory 표시를 하지 않고 저장 시점에만 체크하라는 FS 요건에 따라 instance feature 대신 validation으로 구현. Draft 편집 중에는 경고(severity-warning)만 주고 저장은 막지 않다가, check_confirm에서 최종적으로 error 처리</li>
-              <li><strong>교차 필드 검증 완성</strong> — 최소수량(Minbm)이 최대구매수량(Bstma)을 초과할 수 없다는 검증이 원래 빈 메서드로 미구현 상태였던 것을 완성</li>
-              <li><strong>실존 여부까지 확인하는 check_confirm</strong> — 공급업체·자재가 삭제된 상태인지까지 확인해야 해서 zcl_a10_check.get_invalid_lifnr / get_invalid_matnr를 재사용</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">헤더 · 아이템 1:1 구조</div>
+            <p class="pr-why"><span class="pr-label">1:1 구조의 근거</span>구매정보레코드 아이템(EINE)의 키가 플랜트(Werks)이고, 자재는 매핑에 따라 등록 시점에 플랜트가 하나로 확정됩니다. 결과적으로 공급업체·자재 조합당 아이템이 하나만 생성되므로 <strong>구조상 1:1로 결정</strong>됩니다.</p>
+            <p class="pr-why"><span class="pr-label">입력 순서</span>헤더의 자재코드가 채워지기 전에는 아이템 Create 버튼 자체가 비활성 상태입니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_eina-header-item_1.png" alt="헤더 아이템 구조">
+                <div class="img-caption">헤더-아이템 1:1 Composition 구조</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_eina-header-item_2.png" alt="Create 버튼 비활성">
+                <div class="img-caption">자재코드 입력 전 — 아이템 Create 비활성</div>
+              </div>
+            </div>
           </div>
-
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r5t1',event)">BDEF — Header/Item Composition</button>
-            <button class="code-tab" onclick="switchTab(this,'r5t2',event)">check_qty 교차 검증</button>
-          </div>
-
-          <div class="proj-code code-panel" id="r5t1"><span class="cm">* Header(EINA) - Item(EINE) 1:N, Item PK = inf_uuid + werks</span>
-<span class="kw">managed implementation in class</span> zbp_r_a10_eina <span class="kw">unique</span>;
-<span class="kw">strict</span>(<span class="num">2</span>);
-<span class="kw">define behavior for</span> ZR_A10_EINA <span class="kw">alias</span> PurchaseInfo
-<span class="kw">persistent table</span> ztA10eina <span class="kw">draft table</span> ztA10eina_d
-<span class="kw">lock master total</span> <span class="kw">etag master</span> LocChangedAt
-{
-  <span class="kw">create</span>;
-  <span class="kw">update</span>;
-  <span class="kw">delete</span>( <span class="kw">features</span> : <span class="kw">instance</span> );
-
-  <span class="kw">determination</span> set_infnr <span class="kw">on save</span> { <span class="kw">create</span>; }
-
-  <span class="kw">validation</span> check_lifnr <span class="kw">on save</span> { <span class="kw">field</span> Lifnr; }
-  <span class="kw">validation</span> check_duplicate <span class="kw">on save</span> { <span class="kw">field</span> Lifnr, Matnr; }
-  <span class="kw">validation</span> check_confirm <span class="kw">on save</span> { <span class="kw">create</span>; <span class="kw">update</span>; }
-
-  <span class="kw">association</span> _Item { <span class="kw">create</span>; <span class="kw">with draft</span>; }
-  <span class="kw">mapping for</span> ztA10eina { ... }
-}
-
-<span class="kw">define behavior for</span> ZI_A10_EINE <span class="kw">alias</span> PurchaseItem
-{
-  <span class="kw">update</span>;
-  <span class="kw">delete</span>;
-  <span class="kw">field</span> ( <span class="kw">mandatory: create</span> ) Werks, Meins;
-
-  <span class="kw">determination</span> set_item_default <span class="kw">on modify</span> { <span class="kw">create</span>; }
-  <span class="kw">validation</span> check_qty <span class="kw">on save</span> { <span class="kw">field</span> Minbm, Bstma; }
-  <span class="kw">validation</span> check_prdat <span class="kw">on save</span> { <span class="kw">field</span> Prdat; }
-
-  <span class="kw">mapping for</span> ztA10eine { ... }
-}</div>
-
-          <div class="proj-code code-panel" id="r5t2" style="display:none"><span class="cm">* 최소수량이 최대구매수량을 초과할 수 없다 — 원래 빈 메서드였던 것을 완성</span>
-<span class="kw">METHOD</span> <span class="fn">check_qty</span>.
-  <span class="kw">READ ENTITIES OF</span> zi_a10_eine <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> PurchaseItem
-      <span class="kw">FIELDS</span> ( Minbm Bstma )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_item).
-
-  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
-    <span class="kw">IF</span> ls_item-Bstma &lt; <span class="num">0</span> <span class="kw">OR</span> ls_item-Minbm &lt; <span class="num">0</span>.
-      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-purchaseitem.
-    <span class="kw">ENDIF</span>.
-    <span class="cm">* 교차 검증 — 최소수량이 최대수량을 넘으면 안 됨</span>
-    <span class="kw">IF</span> ls_item-Minbm &gt; ls_item-Bstma <span class="kw">AND</span> ls_item-Bstma &gt; <span class="num">0</span>.
-      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-purchaseitem.
-      APPEND VALUE #( %tky = ls_item-%tky
-                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'065'</span>
-                                            severity = if_abap_behv_message=>severity-error ) )
-        <span class="kw">TO</span> reported-purchaseitem.
-    <span class="kw">ENDIF</span>.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
         </div>
 
-        <!-- 06 구매오더 -->
+        <!-- ⑥ 구매오더 -->
         <div id="rap-06" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">PROCUREMENT · CORE</span>
-            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+            <span class="dev-top-badge blue">⑥ 구매</span>
+            <span class="dev-top-badge fblue">EKKO / EKPO · Draft</span>
           </div>
           <h3 class="dev-proj-title">구매오더 (EKKO / EKPO)</h3>
           <p class="dev-proj-desc">
-            Header(EKKO)-Item(EKPO) 1:N Composition. 구매정보레코드·공급업체·자재를 참조하는 구매 프로세스의 중심 BO입니다.
-            입고 모듈이 저장 시점에 이 BO의 액션을 Cross-BO EML로 호출해 입고수량을 반영합니다 — 이 프로젝트에서 Cross-BO 설계 원칙을 처음 확정했습니다.
+            입력 순서를 강제하고, 자재 기준으로 플랜트·저장위치를 자동 반영해 잘못된 조합이 입력될 경로를 차단했습니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V4</span>
-            <span class="dev-tech-tag">Draft</span>
-            <span class="dev-tech-tag">Early Numbering</span>
-            <span class="dev-tech-tag">Cross-BO EML</span>
+            <span class="dev-tech-tag">입력 순서 제어</span>
+            <span class="dev-tech-tag">자동 매핑 (ZI_A10_MARD)</span>
+            <span class="dev-tech-tag">취소 플래그 전파</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>Cross-BO 액션 — receiveQty</strong> — 입고 모듈이 저장 시점에 호출하는 액션. 다른 BO가 이 BO의 필드를 직접 UPDATE하는 방식(Case1)과, 액션을 통해 요청만 하고 계산은 이 BO 스스로 책임지는 방식(Case2) 중 Case2를 채택 — 누적 계산(Wemng += 이번수량)과 완료 판정(Elikz)의 소유권을 명확히 이 BO에 둬서, 완료 판정 규칙이 바뀌어도 입고 쪽 코드는 건드릴 필요가 없게 설계</li>
-              <li><strong>아이템 순번 Early Numbering</strong> — Ebelp(10/20/30) 채번을 determination의 UPDATE FIELDS로 처리하려다 "PK 필드는 UPDATE로 반영되지 않는다"는 제약을 실제 테스트로 확인 → NUMBERING 메서드로 전환. 헤더별 기존 최대 순번을 조회한 뒤 +10씩 채번</li>
-              <li><strong>양방향 정합성 검증</strong> — check_infnr_matnr(아이템→헤더 방향)과 check_vendor_info(헤더→아이템 역방향)를 함께 둬서 PO를 헤더에서 고쳐도, 아이템에서 고쳐도 어긋난 조합이 저장되지 않게 함</li>
-              <li><strong>입고 반영 시 아이템 상태도 함께 갱신</strong> — PO 취소(deleteFlag) 시 헤더만 Loekz를 세우면, 그 PO 아이템은 여전히 유효한 상태로 남아 취소된 PO의 아이템이 입고 Value Help에 계속 노출되는 문제를 발견 → 헤더+아이템을 한 번에 조회해 아이템의 Loekz까지 함께 갱신하도록 보강. resetFlag도 대칭 처리</li>
-              <li><strong>Value Help 어노테이션 보강</strong> — CDS 필드 목록에 공급업체(Lifnr)가 있어도, Value Help 노출 여부는 @UI.selectionField/@UI.lineItem이 별도로 결정한다는 걸 실제로 확인 후 어노테이션을 보강</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">공급업체를 선택해야 아이템 생성이 열린다</div>
+            <p class="pr-why"><span class="pr-label">설계 의도</span>구매정보레코드는 공급업체와 자재 조합으로 조회되므로 공급업체가 없으면 아이템에서 선택할 수 있는 대상이 존재하지 않습니다. <strong>입력 순서를 강제해 불완전한 아이템 생성을 방지</strong>했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-vendor-first.png" alt="공급업체 선택 전 아이템 비활성">
+                <div class="img-caption">헤더 공급업체 입력 전 — 아이템 Create 비활성</div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r6t1',event)">receiveQty — Cross-BO 액션</button>
-            <button class="code-tab" onclick="switchTab(this,'r6t2',event)">earlynumbering_cba_Item</button>
-            <button class="code-tab" onclick="switchTab(this,'r6t3',event)">deleteFlag — 아이템 연쇄 갱신</button>
+          <div class="pr-block">
+            <div class="pr-block-title">플랜트 · 저장위치 자동 매핑 — ZI_A10_MARD</div>
+            <p class="pr-why"><span class="pr-label">설계</span>자재 마스터 단계에서 자재유형·플랜트·저장위치의 유효 조합이 이미 확정되므로, <strong>구매오더에서 재선택하게 하면 잘못된 조합이 입력될 수 있습니다</strong>. 표준 구조를 참고해 Interface View(ZI_A10_MARD)를 구성하고 이를 참조해 자동 반영하도록 했습니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-plant-mapping_1.png" alt="ZI_A10_MARD View">
+                <div class="img-caption">ZI_A10_MARD — 자재 기준 플랜트·저장위치 View</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-plant-mapping_2.png" alt="자동 반영 로직">
+                <div class="img-caption">자재·구매정보레코드 선택 시 자동 반영</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-plant-mapping_3.png" alt="read-only 제어">
+                <div class="img-caption">반영된 필드는 read-only로 제어</div>
+              </div>
+            </div>
           </div>
 
-          <div class="proj-code code-panel" id="r6t1"><span class="cm">* Cross-BO 액션 — "얼마 입고했다"만 받고, 누적·완료 판정은 이 BO가 소유</span>
-<span class="kw">define behavior for</span> ZI_A10_EKPO <span class="kw">alias</span> PurchasingItem
-{
-  ...
-  <span class="kw">action</span> receiveQty <span class="kw">parameter</span> ZA10_A_RECEIVE_QTY <span class="kw">result</span> [<span class="num">1</span>] $<span class="kw">self</span>;
-}
-
-<span class="kw">METHOD</span> <span class="fn">receiveQty</span>.
-  <span class="kw">READ ENTITIES OF</span> zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> PurchasingItem
-      <span class="kw">FIELDS</span> ( Menge Wemng )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_item).
-
-  <span class="kw">LOOP AT</span> keys <span class="kw">INTO DATA</span>(ls_key).
-    <span class="kw">READ TABLE</span> lt_item <span class="kw">INTO DATA</span>(ls_item) <span class="kw">WITH KEY</span> %tky = ls_key-%tky.
-    <span class="kw">CHECK</span> sy-subrc = <span class="num">0</span>.
-
-    <span class="cm">* 누적 — 이 BO가 소유하는 계산</span>
-    DATA(lv_new_wemng) = ls_item-Wemng + ls_key-%param-ReceiveQty.
-
-    MODIFY ENTITIES OF zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
-      <span class="kw">ENTITY</span> PurchasingItem
-        <span class="kw">UPDATE FIELDS</span> ( Wemng Elikz )
-        <span class="kw">WITH VALUE</span> #( ( %tky   = ls_key-%tky
-                              Wemng = lv_new_wemng
-                              <span class="cm">* 완료 판정도 이 BO 책임 — 규칙이 바뀌어도 입고 쪽 코드는 그대로</span>
-                              Elikz = <span class="kw">COND</span> #( <span class="kw">WHEN</span> lv_new_wemng &gt;= ls_item-Menge <span class="kw">THEN</span> abap_true
-                                              <span class="kw">ELSE</span> abap_false ) ) ).
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.
-
-<span class="cm">* 입고(호출하는 쪽) — determination(on save)에서 EXECUTE로 호출</span>
-<span class="kw">METHOD</span> <span class="fn">set_receive_qty</span>.
-  ...
-  <span class="kw">EXECUTE</span> receiveQty
-    <span class="kw">OF</span> zi_a10_ekpo
-      <span class="kw">ENTITY</span> PurchasingItem
-      <span class="kw">FROM VALUE</span> #( ( %tky-EbelnUuid = lv_ebeln_uuid  %tky-Ebelp = ls_gr-Ebelp
-                        %param-ReceiveQty = ls_gr-Menge ) ).
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r6t2" style="display:none"><span class="cm">* 아이템 순번(Ebelp) 채번 — PK 필드라 determination UPDATE 불가 → NUMBERING으로 전환</span>
-<span class="kw">define behavior for</span> ZI_A10_EKPO <span class="kw">alias</span> PurchasingItem
-{
-  <span class="kw">create</span> ( <span class="kw">numbering</span> : <span class="kw">managed</span> );
-  ...
-}
-
-<span class="kw">METHOD</span> <span class="fn">earlynumbering_cba_item</span>.
-  <span class="kw">LOOP AT</span> entities <span class="kw">INTO DATA</span>(ls_header).
-    <span class="cm">* 헤더별 기존 최대 순번 조회</span>
-    <span class="kw">SELECT SINGLE MAX</span>( ebelp ) <span class="kw">FROM</span> ztA10ekpo
-      <span class="kw">WHERE</span> ebeln_uuid = @ls_header-EbelnUuid
-      <span class="kw">INTO</span> @<span class="kw">DATA</span>(lv_max).
-
-    <span class="kw">LOOP AT</span> ls_header-%target <span class="kw">ASSIGNING FIELD-SYMBOL</span>(&lt;fs_item&gt;).
-      lv_max += <span class="num">10</span>.  <span class="cm">"10/20/30 간격 채번</span>
-      &lt;fs_item&gt;-Ebelp = lv_max.
-      mapped-purchasingitem = <span class="kw">VALUE</span> #( <span class="kw">BASE</span> mapped-purchasingitem
-                              ( %cid = &lt;fs_item&gt;-%cid  %key = &lt;fs_item&gt;-%key
-                                %tky = &lt;fs_item&gt;-%tky ) ).
-    <span class="kw">ENDLOOP</span>.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r6t3" style="display:none"><span class="cm">* PO 취소 — 헤더 Loekz만 세우면 아이템은 여전히 유효한 상태로 남는 문제 발견 후 보강</span>
-<span class="kw">METHOD</span> <span class="fn">deleteflag</span>.
-  <span class="kw">READ ENTITIES OF</span> zr_a10_ekko <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> PurchasingHeader
-      <span class="kw">BY</span> \_Item
-      <span class="kw">FIELDS</span> ( Loekz )
-      <span class="kw">WITH</span> CORRESPONDING #( keys )
-    <span class="kw">RESULT</span> DATA(lt_item).
-
-  MODIFY ENTITIES OF zr_a10_ekko <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> PurchasingHeader
-      <span class="kw">UPDATE FIELDS</span> ( Loekz DelReason )
-      <span class="kw">WITH VALUE</span> #( ( %tky = keys[ <span class="num">1</span> ]-%tky
-                            Loekz = <span class="str">'X'</span>
-                            DelReason = keys[ <span class="num">1</span> ]-%param-BlockReason ) )
-    <span class="kw">ENTITY</span> PurchasingItem
-      <span class="cm">"헤더뿐 아니라 아이템도 함께 갱신 — 취소된 PO가
-        입고 Value Help에 계속 노출되는 문제 해결</span>
-      <span class="kw">UPDATE FIELDS</span> ( Loekz )
-      <span class="kw">WITH</span> CORRESPONDING #( lt_item <span class="kw">MAPPING</span> Loekz = <span class="str">'X'</span> ).
-<span class="kw">ENDMETHOD</span>.</div>
-
+          <div class="pr-block">
+            <div class="pr-block-title">헤더 취소 플래그</div>
+            <p class="pr-why"><span class="pr-label">설계</span>구매오더 취소는 물리 삭제 대신 플래그로 처리하고 사유를 함께 관리합니다. <strong>헤더 취소 시 아이템까지 플래그를 전파</strong>해 후속 프로세스에 노출되지 않도록 했고, 이미 입고가 발생한 구매오더는 취소를 차단했습니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-cancel_1.png" alt="취소 사유 입력">
+                <div class="img-caption">취소 Action — 사유 입력</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-cancel_2.png" alt="아이템 플래그 전파">
+                <div class="img-caption">헤더 → 아이템 취소 플래그 전파</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 07 입고 -->
+        <!-- ⑦ 입고 -->
         <div id="rap-07" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">PROCUREMENT · CORE</span>
-            <span class="dev-top-badge fblue">Managed · OData V4 · Draft</span>
+            <span class="dev-top-badge blue">⑦ 입고</span>
+            <span class="dev-top-badge fblue">MKPF / MSEG · Custom Entity</span>
           </div>
           <h3 class="dev-proj-title">입고 (MKPF / MSEG)</h3>
           <p class="dev-proj-desc">
-            Header(MKPF)-Item(MSEG) 1:N Composition. 구매오더를 참조해 입고를 등록하고, 저장 시 참조 구매오더의 입고수량·완료여부를
-            Cross-BO로 갱신합니다. 아이템 삭제 검증 방식을 두 번 갈아엎은 끝에 표준 Draft 패턴으로 정리한 BO입니다.
+            구매오더를 참조해 입고를 등록합니다. 이동유형별로 BO를 분리하지 않고 단일 BO 내에서 분기 처리했습니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">RAP Managed</span>
-            <span class="dev-tech-tag">OData V4</span>
-            <span class="dev-tech-tag">Draft</span>
-            <span class="dev-tech-tag">Cross-BO EML</span>
-            <span class="dev-tech-tag">Prepare Validation</span>
+            <span class="dev-tech-tag">Custom Entity Search Help</span>
+            <span class="dev-tech-tag">Side Effects</span>
+            <span class="dev-tech-tag">이동유형 분기</span>
+            <span class="dev-tech-tag">입고취소 설계</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 포인트</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><strong>이동유형 도메인 확장</strong> — FS 요건이었던 311(플랜트이동)·511(무상입고)이 도메인에 누락돼 있던 것을 발견해 추가. 재고타입(가용/품질검사/보류) 도메인(ZDA10INSMK)도 아예 없어 새로 정의</li>
-              <li><strong>이동유형 단일성 검증</strong> — 입고번호를 이동유형에 따라 4/5/9번대로 분기 채번하는데, 판단 기준을 첫 아이템으로 삼기 때문에 "한 문서 내 이동유형은 반드시 동일해야 한다"는 전제가 필요. check_bwart_item 검증을 별도로 신설해 이 전제를 보장(표준 SAP MKPF엔 원래 이동유형 필드가 없어 섞이는 게 정상이지만, 이 프로젝트의 커스텀 채번 요건 때문에 자체적으로 강제해야 하는 제약이라는 점을 구분)</li>
-              <li><strong>Cross-BO 저장 시점 EML — set_receive_qty</strong> — 저장 시 참조 구매오더의 receiveQty 액션을 EML로 호출. Ebeln(텍스트)을 EbelnUuid로 변환하는 다리 역할을 ZI_A10_EKPO_F4가 담당. 311/511(PO 미참조)은 호출 대상에서 제외</li>
-              <li><strong>Draft 트랜잭션 버퍼의 함정 — 형제 소비량 계산 롤백</strong> — 한 문서 안에서 같은 PO 아이템을 참조하는 아이템이 2개 이상이면 서로의 소비량을 모른 채 동일한 잔량이 중복 제안되는 문제를 확인. Draft 테이블(zta10mseg_d)을 직접 SELECT해서 형제 소비량을 빼는 방식을 시도했으나, "Draft 트랜잭션 버퍼와 DB 테이블은 실시간 동기화가 아니다"라는 RAP 동작 원리에 위배되는 접근이었음을 인지하고 롤백 — 화면 제안값은 근사치로 두고, 실제 초과 여부는 저장 시점 check_gr_qty에서만 정확히 판단하는 원칙으로 단순화</li>
-              <li><strong>아이템 삭제 검증 — 2차 시도 끝에 표준 패턴으로 정리</strong> — 아래 코드 탭 참고. 최종적으로 표준 Delete + Prepare validation(always) 조합으로 Fiori 표준 UX를 회복</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">등록 화면 · 저장 시 연계 처리</div>
+            <p class="pr-why"><span class="pr-label">동작</span>구매오더를 참조하면 공급업체·자재·플랜트·저장위치가 자동 반영되고, 저장 시점에 구매오더의 입고수량과 완료여부가 갱신되며 회계전표가 함께 생성됩니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-create.png" alt="입고 등록 화면">
+                <div class="img-caption">입고 등록 — 구매오더 참조 시 관련 필드 자동 반영</div>
+              </div>
+              <div class="img-gallery img-grid-sub">
+                <div class="img-item" onclick="openLightbox(this,event)">
+                  <img loading="lazy" src="images/rap_gr-save-link_1.png" alt="저장 연계 1">
+                  <div class="img-caption">저장 시 구매오더 수량 갱신</div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this,event)">
+                  <img loading="lazy" src="images/rap_gr-save-link_2.png" alt="저장 연계 2">
+                  <div class="img-caption">완료여부 자동 판정</div>
+                </div>
+                <div class="img-item" onclick="openLightbox(this,event)">
+                  <img loading="lazy" src="images/rap_gr-save-link_3.png" alt="저장 연계 3">
+                  <div class="img-caption">회계전표 동시 생성</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r7t1',event)">아이템 삭제 검증 — 설계 변경 과정</button>
-            <button class="code-tab" onclick="switchTab(this,'r7t2',event)">set_item_data — 형제 소비량 롤백</button>
-            <button class="code-tab" onclick="switchTab(this,'r7t3',event)">check_bwart_po / check_gr_qty</button>
+          <div class="pr-block">
+            <div class="pr-block-title">커스텀 엔티티로 동적 Search Help 구현</div>
+            <p class="pr-why"><span class="pr-label">설계</span>일반 CDS View는 고정 조건만 사용할 수 있으나, <strong>101(입고)은 잔량이 남은 품목만, 102(취소)는 입고 이력이 있는 품목만</strong> 노출해야 합니다. 요청 시점의 파라미터에 따라 조회 조건을 분기할 수 있도록 커스텀 엔티티로 구성했습니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-custom-entity_1.png" alt="커스텀 엔티티 구현">
+                <div class="img-caption">Custom Entity — 파라미터 기반 조회 분기</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-custom-entity_2.png" alt="이동유형별 결과">
+                <div class="img-caption">이동유형에 따라 달라지는 후보 목록</div>
+              </div>
+            </div>
           </div>
 
-          <div class="proj-code code-panel" id="r7t1"><span class="cm">* 1차 시도 (폐기) — CheckFlag 토글 + deleteItem 커스텀 액션
-* 표준 Delete를 끄고, 커스텀 액션 안에서 삭제+부모 CheckFlag 갱신을 함께 처리
-* → 표준 Delete를 꺼야 해서 테이블 다중선택 삭제 등 Fiori 표준 UX를 포기해야 함 → 폐기</span>
+          <div class="pr-block">
+            <div class="pr-block-title">플랜트 · 자재코드 · 창고 자동 매핑</div>
+            <p class="pr-why"><span class="pr-label">설계</span><strong>Determination으로 값을 산출하고 Side Effects로 화면 갱신 대상을 지정</strong>해, 참조 문서 선택과 동시에 관련 필드가 동기화되도록 구현했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-auto-mapping.png" alt="Side Effects 자동 매핑">
+                <div class="img-caption">Determination + Side Effects — 참조 선택과 동시 동기화</div>
+              </div>
+            </div>
+          </div>
 
-<span class="cm">* 최종 채택 — Prepare의 validation(always)
-* 강사 예시(항공사 BO)의 draft determine action Prepare 패턴을 참고해 전환</span>
-<span class="kw">define behavior for</span> ZR_A10_MKPF <span class="kw">alias</span> GoodsReceipt
-{
-  ...
-  <span class="kw">draft action</span> Prepare
-  {
-    <span class="cm">* 필드 트리거 조건과 무관하게 항상 재실행
-       → 아이템 삭제만 이루어진 경우에도 검증이 누락되지 않음</span>
-    <span class="kw">validation</span> ( <span class="kw">always</span> ) check_item;
-  }
-}
-<span class="cm">* 커스텀 액션과 CheckFlag 토글 로직을 제거하고 표준 Delete를 되살려
-   Fiori 표준 UX(다중선택 삭제 등)를 회복</span></div>
+          <div class="pr-block">
+            <div class="pr-block-title">이동유형에 따라 참조 대상이 달라진다</div>
+            <p class="pr-why"><span class="pr-label">설계</span>101·102는 구매오더 참조가 필수이며, 311(플랜트이동)·511(무상입고)은 구매오더 없이도 입고할 수 있습니다. <strong>이동유형별로 BO를 분리하지 않고 단일 BO 내에서 분기 처리</strong>했고, 이동유형 변경 시 필수 항목과 입력 가능 항목이 함께 전환되도록 화면 제어를 연결했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-movement-type.png" alt="이동유형 분기">
+                <div class="img-caption">이동유형별 필수 항목·입력 가능 항목 전환</div>
+              </div>
+            </div>
+          </div>
 
-          <div class="proj-code code-panel" id="r7t2" style="display:none"><span class="cm">* 구매오더 아이템 선택 시 자동 반영 — 형제 소비량 롤백 이력</span>
-<span class="kw">METHOD</span> <span class="fn">set_item_data</span>.
-  <span class="kw">READ ENTITIES OF</span> zi_a10_ekpo <span class="kw">IN LOCAL MODE</span>
-    <span class="kw">ENTITY</span> PurchasingItem
-      <span class="kw">FIELDS</span> ( Menge Wemng Werks Matnr Netpr )
-      <span class="kw">WITH</span> CORRESPONDING #( lt_ekpo_key )
-    <span class="kw">RESULT</span> DATA(lt_ekpo).
+          <div class="pr-block">
+            <div class="pr-block-title">입고취소(102) — 입고 문서를 참조하는 설계</div>
+            <p class="pr-why"><span class="pr-label">설계 근거</span>동일한 구매오더 아이템이 <strong>여러 차례 분할 입고될 수 있어, 구매오더만 참조하면 어느 입고 건에 대한 취소인지 특정되지 않습니다</strong>. 취소가능수량 산정과 전표 역분개의 기준을 명확히 하기 위해 입고 문서를 참조 대상으로 삼았습니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-cancel_1.png" alt="입고문서 참조">
+                <div class="img-caption">취소 시 입고문서(101) 참조 — 구매오더 아님</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-cancel_2.png" alt="자동 매핑 결과">
+                <div class="img-caption">입고문서 선택 시 관련 필드 자동 매핑</div>
+              </div>
+            </div>
+          </div>
 
-  <span class="kw">LOOP AT</span> lt_ekpo <span class="kw">INTO DATA</span>(ls_ekpo).
-    <span class="cm">* 시도했다가 롤백한 접근:
-       SELECT * FROM zta10mseg_d WHERE ebeln = ... (형제 아이템 소비량 차감)
-       → Draft 버퍼는 실시간 동기화가 아니라 부정확한 값이 나올 수 있음
-
-       최종 원칙: 화면 제안값은 근사치(OpenQty)로만 제공</span>
-    DATA(lv_open_qty) = ls_ekpo-Menge - ls_ekpo-Wemng.
-
-    MODIFY ENTITIES OF zi_a10_mseg <span class="kw">IN LOCAL MODE</span>
-      <span class="kw">ENTITY</span> GoodsReceiptItem
-        <span class="kw">UPDATE FIELDS</span> ( Menge Werks Matnr Netpr )
-        <span class="kw">WITH VALUE</span> #( ( %tky = ...
-                              Menge = lv_open_qty
-                              Werks = ls_ekpo-Werks
-                              Matnr = ls_ekpo-Matnr
-                              Netpr = ls_ekpo-Netpr ) ).
-  <span class="kw">ENDLOOP</span>.
-<span class="cm">* 실제 초과 여부의 정확한 판정은 check_gr_qty(저장 시점)가 전담</span>
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r7t3" style="display:none"><span class="cm">* 101/102는 PO·공급업체 필수, 311/511은 PO 없이도 허용
-* 초기 구현에서 101/102 판정 변수가 같은 상수를 참조하는 복붙 실수로
-  101 입고 건의 PO 필수 검증이 통째로 빠져있던 버그 발견 후 수정</span>
-<span class="kw">METHOD</span> <span class="fn">check_bwart_po</span>.
-  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
-    <span class="kw">IF</span> ls_item-Bwart <span class="kw">IN</span> <span class="kw">VALUE</span> ztt_bwart( ( <span class="str">'101'</span> ) ( <span class="str">'102'</span> ) )
-       <span class="kw">AND</span> ( ls_item-Ebeln <span class="kw">IS INITIAL</span> <span class="kw">OR</span> ls_item-Lifnr <span class="kw">IS INITIAL</span> ).
-      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-goodsreceiptitem.
-    <span class="kw">ENDIF</span>.
-    <span class="cm">* 311/511은 PO 없이도 허용 — 조건에서 자연히 제외</span>
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.
-
-<span class="cm">* 입고가능수량(OpenQty) 초과 시 저장 차단 — 아이템 단건 기준</span>
-<span class="kw">METHOD</span> <span class="fn">check_gr_qty</span>.
-  <span class="kw">LOOP AT</span> lt_item <span class="kw">INTO DATA</span>(ls_item).
-    <span class="kw">READ TABLE</span> lt_ekpo <span class="kw">INTO DATA</span>(ls_ekpo) <span class="kw">WITH KEY</span> Ebeln = ls_item-Ebeln  Ebelp = ls_item-Ebelp.
-    DATA(lv_open) = ls_ekpo-Menge - ls_ekpo-Wemng.
-
-    <span class="kw">IF</span> ls_item-Menge &gt; lv_open.
-      APPEND VALUE #( %tky = ls_item-%tky ) <span class="kw">TO</span> failed-goodsreceiptitem.
-      APPEND VALUE #( %tky = ls_item-%tky
-                       %msg = new_message( id = <span class="str">'ZMCA10'</span> number = <span class="str">'081'</span>
-                                            severity = if_abap_behv_message=>severity-error ) )
-        <span class="kw">TO</span> reported-goodsreceiptitem.
-    <span class="kw">ENDIF</span>.
-    <span class="cm">* 형제 아이템 합산 검증은 아이템 단건 기준 비교 이후 단계로 남겨둠</span>
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.</div>
-
+          <div class="pr-block">
+            <div class="pr-block-title">한 문서 안에서는 이동유형 방향이 같아야 한다</div>
+            <p class="pr-why"><span class="pr-label">제약 배경</span>입고번호를 이동유형에 따라 4/5/9번대로 구분해 채번하는데, 헤더는 첫 아이템의 이동유형을 기준으로 판단합니다. <strong>한 문서에 방향이 혼재되면 채번 기준이 성립하지 않아</strong> 자체 검증으로 단일성을 보장했습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-single-direction.png" alt="이동유형 단일성 검증">
+                <div class="img-caption">입고·출고 방향 혼재 문서 저장 차단</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 08 공통 재사용 컴포넌트 -->
+        <!-- ⑥↔⑦ BO 연동 -->
         <div id="rap-08" class="dev-project-content">
           <div class="dev-top-badges">
-            <span class="dev-top-badge blue">SHARED INFRA</span>
-            <span class="dev-top-badge fblue">Global Class</span>
+            <span class="dev-top-badge blue">⑥ ↔ ⑦ 연동</span>
+            <span class="dev-top-badge fblue">Cross-BO Action</span>
           </div>
-          <h3 class="dev-proj-title">공통 재사용 컴포넌트 (zcl_a10_check)</h3>
+          <h3 class="dev-proj-title">BO 간 연동 — 구매오더 ↔ 입고</h3>
           <p class="dev-proj-desc">
-            각 BO의 BDEF Validation에서 반복적으로 등장하는 "일괄조회 → 존재하지 않는/중복인 것만 반환" 패턴을 한 곳에 모은 공용 유틸리티 클래스입니다.
-            특정 FS 문서에 속하지 않는 구현 세부사항이라 개별 FS에는 언급이 없지만, 8개 BO 전체 검증 로직의 기반입니다.
+            입고를 저장하면 구매오더의 입고수량과 완료여부가 갱신됩니다.
           </p>
           <div class="dev-tech-tags">
-            <span class="dev-tech-tag">공통 클래스</span>
-            <span class="dev-tech-tag">CDS LEFT OUTER JOIN</span>
-            <span class="dev-tech-tag">리뷰 반영</span>
+            <span class="dev-tech-tag">Cross-BO Action</span>
+            <span class="dev-tech-tag">책임 분리</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">설계 원칙 변경 이력</div>
-            <p style="font-size:13.5px;color:var(--text2);line-height:1.9">
-              원래는 SELECT를 FOR ALL ENTRIES로 일괄 조회한 뒤 LOOP + READ TABLE로 매칭하는 방식으로 통일했습니다.
-              리뷰에서 "이건 Classic ABAP 방식이고 RAP 방식이 아니다. SORTED/HASHED는 데이터가 많을 때만 쓰는 것이지 습관적으로 쓰면 안 되고,
-              판단 로직 자체를 Internal Table+LOOP이 아니라 CDS 뷰(SQL)가 하게 해야 한다"는 지적을 받아 원칙을 바꿨습니다.
-              새 원칙은 CDS 뷰(또는 인라인 itab)를 LEFT OUTER JOIN해서 매칭 안 되는 것만(JOIN 대상 IS NULL) SQL이 직접 골라내게 하는 것입니다.
-              Internal Table 타입도 기본은 STANDARD TABLE(EMPTY KEY)로 통일하고, SORTED/HASHED는 실제로 대량 반복조회가 증명된 경우에만 예외적으로 사용합니다.
-            </p>
-            <p style="font-size:13.5px;color:var(--text2);line-height:1.9;margin-top:.8rem">
-              EML(READ/MODIFY ENTITIES)도 검토했지만, 이 클래스의 메서드는 전부 "업무 코드값(Lifnr/Matnr/Saknr 등)으로 존재 여부를 찾는" 작업인데
-              각 BO의 실제 키는 UUID라서 EML의 READ ENTITIES로는 애초에 조회가 불가능합니다(EML은 실제 키를 이미 알고 있을 때만 사용 가능).
-              이런 값 기반 조회·중복 체크는 CDS 프로젝션 뷰 SELECT가 맞는 방식이라고 결론지었습니다.
-            </p>
+          <div class="pr-block">
+            <div class="pr-block-title">계산 책임은 데이터를 소유한 BO에</div>
+            <p class="pr-why"><span class="pr-label">설계 방향</span>입고 BO는 <strong>입고·취소된 수량 정보만 파라미터로 전달</strong>하고, 누적 수량 계산과 완료 여부 판정은 구매오더 BO가 Action으로 직접 수행하도록 했습니다. <strong>완료 판정 기준이 변경되어도 입고 로직은 영향을 받지 않습니다.</strong></p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bo-link_1.png" alt="Action 선언">
+                <div class="img-caption">구매오더 BO의 수량 갱신 Action 선언</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bo-link_2.png" alt="입고 측 호출">
+                <div class="img-caption">입고 저장 시 Action 호출 — 수량만 전달</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bo-link_3.png" alt="누적 계산 및 완료 판정">
+                <div class="img-caption">누적 계산·완료 판정은 구매오더 BO가 수행</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑧ 회계전표 -->
+        <div id="rap-09" class="dev-project-content">
+          <div class="dev-top-badges">
+            <span class="dev-top-badge blue">⑧ 회계</span>
+            <span class="dev-top-badge fblue">BKPF / BSEG · 조회 전용</span>
+          </div>
+          <h3 class="dev-proj-title">회계전표 (BKPF / BSEG)</h3>
+          <p class="dev-proj-desc">
+            입고 저장이 확정된 직후 전표 생성 로직이 호출되어 회계전표가 생성됩니다.
+          </p>
+          <div class="dev-tech-tags">
+            <span class="dev-tech-tag">자동 전표 생성</span>
+            <span class="dev-tech-tag">T030 계정 결정</span>
+            <span class="dev-tech-tag">예외 처리 원칙</span>
           </div>
 
-          <div style="margin-bottom:2rem">
-            <div class="dev-nav-group" style="padding:0 0 .6rem">재사용 메서드</div>
-            <ul style="font-size:13.5px;color:var(--text2);line-height:1.9;padding-left:1.2rem">
-              <li><code>get_invalid_mtart_bklas / get_invalid_werks_lgort</code> — 자재유형-평가클래스, 플랜트-저장위치 조합 검증. 자재(MARA) 프로젝트에서 최초 작성</li>
-              <li><code>get_invalid_saknr / get_saknr_status</code> — 계정번호 실존 여부 및 상태(삭제/조정계정 타입) 조회. get_saknr_status는 공급업체의 check_akont를 위해 Mitkz까지 함께 조회하도록 확장</li>
-              <li><code>get_invalid_werks</code> — 플랜트 도메인 Fixed Value 유효성 체크. 자재·구매정보레코드(EINA) Item에서 공용 사용</li>
-              <li><code>get_invalid_mtart_werks / get_invalid_mtart_werks_lgort</code> — 자재유형-플랜트(2원), 자재유형-플랜트-저장위치(3원) 조합 유효성. 신규 매핑 CDS(ZI_A10_MTART_LGORT) 기준</li>
-              <li><code>get_invalid_fdgrv</code> — 공급업체 분류 도메인 Fixed Value 유효성 체크. get_invalid_bwart/get_invalid_ktosl과 동일 패턴</li>
-              <li><code>get_invalid_lifnr / get_invalid_matnr</code> — 공급업체/자재 실존 여부. 구매정보 레코드(EINA)의 check_confirm에서 재사용</li>
-              <li><code>get_duplicate_lifnr_matnr</code> — 공급업체+자재 조합 중복 체크. 구매정보 레코드 전용 신규 작성</li>
-              <li><code>get_duplicate_matnr</code> — 자재코드 중복 체크. 자재 마스터의 check_matnr_dup / check_confirm에서 사용</li>
-            </ul>
+          <div class="pr-block">
+            <div class="pr-block-title">입고 · 입고취소 시 전표 자동 생성</div>
+            <p class="pr-why"><span class="pr-label">설계</span>회계결정코드(T030)에서 이동유형별 계정을 조회해 차변·대변 라인을 구성합니다. <strong>101 입고는 자재 계정 차변 / GR-IR 대변, 102 취소는 GR-IR 차변 / 자재 계정 대변으로 역분개</strong>됩니다.</p>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_fi-doc-create_1.png" alt="전표 생성 로직">
+                <div class="img-caption">T030 조회 후 차변·대변 라인 구성</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_fi-doc-create_2.png" alt="101 입고 전표">
+                <div class="img-caption">101 입고 — 자재 차변 / GR-IR 대변</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_fi-doc-create_3.png" alt="102 취소 전표">
+                <div class="img-caption">102 취소 — 역분개 전표</div>
+              </div>
+            </div>
           </div>
 
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'r8t1',event)">이전 방식 (폐기) vs 현재 방식</button>
-            <button class="code-tab" onclick="switchTab(this,'r8t2',event)">get_invalid_saknr 예시</button>
+          <div class="pr-block">
+            <div class="pr-block-title">전표 생성이 실패해도 입고 저장은 유지된다</div>
+            <p class="pr-why"><span class="pr-label">설계 근거</span><strong>입고는 이미 발생한 물류 활동이므로 회계 처리 실패를 이유로 저장을 차단하면 현업 업무가 중단됩니다.</strong> 전표 생성 실패는 오류로 처리하지 않고, 이후 수기 생성이 가능하도록 여지를 남겼습니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_fi-doc-fail.png" alt="전표 실패 시 입고 유지">
+                <div class="img-caption">계정 미결정 등 실패 시에도 입고는 정상 저장</div>
+              </div>
+            </div>
           </div>
-
-          <div class="proj-code code-panel" id="r8t1"><span class="cm">* [폐기] Classic ABAP — FOR ALL ENTRIES + LOOP + READ TABLE</span>
-<span class="kw">METHOD</span> get_invalid_saknr_old.
-  <span class="kw">SELECT</span> saknr <span class="kw">FROM</span> ztA10ska1
-    <span class="kw">FOR ALL ENTRIES IN</span> it_account
-    <span class="kw">WHERE</span> saknr = @it_account-saknr
-    <span class="kw">INTO TABLE</span> @<span class="kw">DATA</span>(lt_valid).
-
-  <span class="kw">LOOP AT</span> it_account <span class="kw">INTO DATA</span>(ls_acc).
-    <span class="kw">READ TABLE</span> lt_valid <span class="kw">WITH KEY</span> saknr = ls_acc-saknr <span class="kw">TRANSPORTING NO FIELDS</span>.
-    <span class="kw">IF</span> sy-subrc &lt;&gt; <span class="num">0</span>.
-      APPEND ls_acc <span class="kw">TO</span> rt_invalid.  <span class="cm">"판단을 ABAP LOOP이 함</span>
-    <span class="kw">ENDIF</span>.
-  <span class="kw">ENDLOOP</span>.
-<span class="kw">ENDMETHOD</span>.
-
-<span class="cm">* [현재] CDS LEFT OUTER JOIN — 판단을 SQL이 함</span>
-<span class="kw">METHOD</span> <span class="fn">get_invalid_saknr</span>.
-  <span class="kw">SELECT</span> a~saknr <span class="kw">FROM</span> @it_account <span class="kw">AS</span> a
-    <span class="kw">LEFT OUTER JOIN</span> ztA10ska1 <span class="kw">AS</span> b <span class="kw">ON</span> a~saknr = b~saknr
-    <span class="kw">WHERE</span> b~saknr <span class="kw">IS NULL</span>          <span class="cm">"매칭 안 된 것만 SQL이 직접 골라냄</span>
-    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @rt_invalid.
-<span class="kw">ENDMETHOD</span>.</div>
-
-          <div class="proj-code code-panel" id="r8t2" style="display:none"><span class="cm">* 계정 실존 여부 + 조정계정 타입(Mitkz)까지 함께 조회
-* (공급업체 check_akont에서 '매입채무 계정인지'까지 판단하기 위해 확장)</span>
-<span class="kw">METHOD</span> <span class="fn">get_saknr_status</span>.
-  <span class="kw">SELECT</span> a~saknr, b~mitkz, b~xloev <span class="kw">FROM</span> @it_saknr <span class="kw">AS</span> a
-    <span class="kw">LEFT OUTER JOIN</span> ztA10ska1 <span class="kw">AS</span> b <span class="kw">ON</span> a~saknr = b~saknr
-    <span class="kw">INTO CORRESPONDING FIELDS OF TABLE</span> @rt_status.
-
-  <span class="cm">* 호출부(공급업체 check_akont)에서 판단:
-     - b~saknr이 비어있으면 실존하지 않는 계정
-     - xloev = 'X'면 삭제된 계정
-     - mitkz &lt;&gt; 'K'면 매입채무 관련 계정이 아님</span>
-<span class="kw">ENDMETHOD</span>.</div>
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
+<!-- SUMMARY -->
+<section id="summary" style="background:var(--white)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Summary</div>
+      <h2 class="sec-title">정리</h2>
+    </div>
+    <p style="color:var(--text2);font-size:14.5px;line-height:1.85;margin-bottom:2rem;max-width:800px">
+      기준정보부터 구매·입고·회계까지 8개 모듈을 하나의 프로세스로 연결했습니다.
+    </p>
+
+    <div class="sum-grid">
+      <div class="sum-card">
+        <div class="sum-no">01</div>
+        <div class="sum-title">표준에 없는 규칙은<br>직접 정의</div>
+        <div class="sum-desc">자재유형·플랜트·저장위치 조합처럼 표준에 통제 구조가 없는 규칙은 커스텀 테이블로 정의하고, 검증과 Search Help가 그 정의 하나를 공통 참조하도록 했습니다.</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-no">02</div>
+        <div class="sum-title">입력 순서와 범위를<br>설계로 강제</div>
+        <div class="sum-desc">공급업체 선택 전 아이템 생성 차단, 자재 기준 플랜트·저장위치 자동 반영과 같이 잘못된 조합이 입력되는 경로 자체를 차단했습니다.</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-no">03</div>
+        <div class="sum-title">계산 책임은<br>데이터 소유 BO에</div>
+        <div class="sum-desc">입고는 수량 정보만 전달하고 누적·완료 판정은 구매오더 BO가 수행합니다. 판정 기준이 변경되어도 호출하는 쪽은 영향을 받지 않습니다.</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-no">04</div>
+        <div class="sum-title">한 번 정한 패턴을<br>8개 모듈에 재사용</div>
+        <div class="sum-desc">CDS 계층 구조, Text Association, 메시지 상수화, 검증 단계 분리, 상태 전환 Action을 공통 규칙으로 두고 모든 모듈에 동일하게 적용했습니다.</div>
+      </div>
+    </div>
+
+    <div class="sum-result">
+      <span class="sum-result-label">결과</span>
+      구매오더를 생성하면 입고에서 참조되고, 입고를 저장하면 구매오더 수량이 갱신되며 회계전표까지 자동 생성됩니다.
+      담당자는 각 화면에서 자기 업무만 처리하면 되고, 모듈 간 연계는 시스템이 담당합니다.
+    </div>
+  </div>
+</section>
+
 
 <footer>
   <p>© 2026 박도현 · SAP ABAP Developer · <a href="https://github.com/sherlock0105" target="_blank" style="color:var(--blue)">github.com/sherlock0105</a></p>

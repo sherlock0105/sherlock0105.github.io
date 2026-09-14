@@ -434,6 +434,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   .stack-grid,.cred-grid{grid-template-columns:1fr}
 }
 
+/* 타임라인 수상 배지 */
+.tl-awards{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.tl-award{font-size:11.5px;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:.25rem .65rem;border-radius:999px}
+
 </style>
 </head>
 <body>
@@ -503,7 +507,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <div class="hero-card-text">FI 재무 · QM 품질관리 · ERP 흐름</div>
 
         <div class="hero-card-section-label">Project</div>
-        <div class="hero-card-text">SAP CODE ERP 구축 프로젝트 PM / FI·QM 담당</div>
+        <div class="hero-card-text">SAP CODE ERP 구축 PM / RAP 통합 프로세스 PM·발표</div>
 
         <div class="hero-card-section-label">Stack</div>
         <div class="hero-card-row" style="border-bottom:1px solid var(--border);padding-top:.4rem">
@@ -512,11 +516,11 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Projects</span>
-          <span class="hero-card-val">10 CBO Programs</span>
+          <span class="hero-card-val">10 CBO · 8 RAP BO</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">Course</span>
-          <span class="hero-card-val">SAP CODE 1기</span>
+          <span class="hero-card-val">SAP CODE 1기 · RAP 2기</span>
         </div>
         <div class="hero-card-row">
           <span class="hero-card-label">GitHub</span>
@@ -560,8 +564,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
     <div class="tl">
 
-      <!-- SAP Cloud ABAP·RAP 심화 과정 2기 (진행 중) -->
-      <div class="tl-item upcoming">
+      <!-- SAP Cloud ABAP·RAP 심화 과정 2기 -->
+      <div class="tl-item">
         <div class="tl-left">
           <div class="tl-year">2026</div>
           <div class="tl-range">2026.07<br>– 2026.09</div>
@@ -570,19 +574,27 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <div class="tl-body">
           <div class="tl-head">
             <span class="tl-title">SAP Cloud ABAP·RAP 심화 과정 2기</span>
-            <span class="tl-badge soon">진행 중</span>
+            <span class="tl-badge">PM · 발표</span>
           </div>
-          <div class="tl-sub">고용노동부·대한상공회의소·SAP 디지털 선도기업 아카데미</div>
+          <div class="tl-sub">고용노동부·대한상공회의소·SAP 디지털 선도기업 아카데미 · 최우수상 · 개근상</div>
           <div class="tl-desc">
             SAP의 최신 클라우드 개발 환경인 BTP와 <strong>RAP(ABAP RESTful Application Programming Model)</strong> 중심의 실전 밀착형 커리큘럼입니다.
-            자재·계정·공급업체 마스터부터 구매오더·입고까지, 조달 프로세스 8개 Business Object를 Managed RAP 표준 패턴으로 직접 설계·구현하고 있습니다.
+            5인 팀의 <strong>PM 겸 최종 발표</strong>를 맡아, 기준정보부터 구매오더·입고·회계전표까지 조달 프로세스 <strong>8개 Business Object</strong>를
+            Managed RAP 표준 패턴으로 설계·구현했습니다. 2차 ERD에서 테이블을 늘리지 않고 중복을 제거해 관계를 재정의했고,
+            CDS 3계층 분리·공용 클래스·검증 2단 구조를 팀 공통 규칙으로 정해 8개 모듈에 동일하게 적용했습니다.
+          </div>
+          <div class="tl-awards">
+            <span class="tl-award">🏆 최우수상</span>
+            <span class="tl-award">⭐ 조별 최종평가 우수자</span>
+            <span class="tl-award">📅 개근상</span>
           </div>
           <div class="tl-tags">
             <span class="tl-tag hl">Cloud ABAP</span>
             <span class="tl-tag hl">RAP</span>
+            <span class="tl-tag hl">CDS View</span>
             <span class="tl-tag">BTP</span>
-            <span class="tl-tag">CDS View</span>
             <span class="tl-tag">Behavior Definition</span>
+            <span class="tl-tag">Custom Entity</span>
             <span class="tl-tag">OData</span>
           </div>
           <a class="tl-btn" href="rap.html">프로젝트 상세 →</a>
@@ -708,6 +720,27 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="cred-card">
         <div class="cred-label">🏆 수상</div>
         <ul>
+          <li class="award-li">
+            <span class="award-ico">🏆</span>
+            <div>
+              <span class="cred-name">최우수상</span>
+              <span class="cred-meta">SAP Cloud ABAP·RAP 심화 과정 2기 · 2026.09</span>
+            </div>
+          </li>
+          <li class="award-li">
+            <span class="award-ico">⭐</span>
+            <div>
+              <span class="cred-name">조별 최종평가 우수자</span>
+              <span class="cred-meta">SAP Cloud ABAP·RAP 심화 과정 2기 · 2026.09</span>
+            </div>
+          </li>
+          <li class="award-li">
+            <span class="award-ico">🏅</span>
+            <div>
+              <span class="cred-name">개근상</span>
+              <span class="cred-meta">SAP Cloud ABAP·RAP 심화 과정 2기 · 2026.09</span>
+            </div>
+          </li>
           <li class="award-li">
             <span class="award-ico">🏆</span>
             <div>

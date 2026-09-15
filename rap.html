@@ -550,7 +550,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       SAP RAP 기반 8개 Business Object 설계 · 구현
     </p>
     <p style="color:var(--text2);font-size:14px;line-height:1.85;max-width:760px">
-      SAP Cloud ABAP·RAP 심화 과정 2기 · 팀 프로젝트(5인) · <strong>PM · 발표 담당</strong><br>
+      SAP Cloud ABAP·RAP 심화 과정 2기 · 팀 프로젝트(6인) · <strong>PM · 발표 담당</strong><br>
       <strong>각 담당자가 자기 업무만 처리해도 전체 흐름이 이어지도록, 사용자는 최소 항목만 입력하고 나머지는 참조 관계를 따라 자동으로 채워지게 설계했습니다.</strong>
     </p>
 
@@ -680,12 +680,6 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <img loading="lazy" src="images/rap_erd.png" alt="2차 ERD 전체">
         <div class="img-caption">2차 ERD 전체 — 기준정보 · 구매 · 입고 · 회계 8개 BO 관계 정의 (클릭하면 확대)</div>
       </div>
-      <div class="img-gallery img-grid-sub">
-        <div class="img-item" onclick="openLightbox(this,event)">
-          <img loading="lazy" src="images/rap_erd-changes.png" alt="1차 ERD에서 바꾼 것">
-          <div class="img-caption">1차 ERD 대비 변경 요약</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -755,12 +749,19 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
         <div class="pr-head">
           <div class="pr-no">03</div>
           <div>
-            <div class="pr-title">메시지 상수화</div>
-            <div class="pr-sub">필드명을 단어 단위로 등록하고 공용 문장의 파라미터로 조합</div>
+            <div class="pr-title">공용 클래스로 규칙을 한 곳에서 관리</div>
+            <div class="pr-sub">메시지 · 상수 · 검증 유틸 · 채번 유틸 4종을 8개 모듈이 공유</div>
           </div>
         </div>
         <div class="pr-body">
-          <p class="pr-why"><span class="pr-label">개선 효과</span>「&amp;1는 필수 입력입니다」 형태의 공통 포맷과 필드명 변수를 조합하는 방식으로, 메시지 ID의 무분별한 증가를 막고 유지보수 효율을 높였습니다.</p>
+          <p class="pr-why"><span class="pr-label">설계</span>모듈마다 같은 검증과 같은 값을 따로 구현하면 규칙이 흩어집니다. <strong>메시지 클래스 · 상수 클래스 · 검증 유틸 · 채번 유틸 4종</strong>을 공용으로 두고, 8개 BO가 모두 이 클래스를 참조하도록 통일했습니다. 이동유형·차대변 구분 같은 고정값도 상수로 올려 문자열 하드코딩을 없앴습니다.</p>
+          <p class="pr-why"><span class="pr-label">메시지 상수화</span>「&amp;1는 필수 입력입니다」 형태의 공통 포맷과 필드명 변수를 조합하는 방식으로, 메시지 ID의 무분별한 증가를 막고 유지보수 효율을 높였습니다.</p>
+          <div class="img-gallery-featured">
+            <div class="img-item-main" onclick="openLightbox(this,event)">
+              <img loading="lazy" src="images/rap_common-class.png" alt="공용 클래스 4종">
+              <div class="img-caption">공용 클래스 4종 — 같은 메시지 · 같은 상수 · 같은 검증으로 통일</div>
+            </div>
+          </div>
           <div class="img-gallery">
             <div class="img-item" onclick="openLightbox(this,event)">
               <img loading="lazy" src="images/rap_message-const_1.png" alt="메시지 클래스">
@@ -1406,7 +1407,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <div class="sum-card">
         <div class="sum-no">04</div>
         <div class="sum-title">한 번 정한 패턴을<br>8개 모듈에 재사용</div>
-        <div class="sum-desc">CDS 계층 구조, Text Association, 메시지 상수화, 검증 단계 분리, 상태 전환 Action을 공통 규칙으로 두고 모든 모듈에 동일하게 적용했습니다.</div>
+        <div class="sum-desc">CDS 계층 구조, Text Association, 공용 클래스 4종, 검증 단계 분리, 상태 전환 Action을 공통 규칙으로 두고 모든 모듈에 동일하게 적용했습니다.</div>
       </div>
     </div>
 

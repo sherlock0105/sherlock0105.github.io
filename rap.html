@@ -990,6 +990,17 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
 
           <div class="pr-block">
+            <div class="pr-block-title">계정 상세 — 다국어 텍스트 Composition</div>
+            <p class="pr-why"><span class="pr-label">설계</span>계정명 텍스트(SKA1_T)를 Composition으로 붙여 Object Page 안에서 언어별 텍스트를 함께 관리합니다. 메인 목록에는 현재 세션 언어 텍스트만 노출해 성능을 확보하고, 상세 화면 전용 Facet에서 전체 언어 CRUD가 가능합니다.</p>
+            <div class="img-gallery-featured">
+              <div class="img-item-main" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ska1-detail.png" alt="SKA1 상세 — 다국어 텍스트">
+                <div class="img-caption">계정 상세 — Account Info + 다국어 계정명(KO/EN)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-block">
             <div class="pr-block-title">용도별 Search Help 분리</div>
             <p class="pr-why"><span class="pr-label">설계</span>동일한 계정 마스터를 참조하지만 호출하는 화면의 요건이 달라 View를 두 개로 분리했습니다. 공급업체용은 mitkz='K' 조건으로 매입채무 계정만 노출하고, 회계결정코드용은 재고·GR/IR 등 전체 유형이 필요해 조건 없이 노출합니다.</p>
             <div class="img-gallery">
@@ -1023,8 +1034,12 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           <div class="pr-block">
             <div class="pr-block-title">조정계정 검증 — 존재 여부 + 성격까지</div>
             <p class="pr-why"><span class="pr-label">설계</span>Value Help에서 매입채무 계정만 노출하되, <strong>화면 제어만으로는 우회 입력을 막을 수 없으므로</strong> 저장 시점에 계정의 성격(mitkz)을 다시 검증하도록 구성했습니다.</p>
-            <div class="img-gallery-featured">
-              <div class="img-item-main" onclick="openLightbox(this,event)">
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_lfa1-detail.png" alt="공급업체 마스터 화면">
+                <div class="img-caption">공급업체 마스터 — 조정계정·결제조건·사용중지 상태 관리</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
                 <img loading="lazy" src="images/rap_lfa1-akont.png" alt="조정계정 검증">
                 <div class="img-caption">저장 시점 계정 성격(mitkz) 재검증</div>
               </div>
@@ -1046,6 +1061,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="dev-tech-tag">필드 추가 (shkzg)</span>
             <span class="dev-tech-tag">조건부 필수</span>
             <span class="dev-tech-tag">Factory Action</span>
+          </div>
+
+          <div class="pr-block">
+            <div class="pr-block-title">회계결정코드 목록 · 생성 · 상세</div>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-list.png" alt="T030 목록">
+                <div class="img-caption">목록 — 이동유형·트랜잭션·평가클래스·계정·차대변 10건</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-create.png" alt="T030 생성">
+                <div class="img-caption">생성 화면 — 이동유형·트랜잭션·계정·차대변 입력</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_t030-detail.png" alt="T030 상세">
+                <div class="img-caption">상세 — BSX 포장재 입고, 재고계정(S-Debit)</div>
+              </div>
+            </div>
           </div>
 
           <div class="pr-block">
@@ -1118,6 +1151,14 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
                 <img loading="lazy" src="images/rap_eina-header-item_2.png" alt="Create 버튼 비활성">
                 <div class="img-caption">자재코드 입력 전 — 아이템 Create 비활성</div>
               </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_eina-list.png" alt="구매정보레코드 목록">
+                <div class="img-caption">구매정보레코드 목록 — 공급업체 × 자재 조합 11건</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_eina-create.png" alt="구매정보레코드 생성">
+                <div class="img-caption">생성 화면 — 자재 입력 전 아이템 Create 비활성</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1136,6 +1177,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="dev-tech-tag">입력 순서 제어</span>
             <span class="dev-tech-tag">자동 매핑 (ZI_A10_MARD)</span>
             <span class="dev-tech-tag">취소 플래그 전파</span>
+          </div>
+
+          <div class="pr-block">
+            <div class="pr-block-title">구매오더 목록 · 상세 · 아이템</div>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-list.png" alt="PO 목록">
+                <div class="img-caption">PO 목록 — 공급업체별 10건, 취소여부 확인 가능</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-detail.png" alt="PO 상세">
+                <div class="img-caption">PO 상세 — 공급업체·아이템 자동 반영 상태</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_ekko-item-detail.png" alt="PO 아이템">
+                <div class="img-caption">아이템 상세 — 구매정보레코드 참조, 플랜트·저장위치 자동 매핑</div>
+              </div>
+            </div>
           </div>
 
           <div class="pr-block">
@@ -1199,6 +1258,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="dev-tech-tag">Side Effects</span>
             <span class="dev-tech-tag">이동유형 분기</span>
             <span class="dev-tech-tag">입고취소 설계</span>
+          </div>
+
+          <div class="pr-block">
+            <div class="pr-block-title">입고 목록 · 헤더 상세 · 아이템 상세</div>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-list.png" alt="입고 목록">
+                <div class="img-caption">입고 목록 — 이동유형(4/5번대)별 자재문서번호 구분 채번</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-header-detail.png" alt="입고 헤더 상세">
+                <div class="img-caption">입고 헤더 — 자재문서번호·전기일</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_gr-item-detail.png" alt="입고 아이템 상세">
+                <div class="img-caption">아이템 상세 — PO 참조, 자재·플랜트·저장위치·수량·금액 자동 반영</div>
+              </div>
+            </div>
           </div>
 
           <div class="pr-block">
@@ -1339,6 +1416,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
             <span class="dev-tech-tag">자동 전표 생성</span>
             <span class="dev-tech-tag">T030 계정 결정</span>
             <span class="dev-tech-tag">예외 처리 원칙</span>
+          </div>
+
+          <div class="pr-block">
+            <div class="pr-block-title">회계전표 목록 · 입고(WE) · 출고취소(WA)</div>
+            <div class="img-gallery">
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bkpf-list.png" alt="전표 목록">
+                <div class="img-caption">전표 목록 — 입고 저장마다 자동 생성, WE/WA 구분</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bkpf-detail-we.png" alt="입고 전표(WE)">
+                <div class="img-caption">WE(입고) — 재고계정(S) · GR-IR(H) 자동 분개</div>
+              </div>
+              <div class="img-item" onclick="openLightbox(this,event)">
+                <img loading="lazy" src="images/rap_bkpf-detail-wa.png" alt="출고취소 전표(WA)">
+                <div class="img-caption">WA(출고취소) — GR-IR(S) · 재고계정(H) 역분개</div>
+              </div>
+            </div>
           </div>
 
           <div class="pr-block">

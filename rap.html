@@ -498,6 +498,28 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 /* ERD 전체 이미지는 잘리지 않게 */
 #erd .img-item-main img{max-height:none}
 
+
+/* Readable project evidence */
+body{font-size:16px}
+.sec-title{font-size:clamp(1.8rem,3vw,2.2rem)}
+.sec-desc,.dev-proj-desc{font-size:16px;line-height:1.85}
+.img-caption{font-size:13.5px;line-height:1.65;padding:.8rem 1rem;color:var(--text2)}
+.img-gallery,.img-grid-sub{grid-template-columns:repeat(2,minmax(0,1fr))}
+.img-item img,.img-grid-sub .img-item img{height:220px;object-fit:contain;object-position:center;background:#f2f3f8}
+.img-item-main img{max-height:620px}
+.pr-why,.dev-proj-desc,.erd-ch-desc{font-size:15.5px;line-height:1.85}
+@media(max-width:680px){.img-gallery,.img-grid-sub{grid-template-columns:1fr}.img-item img,.img-grid-sub .img-item img{height:auto;max-height:360px}}
+
+.rap-change{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:0 0 2rem}
+.rap-change>div{background:var(--white);border:1px solid var(--border2);border-radius:12px;padding:1.3rem 1.5rem}
+.rap-change>div:last-child{background:#f3f0ff;border-color:#d8ccf7}
+.rap-change span{display:block;font-size:13px;font-weight:700;color:var(--blue);margin-bottom:.55rem}
+.rap-change p{font-size:16px;line-height:1.8;color:var(--text);margin:0}
+#overview .img-gallery{grid-template-columns:1fr 1fr}
+#overview .img-gallery .img-item:first-child{grid-column:1/-1}
+#overview .img-gallery .img-item:first-child img{height:auto;max-height:none;object-fit:contain}
+#overview .img-gallery .img-item:not(:first-child) img{height:300px;object-fit:contain}
+@media(max-width:680px){.rap-change,#overview .img-gallery{grid-template-columns:1fr}#overview .img-gallery .img-item:first-child{grid-column:auto}#overview .img-gallery .img-item:not(:first-child) img{height:auto;max-height:360px}}
 </style>
 </head>
 
@@ -551,7 +573,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     </p>
     <p style="color:var(--text2);font-size:14px;line-height:1.85;max-width:760px">
       SAP Cloud ABAP·RAP 심화 과정 2기 · 팀 프로젝트(6인) · <strong>PM · 발표 담당</strong><br>
-      <strong>각 담당자가 자기 업무만 처리해도 전체 흐름이 이어지도록, 사용자는 최소 항목만 입력하고 나머지는 참조 관계를 따라 자동으로 채워지게 설계했습니다.</strong>
+      <strong>구매오더를 만들면 입고에서 참조하고, 입고를 저장하면 구매오더 수량과 회계전표가 이어지도록 설계했습니다.</strong>
     </p>
 
     <div class="awards">
@@ -583,6 +605,11 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <p style="color:var(--text2);font-size:14.5px;line-height:1.85;margin-bottom:2rem;max-width:800px">
       기준정보 → 구매정보레코드 → 구매오더 → 입고 → 회계전표. 선행 프로세스의 데이터가 후속 트랜잭션으로 자동 연계되도록 설계했습니다.
     </p>
+
+    <div class="rap-change" aria-label="프로젝트 상황과 목표">
+      <div><span>AS-IS</span><p>기준정보와 구매·입고·회계 업무가 나뉘어 있어 같은 값을 다시 입력하고, 규칙도 화면마다 따로 관리해야 하는 상황을 가정했습니다.</p></div>
+      <div><span>TO-BE</span><p>8개 BO의 관계와 책임을 정리했습니다. 앞 단계의 데이터를 참조해 입력을 줄이고, 입고 결과가 구매오더와 전표에 반영되도록 연결했습니다.</p></div>
+    </div>
 
     <div class="flow-chain">
       <div class="flow-node">

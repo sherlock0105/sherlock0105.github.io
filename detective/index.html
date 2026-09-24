@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b1c">
+  <meta name="description" content="작은 탐정과 함께 방을 돌아다니며 사라진 쿠키 사건의 단서를 찾아보세요.">
+  <title>셜록의 작은 사건실</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23152225'/%3E%3Ccircle cx='28' cy='27' r='13' fill='none' stroke='%23e5bd7a' stroke-width='5'/%3E%3Cpath d='m38 38 13 13' stroke='%23e5bd7a' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>셜록의 작은 사건실 <small>221B · 밤 11:47</small></span></div>
+      <div class="top-actions">
+        <button class="top-button" id="musicButton" type="button" aria-pressed="false" title="음악 켜기">♫ <span>음악 켜기</span></button>
+        <button class="top-button" id="helpButton" type="button" title="이용 방법">? <span>이용 방법</span></button>
+      </div>
+    </header>
+
+    <main class="stage-wrap">
+      <div class="stage" id="stage" aria-label="탐정의 방. 빛나는 단서를 클릭해 조사하세요.">
+        <div class="scene" id="scene">
+          <img class="room" src="assets/study.webp" alt="밤의 탐정 사무실. 책상, 단서 게시판, 금고, 창문과 벽난로가 있다." draggable="false">
+          <div class="rain" aria-hidden="true"></div>
+          <div class="dust" aria-hidden="true"></div>
+          <button class="hotspot" style="--x:35%;--y:20%" data-clue="board" aria-label="단서 게시판 조사"><span>⌕</span><small>게시판</small></button>
+          <button class="hotspot" style="--x:41%;--y:38%" data-clue="desk" aria-label="책상 조사"><span>⌕</span><small>책상</small></button>
+          <button class="hotspot" style="--x:56%;--y:30%" data-clue="safe" aria-label="금고 조사"><span>⌕</span><small>금고</small></button>
+          <button class="hotspot" style="--x:79%;--y:23%" data-clue="window" aria-label="창문 조사"><span>⌕</span><small>창문</small></button>
+          <button class="hotspot" style="--x:17%;--y:54%" data-clue="fireplace" aria-label="벽난로 조사"><span>⌕</span><small>벽난로</small></button>
+          <button class="hotspot secret-spot" style="--x:89%;--y:76%" data-clue="watch" aria-label="회중시계 조사"><span>✦</span><small>?</small></button>
+          <div class="detective" id="detective" role="button" tabindex="0" aria-label="고양이 탐정. 누르면 산책을 멈춥니다.">
+            <div class="detective-shadow"></div><img src="assets/detective.webp" alt="돋보기를 든 귀여운 탐정 고양이" draggable="false">
+            <span class="thought" id="thought" aria-live="polite">흠, 수상한 냄새가 나는데?</span>
+          </div>
+          <div class="floor-hint" id="floorHint">바닥을 누르면 탐정이 이동해요</div>
+        </div>
+        <div class="scene-vignette" aria-hidden="true"></div>
+        <div class="case-label"><span class="live-dot"></span> CASE 001 <span class="separator">/</span> 사라진 쿠키의 행방</div>
+        <div class="scene-controls">
+          <button id="pauseButton" type="button" aria-pressed="false">Ⅱ <span>산책 멈추기</span></button>
+          <button id="resetButton" type="button">↺ <span>처음부터</span></button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bottom-bar">
+      <div class="case-progress"><span>발견한 단서</span><strong id="progressCount">0 / 5</strong><div class="progress-track"><i id="progressFill"></i></div></div>
+      <p id="statusText">반짝이는 물건을 눌러 조사해 보세요.</p>
+      <button class="notebook-button" id="notebookButton" type="button">☷ <span>수첩 펼치기</span></button>
+    </footer>
+  </div>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" tabindex="-1">
+      <button class="close" id="closeButton" type="button" aria-label="닫기">×</button>
+      <div class="dialog-eyebrow" id="dialogEyebrow">CASE 001 · 단서 기록</div>
+      <div class="dialog-icon" id="dialogIcon">⌕</div>
+      <h1 id="dialogTitle">제목</h1>
+      <p id="dialogBody"></p>
+      <div class="dialog-foot"><span id="dialogFoot">셜록의 수첩</span><button id="dialogAction" type="button">계속 살펴보기 →</button></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

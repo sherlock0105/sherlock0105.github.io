@@ -13,8 +13,35 @@ footer{border-top:1px solid var(--line);background:#fff;padding:27px 0;color:var
 @media(max-width:640px){.wrap{width:min(100% - 36px,1080px)}.topbar-inner{height:64px}.brand{font-size:14px}.brand span{font-size:10px}.navlinks{gap:13px;font-size:12px}.navlinks .contact-nav{display:none}.hero,.case-hero{padding:65px 0}.hero h1{font-size:clamp(35px,9vw,46px)}.hero p,.case-hero .lede{font-size:15px}.section{padding:67px 0}.grid-2,.decision-columns,.image-pair,.outcome{grid-template-columns:1fr}.case-card{min-height:unset;padding:24px}.case-card .read-more{margin-top:18px}.decision{padding:22px}.decision h3{font-size:20px}.decision-columns{gap:15px}.image-pair .evidence{margin-top:12px}.evidence img{max-height:420px}.foot{display:block}.foot nav{margin-top:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
+/* Home timeline: field work → development → process design → next role */
+.hero{padding:60px 0 56px;scroll-margin-top:72px}
+.hero-intro{max-width:900px}
+.hero h1{font-size:clamp(38px,4.5vw,54px);line-height:1.34;margin-bottom:19px}
+.hero-intro p{font-size:17px;line-height:1.8;max-width:760px}
+.journey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;margin:39px 0 0;list-style:none}
+.journey-step{position:relative;display:flex;flex-direction:column;min-width:0;min-height:300px;border-top:1px solid #9c94b1;padding:22px 17px 0 20px}
+.journey-step:first-child{padding-left:0}
+.journey-track{margin-bottom:18px}
+.journey-dot{position:absolute;top:-7px;left:20px;width:13px;height:13px;border-radius:50%;background:#cbbcff;box-shadow:0 0 0 5px #1a2542}
+.journey-step:first-child .journey-dot{left:0}
+.journey-number{font:500 12px/1.4 var(--mono);letter-spacing:.05em;color:#cbbcff}
+.journey-step h2{font-size:21px;line-height:1.42;letter-spacing:-.04em;margin:0 0 10px}
+.journey-step p{font-size:15px;line-height:1.65;color:#e1e5f1;margin:0 0 17px}
+.journey-detail{margin-top:auto;display:block;color:#bfc9e1;font-size:13px;line-height:1.5;padding-bottom:29px}
+.journey-image{display:block;overflow:hidden;background:#f3f4f8;border:1px solid #d9dee5;border-radius:9px;margin-top:auto}
+.journey-image img{display:block;width:100%;height:90px;object-fit:contain;transition:transform .2s}
+.journey-image:hover img{transform:scale(1.035)}
+.journey-link{display:inline-block;align-self:flex-start;font-size:13px;font-weight:700;color:#d4c8ff;margin-top:10px}
+.journey-link:hover{text-decoration:underline}
+.journey-future .journey-dot{background:#b8e9d9}
+.journey-future .journey-link{margin-top:auto;padding-bottom:29px}
+.hero-bottom{border-top:1px solid #ffffff45;padding-top:21px;margin-top:23px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.hero-bottom p{font-size:13px;color:#bdc5d9;line-height:1.6;margin:0}
+.hero-bottom .button{flex:none}
+@media(max-width:850px){.journey{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}.journey-step{min-height:305px}.journey-step:nth-child(odd){padding-left:0}.journey-step:nth-child(odd) .journey-dot{left:0}}
+@media(max-width:640px){.hero{padding:51px 0 56px}.hero h1{font-size:clamp(32px,8.2vw,44px)}.hero-intro p{font-size:15px}.journey{display:block;margin-top:39px}.journey-step,.journey-step:first-child,.journey-step:nth-child(odd){min-height:0;border-top:0;border-left:1px solid #9c94b1;padding:0 0 31px 22px}.journey-step:last-child{padding-bottom:4px}.journey-track{margin-bottom:8px}.journey-dot,.journey-step:first-child .journey-dot,.journey-step:nth-child(odd) .journey-dot{top:2px;left:-7px;box-shadow:0 0 0 5px #1a2542}.journey-step h2{font-size:19px;margin-bottom:5px}.journey-step p{font-size:14px;margin-bottom:12px}.journey-detail,.journey-future .journey-link{padding-bottom:0;margin-top:0}.journey-image{max-width:410px;width:100%;margin-top:2px}.journey-image img{height:135px}.journey-link{margin-top:8px}.hero-bottom{display:block;margin-top:28px}.hero-bottom .button{margin-top:16px}}
+
 /* Project previews and visible process summaries */
-.aside-image{display:block;width:100%;height:128px;object-fit:cover;object-position:top;border:1px solid #ffffff45;border-radius:9px;margin:0 0 18px}
 .case-visual{background:#eef0f6;border:1px solid var(--line);border-radius:11px;overflow:hidden;margin:18px 0 0}
 .case-visual img{display:block;width:100%;height:226px;object-fit:contain;object-position:center;background:#f3f4f8}
 .case-card h3{margin:20px 0 8px}

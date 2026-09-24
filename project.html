@@ -432,6 +432,27 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   .stack-grid,.cred-grid{grid-template-columns:1fr}
 }
 
+
+/* Readable project evidence */
+body{font-size:16px}
+.sec-title{font-size:clamp(1.8rem,3vw,2.2rem)}
+.sec-desc,.dev-proj-desc{font-size:16px;line-height:1.85}
+.img-caption{font-size:13.5px;line-height:1.65;padding:.8rem 1rem;color:var(--text2)}
+.img-gallery,.img-grid-sub{grid-template-columns:repeat(2,minmax(0,1fr))}
+.img-item img,.img-grid-sub .img-item img{height:220px;object-fit:contain;object-position:center;background:#f2f3f8}
+.img-item-main img{max-height:620px}
+.pr-why,.dev-proj-desc,.erd-ch-desc{font-size:15.5px;line-height:1.85}
+@media(max-width:680px){.img-gallery,.img-grid-sub{grid-template-columns:1fr}.img-item img,.img-grid-sub .img-item img{height:auto;max-height:360px}}
+
+.chal-cat-title{font-size:18px}
+.chal-cell{font-size:16px;line-height:1.85;padding:1.3rem 1.5rem}
+.chal-cell p{margin:0}
+.chal-tag{font-size:12px;margin-bottom:.65rem;padding:.22rem .6rem}
+.chal-solved-pill{font-size:12px}
+.team-scope{margin-top:1.7rem}
+.team-scope summary{cursor:pointer;font-size:16px;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:1rem 1.3rem;border-radius:10px}
+.team-scope>p{font-size:14px;color:var(--text2);margin:1.1rem 0}
+.team-scope .chal-list{margin-top:.8rem}
 </style>
 </head>
 <body>
@@ -614,36 +635,24 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <section id="challenge">
   <div class="container">
     <div class="sec-eyebrow">— CHALLENGE</div>
-    <h2 class="sec-title">프로젝트가 해결한 과제</h2>
-    <p class="sec-desc">화장품 제조·판매 기업 Master Pack ERP 구축 프로젝트가 풀어낸 비즈니스 과제입니다.</p>
-    <div style="display:inline-flex;align-items:center;gap:.4rem;font-size:11px;color:var(--text3);margin-bottom:1.6rem">
-      <span class="chal-solved-pill">✓ 해결</span>
-      <span>표시가 없는 항목은 팀원과 협업하여 설계된 영역입니다</span>
-    </div>
-
+    <h2 class="sec-title">업무에서 무엇을 바꿨는가</h2>
+    <p class="sec-desc" style="margin-bottom:1.5rem">교육 프로젝트에서 가정한 업무 상황입니다. 아래 세 가지는 제가 직접 개발하거나 통합 과정에서 확인한 부분입니다.</p>
     <div class="chal-list">
       <div class="chal-card">
-        <div class="chal-cat">
-          <div class="chal-cat-no solved">01</div>
-          <div class="chal-cat-title">다국적 거래에서 환율 관리의 복잡성</div>
-          <span class="chal-solved-pill" style="margin-left:auto">✓ 해결</span>
-        </div>
-        <div class="chal-rows">
-          <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>수출 비중 급증으로 달러·엔화 등 다양한 통화 거래가 발생하나 실시간 환율 반영 체계가 부족</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>환율 API 일배치로 실시간 적재, 전표 생성 시 전기일 기준 환율 자동 반영. 수작업 입력 제거</div>
-          </div>
-          <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>매출 처리와 대금 관리 시 환율 적용 시점이 달라 회계 오류 발생</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>전기일·반제일 기준 환율 이력을 전표 단위로 관리해 시점별 추적성 확보 및 환차손익 자동 산출</div>
-          </div>
-          <div class="chal-row">
-            <div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span>월말 결산 시 환율 변동에 따른 평가 손익 산출이 어려워 정확한 현금 흐름 파악에 한계</div>
-            <div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span>월말 외화평가 배치 자동 실행, 시뮬레이션으로 확정 전 결과 검증 가능. 통화별 미결잔액·환차손익 대시보드 제공</div>
-          </div>
-        </div>
+        <div class="chal-cat"><div class="chal-cat-no solved">01</div><div class="chal-cat-title">외화 거래와 월말 결산</div><span class="chal-solved-pill" style="margin-left:auto">직접 개발</span></div>
+        <div class="chal-row"><div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span><p>환율 입력, 미결 전표의 평가손익 확인, 다음 달 환입이 따로 처리되면 결산 결과를 확인하기 어렵습니다.</p></div><div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span><p>환율 API 적재 → 전표 환율 반영 → 월말 평가 시뮬레이션 → 평가전표와 익월 환입전표 생성으로 흐름을 연결했습니다.</p></div></div>
       </div>
       <div class="chal-card">
+        <div class="chal-cat"><div class="chal-cat-no solved">02</div><div class="chal-cat-title">완제품 검수 결과 입력</div><span class="chal-solved-pill" style="margin-left:auto">직접 개발</span></div>
+        <div class="chal-row"><div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span><p>검수 결과를 엑셀에서 옮길 때 형식 오류나 중복이 섞이면 저장 후에야 문제를 발견할 수 있습니다.</p></div><div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span><p>업로드 전 형식·중복을 검사하고 팝업 ALV에서 결과를 확인하도록 했습니다. 부분합격과 폐기 같은 예외도 구분했습니다.</p></div></div>
+      </div>
+      <div class="chal-card">
+        <div class="chal-cat"><div class="chal-cat-no solved">03</div><div class="chal-cat-title">청구 조건 변경과 FI 세금계정</div><span class="chal-solved-pill" style="margin-left:auto">통합 이슈</span></div>
+        <div class="chal-row"><div class="chal-cell asis"><span class="chal-tag asis">AS-IS</span><p>SD 청구 조건이 바뀐 뒤 FI 전표의 세금계정이 예상과 다르게 결정됐습니다.</p></div><div class="chal-cell tobe"><span class="chal-tag tobe">TO-BE</span><p>전표의 세금코드, 청구 조건유형, 계정결정을 순서대로 비교해 원인을 찾고 변경 전 영향 검토 항목을 정리했습니다.</p></div></div>
+      </div>
+    </div>
+    <details class="team-scope"><summary>팀 전체가 다룬 다른 업무 과제 보기</summary><p>아래는 프로젝트 전체 범위입니다. 제 직접 개발 범위와 구분해 두었습니다.</p><div class="chal-list">
+<div class="chal-card">
         <div class="chal-cat">
           <div class="chal-cat-no">02</div>
           <div class="chal-cat-title">제품별 수익성 분석 체계 부족</div>
@@ -659,7 +668,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
-      <div class="chal-card">
+      
+<div class="chal-card">
         <div class="chal-cat">
           <div class="chal-cat-no">03</div>
           <div class="chal-cat-title">채널·거래처별 판매정책 운영의 복잡성</div>
@@ -679,7 +689,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
-      <div class="chal-card">
+      
+<div class="chal-card">
         <div class="chal-cat">
           <div class="chal-cat-no">04</div>
           <div class="chal-cat-title">원료 특성을 반영한 생산·재고 최적화 한계</div>
@@ -695,7 +706,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
-      <div class="chal-card">
+      
+<div class="chal-card">
         <div class="chal-cat">
           <div class="chal-cat-no">05</div>
           <div class="chal-cat-title">현장 업무·실시간 의사결정의 모바일 지원 한계</div>
@@ -711,7 +723,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
           </div>
         </div>
       </div>
-    </div>
+    
+    </div></details>
   </div>
 </section>
 

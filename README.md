@@ -32,3 +32,25 @@
 정적 HTML/CSS 사이트입니다. 저장소를 내려받아 `index.html`을 열거나 로컬 서버에서 확인할 수 있습니다.
 
 **연락:** [tuffhr0105@gmail.com](mailto:tuffhr0105@gmail.com)
+
+## GitHub 프로젝트 안내
+
+### SAP 프로젝트와 학습
+
+| 저장소 | 내용 |
+| --- | --- |
+| [Masterpack FI](https://github.com/sherlock0105/masterpack-project-fi) | FI 중심 ABAP·UI5 프로젝트 코드 |
+| [POU Sapping](https://github.com/sherlock0105/ABAP-POU-SAPPING) | 첫 번째 ABAP 미니 프로젝트 |
+| [ABAP Study](https://github.com/sherlock0105/ABAP-STUDY) | ALV부터 CDS·AMDP·ADBC까지 단계별 교육 실습 |
+| [SAPUI5 / Fiori](https://github.com/sherlock0105/ui5_fiori) | 화면 개발, CDS·Gateway 연동 실습 |
+| [ABAP 교육 기록](https://github.com/sherlock0105/abap) | 초기 교육 코드와 압축 자료 |
+
+### 웹 기초와 개인 학습
+
+| 저장소 | 내용 |
+| --- | --- |
+| [Web Basics](https://github.com/sherlock0105/web1) | HTML 문서와 페이지 연결 |
+| [Kokoa Clone](https://github.com/sherlock0105/kokoa-clone-25) | HTML·CSS로 구성한 메신저 UI 실습 |
+| [Momentum](https://github.com/sherlock0105/momentum1) | JavaScript 대시보드 학습 |
+| [AI Workspace](https://github.com/sherlock0105/ai_agent) | AI 에이전트·캘린더 연동 개인 공부 |
+| [AI Agent 학습 노트](https://github.com/sherlock0105/ai_agent_class) | Python 대화 호출 실습 |
